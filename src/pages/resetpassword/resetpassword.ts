@@ -1,10 +1,8 @@
+
 // importaciones de librerias
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ClientsServiceProvider } from '../../providers/clients-service/clients-service';
-
-// importacion de Data Provider prueba de busqueda
-
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'page-resetpassword',
@@ -14,17 +12,20 @@ export class ResetpasswordPage {
 
 	clients: any[] = [];
 
-	constructor(public navCtrl: NavController, public clientsService: ClientsServiceProvider) {
+	constructor(public navCtrl: NavController, public http: HttpClient) {
 		
 	}
 
 	ionViewDidLoad() {
-		this.clientsService.getClients().subscribe(
-			(data) => { // Success
+		this.getClients().subscribe(
+			(data) => { 
 			this.clients = data['results'];
 			}, (error) =>{
 			console.error(error);
 			});
 	}
-	
+
+	getClients() {
+		return this.http.get('https://randomuser.me/api/?results=25');
+	}
 }

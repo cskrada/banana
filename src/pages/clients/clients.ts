@@ -28,7 +28,6 @@ export class ClientsPage {
 		this.searchControl = new FormControl();
 
 	}// fin de constructor
-
 	openPage(item) {
 		this.navCtrl.push(SeeclientPage, item);
 	}

@@ -1,59 +1,59 @@
 <ion-content padding>
-<!-- Aqui comienza la grilla -->
-		<ion-grid>
-			<ion-row>
-				<ion-col col-12 text-center>
-					<h1 class="titulo">BananaApp</h1>
-				</ion-col>
-			</ion-row>
-			<ion-row padding-bottom>
-				<ion-col col-12 text-center>
-					<img src="assets/imgs/bananaApp.png">
-				</ion-col>
-			</ion-row>
-			<ion-row>
-				<ion-col col-12 text-center>
-					<form [formGroup]="myForm" (ngSubmit)="loginUser()">
-						<ion-list>
-							<ion-item>
-								<ion-label floating>Correo electrónico</ion-label>
-								<ion-input formControlName="email" type="email"></ion-input>
-							</ion-item>
-							<ion-item>
-								<ion-label floating>Contraseña</ion-label>
-								<ion-input formControlName="password" type="password"></ion-input>
-							</ion-item>
-						</ion-list>
-						<div padding-top>
-							<button ion-button color="primary" type="submit" [disabled]="!myForm.valid">
-								Iniciar sesión
-							</button> 
+	<!-- Aqui comienza la grilla -->
+			<ion-grid>
+				<ion-row>
+					<ion-col col-12 text-center>
+						<h1 class="titulo">BananaApp</h1>
+					</ion-col>
+				</ion-row>
+				<ion-row padding-bottom>
+					<ion-col col-12 text-center>
+						<img src="assets/imgs/bananaApp.png">
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col col-12 text-center>
+						<form [formGroup]="myForm" (ngSubmit)="loginUser2()">
+							<ion-list>
+								<ion-item>
+									<ion-label floating>Correo electrónico</ion-label>
+									<ion-input formControlName="email" type="email"></ion-input>
+								</ion-item>
+								<ion-item>
+									<ion-label floating>Contraseña</ion-label>
+									<ion-input formControlName="password" type="password"></ion-input>
+								</ion-item>
+							</ion-list>
+							<div padding-top>
+								<button ion-button color="primary" type="submit" [disabled]="!myForm.valid">
+									Iniciar sesión
+								</button> 
+							</div>
+						</form>
+						<div class="olvideclave">
+							<span>
+								<u>
+									<a ion-button clear (click)="goToResetPassword()">
+										He olvidado mi contraseña
+									</a>
+								</u>
+							</span>
 						</div>
-					</form>
-					<div class="olvideclave">
-						<span>
-							<u>
-								<a ion-button clear (click)="goToResetPassword()">
-									He olvidado mi contraseña
+						<div class="etiqueta">
+							<span>
+								<a ion-button clear (click)="goToSignup()">
+									¿Todavía no usas BananaApp?
 								</a>
-							</u>
-						</span>
-					</div>
-					<div class="etiqueta">
-						<span>
-							<a ion-button clear (click)="goToSignup()">
-								¿Todavía no usas BananaApp?
-							</a>
-						</span>
-					</div>
-				</ion-col>
-			</ion-row>
-			<ion-row>
-				<ion-col col-12 text-center>
-					<button ion-button color="bananap">
-						Empieza Gratis
-					</button>
-				</ion-col>
-			</ion-row>
-		</ion-grid>
-</ion-content>
+							</span>
+						</div>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col col-12 text-center>
+						<button ion-button color="bananap">
+							Empieza Gratis
+						</button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+	</ion-content>

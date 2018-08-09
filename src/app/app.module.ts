@@ -33,8 +33,6 @@ import { ChartsModule } from 'ng2-charts';
 import { DataProvider } from '../providers/data/data';
 import { ClientsProvider } from '../providers/data/clients';
 
-// importacion de provider clients-service
-import { ClientsServiceProvider } from '../providers/clients-service/clients-service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBpIBL-h59BW8L3zHF22eHcMabZtkh4hMA",
@@ -88,8 +86,7 @@ export const firebaseConfig = {
     EmailComposer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
-    ClientsProvider,
-    ClientsServiceProvider
+    ClientsProvider
   ]
 })
 export class AppModule {}
