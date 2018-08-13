@@ -3,6 +3,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
+
+import { ResetProvider } from '../../providers/data/reset';
 
 @Component({
   selector: 'page-resetpassword',
@@ -11,21 +14,27 @@ import { HttpClient } from '@angular/common/http';
 export class ResetpasswordPage {
 
 	clients: any[] = [];
+	searchTerm: string = '';
+	searchControl: FormControl;
+	items: any;
+	searching: any = false;
 
-	constructor(public navCtrl: NavController, public http: HttpClient) {
-		
+	countries: string[];
+	errorMessage: string;
+
+	constructor(public navCtrl: NavController, public http: HttpClient, public rest: ResetProvider) {
+		this.searchControl = new FormControl();
 	}
 
 	ionViewDidLoad() {
-		this.getClients().subscribe(
-			(data) => { 
-			this.clients = data['results'];
-			}, (error) =>{
-			console.error(error);
-			});
+		this.getClients();
 	}
 
 	getClients() {
-		return this.http.get('https://randomuser.me/api/?results=25');
-	}
+		this.rest.getClients()
+		   .subscribe(
+			 clients => this.clients = clients,
+			 error =>  this.errorMessage = <any>error);
+			 console.log(this.clients);
+	  }
 }
