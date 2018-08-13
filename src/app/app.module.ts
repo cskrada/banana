@@ -34,6 +34,10 @@ import { DataProvider } from '../providers/data/data';
 import { ClientsProvider } from '../providers/data/clients';
 import { ResetProvider } from '../providers/data/reset';
 
+// Pipes
+import { SearchPipe } from '../pipes/search/search';
+import { SortPipe } from '../pipes/sort/sort';
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBpIBL-h59BW8L3zHF22eHcMabZtkh4hMA",
@@ -53,7 +57,9 @@ export const firebaseConfig = {
     AddclientPage,
     SignupPage,
     ResetpasswordPage,
-    EmailPage
+    EmailPage,
+    SearchPipe,
+    SortPipe,
   ],
   imports: [
     BrowserModule,

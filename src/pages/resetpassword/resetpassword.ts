@@ -1,10 +1,6 @@
-
 // importaciones de librerias
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
-import { FormControl } from '@angular/forms';
-
 import { ResetProvider } from '../../providers/data/reset';
 
 @Component({
@@ -13,17 +9,14 @@ import { ResetProvider } from '../../providers/data/reset';
 })
 export class ResetpasswordPage {
 
-	clients: any[] = [];
-	searchTerm: string = '';
-	searchControl: FormControl;
-	items: any;
-	searching: any = false;
-
-	countries: string[];
+	clients: string[];
 	errorMessage: string;
+	descending: boolean = false;
+	order: number;
+	column: string = 'name';
 
-	constructor(public navCtrl: NavController, public http: HttpClient, public rest: ResetProvider) {
-		this.searchControl = new FormControl();
+	constructor(public navCtrl: NavController, public rest: ResetProvider) {
+
 	}
 
 	ionViewDidLoad() {
@@ -33,8 +26,13 @@ export class ResetpasswordPage {
 	getClients() {
 		this.rest.getClients()
 		   .subscribe(
-			 clients => this.clients = clients,
-			 error =>  this.errorMessage = <any>error);
-			 console.log(this.clients);
-	  }
+			clients => this.clients = clients,
+			error =>  this.errorMessage = <any>error);
+			
+	}
+
+	sort(){
+		this.descending = !this.descending;
+		this.order = this.descending ? 1 : -1;
+	}
 }
