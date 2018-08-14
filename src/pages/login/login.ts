@@ -47,8 +47,9 @@ constructor(public navCtrl: NavController,
 
 	}
 // 192.168.1.66:8000 conexion globalpc
+// http://192.168.1.66:8000/api/login antigua conexion
 	postLogin(email: string, password: string){
-	  	this.http.post('http://192.168.1.66:8000/api/login',
+	  	this.http.post('http://vbanana.tk/laravel-banana/public/api/login',
 						{ email, password }, 
 						{ headers: new HttpHeaders()
 	  						.set('authorization', 'http://localhost:4200')
