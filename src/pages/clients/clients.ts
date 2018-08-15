@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 import { NavController } from 'ionic-angular';
 
 // importacion de provider y el medidor de tiempo
-import { ClientsProvider } from '../../providers/data/clients';
+import { ClientProvider } from '../../providers/data/client';
 import 'rxjs/add/operator/debounceTime';
 
 //importacion de paginas
@@ -24,7 +24,7 @@ export class ClientsPage {
 	items: any;
 	searching: any = false;
 
-	constructor(public navCtrl: NavController, public dataService: ClientsProvider) {
+	constructor(public navCtrl: NavController, public dataService: ClientProvider) {
 		this.searchControl = new FormControl();
 
 	}// fin de constructor

@@ -3,7 +3,7 @@ import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angu
 import { EmailComposer } from '@ionic-native/email-composer';
 
 // importacion de DataProvider
-import { ClientsProvider } from '../../providers/data/clients';
+import { ClientProvider } from '../../providers/data/client';
 
 
 // importacion de paginas
@@ -22,7 +22,7 @@ items: any;
 constructor(public navCtrl: NavController,
 				public alerta: AlertController, 
 				public navParams: NavParams, 
-				public dataService: ClientsProvider,
+				public dataService: ClientProvider,
 				public emailComposer: EmailComposer) {
 	this.items = this.navParams.data;
 }

@@ -31,8 +31,10 @@ import { EmailPage } from '../pages/email/email';
 
 import { ChartsModule } from 'ng2-charts';
 import { DataProvider } from '../providers/data/data';
-import { ClientsProvider } from '../providers/data/clients';
+import { ClientProvider } from '../providers/data/client';
 import { ResetProvider } from '../providers/data/reset';
+import { ClientsProvider } from '../providers/data/clients';
+
 
 // Pipes
 import { SearchPipe } from '../pipes/search/search';
@@ -93,8 +95,9 @@ export const firebaseConfig = {
     EmailComposer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
-    ClientsProvider,
-    ResetProvider
+    ClientProvider,
+    ResetProvider,
+    ClientsProvider
   ]
 })
 export class AppModule {}
