@@ -46,14 +46,16 @@ constructor(public navCtrl: NavController,
 		this.postLogin(this.myForm.value.email,this.myForm.value.password);
 
 	}
-// 192.168.1.66:8000 conexion globalpc
+
 // http://192.168.1.66:8000/api/login antigua conexion
 	postLogin(email: string, password: string){
-	  	this.http.post('http://vbanana.tk/laravel-banana/public/api/login',
+		// this.kerLogin(email,password)
+	  	this.http.post('http://bananaservertest.herokuapp.com/api/login',
 						{ email, password }, 
 						{ headers: new HttpHeaders()
 	  						.set('authorization', 'http://localhost:4200')
-	  						.set('app', 'BananaCli')
+							  .append('app', 'BananaCli')
+							  .append('Access-Control-Allow-Origin', '*')
 	  	}).subscribe(data => {
 	  			this.menu.enable(true, 'authenticated');
 				this.results.push(data['user']);
@@ -81,6 +83,57 @@ constructor(public navCtrl: NavController,
 		});
 		this.loading.present();
 	}
+
+
+/* 	kerLogin(email, password){
+		const headers =  new HttpHeaders().set('authorization', 'http://localhost:4200')
+			.append('app', 'BananaCli')
+			.append('Access-Control-Allow-Origin', '*')
+		
+		const options = {
+			headers: headers
+		}
+
+		const body = {
+			email: email,
+			password: password
+		}
+
+
+		this.http.post('http://bananaservertest.herokuapp.com/api/login', body, options).toPromise().then(
+            result => {
+				
+				this.menu.enable(true, 'authenticated');
+				this.results.push(data['user']);
+				this.results.push(data['storage']);
+				this.results.push(data['storageName']);
+				console.log(this.results);
+				this.navCtrl.setRoot(HomePage);
+            },
+            error => {
+              
+				this.loading.dismiss().then( () => {
+					let alert = this.alertCtrl.create({
+						message: "el email o la contraseña no es correcta, por favor ingrese de nuevo sus datos",
+						buttons: [
+						{
+							text: "Ok",
+							role: 'cancel'
+						}
+						]
+					});
+					alert.present();
+				});
+				console.log(error);
+
+		  }
+		  
+	);
+	this.loading = this.loadingCtrl.create({
+		dismissOnPageChange: true,
+	});
+	this.loading.present();
+} */
 
 	goToSignup(){
 		this.navCtrl.push(SignupPage);
@@ -114,28 +167,3 @@ constructor(public navCtrl: NavController,
 	}
 
 }
-	// loginUser(){
-	// 	console.log("Email:" + this.myForm.value.email);
-	// 	console.log("Password:" + this.myForm.value.password);
-	// 	this.afAuth.auth.signInWithEmailAndPassword(this.myForm.value.email, this.myForm.value.password).then(() => {
-	// 		console.log("User logging");
-	// 		this.navCtrl.setRoot(HomePage);
-	// 		}, (err) => {
-	// 		this.loading.dismiss().then( () => {
-	// 			let alert = this.alertCtrl.create({
-	// 				message: err.message,
-	// 				buttons: [
-	// 				{
-	// 					text: "Ok",
-	// 					role: 'cancel'
-	// 				}
-	// 				]
-	// 			});
-	// 			alert.present();
-	// 		});
-	// 	});
-	// 	this.loading = this.loadingCtrl.create({
-	// 		dismissOnPageChange: true,
-	// 	});
-	// 	this.loading.present();
-	// }
