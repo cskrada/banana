@@ -21,7 +21,6 @@ export class MyApp {
   password : string;
   public session: boolean;
   public results : string[] = [];
-  
 
 // --------------------------------------------------------------------------------------------
   constructor(public platform: Platform,
@@ -61,6 +60,9 @@ export class MyApp {
 
   logOut() {
     this.menu.enable(false); 
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('name');
     this.nav.setRoot(LoginPage);
   }
 

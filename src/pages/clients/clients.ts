@@ -1,10 +1,11 @@
 //importacion de librerias
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+// import { FormControl } from '@angular/forms';
 import { NavController } from 'ionic-angular';
 
 // importacion de provider y el medidor de tiempo
-import { ClientProvider } from '../../providers/data/client';
+// import { ClientsProvider } from '../../providers/data/clients';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/debounceTime';
 
 //importacion de paginas
@@ -17,15 +18,14 @@ import { AddclientPage } from '../addclient/addclient';
 })
 export class ClientsPage {
 
-	// variable que almacena los valores del arreglo tipo objeto
-	// items;
-	searchTerm: string = '';
-	searchControl: FormControl;
-	items: any;
-	searching: any = false;
+	clients: any[] = [];
+	
+	// errorMessage: string;
+	// descending: boolean = false;
+	// order: number;
+	// column: string = 'name';
 
-	constructor(public navCtrl: NavController, public dataService: ClientProvider) {
-		this.searchControl = new FormControl();
+	constructor(public navCtrl: NavController, public http: HttpClient) {
 
 	}// fin de constructor
 	openPage(item) {
@@ -38,19 +38,35 @@ export class ClientsPage {
 	}
 
 	ionViewDidLoad() {
-		this.items = this.dataService.orderList(this.items);
-		this.setFilteredItems();
-		this.searchControl.valueChanges.debounceTime(700).subscribe(search  => {
-			this.searching = false;
-			this.setFilteredItems();
+		this.getClients().subscribe(data =>{
+			this.clients = data['customers'];
+			console.log(this.clients);
+			console.log('ionViewDidLoad HomePage');
+		}, error =>{
+			console.log(error);
 		});
 	}
 
-	onSearchInput(){
-		this.searching= true;
+	getClients(){
+		return this.http.get('http://bananaservertest.herokuapp.com/api/thirds/customers/7',
+			{ headers: new HttpHeaders()
+				.set('authorization', 'http://localhost:4200')
+				.append('app', 'BananaCli')
+				.append('user', sessionStorage.getItem('user'))
+				.append('Access-Control-Allow-Origin', '*')
+				.append('token', sessionStorage.getItem('token'))
+			});	
 	}
 
-	setFilteredItems() {
-		this.items = this.dataService.filterItems(this.searchTerm);
-	}
+	// getClients() {
+	// 	this.rest.getClients()
+	// 	   .subscribe(
+	// 		clients => this.clients = clients,
+	// 		error =>  this.errorMessage = <any>error);
+	// }
+
+	// sort(){
+	// 	this.descending = !this.descending;
+	// 	this.order = this.descending ? 1 : -1;
+	// }
 }

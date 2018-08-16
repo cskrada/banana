@@ -10,7 +10,7 @@ import { ClientsPage } from '../clients/clients';
   templateUrl: 'home.html'
 })
 export class HomePage {
- 
+	public name_user: any;
 
 	public pieChartLabels:string[] = ['Compras', 'Ganancias', 'Ventas'];
 	public pieChartData:number[] = [100, 500, 300];
@@ -65,10 +65,11 @@ export class HomePage {
 // CONSTRUCTOR ----------------------------------------------------------------------------------------
 	constructor(public navCtrl: NavController, public menu: MenuController) {
 		this.menu.enable(true);
+		this.name_user = sessionStorage.getItem('name');
 	}
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad HomePage');
+		console.log(this.name_user);
 	}
 
 	// Clients(): redirige a la pagina de cliente 

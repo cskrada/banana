@@ -9,17 +9,17 @@ import { ResetProvider } from '../../providers/data/reset';
 })
 export class ResetpasswordPage {
 
-	clients: string[];
+/* 	clients: string[];
 	errorMessage: string;
 	descending: boolean = false;
 	order: number;
-	column: string = 'name';
+	column: string = 'name'; */
 
 	constructor(public navCtrl: NavController, public rest: ResetProvider) {
 
 	}
 
-	ionViewDidLoad() {
+/* 	ionViewDidLoad() {
 		this.getClients();
 	}
 
@@ -34,5 +34,5 @@ export class ResetpasswordPage {
 	sort(){
 		this.descending = !this.descending;
 		this.order = this.descending ? 1 : -1;
-	}
+	} */
 }

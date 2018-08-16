@@ -31,7 +31,6 @@ constructor(public navCtrl: NavController,
 		email: ['', Validators.required],
 		password: ['', Validators.required]
 	});
-
 }
 
 	ionViewDidLoad() {
@@ -48,6 +47,11 @@ constructor(public navCtrl: NavController,
 	}
 
 // http://192.168.1.66:8000/api/login antigua conexion
+
+// thirds/customers/{seller_id}
+
+// http://bananaservertest.herokuapp.com/api/login
+
 	postLogin(email: string, password: string){
 		// this.kerLogin(email,password)
 	  	this.http.post('http://bananaservertest.herokuapp.com/api/login',
@@ -61,8 +65,14 @@ constructor(public navCtrl: NavController,
 				this.results.push(data['user']);
 				this.results.push(data['storage']);
 				this.results.push(data['storageName']);
-				console.log(this.results);
+				sessionStorage.setItem('user', data['user'].user[0].id);
+				sessionStorage.setItem('token', data['user'].user[0].remember_token);
+				sessionStorage.setItem('name', data['user'].user[0].name);
 				this.navCtrl.setRoot(HomePage);
+				console.log(this.results);
+				console.log('id: ', data['user'].user[0].id);
+				console.log('token: ', data['user'].user[0].remember_token);
+				console.log('name: ', data['user'].user[0].name);
 			}, error => {
 				this.loading.dismiss().then( () => {
 					let alert = this.alertCtrl.create({

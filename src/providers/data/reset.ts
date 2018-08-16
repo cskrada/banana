@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { map, catchError } from 'rxjs/operators';
+// import { Observable } from 'rxjs/Observable';
+// import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ResetProvider {
 
-  private apiUrl = 'https://restcountries.eu/rest/v2/all';
+  // private apiUrl = 'https://restcountries.eu/rest/v2/all';
 
   constructor(public http: HttpClient) {}
 
-  getClients(): Observable<string[]> {
+  /* getClients(): Observable<string[]> {
     return this.http.get(this.apiUrl).pipe(
       map(this.extractData),
       catchError(this.handleError)
@@ -31,6 +31,6 @@ export class ResetProvider {
     }
     console.error(errMsg);
     return Observable.throw(errMsg);
-  }
+  } */
 
 }

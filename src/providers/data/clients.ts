@@ -7,7 +7,7 @@ import { map, catchError } from 'rxjs/operators';
 
 export class ClientsProvider {
 
-    private apiUrl = '';
+    private apiUrl = 'http://bananaservertest.herokuapp.com/api/thirds/customers/7';
 
 constructor(public http: HttpClient) {
 
