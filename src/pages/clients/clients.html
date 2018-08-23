@@ -1,6 +1,9 @@
 <!-- dentro de la etiqueta header se encuentra la barra de navegacion -->
 <ion-header>
 	<ion-navbar color="bananap">
+			<button ion-button menuToggle>
+				<ion-icon name="menu"></ion-icon>
+			</button>
 		<ion-grid no-padding>
 			<ion-row no-padding>
 				<ion-col col-1 no-padding>
@@ -32,23 +35,39 @@
 </ion-header>
 <!-- fin de Header-->
 <ion-content padding>
+	<ion-grid no-padding>
+		<ion-row>
+			<ion-col col-2 text-center align-self-center>
+				<ion-buttons start>
+					<button ion-button icon-only clear color="bananaf" (click)="addClient()">
+						<ion-icon name="person-add"></ion-icon>
+					</button>
+				</ion-buttons>	
+			</ion-col>
+			<ion-col col-10>
+				<ion-searchbar [(ngModel)]="terms"></ion-searchbar>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 
-	<ion-searchbar [(ngModel)]="terms"></ion-searchbar>
-	<button ion-button type="button" (click)="sort()">Sort</button>
 	<ion-list>
-		<ion-item *ngFor="let c of clients | search : terms" class="paddinglr fuente">
+
+		<button ion-item *ngFor="let c of clients | search : terms" class="paddinglr fuente" (click)="openPage(c)">
 		<!-- 	<ion-avatar item-left>
 				<img src="{{c.flag}}">
 			</ion-avatar> -->
-			<h2>{{c.business_name}}</h2> <span *ngIf="c.business_name != c.alias">({{ c.alias }})</span><br>
+			<span><b>Razon Social : {{c.business_name}}</b> <br></span>
+			
+			<!-- <span *ngIf="c.business_name != c.alias">({{ c.alias }})</span> -->
 			<span>
-				{{ c.tradename }} <br>
-				{{ c.cif }} <br>
-				{{ c.city }}, {{ c.state }} <br>
-				{{ c.phone }}&nbsp;| {{ c.email }}
+				<span  *ngIf="c.business_name != c.tradename">Nombre Comercial: {{ c.tradename }}<br> </span>
+				Cif: {{ c.cif }} <br>
+				Direccion: {{ c.city }}, {{ c.state }} <br>
+				telefono :{{ c.phone }}&nbsp;
+				<!-- | {{ c.email }} -->
 			</span>
+		</button>
 
-		</ion-item>
 	</ion-list>
 
 	<!-- <ion-grid no-padding>

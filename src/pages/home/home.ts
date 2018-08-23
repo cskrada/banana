@@ -69,11 +69,11 @@ export class HomePage {
 	}
 
 	ionViewDidLoad() {
-		console.log(this.name_user);
+		// console.log(this.name_user);
 	}
 
 	// Clients(): redirige a la pagina de cliente 
 	clients(){
-		this.navCtrl.push(ClientsPage);
+		this.navCtrl.setRoot(ClientsPage);
 	}
 }

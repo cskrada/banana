@@ -3,7 +3,6 @@ import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angu
 import { EmailComposer } from '@ionic-native/email-composer';
 
 // importacion de DataProvider
-import { ClientProvider } from '../../providers/data/client';
 
 
 // importacion de paginas
@@ -17,14 +16,14 @@ import { EmailPage } from '../email/email';
 })
 export class SeeclientPage {
 
-items: any;
+client: any[] = [];
 
 constructor(public navCtrl: NavController,
 				public alerta: AlertController, 
 				public navParams: NavParams, 
-				public dataService: ClientProvider,
 				public emailComposer: EmailComposer) {
-	this.items = this.navParams.data;
+	this.client = this.navParams.data;
+	console.log("seeclient",this.client);
 }
 
 	ionViewDidLoad() {
@@ -75,8 +74,7 @@ constructor(public navCtrl: NavController,
 		alert2.present();
 	}
 
-	openEmail(items) {
-		this.navCtrl.push(EmailPage, items);
+	openEmail(client) {
+		this.navCtrl.push(EmailPage, client);
 	}
-
 }

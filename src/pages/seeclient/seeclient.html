@@ -13,7 +13,7 @@
 								</ion-buttons>
 							</td>
 							<td>
-								<ion-title text-left>{{ items.razons }}</ion-title>
+								<ion-title text-left>{{ client.business_name }}</ion-title>
 							</td>
 						</tr>
 					</table>
@@ -56,37 +56,37 @@
 	<ion-grid no-padding>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<h2>{{ items.razons }}</h2>
+				<h2>Razon Social: {{ client.business_name }}</h2>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<span>Nombre Comercial: {{ items.name }}</span>
+				<span>Nombre Comercial: {{ client.tradename }}</span>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<span>Alias: {{ items.alias }}</span>
+				<span>Alias: {{ client.alias }}</span>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<span>Rif: {{ items.rif }}</span>
+				<span>Rif: {{ client.cif }}</span>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<span>Dirección: {{ items.address }}. {{ items.region }} </span>
+				<span>Dirección: {{ client.address }}</span>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<span>{{ items.city }}, {{ items.postalcode }}</span>
+				<span>Ciudad: {{ client.city }}, {{ client.state }}</span>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<span> {{ items.state }}, Venezuela</span>
+				<span> Venezuela</span>
 			</ion-col>
 		</ion-row>
 		<ion-row padding-top>
@@ -95,7 +95,7 @@
 			</ion-col>
 			<ion-col col-11 text-left>
 				<span class="links"><u>
-					<a href="https://api.whatsapp.com/send?phone={{ items.phone }}">{{ items.phone }}</a>
+					<a href="https://api.whatsapp.com/send?phone={{ client }}">{{ client.phone }}</a>
 				</u></span>
 			</ion-col>
 		</ion-row>
@@ -104,7 +104,7 @@
 				<ion-icon padding-vertical name="mail"></ion-icon>
 			</ion-col>
 			<ion-col col-11 text-left>
-				<a ion-button clear no-padding (click)="openEmail(items)">{{ items.email }}</a>
+				<a ion-button clear no-padding (click)="openEmail(client)">{{ client.email }}</a>
 			</ion-col>
 		</ion-row>
 		<ion-row>

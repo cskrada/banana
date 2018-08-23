@@ -28,13 +28,16 @@ export class MyApp {
               public splashScreen: SplashScreen,
               public menu: MenuController, 
               public http: HttpClient){
+              sessionStorage.removeItem('user');
+              sessionStorage.removeItem('token');
+              sessionStorage.removeItem('name');
    this.postLogin(this.email, this.password);
 
     
 
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Clients', component: ClientsPage }
+      { title: 'Inicio', component: HomePage },
+      { title: 'Clientes', component: ClientsPage }
     ];
   }//------------------------------------fin de constructor-----------------------------------
   postLogin(email: string, password: string){
@@ -42,7 +45,7 @@ export class MyApp {
             { email, password }, 
             { headers: new HttpHeaders()
                 .set('authorization', 'http://localhost:4200')
-                .set('app', 'BananaCli')
+                .set('app', 'BananaApp')
       }).subscribe(data => {
         this.menu.enable(true, 'authenticated');
         this.results.push(data['user']);
@@ -50,6 +53,9 @@ export class MyApp {
         this.results.push(data['storageName']);
         console.log(this.results);
       }, error => {
+        sessionStorage.removeItem('user');
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('name');
         console.log('no');
       });
   }
