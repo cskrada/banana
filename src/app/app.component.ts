@@ -15,12 +15,13 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage:any = LoginPage;
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: string}>;
 
   email : string;
   password : string;
   public session: boolean;
   public results : string[] = [];
+  public icon : string;
 
 // --------------------------------------------------------------------------------------------
   constructor(public platform: Platform,
@@ -28,16 +29,18 @@ export class MyApp {
               public splashScreen: SplashScreen,
               public menu: MenuController, 
               public http: HttpClient){
-              sessionStorage.removeItem('user');
-              sessionStorage.removeItem('token');
-              sessionStorage.removeItem('name');
-   this.postLogin(this.email, this.password);
+
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('name');
+  
+    this.postLogin(this.email, this.password);
 
     
 
     this.pages = [
-      { title: 'Inicio', component: HomePage },
-      { title: 'Clientes', component: ClientsPage }
+      { title: 'Inicio', component: HomePage, icon: "home" },
+      { title: 'Clientes', component: ClientsPage, icon: "people" }
     ];
   }//------------------------------------fin de constructor-----------------------------------
   postLogin(email: string, password: string){

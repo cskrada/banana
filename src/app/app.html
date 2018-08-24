@@ -6,8 +6,12 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let pag of pages" (click)="openPage(pag)">{{pag.title}}</button>
+      <button menuClose ion-item *ngFor="let pag of pages" (click)="openPage(pag)">
+        <ion-icon [name]="pag.icon" item-left ></ion-icon>
+        {{pag.title}}
+      </button>
       <button ion-item (click)="logOut()">
+        <ion-icon name="log-out" item-left ></ion-icon>
         Cerrar Sesión
       </button>
     </ion-list>
