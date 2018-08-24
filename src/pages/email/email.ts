@@ -31,7 +31,7 @@ constructor(public navCtrl: NavController,
 
   send(){
     let email = {
-      to : this.to,
+      to : this.items.email,
       cc: [],
       bcc: [],
       attachament: [],

@@ -69,6 +69,7 @@ constructor(public navCtrl: NavController,
 				sessionStorage.setItem('user', data['user'].user[0].id);
 				sessionStorage.setItem('token', data['user'].user[0].remember_token);
 				sessionStorage.setItem('name', data['user'].user[0].name);
+				sessionStorage.setItem('email', data['user'].user[0].email);
 				console.log("this.id",this.id);
 				console.log("this.tokencsk",this.tokencsk);
 				this.navCtrl.setRoot(HomePage);
@@ -76,6 +77,7 @@ constructor(public navCtrl: NavController,
 				console.log('id: ', data['user'].user[0].id);
 				console.log('token: ', data['user'].user[0].remember_token);
 				console.log('name: ', data['user'].user[0].name);
+				console.log('email: ', data['user'].user[0].email);
 
 			}, error => {
 				console.log(this.tokencsk);
