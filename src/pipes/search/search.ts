@@ -15,11 +15,11 @@ export class SearchPipe implements PipeTransform {
   transform(items: any[], terms: string): any[] {
     if(!items) return [];
     if(!terms) return items;
+
+
     terms = terms.toLowerCase();
     return items.filter( it => {
-      return it.business_name.toLowerCase().includes(terms) ||
-             it.tradename.toLowerCase().includes(terms); // only filter country name
-      
+      return it.business_name.toLowerCase().includes(terms); // only filter country name
     });
   }
 }
