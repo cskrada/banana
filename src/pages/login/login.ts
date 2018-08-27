@@ -88,11 +88,11 @@ constructor(public navCtrl: NavController,
 							role: 'cancel'
 						}
 						]
+					});
+					alert.present();
 				});
-				alert.present();
-			});
-			console.log(error);
-		});// fin de susbcribe
+				console.log(error);
+			});// fin de susbcribe
 	  	this.loading = this.loadingCtrl.create({
 			dismissOnPageChange: true,
 		});
