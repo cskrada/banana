@@ -39,7 +39,7 @@ export class MyApp {
     
 
     this.pages = [
-      { title: 'Inicio', component: HomePage, icon: "home" },
+      { title: 'Escritorio', component: HomePage, icon: "home" },
       { title: 'Clientes', component: ClientsPage, icon: "people" }
     ];
   }//------------------------------------fin de constructor-----------------------------------
