@@ -60,7 +60,7 @@
 			
 			<!-- <span *ngIf="c.business_name != c.alias">({{ c.alias }})</span> -->
 			<span>
-				<span  *ngIf="c.business_name != c.tradename">Nombre Comercial: {{ c.tradename }}<br> </span>
+				<span  *ngIf="c.tradename != null && c.business_name != c.tradename">Nombre Comercial: {{ c.tradename }}<br> </span>
 				Cif: {{ c.cif }} <br>
 				Direccion: {{ c.address }} <br>
 				<!-- {{ c.city }}, {{ c.state }} <br> -->
