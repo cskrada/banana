@@ -61,7 +61,7 @@
 		</ion-row>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<span>Nombre Comercial: {{ client.tradename }}</span>
+				<span *ngIf="client.tradename != null ">Nombre Comercial: {{ client.tradename }}</span>
 			</ion-col>
 		</ion-row>
 		<ion-row>
