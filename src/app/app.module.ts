@@ -15,9 +15,6 @@ import { DialogModule } from 'primeng/primeng';
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -39,19 +36,6 @@ import { ClientsProvider } from '../providers/data/clients';
 // Pipes
 import { SearchPipe } from '../pipes/search/search';
 import { SortPipe } from '../pipes/sort/sort';
-
-
-export const firebaseConfig = {
-  apiKey: "AIzaSyBpIBL-h59BW8L3zHF22eHcMabZtkh4hMA",
-  authDomain: "bananaapp8.firebaseapp.com",
-  databaseURL: "https://bananaapp8.firebaseio.com",
-  storageBucket: "bananaapp8.appspot.com",
-  messagingSenderId: '623763613345'
-};
-
-export const apiUrl = {
-
-};
 
 @NgModule({
   declarations: [
@@ -77,9 +61,7 @@ export const apiUrl = {
     ButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    DialogModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    DialogModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
