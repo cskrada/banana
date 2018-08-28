@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { Nav, Platform, MenuController } from 'ionic-angular';
+import { Nav, Platform, MenuController, Loading, LoadingController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -17,6 +17,7 @@ export class MyApp {
   rootPage:any = LoginPage;
   pages: Array<{title: string, component: any, icon: string}>;
 
+  loading : Loading;
   email : string;
   password : string;
   public session: boolean;
@@ -28,7 +29,8 @@ export class MyApp {
               public statusBar: StatusBar,
               public splashScreen: SplashScreen,
               public menu: MenuController, 
-              public http: HttpClient){
+              public http: HttpClient,
+              public loadingCtrl: LoadingController){
 
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
@@ -68,10 +70,18 @@ export class MyApp {
   }
 
   logOut() {
+
+    this.loading = this.loadingCtrl.create({
+      dismissOnPageChange: true,
+      duration: 9000,
+		});
+    this.loading.present();
+
     this.menu.enable(false); 
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('name');
+    sessionStorage.removeItem('email');
     this.nav.setRoot(LoginPage);
   }
 
