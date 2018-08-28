@@ -89,16 +89,19 @@
 				<span> Venezuela</span>
 			</ion-col>
 		</ion-row>
-		<ion-row padding-top>
-			<ion-col col-1 text-center>
-				<ion-icon name="phone-portrait"></ion-icon>
-			</ion-col>
-			<ion-col col-11 text-left>
-				<span class="links"><u>
-					<a href="https://api.whatsapp.com/send?phone={{ client }}">{{ client.phone }}</a>
-				</u></span>
-			</ion-col>
-		</ion-row>
+		<div *ngIf="client.phone != [''] && client.phone != null" >
+			<ion-row padding-top>
+				<ion-col col-1 text-center>
+					<ion-icon name="phone-portrait"></ion-icon>
+				</ion-col>
+				<ion-col col-11 text-left>
+					<span class="links" ><u> {{ client.phone }} </u></span>
+					<!-- <span class="links" ><u>
+						<a href="https://api.whatsapp.com/send?phone={{ client }}">{{ client.phone }}</a>
+					</u></span> -->
+				</ion-col>
+			</ion-row>
+		</div>	
 		<ion-row>
 			<ion-col col-1 text-center>
 				<ion-icon padding-vertical name="mail"></ion-icon>
