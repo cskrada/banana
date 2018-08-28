@@ -73,7 +73,7 @@ export class MyApp {
 
     this.loading = this.loadingCtrl.create({
       dismissOnPageChange: true,
-      duration: 9000,
+      duration: 3000,
 		});
     this.loading.present();
 
