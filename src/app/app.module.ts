@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { EmailComposer } from '@ionic-native/email-composer';
+import { CallNumber } from '@ionic-native/call-number';
 
 import { HttpModule } from '@angular/http'; 
 import {HttpClientModule} from '@angular/common/http';
@@ -83,7 +84,8 @@ import { SortPipe } from '../pipes/sort/sort';
     DataProvider,
     ClientProvider,
     ResetProvider,
-    ClientsProvider
+    ClientsProvider,
+    CallNumber
   ]
 })
 export class AppModule {}
