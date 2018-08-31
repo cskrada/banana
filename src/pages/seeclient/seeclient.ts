@@ -18,18 +18,23 @@ import { EmailPage } from '../email/email';
 export class SeeclientPage {
 
 client: any[] = [];
+phone: string;
 
 constructor(public navCtrl: NavController,
 				public alerta: AlertController, 
 				public navParams: NavParams, 
 				public emailComposer: EmailComposer,
-				public callNumber: CallNumber) {
+				private callNumber: CallNumber) {
 	this.client = this.navParams.data;
+	this.phone = this.navParams.get('phone');
 	console.log("seeclient",this.client);
+	console.log("telefono",this.phone);
 }
 
 	call(){
-		console.log("aqui sera el metodo para llamar");
+		this.callNumber.callNumber(this.phone, true)
+		.then(res => console.log('Launched dialer!', res))
+		.catch(err => console.log('Error launching dialer', err));
 	}
 
 	ionViewDidLoad() {
