@@ -91,11 +91,14 @@
 		</ion-row>
 		<div *ngIf="client.phone != [''] && client.phone != null" >
 			<ion-row padding-top>
-				<ion-col col-1 text-center>
+				<ion-col col-1 text-center padding-vertical>
 					<ion-icon name="phone-portrait"></ion-icon>
 				</ion-col>
 				<ion-col col-11 text-left>
-					<span class="links" ><u> {{ client.phone }} </u></span>
+					<button ion-button clear (click)="call()">
+						{{ this.phone }}
+					</button>
+					<!-- <span class="links" ><u> {{ client.phone }} </u></span> -->
 					<!-- <span class="links" ><u>
 						<a href="https://api.whatsapp.com/send?phone={{ client }}">{{ client.phone }}</a>
 					</u></span> -->
@@ -107,15 +110,15 @@
 				<ion-icon padding-vertical name="mail"></ion-icon>
 			</ion-col>
 			<ion-col col-11 text-left>
-				<a ion-button clear no-padding (click)="openEmail(client)">{{ client.email }}</a>
+				<a ion-button clear  (click)="openEmail(client)">{{ client.email }}</a>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col col-1 text-center>
-				<ion-icon name="link"></ion-icon>
+				<ion-icon name="link" padding-vertical></ion-icon>
 			</ion-col>
 			<ion-col col-11 text-left>
-				<a><u>www.pepsico.com.ve</u></a>
+					<a ion-button clear>www.pepsico.com.ve</a>
 			</ion-col>
 		</ion-row>
 		<ion-row>
@@ -143,7 +146,7 @@
 			<ion-col col-xs-3 col-md-4 text-left>
 				<span>Saldo Vencido:</span>
 			</ion-col>
-			<ion-col col-xs-5 col-md-4 text-center>0
+			<ion-col col-xs-5 col-md-4 text-center>
 				<span>Bs.99.999.999.999,99</span>
 			</ion-col>
 			<ion-col col-xs-4 col-md-4 text-right>

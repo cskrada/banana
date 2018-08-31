@@ -1,3 +1,4 @@
+import { CallNumber } from '@ionic-native/call-number';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angular';
 import { EmailComposer } from '@ionic-native/email-composer';
@@ -21,10 +22,15 @@ client: any[] = [];
 constructor(public navCtrl: NavController,
 				public alerta: AlertController, 
 				public navParams: NavParams, 
-				public emailComposer: EmailComposer) {
+				public emailComposer: EmailComposer,
+				public callNumber: CallNumber) {
 	this.client = this.navParams.data;
 	console.log("seeclient",this.client);
 }
+
+	call(){
+		console.log("aqui sera el metodo para llamar");
+	}
 
 	ionViewDidLoad() {
 	console.log('ionViewDidLoad SeeclientPage');
