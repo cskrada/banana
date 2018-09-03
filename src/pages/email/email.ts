@@ -41,5 +41,6 @@ constructor(public navCtrl: NavController,
       app: "Gmail"
     }
     this.emailComposer.open(email);
+    console.log(this.items.email);
   }
 }
