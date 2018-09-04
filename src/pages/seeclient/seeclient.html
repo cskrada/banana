@@ -104,15 +104,17 @@
 					</u></span> -->
 				</ion-col>
 			</ion-row>
-		</div>	
-		<ion-row>
-			<ion-col col-1 text-center>
-				<ion-icon padding-vertical name="mail"></ion-icon>
-			</ion-col>
-			<ion-col col-11 text-left>
-				<a ion-button clear  (click)="openEmail(client)">{{ client.email }}</a>
-			</ion-col>
-		</ion-row>
+		</div>
+		<div *ngIf="client.email != [''] && client.email != null" >
+			<ion-row>
+				<ion-col col-1 text-center>
+					<ion-icon padding-vertical name="mail"></ion-icon>
+				</ion-col>
+				<ion-col col-11 text-left>
+					<a ion-button clear  (click)="openEmail(client)">{{ client.email }}</a>
+				</ion-col>
+			</ion-row>
+		</div>
 		<ion-row>
 			<ion-col col-1 text-center>
 				<ion-icon name="link" padding-vertical></ion-icon>

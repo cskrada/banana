@@ -64,9 +64,8 @@
 				Cif: {{ c.cif }} <br>
 				Direccion: {{ c.address }} <br>
 				<!-- {{ c.city }}, {{ c.state }} <br> -->
-				<span *ngIf=" c.phone != [''] && c.phone != null " >telefono: {{ c.phone }}&nbsp;</span>
-				
-				<!-- | {{ c.email }} -->
+				<span *ngIf=" c.phone != [''] && c.phone != null " >telefono: {{ c.phone }}&nbsp; </span>
+				<span *ngIf=" c.email != [''] && c.email != null ">| correo: {{ c.email }}</span>
 			</span>
 		</button>
 
