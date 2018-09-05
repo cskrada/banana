@@ -115,14 +115,16 @@
 				</ion-col>
 			</ion-row>
 		</div>
-		<ion-row>
-			<ion-col col-1 text-center>
-				<ion-icon name="link" padding-vertical></ion-icon>
-			</ion-col>
-			<ion-col col-11 text-left>
-					<a ion-button clear>www.pepsico.com.ve</a>
-			</ion-col>
-		</ion-row>
+		<div *ngIf="client.url != [''] && client.url != null">
+			<ion-row>
+				<ion-col col-1 text-center>
+					<ion-icon name="link" padding-vertical></ion-icon>
+				</ion-col>
+				<ion-col col-11 text-left>
+						<a ion-button clear>{{ client.url }}</a>
+				</ion-col>
+			</ion-row>
+		</div>
 		<ion-row>
 			<ion-col col-12 text-center>
 				<hr>
