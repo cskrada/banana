@@ -27,8 +27,8 @@ constructor(public navCtrl: NavController,
 				private callNumber: CallNumber) {
 	this.client = this.navParams.data;
 	this.phone = this.navParams.get('phone');
-	console.log("seeclient",this.client);
-	console.log("telefono",this.phone);
+	// console.log("seeclient",this.client);
+	// console.log("telefono",this.phone);
 }
 
 	call(){

@@ -24,7 +24,7 @@ export class ClientsPage {
 
 	constructor(public navCtrl: NavController, public http: HttpClient, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
 		this.id = sessionStorage.getItem('user');
-		console.log("ID de usuario", this.id);
+		// console.log("ID de usuario", this.id);
 	}
 	openPage(c) {
 	
@@ -50,7 +50,7 @@ export class ClientsPage {
 				.append('Access-Control-Allow-Origin', '*')
 				.append('token', sessionStorage.getItem('token'))
 			}).subscribe ( data=> {
-				console.log('data ', data);
+				// console.log('data ', data);
 				this.clients = data['clients'];
 				console.log('get clients ', this.clients);
 				

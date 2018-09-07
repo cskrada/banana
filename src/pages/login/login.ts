@@ -23,11 +23,11 @@ export class LoginPage {
 	public results : string[] = [];
 
 constructor(public navCtrl: NavController,
-				public formBuilder:FormBuilder,
-				public alertCtrl: AlertController,
-				public loadingCtrl: LoadingController,
-				public menu: MenuController,
-				public http: HttpClient ){
+			public formBuilder:FormBuilder,
+			public alertCtrl: AlertController,
+			public loadingCtrl: LoadingController,
+			public menu: MenuController,
+			public http: HttpClient ){
 	
 	this.myForm = this.formBuilder.group({
 		email: ['', Validators.required],
@@ -69,16 +69,16 @@ constructor(public navCtrl: NavController,
 				sessionStorage.setItem('token', data['user'].user[0].remember_token);
 				sessionStorage.setItem('name', data['user'].user[0].contact_id.name);
 				sessionStorage.setItem('email', data['user'].user[0].email);
-				console.log("this.id",this.id);
-				console.log("this.tokencsk",this.tokencsk);
+				// console.log("this.id",this.id);
+				// console.log("this.tokencsk",this.tokencsk);
 				this.navCtrl.setRoot(HomePage);
 				console.log(this.results);
-				console.log('id: ', data['user'].user[0].id);
-				console.log('token: ', data['user'].user[0].remember_token);
-				console.log('name: ', data['user'].user[0].name);
+				// console.log('id: ', data['user'].user[0].id);
+				// console.log('token: ', data['user'].user[0].remember_token);
+				// console.log('name: ', data['user'].user[0].name);
 
 			}, error => {
-				console.log(this.tokencsk);
+				// console.log(this.tokencsk);
 				this.loading.dismiss().then( () => {
 					let alert = this.alertCtrl.create({
 						message: "el email o la contraseña no es correcta, por favor ingrese de nuevo sus datos",
