@@ -26,13 +26,11 @@ import { SignupPage } from '../pages/signup/signup';
 import { ResetpasswordPage } from '../pages/resetpassword/resetpassword';
 import { EmailPage } from '../pages/email/email';
 
-
 import { ChartsModule } from 'ng2-charts';
 import { DataProvider } from '../providers/data/data';
 import { ClientProvider } from '../providers/data/client';
 import { ResetProvider } from '../providers/data/reset';
 import { ClientsProvider } from '../providers/data/clients';
-
 
 // Pipes
 import { SearchPipe } from '../pipes/search/search';
