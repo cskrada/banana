@@ -121,7 +121,7 @@
 					<ion-icon name="link" padding-vertical></ion-icon>
 				</ion-col>
 				<ion-col col-11 text-left>
-						<a ion-button clear>{{ client.url }}</a>
+						<a ion-button clear (click)="openUrl()">{{ client.url }}</a>
 				</ion-col>
 			</ion-row>
 		</div>

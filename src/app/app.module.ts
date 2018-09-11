@@ -27,6 +27,9 @@ import { ResetpasswordPage } from '../pages/resetpassword/resetpassword';
 import { EmailPage } from '../pages/email/email';
 
 import { ChartsModule } from 'ng2-charts';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
+// Providers
 import { DataProvider } from '../providers/data/data';
 import { ClientProvider } from '../providers/data/client';
 import { ResetProvider } from '../providers/data/reset';
@@ -75,6 +78,7 @@ import { SortPipe } from '../pipes/sort/sort';
     EmailPage
   ],
   providers: [
+    InAppBrowser,
     StatusBar,
     SplashScreen,
     EmailComposer,
