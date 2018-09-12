@@ -41,7 +41,11 @@ export class ClientsPage {
 	}
 
 	getClients(){
-		this.presentLoadingDefault();
+		let loading = this.loadingCtrl.create({
+				content: 'Por favor espere...'
+				});
+			loading.present();
+
 		return this.http.get('http://vbanana.tk/laravel-banana/public/api/thirds/customers/'+this.id,
 			{ headers: new HttpHeaders()
 				.set('authorization', 'http://localhost:4200')
@@ -51,24 +55,24 @@ export class ClientsPage {
 				.append('token', sessionStorage.getItem('token'))
 			}).subscribe ( data=> {
 				// console.log('data ', data);
+				loading.dismissAll();
 				this.clients = data['clients'];
 				console.log('get clients ', this.clients);
 				
 			}, error => {
-			console.log(error);
-			this.presentLoadingDefault();
+				
+				console.log(error);
 		});
 	}
 
-	presentLoadingDefault() {
-		let loading = this.loadingCtrl.create({
-		  content: 'Por favor espere...'
-		});
+	// presentLoadingDefault() {
+	// 	let loading = this.loadingCtrl.create({
+	// 		content: 'Por favor espere...'
+	// 		});
+	// 	loading.present();
 	  
-		loading.present();
-	  
-		setTimeout(() => {
-		  loading.dismiss();
-		}, 3000);
-	}
+	// 	setTimeout(() => {
+	// 	  loading.dismiss();
+	// 	}, 3000);
+	// }
 }
