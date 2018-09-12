@@ -1,4 +1,4 @@
-import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 import { CallNumber } from '@ionic-native/call-number';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angular';
@@ -37,9 +37,11 @@ constructor(public navCtrl: NavController,
 		.catch(err => console.log('Error launching dialer', err));
 	}
 
-	openUrl(){
-		this.url = this.navParams.get('url');
-		this.iab.create(this.url, "_blank");
+	openUrl(url){
+		const options: InAppBrowserOptions = {
+			zoom: 'yes'
+		}
+		this.iab.create(url, "_blank", options);
 	}
 
 	ionViewDidLoad() {
