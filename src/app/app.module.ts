@@ -28,6 +28,7 @@ import { EmailPage } from '../pages/email/email';
 
 import { ChartsModule } from 'ng2-charts';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { TranslateModule } from '@ngx-translate/core';
 
 // Providers
 import { DataProvider } from '../providers/data/data';
@@ -58,6 +59,7 @@ import { SortPipe } from '../pipes/sort/sort';
     HttpClientModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    TranslateModule.forRoot(),
     ChartsModule,
     InputTextModule,
     ButtonModule,
