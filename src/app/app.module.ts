@@ -7,8 +7,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
 
-import { HttpModule } from '@angular/http'; 
-import {HttpClientModule} from '@angular/common/http';
+import { HttpModule, Http } from '@angular/http'; 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { InputTextModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
@@ -28,7 +28,8 @@ import { EmailPage } from '../pages/email/email';
 
 import { ChartsModule } from 'ng2-charts';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // Providers
 import { DataProvider } from '../providers/data/data';
@@ -39,6 +40,10 @@ import { ClientsProvider } from '../providers/data/clients';
 // Pipes
 import { SearchPipe } from '../pipes/search/search';
 import { SortPipe } from '../pipes/sort/sort';
+
+export function setTranslateLoader( http: Http) {
+  return new TranslateHttpLoader( http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -59,7 +64,13 @@ import { SortPipe } from '../pipes/sort/sort';
     HttpClientModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    TranslateModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (setTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     ChartsModule,
     InputTextModule,
     ButtonModule,

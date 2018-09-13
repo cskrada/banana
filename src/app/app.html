@@ -1,7 +1,7 @@
 <ion-menu [content]="content" id="authenticated">
   <ion-header>
     <ion-toolbar color="bananap">
-      <ion-title>Menu</ion-title>
+      <ion-title>{{ 'Menu' | translate}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
@@ -12,7 +12,7 @@
       </button>
       <button ion-item (click)="logOut()">
         <ion-icon name="log-out" item-left ></ion-icon>
-        Cerrar Sesión
+        {{ 'Cerrar Sesión' | translate}}
       </button>
     </ion-list>
   </ion-content>
