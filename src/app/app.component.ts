@@ -3,6 +3,7 @@ import { Nav, Platform, MenuController, Loading, LoadingController} from 'ionic-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 
 
 import { HomePage } from '../pages/home/home';
@@ -30,8 +31,9 @@ export class MyApp {
               public splashScreen: SplashScreen,
               public menu: MenuController, 
               public http: HttpClient,
-              public loadingCtrl: LoadingController){
-
+              public loadingCtrl: LoadingController,
+              public translate: TranslateService){
+    translate.setDefaultLang('en');
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('name');
