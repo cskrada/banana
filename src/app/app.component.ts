@@ -33,7 +33,7 @@ export class MyApp {
               public http: HttpClient,
               public loadingCtrl: LoadingController,
               public translate: TranslateService){
-    translate.setDefaultLang('en');
+    translate.setDefaultLang('es');
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('name');
