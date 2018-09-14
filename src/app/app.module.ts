@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
 
-import { HttpModule, Http } from '@angular/http'; 
+import { HttpModule } from '@angular/http'; 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { InputTextModule } from 'primeng/primeng';
@@ -41,7 +41,7 @@ import { ClientsProvider } from '../providers/data/clients';
 import { SearchPipe } from '../pipes/search/search';
 import { SortPipe } from '../pipes/sort/sort';
 
-export function setTranslateLoader( http: Http) {
+export function setTranslateLoader( http: HttpClient) {
   return new TranslateHttpLoader( http, './assets/i18n/', '.json');
 }
 
@@ -64,13 +64,13 @@ export function setTranslateLoader( http: Http) {
     HttpClientModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    TranslateModule.forRoot({
+      TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (setTranslateLoader),
         deps: [HttpClient]
-      }
-    }),
+        }
+      }),
     ChartsModule,
     InputTextModule,
     ButtonModule,
