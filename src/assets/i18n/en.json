@@ -1,3 +1,12 @@
 {
-    "HELLO": "Hello"
+    "Menú": "Menu",
+    "Escritorio": "Desk",
+    "Clientes": "Clients",
+    "Cerrar Sesión": "Log Out",
+    "Correo electrónico": "Email",
+    "Contraseña": "Password",
+    "Iniciar sesión": "Log in",
+    "He olvidado mi contraseña": "I forgot my password",
+    "¿Todavía no usas BananaApp?": "Still not using BananaApp?",
+    "Empieza Gratis": "Start free"
 }
