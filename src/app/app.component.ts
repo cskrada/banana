@@ -33,6 +33,15 @@ export class MyApp {
               public http: HttpClient,
               public loadingCtrl: LoadingController,
               public translate: TranslateService){
+
+    this.platform.ready().then(() => {
+      // Language
+      this.translate.setDefaultLang('es');
+      this.translate.use('es');
+          this.statusBar.styleDefault();
+          this.splashScreen.hide();
+    });
+
     translate.setDefaultLang('es');
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');

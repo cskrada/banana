@@ -16,17 +16,17 @@
 						<form [formGroup]="myForm" (ngSubmit)="loginUser2()">
 							<ion-list>
 								<ion-item>
-									<ion-label floating>Correo electrónico</ion-label>
+									<ion-label floating>{{ 'Correo electrónico' | translate }}</ion-label>
 									<ion-input formControlName="email" type="email"></ion-input>
 								</ion-item>
 								<ion-item>
-									<ion-label floating>Contraseña</ion-label>
+									<ion-label floating>{{ 'Contraseña' | translate}}</ion-label>
 									<ion-input formControlName="password" type="password"></ion-input>
 								</ion-item>
 							</ion-list>
 							<div padding-top>
 								<button ion-button color="primary" type="submit" [disabled]="!myForm.valid">
-									Iniciar sesión
+									{{ 'Iniciar sesión' | translate }}
 								</button> 
 							</div>
 						</form>
@@ -34,7 +34,7 @@
 							<span>
 								<u>
 									<a ion-button clear (click)="goToResetPassword()">
-										He olvidado mi contraseña
+										{{ 'He olvidado mi contraseña' | translate }}
 									</a>
 								</u>
 							</span>
@@ -42,7 +42,7 @@
 						<div class="etiqueta">
 							<span>
 								<a ion-button clear (click)="goToSignup()">
-									¿Todavía no usas BananaApp?
+									{{ '¿Todavía no usas BananaApp?' | translate }}
 								</a>
 							</span>
 						</div>
@@ -51,7 +51,7 @@
 				<ion-row>
 					<ion-col col-12 text-center>
 						<button ion-button color="bananap">
-							Empieza Gratis
+							{{ 'Empieza Gratis' | translate }}
 						</button>
 					</ion-col>
 				</ion-row>

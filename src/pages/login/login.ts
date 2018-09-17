@@ -27,7 +27,7 @@ constructor(public navCtrl: NavController,
 			public alertCtrl: AlertController,
 			public loadingCtrl: LoadingController,
 			public menu: MenuController,
-			public http: HttpClient ){
+			public http: HttpClient){
 	
 	this.myForm = this.formBuilder.group({
 		email: ['', Validators.required],
