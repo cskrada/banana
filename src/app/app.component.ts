@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 
-
 import { HomePage } from '../pages/home/home';
 import { ClientsPage } from '../pages/clients/clients';
 import { LoginPage } from '../pages/login/login';
@@ -42,7 +41,6 @@ export class MyApp {
           this.splashScreen.hide();
     });
 
-    translate.setDefaultLang('es');
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('name');

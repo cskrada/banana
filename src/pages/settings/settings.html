@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="bananap">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-grid no-padding>
+			<ion-row no-padding>
+				<ion-col col-1 no-padding>
+					<table>
+						<tr>
+							<td>
+								<ion-buttons start>
+									<button ion-button icon-only>
+										<ion-icon name="contact"></ion-icon>
+									</button>
+								</ion-buttons>
+							</td>
+							<td>
+								<ion-title text-left>Ajustes</ion-title>
+							</td>
+						</tr>
+					</table>
+				</ion-col>
+				<ion-col col-11 no-padding>
+					<ion-buttons end text-end>
+						<button ion-button icon-only>
+							<ion-icon name="more"></ion-icon>
+						</button>
+					</ion-buttons>
+				</ion-col>
+			</ion-row>
+		</ion-grid>   
+	</ion-navbar>
+</ion-header>
+<!-- content -->
+<ion-content padding>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col>
+        <ion-item no-padding>
+					<ion-label>Idioma</ion-label>
+						<ion-select [(ngModel)]="defaultLanguage" (ionChange)="changeLanguage($event)" interface="popover">
+							<ion-option *ngFor="let lang of idioms" [value]="lang.value">{{ lang.label }}</ion-option>
+						</ion-select>
+				</ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

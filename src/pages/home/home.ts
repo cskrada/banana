@@ -4,6 +4,7 @@ import { NavController, MenuController } from 'ionic-angular';
 
 // importacion de paginas
 import { ClientsPage } from '../clients/clients';
+import { SettingsPage } from '../settings/settings';
 
 @Component({
   selector: 'page-home',
@@ -72,8 +73,11 @@ export class HomePage {
 		// console.log(this.name_user);
 	}
 
-	// Clients(): redirige a la pagina de cliente 
 	clients(){
 		this.navCtrl.setRoot(ClientsPage);
+	}
+
+	settings(){
+		this.navCtrl.push(SettingsPage);
 	}
 }
