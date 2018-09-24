@@ -1,15 +1,17 @@
+import { ChartsModule } from 'ng2-charts';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { SeeclientPage } from './seeclient';
+import { HomePage } from './home';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
-    SeeclientPage,
+    HomePage,
   ],
   imports: [
-    IonicPageModule.forChild(SeeclientPage),
-    TranslateModule
+    IonicPageModule.forChild(HomePage),
+    TranslateModule,
+    ChartsModule
   ],
 })
-export class SeeclientPageModule {}
+export class HomePageModule {}

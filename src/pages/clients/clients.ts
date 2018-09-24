@@ -1,7 +1,9 @@
+
 //importacion de librerias
 import { Component } from '@angular/core';
 // import { FormControl } from '@angular/forms';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 
 // importacion de provider y el medidor de tiempo
 // import { ClientsProvider } from '../../providers/data/clients';
@@ -11,6 +13,7 @@ import 'rxjs/add/operator/debounceTime';
 //importacion de paginas
 import { SeeclientPage } from '../seeclient/seeclient';
 import { AddclientPage } from '../addclient/addclient';
+import { SettingsPage } from './../settings/settings';
 
 @Component({
   selector: 'page-clients',
@@ -22,7 +25,11 @@ export class ClientsPage {
 	public id : any ;
 	clients: any[] = [];
 
-	constructor(public navCtrl: NavController, public http: HttpClient, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+	constructor(public navCtrl: NavController,
+				public http: HttpClient,
+				public loadingCtrl: LoadingController,
+				public alertCtrl: AlertController,
+				public translateService: TranslateService) {
 		this.id = sessionStorage.getItem('user');
 		// console.log("ID de usuario", this.id);
 	}
@@ -41,8 +48,12 @@ export class ClientsPage {
 	}
 
 	getClients(){
-		let loading = this.loadingCtrl.create({
-				content: 'Por favor espere...'
+
+	this.translateService.get('Por favor espere...').subscribe(
+		value => {
+			let content = value;
+			let loading = this.loadingCtrl.create({
+				content: content
 				});
 			loading.present();
 
@@ -54,7 +65,6 @@ export class ClientsPage {
 				.append('Access-Control-Allow-Origin', '*')
 				.append('token', sessionStorage.getItem('token'))
 			}).subscribe ( data=> {
-				// console.log('data ', data);
 				loading.dismissAll();
 				this.clients = data['clients'];
 				console.log('get clients ', this.clients);
@@ -63,6 +73,11 @@ export class ClientsPage {
 				
 				console.log(error);
 		});
+	});
+	}
+
+	settings(){
+		this.navCtrl.push(SettingsPage);
 	}
 
 	// presentLoadingDefault() {

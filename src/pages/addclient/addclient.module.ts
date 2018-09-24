@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { AddclientPage } from './addclient';
@@ -8,6 +9,7 @@ import { AddclientPage } from './addclient';
   ],
   imports: [
     IonicPageModule.forChild(AddclientPage),
+    TranslateModule
   ],
 })
 export class AddclientPageModule {}

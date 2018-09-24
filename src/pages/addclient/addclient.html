@@ -13,7 +13,7 @@
 								</ion-buttons>
 							</td>
 							<td>
-								<ion-title text-left>Cliente Nuevo</ion-title>
+								<ion-title text-left>{{'Cliente Nuevo'| translate}}</ion-title>
 							</td>
 						</tr>
 					</table>
@@ -55,63 +55,56 @@
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-input type="text" placeholder="Razón Social"></ion-input>
+					<ion-input type="text" placeholder="{{'Razón Social'|translate}}"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-input type="text" placeholder="Nombre Comercial"></ion-input>
+					<ion-input type="text" placeholder="{{'Nombre Comercial'|translate}}"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-input type="text" placeholder="Alias"></ion-input>
+					<ion-input type="text" placeholder="{{'Alias'|translate}}"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-input type="text" placeholder="Dirección 1"></ion-input>
+					<ion-input type="text" placeholder="{{'Dirección'|translate}} 1"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-input type="text" placeholder="Dirección 2"></ion-input>
+					<ion-input type="text" placeholder="{{'Dirección'|translate}} 2"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-input type="text" placeholder="Dirección 3"></ion-input>
+					<ion-input type="text" placeholder="{{'Dirección'|translate}} 3"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-input type="text" placeholder="Dirección 4"></ion-input>
+					<ion-input type="text" placeholder="{{'Código Postal'|translate}}"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-input type="text" placeholder="Código postal"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-label>Ciudad</ion-label>
+					<ion-label>{{'Ciudad'|translate}}</ion-label>
 						<ion-select interface="popover">
 							<ion-option *ngFor="let city of cities" value="{{ city.id }}"> {{ city.name }} </ion-option>
 						</ion-select>
@@ -121,7 +114,7 @@
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-label>Estado</ion-label>
+					<ion-label>{{'Estado'|translate}}</ion-label>
 						<ion-select interface="popover">
 							<ion-option *ngFor="let state of states" value="{{ state.id }}"> {{ state.name }} </ion-option>
 						</ion-select>
@@ -131,7 +124,7 @@
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-label>País</ion-label>
+					<ion-label>{{'País'|translate}}</ion-label>
 						<ion-select interface="popover">
 							<ion-option *ngFor="let country of countries" value="{{ country.id }}"> {{ country.name }} </ion-option>
 						</ion-select>
@@ -141,28 +134,28 @@
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-input type="text" placeholder="Teléfono 1"></ion-input>
+					<ion-input type="text" placeholder="{{'Teléfono'|translate}} 1"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-input type="text" placeholder="Teléfono 2"></ion-input>
+					<ion-input type="text" placeholder="{{'Teléfono'|translate}} 2"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-input type="email" placeholder="Correo electrónico"></ion-input>
+					<ion-input type="email" placeholder="{{'Correo'|translate}}"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
 				<ion-item no-padding>
-					<ion-input type="text" placeholder="Sitio Web"></ion-input>
+					<ion-input type="text" placeholder="{{'Sitio Web'|translate}}"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
@@ -170,7 +163,7 @@
 			<ion-col col-12 text-center>
 				<button ion-button icon-left color="primary">
 				  <ion-icon name="home"></ion-icon>
-				  Contactos
+				  {{'Contactos'|translate}}
 				</button>
 			</ion-col>
 		</ion-row>
@@ -178,7 +171,7 @@
 			<ion-col col-12 text-center>
 				<button ion-button icon-left color="primary">
 				  <ion-icon name="contacts"></ion-icon>
-				  Sucursales
+				  {{'Sucursales'|translate}}
 				</button>
 			</ion-col>
 		</ion-row>

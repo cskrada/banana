@@ -13,7 +13,7 @@
 								</ion-buttons>
 							</td>
 							<td>
-								<ion-title text-left>Correo</ion-title>
+								<ion-title text-left>{{'Correo'|translate}}</ion-title>
 							</td>
 						</tr>
 					</table>
@@ -35,29 +35,29 @@
 		<ion-row>
 			<ion-col>
 				<ion-item>
-					<ion-label color="primary" stacked>To {{ items.email }}</ion-label>
+					<ion-label color="primary" stacked>{{'Para'|translate}} {{ items.email }}</ion-label>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
 				<ion-item>
-					<ion-label color="primary" stacked>Subject</ion-label>
-					<ion-input [(ngModel)]="subject" type="text" placeholder="type your subject"></ion-input>
+					<ion-label color="primary" stacked>{{'Asunto'|translate}}</ion-label>
+					<ion-input [(ngModel)]="subject" type="text" placeholder="{{'Escribe el asunto'|translate}}"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
 				<ion-item>
-					<ion-label color="primary" stacked>Body Content</ion-label>
-					<ion-textarea [(ngModel)]="body" type="text" placeholder="type your content"></ion-textarea>
+					<ion-label color="primary" stacked>{{'Mensaje'|translate}}</ion-label>
+					<ion-textarea [(ngModel)]="body" type="text" placeholder="{{'Escribe el contenido'|translate}}"></ion-textarea>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				<button ion-button block (click)="send()">Send</button>
+				<button ion-button block (click)="send()">{{'Enviar'|translate}}</button>
 			</ion-col>
 		</ion-row>
 	</ion-grid>

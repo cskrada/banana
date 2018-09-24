@@ -56,7 +56,7 @@
 	<ion-grid no-padding>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<h2>Razon Social: {{ client.business_name }}</h2>
+				<h2>{{'Razón Social' | translate }}: {{ client.business_name }}</h2>
 			</ion-col>
 		</ion-row>
 		<ion-row>
@@ -66,7 +66,7 @@
 		</ion-row>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<span>Alias: {{ client.alias }}</span>
+				<span>{{ 'Alias' | translate}}: {{ client.alias }}</span>
 			</ion-col>
 		</ion-row>
 		<ion-row>
@@ -76,17 +76,17 @@
 		</ion-row>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<span>Dirección: {{ client.address }}</span>
+				<span>{{'Dirección' | translate}}: {{ client.address }}</span>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<span>Ciudad: {{ client.city }}, {{ client.state }}</span>
+				<span>{{'Ciudad' | translate}}: {{ client.city }}, {{ client.state }}</span>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<span> Venezuela</span>
+				<span>{{' Venezuela' | translate}}</span>
 			</ion-col>
 		</ion-row>
 		<div *ngIf="client.phone != [''] && client.phone != null" >
@@ -132,15 +132,15 @@
 		</ion-row>
 		<ion-row>
 			<ion-col col-12 text-left>
-				<h6>Otros datos</h6>
+				<h6>{{'Otros datos' | translate}}</h6>
 			</ion-col>
 		</ion-row>
 		<ion-row padding-top>
 			<ion-col col-xs-3 col-md-4 text-left>
-				<span>Saldo Actual:</span>
+				<span>{{'Saldo Actual' | translate}}:</span>
 			</ion-col>
 			<ion-col col-xs-5 col-md-4 text-center>
-				<span>Bs.99.999.999.999,99</span>
+				<span>{{ 'Bs'| translate}}.99.999.999.999,99</span>
 			</ion-col>
 			<ion-col col-xs-4 col-md-4 text-right>
 				<span>Docs:999</span>
@@ -148,10 +148,10 @@
 		</ion-row>
 		<ion-row class="vencido" padding-top>
 			<ion-col col-xs-3 col-md-4 text-left>
-				<span>Saldo Vencido:</span>
+				<span>{{'Saldo Vencido' | translate}}:</span>
 			</ion-col>
 			<ion-col col-xs-5 col-md-4 text-center>
-				<span>Bs.99.999.999.999,99</span>
+				<span>{{ 'Bs'| translate}}.99.999.999.999,99</span>
 			</ion-col>
 			<ion-col col-xs-4 col-md-4 text-right>
 				<span>Docs:999</span>
@@ -159,31 +159,31 @@
 		</ion-row>
 		<ion-row padding-top>
 			<ion-col col-xs-3 col-md-4 text-left>
-				<span>Ultimo Pedido:</span>
+				<span>{{'Último Pedido' | translate}}:</span>
 			</ion-col>
 			<ion-col col-xs-5 col-md-4 text-center>
 				<span>Nro. 9999999999</span>
 			</ion-col>
 			<ion-col col-xs-4 col-md-4 text-right>
-				<span>Del:99/99/9999</span>
+				<span>{{ 'Del' | translate}}:99/99/9999</span>
 			</ion-col>
 		</ion-row>
 		<ion-row padding-top>
 			<ion-col col-xs-3 col-md-4 text-left>
-				<span>Ultimo Factura:</span>
+				<span>{{'Última Factura' | translate}}:</span>
 			</ion-col>
 			<ion-col col-xs-5 col-md-4 text-center>
 				<span>Nro. 9999999999</span>
 			</ion-col>
 			<ion-col col-xs-4 col-md-4 text-right>
-				<span>Del:99/99/9999</span>
+				<span>{{ 'Del' | translate}}:99/99/9999</span>
 			</ion-col>
 		</ion-row>
 		<ion-row padding-top>
 			<ion-col col-12 text-center>
 				<button ion-button icon-left color="primary">
 					<ion-icon name="home"></ion-icon>
-					Contactos
+					{{ 'Contactos' | translate}}
 				</button>
 			</ion-col>
 		</ion-row>
@@ -191,7 +191,7 @@
 			<ion-col col-12 text-center>
 				<button ion-button icon-left color="primary">
 					<ion-icon name="contacts"></ion-icon>
-					Sucursales
+					{{ 'Sucursales' | translate}}
 				</button>
 			</ion-col>
 		</ion-row>

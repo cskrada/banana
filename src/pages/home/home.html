@@ -16,7 +16,7 @@
 								</ion-buttons>
 							</td>
 							<td>
-								<ion-title text-left>Inicio</ion-title>
+								<ion-title text-left>{{ 'Inicio' | translate}}</ion-title>
 							</td>
 						</tr>
 					</table>
@@ -24,7 +24,7 @@
 				<ion-col col-11 no-padding>
 					<ion-buttons end text-end>
 						<button ion-button icon-only (click)="settings()">
-							<ion-icon name="more"></ion-icon>
+							<ion-icon name="cog"></ion-icon>
 						</button>
 					</ion-buttons>
 				</ion-col>
@@ -37,7 +37,7 @@
 	<ion-grid no-padding>
 		<ion-row>
 			<ion-col col-12 class="colorf">
-					<h3>Bienvenido a BananaApp {{ this.name_user }}</h3>
+					<h3> {{ 'Bienvenido a BananaApp' | translate }} {{ this.name_user }}</h3>
 			</ion-col>
 		</ion-row>
 		<ion-row no-padding>
@@ -47,7 +47,7 @@
 						<ion-icon name="people"></ion-icon>
 					</ion-card-header>
 					<ion-card-content text-center no-padding padding-bottom>
-						CLIENTES
+						{{ 'CLIENTES' | translate }}
 					</ion-card-content>
 				</ion-card>
 			</ion-col>
@@ -57,7 +57,7 @@
 						<ion-icon name="cart"></ion-icon>
 					</ion-card-header>
 					<ion-card-content text-center no-padding padding-bottom>
-						PEDIDOS
+						{{ 'PEDIDOS' | translate }}
 					</ion-card-content>
 				</ion-card>
 			</ion-col>
@@ -69,7 +69,7 @@
 						<ion-icon name="ionic"></ion-icon>
 					</ion-card-header>
 					<ion-card-content text-center no-padding padding-bottom>
-						OTROS
+						{{ 'OTROS' | translate}}
 					</ion-card-content>
 				</ion-card>
 			</ion-col>
@@ -79,7 +79,7 @@
 						<ion-icon name="build"></ion-icon>
 					</ion-card-header>
 					<ion-card-content text-center no-padding padding-bottom>
-						CONFIG
+						{{ 'CONFIG' | translate}}
 					</ion-card-content>
 				</ion-card>
 			</ion-col>
@@ -93,11 +93,11 @@
 		<ion-col col-12>
 			<div style="display: block">
 					<canvas baseChart
-					[data]="pieChartData"
-					[labels]="pieChartLabels"
-					[chartType]="pieChartType"
-					(chartHover)="chartHovered($event)"
-					(chartClick)="chartClicked($event)">
+					[data]=pieChartData
+					[labels]=pieChartLabels
+					[chartType]=pieChartType
+					(chartHover)=chartHovered($event)
+					(chartClick)=chartClicked($event)>
 					</canvas>
 				</div>
 			</ion-col>
@@ -107,16 +107,16 @@
 				<hr>
 				<div style="display: block">
 					<canvas baseChart
-					[datasets]="barChartData"
-					[labels]="barChartLabels"
-					[options]="barChartOptions"
-					[legend]="barChartLegend"
-					[chartType]="barChartType"
-					(chartHover)="chartHovered2($event)"
-					(chartClick)="chartClicked2($event)">
+					[datasets]=barChartData
+					[labels]=barChartLabels
+					[options]=barChartOptions
+					[legend]=barChartLegend
+					[chartType]=barChartType
+					(chartHover)=chartHovered2($event)
+					(chartClick)=chartClicked2($event)>
 					</canvas>
 				</div>
-				<button (click)="randomize()">Actualizar</button>
+				<button (click)="randomize()">{{'Actualizar'| translate}}</button>
 			</ion-col>
 		</ion-row>
 		<ion-row>

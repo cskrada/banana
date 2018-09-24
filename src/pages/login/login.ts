@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController,LoadingController,Loading, AlertController, MenuController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 
 //importacion de paginas
 import { HomePage } from '../home/home';
@@ -21,13 +22,15 @@ export class LoginPage {
 	myForm: FormGroup;
 	public loading:Loading;
 	public results : string[] = [];
+	public cadena : string;
 
 constructor(public navCtrl: NavController,
 			public formBuilder:FormBuilder,
 			public alertCtrl: AlertController,
 			public loadingCtrl: LoadingController,
 			public menu: MenuController,
-			public http: HttpClient){
+			public http: HttpClient,
+			public translateService: TranslateService){
 	
 	this.myForm = this.formBuilder.group({
 		email: ['', Validators.required],
@@ -78,19 +81,24 @@ constructor(public navCtrl: NavController,
 				// console.log('name: ', data['user'].user[0].name);
 
 			}, error => {
-				// console.log(this.tokencsk);
-				this.loading.dismiss().then( () => {
-					let alert = this.alertCtrl.create({
-						message: "el email o la contraseña no es correcta, por favor ingrese de nuevo sus datos",
-						buttons: [
-						{
-							text: "Ok",
-							role: 'cancel'
-						}
-						]
-					});
+				this.translateService.get("El email o la contraseña no es correcta, por favor ingrese de nuevo sus datos").subscribe(
+					value => {
+					  // value is our translated string
+					  let message = value;
+					
+					this.loading.dismiss().then( () => {
+						let alert = this.alertCtrl.create({
+							message: message,
+							buttons: [
+							{
+								text: "Ok",
+								role: 'cancel'
+							}
+							]
+						});
 					alert.present();
 				});
+			});
 				console.log(error);
 			});// fin de susbcribe
 	  	this.loading = this.loadingCtrl.create({

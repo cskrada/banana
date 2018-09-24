@@ -16,7 +16,7 @@
 								</ion-buttons>
 							</td>
 							<td>
-								<ion-title text-left>Ajustes</ion-title>
+								<ion-title text-left>{{ 'Ajustes' | translate }}</ion-title>
 							</td>
 						</tr>
 					</table>
@@ -38,9 +38,9 @@
     <ion-row>
       <ion-col>
         <ion-item no-padding>
-					<ion-label>Idioma</ion-label>
+					<ion-label>{{'Idioma'|translate}}</ion-label>
 						<ion-select [(ngModel)]="defaultLanguage" (ionChange)="changeLanguage($event)" interface="popover">
-							<ion-option *ngFor="let lang of idioms" [value]="lang.value">{{ lang.label }}</ion-option>
+							<ion-option *ngFor="let lang of idioms" [value]="lang.value">{{ lang.label | translate}}</ion-option>
 						</ion-select>
 				</ion-item>
       </ion-col>

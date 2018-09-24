@@ -1,6 +1,7 @@
 // importacion de librerias
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 
 // importacion de paginas
 import { ClientsPage } from '../clients/clients';
@@ -11,9 +12,10 @@ import { SettingsPage } from '../settings/settings';
   templateUrl: 'home.html'
 })
 export class HomePage {
-	public name_user: any;
+	public tradu: string[];
 
-	public pieChartLabels:string[] = ['Compras', 'Ganancias', 'Ventas'];
+	public name_user: any;
+	public pieChartLabels:string[] = ['Compras', 'Ganancias', 'Ventas'];	
 	public pieChartData:number[] = [100, 500, 300];
 	public pieChartType:string = 'pie';
 
@@ -64,13 +66,27 @@ export class HomePage {
 	}// fin de grafica lineal
 
 // CONSTRUCTOR ----------------------------------------------------------------------------------------
-	constructor(public navCtrl: NavController, public menu: MenuController) {
+	constructor(public navCtrl: NavController, public menu: MenuController, public translateService: TranslateService) {
 		this.menu.enable(true);
 		this.name_user = sessionStorage.getItem('name');
+
 	}
 
-	ionViewDidLoad() {
+	ionViewCanEnter() {
 		// console.log(this.name_user);
+		let me = this;
+		this.pieChartLabels.forEach(function(element, index) {
+			me.translateService.get(element).subscribe(
+				value => {
+				//   let message: Array<any> = [];
+				//   message[] = value;
+				//   me.tradu = value;
+				console.log(value);
+				me.pieChartLabels[index] = value;
+				  
+				});
+		  });
+		this.pieChartLabels = me.pieChartLabels;
 	}
 
 	clients(){
@@ -78,6 +94,6 @@ export class HomePage {
 	}
 
 	settings(){
-		this.navCtrl.push(SettingsPage);
+		this.navCtrl.setRoot(SettingsPage);
 	}
 }
