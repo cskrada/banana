@@ -3,6 +3,8 @@ import { CallNumber } from '@ionic-native/call-number';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angular';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { TranslateService } from '@ngx-translate/core';
+
 
 // importacion de paginas
 import { EmailPage } from '../email/email';
@@ -18,13 +20,18 @@ export class SeeclientPage {
 client: any[] = [];
 phone: string;
 url: string;
+titlealert: string;
+messagealert: string;
+textalert: string;
+textalert2: string;
 
 constructor(public navCtrl: NavController,
 				public alerta: AlertController, 
 				public navParams: NavParams, 
 				public emailComposer: EmailComposer,
 				private callNumber: CallNumber,
-				private iab: InAppBrowser) {
+				private iab: InAppBrowser,
+				public translateService: TranslateService) {
 	this.client = this.navParams.data;
 	this.phone = this.navParams.get('phone');
 	// console.log("seeclient",this.client);
@@ -49,47 +56,65 @@ constructor(public navCtrl: NavController,
 	}
 
 	archived(){
-		let alert = this.alerta.create({
-			title : 'Archivar Cliente',
-			message : '¿Esta seguro que desea archivar este cliente?',
-			buttons: [
-				{  
-					text: 'Cancelar',
-					handler: data => {
-						console.log('Cancelado!');
-					}
-				},
-				{
-					text: 'Archivar',
-					handler: data => {
-						console.log('Archivado!');
-					}
-				}
-			]
-		});
-	alert.present();
+		
+		this.translateService.get('Alerta1').subscribe(
+			value => {
+				let title = value['TituloAlerta'];
+				let message = value['MensajeAlerta'];
+				let buttoncancel = value['BotonCancelar'];
+				let buttonarchived = value['BotonArchivar'];
+			  
+			 	 let alert = this.alerta.create({
+				  title : title,
+				  message : message,
+				  buttons: [
+					  {  
+						  text: buttoncancel,
+						  handler: data => {
+							  console.log('Cancelado!');
+							}
+						},
+						{
+							text: buttonarchived,
+							handler: data => {
+								console.log('Archivado!');
+							}
+						}
+					]
+				});
+				alert.present();
+			});
 	}
-
+			
 	modified(){
-		let alert2 = this.alerta.create({
-			title : 'Modificar Cliente',
-			message : '¿Esta seguro que desea modificar este cliente?',
-			buttons: [
-				{  
-					text: 'Cancelar',
-					handler: data => {
-						console.log('Cancelado!');
-					}
-				},
-				{
-					text: 'Modificar',
-					handler: data => {
-						console.log('Modificado!');
-					}
-				}
-			]
-		});
-		alert2.present();
+
+		this.translateService.get('Alerta2').subscribe( 
+			value=>{
+				let title = value['TituloAlerta'];
+				let message = value['MensajeAlerta'];
+				let buttoncancel = value['BotonCancelar'];
+				let buttonmodify = value['BotonModificar'];
+
+				let alert2 = this.alerta.create({
+					title : title,
+					message : message,
+					buttons: [
+						{  
+							text: buttoncancel,
+							handler: data => {
+								console.log('Cancelado!');
+							}
+						},
+						{
+							text: buttonmodify,
+							handler: data => {
+								console.log('Modificado!');
+							}
+						}
+					]
+				});
+				alert2.present();
+			});
 	}
 
 	openEmail(client) {
