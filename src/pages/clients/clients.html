@@ -64,45 +64,10 @@
 				Cif: {{ c.cif }} <br>
 				{{ 'Dirección' | translate}}: {{ c.address }} <br>
 				<!-- {{ c.city }}, {{ c.state }} <br> -->
-				<span *ngIf=" c.phone != [''] && c.phone != null " >{{ 'Teléfono' | translate}}: {{ c.phone }}&nbsp; </span>
-				<span *ngIf=" c.email != [''] && c.email != null ">| {{ 'Correo' | translate}}: {{ c.email }}</span>
+				<span *ngIf=" c.phone != [''] && c.phone != null " >{{ 'Teléfono' | translate}}: {{ c.phone }}&nbsp;| </span>
+				<span *ngIf=" c.email != [''] && c.email != null "> {{ 'Correo' | translate}}: {{ c.email }}</span>
 			</span>
 		</button>
 
 	</ion-list>
-
-	<!-- <ion-grid no-padding>
-		<ion-row>
-			<ion-col col-2 text-center align-self-center>
-				<ion-buttons start>
-					<button ion-button icon-only clear color="bananaf" (click)="addClient()">
-						<ion-icon name="person-add"></ion-icon>
-					</button>
-				</ion-buttons>
-			</ion-col>
-			<ion-col col-10>
-				<ion-searchbar [(ngModel)]="searchTerm"  [formControl]="searchControl" (ionInput)="onSearchInput()"></ion-searchbar>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col col-12>
-				<div *ngIf="searching" class="spinner-container">
-					<ion-spinner></ion-spinner>
-				</div>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
-	<ion-list>
-		<button ion-item *ngFor="let item of items" class="paddinglr fuente" (click)="openPage(item)">
-			<b>{{ item.razons }}
-			<span *ngIf="item.name != item.alias">({{ item.alias }})</span>
-			</b><br>
-			<span>
-				{{ item.name }} <br>
-				{{ item.rif }} <br>
-				{{ item.city }}, {{ item.state }} <br>
-				{{ item.phone }} &nbsp;| {{ item.email }}
-			</span>
-		</button>
-	</ion-list> -->
 </ion-content>
