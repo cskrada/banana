@@ -63,5 +63,19 @@
     "Idioma": "Idiom",
     "Español": "Spanish",
     "Inglés": "English",
-    "Actualizar": "Update"
+    "Actualizar": "Update",
+
+    "Alerta1": {
+        "TituloAlerta": "Archive client",
+        "MensajeAlerta": "Are you sure you want to archive this client?",
+        "BotonCancelar": "Cancel",
+        "BotonArchivar": "Archived"
+    },
+
+    "Alerta2": {
+        "TituloAlerta": "Modify client",
+        "MensajeAlerta": "Are you sure you want to modify this client?",
+        "BotonCancelar": "Cancel",
+        "BotonModificar": "Modify"
+    }
 }

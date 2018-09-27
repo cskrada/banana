@@ -63,5 +63,19 @@
     "Idioma": "Idioma",
     "Español": "Español",
     "Inglés": "Inglés",
-    "Actualizar": "Actualizar"
+    "Actualizar": "Actualizar",
+
+    "Alerta1": {
+        "TituloAlerta": "Archivar cliente",
+        "MensajeAlerta": "¿Está seguro que desea archivar este cliente?",
+        "BotonCancelar": "Cancelar",
+        "BotonArchivar": "Archivar"
+    },
+
+    "Alerta2": {
+        "TituloAlerta": "Modificar cliente",
+        "MensajeAlerta": "¿Está seguro que desea modificar este cliente?",
+        "BotonCancelar": "Cancelar",
+        "BotonModificar": "Modificar"
+    }
 }
