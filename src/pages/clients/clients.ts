@@ -21,7 +21,6 @@ import { SettingsPage } from './../settings/settings';
 })
 export class ClientsPage {
 
-
 	public id : any ;
 	clients: any[] = [];
 
@@ -70,7 +69,6 @@ export class ClientsPage {
 				console.log('get clients ', this.clients);
 				
 			}, error => {
-				
 				console.log(error);
 		});
 	});
@@ -79,15 +77,4 @@ export class ClientsPage {
 	settings(){
 		this.navCtrl.push(SettingsPage);
 	}
-
-	// presentLoadingDefault() {
-	// 	let loading = this.loadingCtrl.create({
-	// 		content: 'Por favor espere...'
-	// 		});
-	// 	loading.present();
-	  
-	// 	setTimeout(() => {
-	// 	  loading.dismiss();
-	// 	}, 3000);
-	// }
 }
