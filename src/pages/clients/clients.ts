@@ -1,4 +1,3 @@
-
 //importacion de librerias
 import { Component } from '@angular/core';
 // import { FormControl } from '@angular/forms';
@@ -33,7 +32,6 @@ export class ClientsPage {
 		// console.log("ID de usuario", this.id);
 	}
 	openPage(c) {
-	
 		this.navCtrl.push(SeeclientPage, c);
 	}
 
@@ -43,11 +41,9 @@ export class ClientsPage {
 
 	ionViewDidLoad() {
 		this.getClients();
-
 	}
 
 	getClients(){
-
 	this.translateService.get('Por favor espere...').subscribe(
 		value => {
 			let content = value;
@@ -56,22 +52,21 @@ export class ClientsPage {
 				});
 			loading.present();
 
-		return this.http.get('http://vbanana.tk/laravel-banana/public/api/thirds/customers/'+this.id,
-			{ headers: new HttpHeaders()
-				.set('authorization', 'http://localhost:4200')
-				.append('app', 'BananaApp')
-				.append('user', sessionStorage.getItem('user'))
-				.append('Access-Control-Allow-Origin', '*')
-				.append('token', sessionStorage.getItem('token'))
-			}).subscribe ( data=> {
-				loading.dismissAll();
-				this.clients = data['clients'];
-				console.log('get clients ', this.clients);
-				
-			}, error => {
-				console.log(error);
+			return this.http.get('http://vbanana.tk/laravel-banana/public/api/thirds/customers/'+this.id,
+				{ headers: new HttpHeaders()
+					.set('authorization', 'http://localhost:4200')
+					.append('app', 'BananaApp')
+					.append('user', sessionStorage.getItem('user'))
+					.append('Access-Control-Allow-Origin', '*')
+					.append('token', sessionStorage.getItem('token'))
+				}).subscribe ( data=> {
+					loading.dismissAll();
+					this.clients = data['clients'];
+					console.log('get clients ', this.clients);
+				}, error => {
+					console.log(error);
+			});
 		});
-	});
 	}
 
 	settings(){
