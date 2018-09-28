@@ -47,8 +47,6 @@ export class MyApp {
   
     this.postLogin(this.email, this.password);
 
-    
-
     this.pages = [
       { title: 'Escritorio', component: HomePage, icon: "home" },
       { title: 'Clientes', component: ClientsPage, icon: "people" }
@@ -79,7 +77,6 @@ export class MyApp {
   }
 
   logOut() {
-
     this.loading = this.loadingCtrl.create({
       dismissOnPageChange: true,
       duration: 3000,
@@ -95,10 +92,3 @@ export class MyApp {
   }
 
 }
-
-  // initializeApp() {
-  //   this.platform.ready().then(() => {
-  //     this.statusBar.styleDefault();
-  //     this.splashScreen.hide();
-  //   });
-  // }
