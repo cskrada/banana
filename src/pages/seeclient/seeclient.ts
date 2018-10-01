@@ -20,10 +20,6 @@ export class SeeclientPage {
 client: any[] = [];
 phone: string;
 url: string;
-titlealert: string;
-messagealert: string;
-textalert: string;
-textalert2: string;
 
 constructor(public navCtrl: NavController,
 				public alerta: AlertController, 
