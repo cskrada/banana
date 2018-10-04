@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
+import { Md5 } from 'ts-md5/dist/md5';
 
 import { HttpModule } from '@angular/http'; 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -102,6 +103,7 @@ export function setTranslateLoader( http: HttpClient) {
     DataProvider,
     ClientProvider,
     ResetProvider,
+    Md5,
     ClientsProvider,
     CallNumber
   ]
