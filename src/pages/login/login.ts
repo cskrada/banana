@@ -4,6 +4,7 @@ import { IonicPage, NavController,LoadingController,Loading, AlertController, Me
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
+import { Md5 } from 'ts-md5/dist/md5';
 
 //importacion de paginas
 import { HomePage } from '../home/home';
@@ -44,17 +45,16 @@ constructor(public navCtrl: NavController,
 		this.menu.enable(false);
 	}
 
-
 	loginUser2(){
+		const md5 = new Md5();
 		console.log(this.myForm.value.email);
-		console.log(this.myForm.value.password);
-		this.postLogin(this.myForm.value.email,this.myForm.value.password);
-
+		let e = md5.appendStr(this.myForm.value.password).end();
+		console.log(e);
+		this.postLogin(this.myForm.value.email,e);
 	}
 	
-// http://bananaservertest.herokuapp.com/api/login
-
-	postLogin(email: string, password: string){
+	// http://bananaservertest.herokuapp.com/api/login
+	postLogin(email: string, password: any){
 	  	this.http.post('http://vbanana.tk/laravel-banana/public/api/login',
 						{ email, password }, 
 						{ headers: new HttpHeaders()
