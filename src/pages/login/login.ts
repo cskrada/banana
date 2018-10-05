@@ -56,11 +56,11 @@ constructor(public navCtrl: NavController,
 	// http://bananaservertest.herokuapp.com/api/login
 	postLogin(email: string, password: any){
 	  	this.http.post('http://vbanana.tk/laravel-banana/public/api/login',
-						{ email, password }, 
-						{ headers: new HttpHeaders()
-	  						.set('authorization', 'http://localhost:4200')
-							  .append('app', 'BananaApp')
-							  .append('Access-Control-Allow-Origin', '*')
+					{ email, password }, 
+					{ headers: new HttpHeaders()
+					.set('authorization', 'http://localhost:4200')
+					.append('app', 'BananaApp')
+					.append('Access-Control-Allow-Origin', '*')
 	  		}).subscribe(data => {
 	  			this.menu.enable(true, 'authenticated');
 				this.results.push(data['user']);
@@ -72,40 +72,58 @@ constructor(public navCtrl: NavController,
 				sessionStorage.setItem('token', data['user'].user[0].remember_token);
 				sessionStorage.setItem('name', data['user'].user[0].contact_id.name);
 				sessionStorage.setItem('email', data['user'].user[0].email);
-				// console.log("this.id",this.id);
-				// console.log("this.tokencsk",this.tokencsk);
 				this.navCtrl.setRoot(HomePage);
 				console.log(this.results);
-				// console.log('id: ', data['user'].user[0].id);
-				// console.log('token: ', data['user'].user[0].remember_token);
-				// console.log('name: ', data['user'].user[0].name);
 
 			}, error => {
-				this.translateService.get("El email o la contraseña no es correcta, por favor ingrese de nuevo sus datos").subscribe(
-					value => {
-					  // value is our translated string
-					  let message = value;
-					
-					this.loading.dismiss().then( () => {
-						let alert = this.alertCtrl.create({
-							message: message,
-							buttons: [
-							{
-								text: "Ok",
-								role: 'cancel'
-							}
-							]
+				if (error.status === 406) {
+					console.log("contrase;a incorrecta");
+					this.translateService.get('Alerta3').subscribe(
+						value => {
+							let message = value['MensajeAlerta'];
+							let text = value['TextAlerta'];
+							this.loading.dismiss().then( () => {
+								let alert = this.alertCtrl.create({
+									message: message,
+									buttons: [
+									{
+										text: text,
+										role: 'cancel'
+									}
+									]	
+								});
+							alert.present();
+							});
 						});
-					alert.present();
-				});
-			});
-				console.log(error);
+
+                } else if (error.status === 500 ){
+					console.log("email incorrecto");
+					this.translateService.get('Alerta4').subscribe(
+						value => {
+							let message = value['MensajeAlerta'];
+							let text = value['TextAlerta'];
+							this.loading.dismiss().then( () => {
+								let alert = this.alertCtrl.create({
+									message: message,
+									buttons: [
+									{
+										text: text,
+										role: 'cancel'
+									}
+									]	
+								});
+							alert.present();
+							});
+						});
+				}
+
+				console.log("mensaje de error", error);
 			});// fin de susbcribe
 	  	this.loading = this.loadingCtrl.create({
 			dismissOnPageChange: true,
 		});
 		this.loading.present();
-	}
+	}// fin de metodo
 
 	goToSignup(){
 		this.navCtrl.push(SignupPage);
@@ -115,4 +133,32 @@ constructor(public navCtrl: NavController,
 		this.navCtrl.push(ResetpasswordPage);
 	}
 
+
+	// statusHttp(){
+	// 	return this.http.request(new Request(this.requestoptions))
+    //         .map((res: Response) => {
+    //             if (res) {
+    //                 if (res.status === 201) {
+    //                     return [{ status: res.status, json: res }]
+    //                 }
+    //                 else if (res.status === 200) {
+    //                     return [{ status: res.status, json: res }]
+    //                 }
+    //             }
+    //         }).catch((error: any) => {
+    //             if (error.status === 500) {
+    //                 return Observable.throw(new Error(error.status));
+    //             }
+    //             else if (error.status === 400) {
+    //                 return Observable.throw(new Error(error.status));
+    //             }
+    //             else if (error.status === 409) {
+    //                 return Observable.throw(new Error(error.status));
+    //             }
+    //             else if (error.status === 406) {
+    //                 return Observable.throw(new Error(error.status));
+    //             }
+    //         });
+    // }
+	
 }
