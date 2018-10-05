@@ -77,5 +77,15 @@
         "MensajeAlerta": "Are you sure you want to modify this client?",
         "BotonCancelar": "Cancel",
         "BotonModificar": "Modify"
+    },
+
+    "Alerta3": {
+        "MensajeAlerta": "The password you entered is not correct, please enter your data again.",
+        "TextAlerta": "Ok"
+    },
+
+    "Alerta4": {
+        "MensajeAlerta": "The email you entered is not correct, please enter your data again.",
+        "TextAlerta": "Ok"
     }
 }

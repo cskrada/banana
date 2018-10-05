@@ -105,7 +105,6 @@ constructor(public navCtrl: NavController,
 			dismissOnPageChange: true,
 		});
 		this.loading.present();
-
 	}
 
 	goToSignup(){
@@ -114,7 +113,6 @@ constructor(public navCtrl: NavController,
 
 	goToResetPassword(){		
 		this.navCtrl.push(ResetpasswordPage);
-
 	}
 
 }

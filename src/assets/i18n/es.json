@@ -77,5 +77,15 @@
         "MensajeAlerta": "¿Está seguro que desea modificar este cliente?",
         "BotonCancelar": "Cancelar",
         "BotonModificar": "Modificar"
+    },
+
+    "Alerta3": {
+        "MensajeAlerta": "La contraseña que introdujo no es correcta, por favor ingrese de nuevo sus datos.",
+        "TextAlerta": "Ok"
+    },
+
+    "Alerta4": {
+        "MensajeAlerta": "El email que introdujo no es correcto, por favor ingrese de nuevo sus datos.",
+        "TextAlerta": "Ok"
     }
 }
