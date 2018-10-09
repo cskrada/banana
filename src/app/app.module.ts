@@ -27,6 +27,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { ResetpasswordPage } from '../pages/resetpassword/resetpassword';
 import { EmailPage } from '../pages/email/email';
 import { SettingsPage } from '../pages/settings/settings';
+import { ProfilePage } from '../pages/profile/profile';
 
 import { ChartsModule } from 'ng2-charts';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -59,6 +60,7 @@ export function setTranslateLoader( http: HttpClient) {
     ResetpasswordPage,
     EmailPage,
     SettingsPage,
+    ProfilePage,
     SearchPipe,
     SortPipe,
   ],
@@ -92,7 +94,8 @@ export function setTranslateLoader( http: HttpClient) {
     SignupPage,
     ResetpasswordPage,
     EmailPage,
-    SettingsPage
+    SettingsPage,
+    ProfilePage
   ],
   providers: [
     InAppBrowser,
