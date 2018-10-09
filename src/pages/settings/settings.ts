@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
+import { ProfilePage } from './../profile/profile';
 
 @IonicPage()
 @Component({
@@ -33,6 +34,10 @@ export class SettingsPage {
     this.translateService.use(language);
     this.translateService.setDefaultLang(language);
     console.log(this.translateService.getDefaultLang());
+  }
+
+  profileUser(){
+    this.navCtrl.push(ProfilePage);
   }
 
 }

@@ -38,10 +38,16 @@
     <ion-row>
       <ion-col>
         <ion-item no-padding>
-					<ion-label>{{'Idioma'|translate}}</ion-label>
-						<ion-select [(ngModel)]="defaultLanguage" (ionChange)="changeLanguage($event)" interface="popover">
-							<ion-option *ngFor="let lang of idioms" [value]="lang.value">{{ lang.label | translate}}</ion-option>
+					<ion-label style="color:#525252">{{'Idioma'|translate}}</ion-label>
+						<ion-select [(ngModel)]="defaultLanguage" (ionChange)="changeLanguage($event)" interface="popover" style="color:#525252">
+							<ion-option *ngFor="let lang of idioms" [value]="lang.value" style="color:#525252">{{ lang.label | translate}}</ion-option>
 						</ion-select>
+				</ion-item>
+				<ion-item no-padding>
+
+					<button class="fuente" (click)="profileUser()">
+						{{ 'Perfil de usuario' | translate }}
+					</button>
 				</ion-item>
       </ion-col>
     </ion-row>

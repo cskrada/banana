@@ -12,7 +12,6 @@ import { SettingsPage } from '../settings/settings';
   templateUrl: 'home.html'
 })
 export class HomePage {
-	public tradu: string[];
 
 	public name_user: any;
 	public pieChartLabels:string[] = ['Compras', 'Ganancias', 'Ventas'];	
@@ -78,9 +77,6 @@ export class HomePage {
 		this.pieChartLabels.forEach(function(element, index) {
 			me.translateService.get(element).subscribe(
 				value => {
-				//   let message: Array<any> = [];
-				//   message[] = value;
-				//   me.tradu = value;
 				console.log(value);
 				me.pieChartLabels[index] = value;
 				  
