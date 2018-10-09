@@ -87,5 +87,14 @@
     "Alerta4": {
         "MensajeAlerta": "The email you entered is not correct, please enter your data again.",
         "TextAlerta": "Ok"
-    }
+    },
+
+    "Alerta5": {
+        "MensajeAlerta": "There is no Internet conection",
+        "TextAlerta": "Ok"
+    },
+
+    "Perfil de usuario": "User profile",
+
+    "Mi perfil": "My profile"
 }
