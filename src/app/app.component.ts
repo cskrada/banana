@@ -34,7 +34,6 @@ export class MyApp {
               public translate: TranslateService){
 
     this.platform.ready().then(() => {
-      // Language
       this.translate.setDefaultLang('es');
       this.translate.use('es');
           this.statusBar.styleDefault();
