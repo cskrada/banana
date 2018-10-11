@@ -1,4 +1,3 @@
-import { HomePage } from './../home/home';
 //importacion de librerias
 import { Component } from '@angular/core';
 import { IonicPage, NavController,LoadingController,Loading, AlertController, MenuController } from 'ionic-angular';
