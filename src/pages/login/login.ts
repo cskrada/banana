@@ -1,3 +1,4 @@
+import { HomePage } from './../home/home';
 //importacion de librerias
 import { Component } from '@angular/core';
 import { IonicPage, NavController,LoadingController,Loading, AlertController, MenuController } from 'ionic-angular';
@@ -23,7 +24,6 @@ export class LoginPage {
 	myForm: FormGroup;
 	public loading:Loading;
 	public results : string[] = [];
-	public cadena : string;
 
 constructor(public navCtrl: NavController,
 			public formBuilder:FormBuilder,
@@ -72,7 +72,7 @@ constructor(public navCtrl: NavController,
 				sessionStorage.setItem('token', data['user'].user[0].remember_token);
 				sessionStorage.setItem('name', data['user'].user[0].contact_id.name);
 				sessionStorage.setItem('email', data['user'].user[0].email);
-				this.navCtrl.setRoot(HomePage);
+				this.navCtrl.setRoot(HomePage, this.results);
 				console.log(this.results);
 
 			}, error => {

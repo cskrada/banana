@@ -14,12 +14,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-
+  public email: any;
+  public user: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.user= this.navParams.data;
+    console.log(this.user[0]);
+    console.log("user",this.user[0].user[0].email);
+    this.email= this.user[0].user[0].email;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
   }
+
+
 
 }

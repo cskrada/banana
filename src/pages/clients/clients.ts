@@ -1,11 +1,8 @@
-//importacion de librerias
 import { Component } from '@angular/core';
 // import { FormControl } from '@angular/forms';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 
-// importacion de provider y el medidor de tiempo
-// import { ClientsProvider } from '../../providers/data/clients';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/debounceTime';
 
