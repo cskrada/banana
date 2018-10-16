@@ -33,6 +33,7 @@ export class MyApp {
               public loadingCtrl: LoadingController,
               public translate: TranslateService){
 
+    this.handleSplashScreen();
     this.platform.ready().then(() => {
       this.translate.setDefaultLang('es');
       this.translate.use('es');
@@ -51,6 +52,18 @@ export class MyApp {
       { title: 'Clientes', component: ClientsPage, icon: "people" }
     ];
   }//------------------------------------fin de constructor-----------------------------------
+  
+  async handleSplashScreen(): Promise<void> {
+    try {
+      await this.platform.ready()
+    } catch (error) {
+      console.error('Platform initialization bug')
+    }
+    const splash = document.getElementById('splash-screen')
+    splash.style.opacity = '0'
+    setTimeout(() => { splash.remove() }, 300)
+  }
+
   postLogin(email: string, password: string){
       this.http.post('http://vbanana.tk/laravel-banana/public/api/login',
             { email, password }, 
