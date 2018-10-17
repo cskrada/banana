@@ -1,8 +1,17 @@
 page-settings {
 
     .fuente{
-	font-family: roboto;
-	font-size: 15px;
-    color: #525252;
+        font-family: roboto;
+        font-size: 15px;
+        color: #525252;
+    }
+
+    .paddinglr{
+		padding-left: 0px;
+		padding-right: 0px;
+    }
+    
+    .icon{
+        font-size: 1.2em;
     }
 }
