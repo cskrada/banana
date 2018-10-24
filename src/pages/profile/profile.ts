@@ -19,8 +19,6 @@ export class ProfilePage {
   public user: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.user= this.navParams.data;
-    console.log(this.user[0]);
-    console.log("user",this.user[0].user[0].email);
     this.email = this.user[0].user[0].email;
     this.name = this.user[0].user[0].contact_id.name;
   }

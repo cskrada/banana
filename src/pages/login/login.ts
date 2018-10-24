@@ -54,7 +54,7 @@ constructor(public navCtrl: NavController,
 	
 	// http://bananaservertest.herokuapp.com/api/login
 	postLogin(email: string, password: any){
-	  	this.http.post('http://vbanana.tk/laravel-banana/public/api/login',
+	  	this.http.post('http://192.168.1.3:8000/api/login',
 					{ email, password }, 
 					{ headers: new HttpHeaders()
 					.set('authorization', 'http://localhost:4200')

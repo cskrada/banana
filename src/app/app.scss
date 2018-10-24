@@ -15,7 +15,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 body {
-    background: color($colors, bananac);
+    background: color($colors, primary);
   }
 
   .sk-fading-circle {
@@ -122,5 +122,5 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: color($colors, bananac);
+    background: color($colors, primary);
   }

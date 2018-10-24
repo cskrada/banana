@@ -61,11 +61,11 @@ export class MyApp {
     }
     const splash = document.getElementById('splash-screen')
     splash.style.opacity = '0'
-    setTimeout(() => { splash.remove() }, 300)
+    setTimeout(() => { splash.remove() }, 100)
   }
 
   postLogin(email: string, password: string){
-      this.http.post('http://vbanana.tk/laravel-banana/public/api/login',
+      this.http.post('http://192.168.1.3:8000/api/login',
             { email, password }, 
             { headers: new HttpHeaders()
                 .set('authorization', 'http://localhost:4200')

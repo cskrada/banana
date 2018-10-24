@@ -49,7 +49,8 @@ export class ClientsPage {
 				});
 			loading.present();
 
-			return this.http.get('http://vbanana.tk/laravel-banana/public/api/thirds/customers/'+this.id,
+			// http://vbanana.tk/laravel-banana/public/api/thirds/customers/
+			return this.http.get('http://192.168.1.3:8000/api/thirds/customers/'+this.id,
 				{ headers: new HttpHeaders()
 					.set('authorization', 'http://localhost:4200')
 					.append('app', 'BananaApp')
