@@ -37,8 +37,6 @@ export class MyApp {
     this.platform.ready().then(() => {
       this.translate.setDefaultLang('es');
       this.translate.use('es');
-          this.statusBar.styleDefault();
-          this.splashScreen.hide();
     });
 
     sessionStorage.removeItem('user');
@@ -60,11 +58,12 @@ export class MyApp {
       console.error('Platform initialization bug')
     }
     const splash = document.getElementById('splash-screen')
-    splash.style.opacity = '0'
+    splash.style.opacity = '20'
     setTimeout(() => { splash.remove() }, 100)
   }
 
   postLogin(email: string, password: string){
+    this.splashScreen.hide;
       this.http.post('http://192.168.1.3:8000/api/login',
             { email, password }, 
             { headers: new HttpHeaders()
