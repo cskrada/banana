@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 // importacion de paginas
 import { ClientsPage } from '../clients/clients';
 import { SettingsPage } from '../settings/settings';
+import { OrdersPage } from './../orders/orders';
 
 @Component({
   selector: 'page-home',
@@ -90,5 +91,9 @@ export class HomePage {
 
 	settings(){
 		this.navCtrl.setRoot(SettingsPage, this.user);
+	}
+
+	orders(){
+		this.navCtrl.push(OrdersPage);
 	}
 }
