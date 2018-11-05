@@ -1,18 +1,119 @@
-<!--
-  Generated template for the OrdersPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>orders</ion-title>
-  </ion-navbar>
-
+	<ion-navbar color="bananap">
+		<ion-grid no-padding>
+			<ion-row no-padding>
+				<ion-col col-1 no-padding>
+					<table>
+						<tr>
+							<td>
+								<ion-buttons start>
+									<button ion-button icon-only>
+										<ion-icon name="cart"></ion-icon>
+									</button>
+								</ion-buttons>
+							</td>
+							<td>
+								<ion-title text-left>Orders</ion-title>
+							</td>
+						</tr>
+					</table>
+				</ion-col>
+				<ion-col col-11 no-padding>
+					<ion-buttons end text-end>
+						<button ion-button icon-only>
+						<ion-icon name="more"></ion-icon>
+					</button>
+					</ion-buttons>
+				</ion-col>
+			</ion-row>
+		</ion-grid> 
+	</ion-navbar>
 </ion-header>
-
-
-<ion-content padding>
-
+<ion-content no-padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-11>
+        <ion-searchbar class="search"></ion-searchbar>
+      </ion-col>
+      <ion-col col-1>
+        <button ion-button icon-only color="light" class="buttonx">
+          <ion-icon name="list"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding>
+      <ion-col col-12 no-padding>
+          <ion-slides no-padding>
+            <ion-slide col-2 no-padding>
+              <button ion-button icon-only color="light" class="buttonr"><ion-icon name="cart"></ion-icon></button>
+            </ion-slide>
+            <ion-slide col-2 no-padding>
+              <button ion-button icon-only color="light" class="buttonr"><ion-icon name="phone-portrait"></ion-icon></button>
+            </ion-slide>
+            <ion-slide col-2 no-padding>
+              <button ion-button icon-only color="light" class="buttonr"><ion-icon name="logo-facebook"></ion-icon></button>
+            </ion-slide>
+            <ion-slide col-2 no-padding>
+              <button ion-button icon-only color="light" class="buttonr"><ion-icon name="logo-facebook"></ion-icon></button>
+            </ion-slide>
+            <ion-slide col-2 no-padding>
+              <button ion-button icon-only color="light" class="buttonr"><ion-icon name="logo-facebook"></ion-icon></button>
+            </ion-slide>
+            <ion-slide col-2 no-padding>
+              <button ion-button icon-only color="light" class="buttonr"><ion-icon name="logo-facebook"></ion-icon></button>
+            </ion-slide>
+            <ion-slide col-2 no-padding>
+              <button ion-button icon-only color="light" class="buttonr"><ion-icon name="logo-facebook"></ion-icon></button>
+            </ion-slide>
+            <ion-slide col-2 no-padding>
+              <button ion-button icon-only color="light" class="buttonr"><ion-icon name="logo-facebook"></ion-icon></button>
+            </ion-slide>
+            <ion-slide col-2 no-padding>
+              <button ion-button icon-only color="light" class="buttonr"><ion-icon name="logo-facebook"></ion-icon></button>
+            </ion-slide>
+          </ion-slides>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>
+        <ion-card>
+          <img no-padding src="assets/imgs/icon.png"/>
+          <ion-card-content>
+            <ion-card-title>
+              Nine Inch Nails Live
+            </ion-card-title>
+            <p>
+              The most popular industrial group ever, and largely.
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col col-4>
+        <ion-card>
+          <img no-padding src="assets/imgs/icon.png"/>
+          <ion-card-content>
+            <ion-card-title>
+              Nine Inch Nails Live
+            </ion-card-title>
+            <p>
+              The most popular industrial group ever, and largely.
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col col-4>
+          <ion-card>
+            <img no-padding src="assets/imgs/icon.png"/>
+            <ion-card-content>
+              <ion-card-title>
+                Nine Inch Nails Live
+              </ion-card-title>
+              <p>
+                The most popular industrial group ever, and largely.
+              </p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

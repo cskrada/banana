@@ -1,3 +1,20 @@
 page-orders {
+    .icon{
+        border-radius: 50%;
+        color: #525252; 
+    }
 
+    $button-md-border-radius: 50%;
+    $button-md-height: 4.5em;
+
+    .buttonr{
+        border-radius: 50%;
+        height: 3.9em;
+        width: 3.9em;
+    }
+
+    .buttonx{
+        height: 80%;
+        width: 100%;
+    }
 }
