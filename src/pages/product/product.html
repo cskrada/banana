@@ -3,10 +3,44 @@
   <ion-navbar>
     <ion-title>{{'Producto' | translate}}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content no-padding>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-12>
+        <ion-slides pager>
+          <ion-slide style="background-color: #B7C0CC">
+            <img src="assets/imgs/bananaApp.png">
+          </ion-slide>
+          <ion-slide style="background-color: #B7C0CC">
+            <img src="assets/imgs/icon.png">
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 item-start>
+          <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+      </ion-col>
+      <ion-col col-6 item-end>
+        <label>Precio: 5$</label>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding>
+      <ion-col no-padding>
+        <ion-card>
+          <ion-card-header>
+            Description
+          </ion-card-header>
+          <ion-card-content>
+            The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-<ion-content padding>
-
+  
+  
 </ion-content>
