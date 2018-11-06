@@ -29,6 +29,7 @@ import { EmailPage } from '../pages/email/email';
 import { SettingsPage } from '../pages/settings/settings';
 import { ProfilePage } from '../pages/profile/profile';
 import { OrdersPage } from './../pages/orders/orders';
+import { ProductPage } from './../pages/product/product';
 
 import { ChartsModule } from 'ng2-charts';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -63,6 +64,7 @@ export function setTranslateLoader( http: HttpClient) {
     SettingsPage,
     ProfilePage,
     OrdersPage,
+    ProductPage,
     SearchPipe,
     SortPipe,
   ],
@@ -98,7 +100,8 @@ export function setTranslateLoader( http: HttpClient) {
     EmailPage,
     SettingsPage,
     ProfilePage,
-    OrdersPage
+    OrdersPage,
+    ProductPage
   ],
   providers: [
     InAppBrowser,
