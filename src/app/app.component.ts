@@ -4,6 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
+import { constants } from './../const/const';
+
 
 import { HomePage } from '../pages/home/home';
 import { ClientsPage } from '../pages/clients/clients';
@@ -65,7 +67,7 @@ export class MyApp {
   }
 
   postLogin(email: string, password: string){
-      this.http.post('http://192.168.1.3:8000/api/login',
+      this.http.post(constants.apilogin,
             { email, password }, 
             { headers: new HttpHeaders()
                 .set('authorization', 'http://localhost:4200')

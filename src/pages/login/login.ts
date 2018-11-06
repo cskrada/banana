@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { Md5 } from 'ts-md5/dist/md5';
+import { constants } from './../../const/const';
 
 //importacion de paginas
 import { HomePage } from '../home/home';
@@ -54,7 +55,7 @@ constructor(public navCtrl: NavController,
 	
 	// http://bananaservertest.herokuapp.com/api/login
 	postLogin(email: string, password: any){
-	  	this.http.post('http://192.168.1.3:8000/api/login',
+	  	this.http.post(constants.apilogin,
 					{ email, password }, 
 					{ headers: new HttpHeaders()
 					.set('authorization', 'http://localhost:4200')

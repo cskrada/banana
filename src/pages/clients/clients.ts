@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
 // import { FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/debounceTime';
+import { constants } from './../../const/const';
 
 //importacion de paginas
 import { SeeclientPage } from '../seeclient/seeclient';
@@ -49,8 +49,7 @@ export class ClientsPage {
 				});
 			loading.present();
 
-			// http://vbanana.tk/laravel-banana/public/api/thirds/customers/
-			return this.http.get('http://192.168.1.3:8000/api/thirds/customers/'+this.id,
+			return this.http.get(constants.apiclient+this.id,
 				{ headers: new HttpHeaders()
 					.set('authorization', 'http://localhost:4200')
 					.append('app', 'BananaApp')
