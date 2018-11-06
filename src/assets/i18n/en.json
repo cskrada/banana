@@ -108,5 +108,9 @@
 
     "Vendedor": "Seller",
 
-    "Número de identificación": "Identification number"
+    "Número de identificación": "Identification number",
+
+    "Pedidos": "Orders",
+
+    "Producto": "Product"
 }
