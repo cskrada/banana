@@ -49,7 +49,7 @@ export class ClientsPage {
 				});
 			loading.present();
 
-			return this.http.get(constants.apiclient+this.id,
+			return this.http.get(constants.apiclients+this.id,
 				{ headers: new HttpHeaders()
 					.set('authorization', 'http://localhost:4200')
 					.append('app', 'BananaApp')
