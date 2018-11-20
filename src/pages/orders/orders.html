@@ -72,48 +72,132 @@
               <button ion-button icon-only color="light" class="buttonr"><ion-icon name="tennisball"></ion-icon></button>
             </ion-slide>
           </ion-slides>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-4>
-        <ion-card (click)="product()">
-          <img no-padding src="assets/imgs/icon.png"/>
-          <ion-card-content>
-            <ion-card-title>
-              Nine Inch Nails Live
-            </ion-card-title>
-            <p>
-              The most popular industrial.
-            </p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col col-4>
-        <ion-card>
-          <img no-padding src="assets/imgs/icon.png"/>
-          <ion-card-content>
-            <ion-card-title>
-              Nine Inch Nails Live
-            </ion-card-title>
-            <p>
-              The most popular industrial.
-            </p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col col-4>
-          <ion-card>
-            <img no-padding src="assets/imgs/icon.png"/>
+        </ion-col>
+      </ion-row>
+      <ion-row no-padding class="roww">
+        <ion-col no-padding col-4 *ngFor="let p of products">
+          <ion-card (click)="product()" no-padding>
+            <img class="img" src="assets/imgs/{{p.img}}">
+            <!-- <ion-img width="80" height="80" src="assets/imgs/{{p.img}}"></ion-img> -->
             <ion-card-content>
               <ion-card-title>
-                Nine Inch Nails Live
+                {{p.precio}}
               </ion-card-title>
               <p>
-                The most popular industrial.
+                {{p.detail}}
               </p>
             </ion-card-content>
           </ion-card>
         </ion-col>
-    </ion-row>
-  </ion-grid>
+      </ion-row>
+    </ion-grid>
+    <hr>
+    <br>
+    <div class="row1">
+    <ion-card *ngFor="let p of products" (click)="product()" no-padding>
+        <img class="img" src="assets/imgs/{{p.img}}">
+        <!-- <ion-img src="assets/imgs/{{p.img}}"></ion-img> -->
+        <ion-card-content>
+          <ion-card-title>
+            {{p.precio}}
+          </ion-card-title>
+          <p>
+            {{p.detail}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <!-- <ion-col align-self-stretch>
+        <ion-card>
+          <img src="assets/imgs/icon.png"/>
+          <ion-card-content>
+            <ion-card-title>
+              BsS. 593
+            </ion-card-title>
+            <p>
+              The most popular industrial.
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col align-self-stretch>
+        <ion-card>
+          <img src="assets/imgs/bananaApp.png"/>
+          <ion-card-content>
+            <ion-card-title>
+              BsS. 1000
+            </ion-card-title>
+            <p>
+              The most popular industrial.
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col align-self-stretch>
+        <ion-card>
+          <img no-padding src="assets/imgs/bananaApp.png"/>
+          <ion-card-content>
+            <ion-card-title>
+              BsS. 1000
+            </ion-card-title>
+            <p>
+              The most popular industrial.
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col> -->
+    <!-- <ion-row>
+      <ion-col align-self-stretch>
+        <ion-card (click)="product()">
+          <img src="assets/imgs/calabaza.jpg"/>
+          <ion-card-content>
+            <ion-card-title>
+              BsS. 743
+            </ion-card-title>
+            <p>
+              The most popular industrial.
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col align-self-stretch>
+        <ion-card>
+          <img src="assets/imgs/icon.png"/>
+          <ion-card-content>
+            <ion-card-title>
+              BsS. 593
+            </ion-card-title>
+            <p>
+              The most popular industrial.
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col align-self-stretch>
+        <ion-card>
+          <img src="assets/imgs/bananaApp.png"/>
+          <ion-card-content>
+            <ion-card-title>
+              BsS. 1000
+            </ion-card-title>
+            <p>
+              The most popular industrial.
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col align-self-stretch>
+        <ion-card>
+          <img no-padding src="assets/imgs/bananaApp.png"/>
+          <ion-card-content>
+            <ion-card-title>
+              BsS. 1000
+            </ion-card-title>
+            <p>
+              The most popular industrial.
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row> -->
 </ion-content>
