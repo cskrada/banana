@@ -10,6 +10,7 @@ import { constants } from './../const/const';
 import { HomePage } from '../pages/home/home';
 import { ClientsPage } from '../pages/clients/clients';
 import { LoginPage } from '../pages/login/login';
+import { OrdersPage } from './../pages/orders/orders';
 
 @Component({
   templateUrl: 'app.html',
@@ -51,7 +52,8 @@ export class MyApp {
 
     this.pages = [
       { title: 'Escritorio', component: HomePage, icon: "home" },
-      { title: 'Clientes', component: ClientsPage, icon: "people" }
+      { title: 'Clientes', component: ClientsPage, icon: "people" },
+      { title: 'Pedidos', component: OrdersPage, icon: "cart"}
     ];
   }//------------------------------------fin de constructor-----------------------------------
   
