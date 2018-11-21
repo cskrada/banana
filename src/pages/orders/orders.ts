@@ -19,31 +19,31 @@ export class OrdersPage {
         id : '1',
         img : 'calabaza.jpg',
         precio : 'bsS 1400',
-        detail : 'la calabaza ionica hula hula'
+        detail : 'Lorem ipsum dolor sit amet consectetur'
       },
       {
         id : '2',
         img : 'icon.png',
         precio : 'bsS 520',
-        detail : 'icono de wallpaper'
+        detail : 'Lorem ipsum dolor sit amet consectetur'
       },
       {
         id : '3',
         img : 'bananaApp.png',
         precio : 'bsS 1000',
-        detail : 'banana app image de aplicacion'
+        detail : 'Lorem ipsum dolor sit amet consectetur'
       },
       {
         id : '4',
         img : 'icon.png',
         precio : 'bsS 9940',
-        detail : 'icono de banana para web'
+        detail : 'Lorem ipsum dolor sit amet consectetur'
       },
       {
         id : '5',
         img : 'bananaApp.png',
         precio : 'bsS 8999',
-        detail : 'mercado de coche.... jiji'
+        detail : 'Lorem ipsum dolor sit amet consectetur'
       },
       {
         id : '6',
@@ -55,13 +55,13 @@ export class OrdersPage {
         id : '7',
         img : 'icon.png',
         precio : 'bsS 200',
-        detail : 'icono para paginas web'
+        detail : 'Lorem ipsum dolor sit amet consectetur'
       },
       {
         id : '8',
         img : 'bananaApp.png',
         precio : 'bsS 10940',
-        detail : 'cambures a 50 el kilo oferta'
+        detail : 'Lorem ipsum dolor sit amet consectetur'
       }
     ]
   
