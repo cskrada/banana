@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { ClientsPage } from '../pages/clients/clients';
 import { LoginPage } from '../pages/login/login';
 import { OrdersPage } from './../pages/orders/orders';
+import { SettingsPage } from './../pages/settings/settings';
 
 @Component({
   templateUrl: 'app.html',
@@ -51,9 +52,10 @@ export class MyApp {
     this.postLogin(this.email, this.password);
 
     this.pages = [
-      { title: 'Escritorio', component: HomePage, icon: "home" },
-      { title: 'Clientes', component: ClientsPage, icon: "people" },
-      { title: 'Pedidos', component: OrdersPage, icon: "cart"}
+      { title: 'Escritorio', component: HomePage, icon: "home"},
+      { title: 'Clientes', component: ClientsPage, icon: "people"},
+      { title: 'Pedidos', component: OrdersPage, icon: "cart"},
+      { title: 'Ajustes', component: SettingsPage, icon: "build"}
     ];
   }//------------------------------------fin de constructor-----------------------------------
   
