@@ -24,6 +24,8 @@ export class LoginPage {
 	myForm: FormGroup;
 	public loading:Loading;
 	public results : string[] = [];
+	passwordType: string = 'password';
+	passwordIcon: string = 'eye-off';
 
 constructor(public navCtrl: NavController,
 			public formBuilder:FormBuilder,
@@ -37,8 +39,12 @@ constructor(public navCtrl: NavController,
 		email: ['', Validators.required],
 		password: ['', Validators.required]
 	});
-
 }
+
+ hideShowPassword() {
+     this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
+     this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
+ }
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad LoginPage');
