@@ -76,7 +76,7 @@ constructor(public navCtrl: NavController,
 				this.tokencsk = data['user'].user[0].remember_token;
 				sessionStorage.setItem('user', data['user'].user[0].id);
 				sessionStorage.setItem('token', data['user'].user[0].remember_token);
-				sessionStorage.setItem('name', data['user'].user[0].contact_id.name);
+				sessionStorage.setItem('name', data['user'].user[0].contact.name);
 				sessionStorage.setItem('email', data['user'].user[0].email);
 				this.navCtrl.setRoot(HomePage, this.results);
 				console.log(this.results);
