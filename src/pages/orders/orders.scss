@@ -36,7 +36,8 @@ page-orders {
     // }
 
     p{
-        height: 40px;
+        max-height: 40px;       
+        line-height: 18px !important;
     }
  
 }
