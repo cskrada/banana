@@ -94,6 +94,6 @@ export class HomePage {
 	}
 
 	orders(){
-		this.navCtrl.push(OrdersPage);
+		this.navCtrl.setRoot(OrdersPage);
 	}
 }
