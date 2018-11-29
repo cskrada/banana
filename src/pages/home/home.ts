@@ -86,10 +86,10 @@ export class HomePage {
 	}
 
 	settings(){
-		this.navCtrl.setRoot(SettingsPage);
+		this.navCtrl.setRoot(SettingsPage, {}, {animate: true, direction: 'forward'});
 	}
 
 	orders(){
-		this.navCtrl.setRoot(OrdersPage);
+		this.navCtrl.setRoot(OrdersPage, {}, {animate: true, direction: 'forward'});
 	}
 }
