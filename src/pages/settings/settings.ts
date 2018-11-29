@@ -12,7 +12,7 @@ export class SettingsPage {
 
   idioms: any[] = [];
   defaultLanguage: string = this.translateService.getDefaultLang();
-  public user: any;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public translateService: TranslateService) {
      this.idioms = [
@@ -25,7 +25,6 @@ export class SettingsPage {
         label: 'Inglés'
       }
      ];
-     this.user = this.navParams.data;
   }
 
   ionViewDidLoad() {
@@ -39,7 +38,7 @@ export class SettingsPage {
   }
 
   profileUser(){
-    this.navCtrl.push(ProfilePage, this.user);
+    this.navCtrl.push(ProfilePage);
   }
 
 }

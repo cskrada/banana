@@ -13,8 +13,6 @@ import { OrdersPage } from './../orders/orders';
 })
 export class HomePage {
 
-	public name_user: any;
-	public user: any;
 	public pieChartLabels:string[] = ['Compras', 'Ganancias', 'Ventas'];	
 	public pieChartData:number[] = [100, 500, 300];
 	public pieChartType:string = 'pie';
@@ -68,8 +66,6 @@ export class HomePage {
 // CONSTRUCTOR ----------------------------------------------------------------------------------------
 	constructor(public navCtrl: NavController, public menu: MenuController, public translateService: TranslateService, public navParams: NavParams) {
 		this.menu.enable(true);
-		this.name_user = sessionStorage.getItem('name');
-		this.user = this.navParams.data;
 	}
 
 	ionViewCanEnter() {
@@ -90,7 +86,7 @@ export class HomePage {
 	}
 
 	settings(){
-		this.navCtrl.setRoot(SettingsPage, this.user);
+		this.navCtrl.setRoot(SettingsPage);
 	}
 
 	orders(){
