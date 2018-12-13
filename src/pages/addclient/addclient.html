@@ -1,3 +1,4 @@
+
 <ion-header>
 	<ion-navbar color="bananap">
 		<ion-grid no-padding>
@@ -19,11 +20,7 @@
 					</table>
 				</ion-col>
 				<ion-col col-11 no-padding>
-						<ion-buttons end text-end>
-							<button ion-button icon-only>
-								<ion-icon name="more"></ion-icon>
-							</button>
-						</ion-buttons>
+						
 				</ion-col>
 			</ion-row>
 		</ion-grid>
@@ -39,11 +36,11 @@
 					</ion-buttons>
 				</ion-col>
 				<ion-col col-6>
-					<ion-buttons end>
-						<button ion-button icon-only>
+					<!-- <ion-buttons end>
+						<button ion-button icon-only >
 							<ion-icon name="ios-create" color="dark"></ion-icon>
 						</button>
-					</ion-buttons>
+					</ion-buttons> -->
 				</ion-col>
 			</ion-row>
 		</ion-grid>
@@ -51,129 +48,127 @@
 </ion-header>
 
 <ion-content padding>
-	<ion-grid no-padding>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-input type="text" placeholder="{{'Razón Social'|translate}}"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-input type="text" placeholder="{{'Nombre Comercial'|translate}}"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-input type="text" placeholder="{{'Alias'|translate}}"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-input type="text" placeholder="{{'Dirección'|translate}} 1"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-input type="text" placeholder="{{'Dirección'|translate}} 2"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-input type="text" placeholder="{{'Dirección'|translate}} 3"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-input type="text" placeholder="{{'Código Postal'|translate}}"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-label>{{'Ciudad'|translate}}</ion-label>
-						<ion-select interface="popover">
-							<ion-option *ngFor="let city of cities" value="{{ city.id }}"> {{ city.name }} </ion-option>
+		<form [formGroup]="myForm" (ngSubmit)="postProspect()"> 
+		<ion-grid no-padding>
+			<ion-row>
+				<ion-col>
+					<ion-item no-padding>
+							
+						<ion-input formControlName="cif" type="text" placeholder="{{'Cif'|translate}}"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item no-padding>
+						<ion-input formControlName="business_name" type="text" placeholder="{{'Razón Social'|translate}}"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item no-padding>
+						<ion-input formControlName="trade_name" type="text" placeholder="{{'Nombre Comercial'|translate}}"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item no-padding>
+							
+						<ion-input formControlName="alias" type="text" placeholder="{{'Alias'|translate}}"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item no-padding>
+							
+						<ion-input formControlName="address" type="text" placeholder="{{'Dirección'|translate}} 1"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item no-padding>
+						<ion-input formControlName="postal_code" type="text" placeholder="{{'Código Postal'|translate}}"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item no-padding>
+						<ion-label>{{'País'|translate}}</ion-label>
+							<ion-select [(ngModel)]="country_id" (ionChange)="getstate(country_id)" interface="popover" formControlName="country_id">
+								<ion-option *ngFor="let country of countries" value="{{ country.id }}" [selected]="country == country.text" > {{ country.text }} </ion-option>
+							</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item no-padding>
+						<ion-label>{{'Estado'|translate}}</ion-label>
+						<ion-select [(ngModel)]="state_id" interface="popover" (ionChange)="getcity(state_id)" formControlName="state_id">
+							<ion-option *ngFor="let state of states" value="{{ state.id }}" [selected]="state == state.text" > {{ state.text }} </ion-option>
 						</ion-select>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-label>{{'Estado'|translate}}</ion-label>
-						<ion-select interface="popover">
-							<ion-option *ngFor="let state of states" value="{{ state.id }}"> {{ state.name }} </ion-option>
-						</ion-select>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-label>{{'País'|translate}}</ion-label>
-						<ion-select interface="popover">
-							<ion-option *ngFor="let country of countries" value="{{ country.id }}"> {{ country.name }} </ion-option>
-						</ion-select>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-input type="text" placeholder="{{'Teléfono'|translate}} 1"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-input type="text" placeholder="{{'Teléfono'|translate}} 2"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-input type="email" placeholder="{{'Correo'|translate}}"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-item no-padding>
-					<ion-input type="text" placeholder="{{'Sitio Web'|translate}}"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-		<ion-row padding-top>
-			<ion-col col-12 text-center>
-				<button ion-button icon-left color="primary">
-				  <ion-icon name="home"></ion-icon>
-				  {{'Contactos'|translate}}
-				</button>
-			</ion-col>
-		</ion-row>
-		<ion-row padding-top>
-			<ion-col col-12 text-center>
-				<button ion-button icon-left color="primary">
-				  <ion-icon name="contacts"></ion-icon>
-				  {{'Sucursales'|translate}}
-				</button>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
-</ion-content>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item no-padding>
+						<ion-label>{{'Ciudad'|translate}}</ion-label>
+							<ion-select [(ngModel)]="city_id" interface="popover" formControlName="city_id">
+								<ion-option *ngFor="let city of cities" value="{{ city.id }}" [selected]="city == city.text"> {{ city.text }} </ion-option>
+							</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item no-padding>
+						<ion-input formControlName="phone" type="text" placeholder="{{'Teléfono'|translate}} 1"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<!-- <ion-row>
+				<ion-col>
+					<ion-item no-padding>
+						<ion-input type="text" placeholder="{{'Teléfono'|translate}} 2"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row> -->
+			<ion-row>
+				<ion-col>
+					<ion-item no-padding>
+						<ion-input formControlName="email" type="email" placeholder="{{'Correo'|translate}}"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item no-padding>
+						<ion-input formControlName="site_web" type="text" placeholder="{{'Sitio Web'|translate}}"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row padding-top>
+				<ion-col col-12 text-center>
+					<button ion-button icon-left full color="bananap" type="submit" [disabled]="!myForm.valid">
+						<ion-icon name="briefcase"></ion-icon>
+						{{'crear prospecto'|translate}}
+					</button>
+				</ion-col>
+			</ion-row>
+			<!-- <ion-row padding-top>
+				<ion-col col-12 text-center>
+					<button ion-button icon-left color="primary">
+						<ion-icon name="contacts"></ion-icon>
+						{{'Sucursales'|translate}}
+					</button>
+				</ion-col>
+			</ion-row> -->
+		</ion-grid>
+	</form>
+	</ion-content>
