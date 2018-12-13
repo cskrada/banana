@@ -59,7 +59,6 @@ constructor(public navCtrl: NavController,
 		this.postLogin(this.myForm.value.email,e);
 	}
 	
-	// http://bananaservertest.herokuapp.com/api/login
 	postLogin(email: string, password: any){
 	  	this.http.post(constants.apilogin,
 					{ email, password }, 
