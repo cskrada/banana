@@ -94,6 +94,14 @@
         "TextAlerta": "Ok"
     },
 
+    "Alerta6": {
+        "MensajeAlerta": "prospecto ya existe"
+    },
+
+    "Alerta7": {
+        "MensajeAlerta": "prospecto creado exitosamente"
+    },
+
     "Perfil de usuario": "Perfil de usuario",
 
     "Mi perfil": "Mi perfil",

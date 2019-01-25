@@ -94,6 +94,14 @@
         "TextAlerta": "Ok"
     },
 
+    "Alerta6": {
+        "MensajeAlerta": "prospect already exists"
+    },
+
+    "Alerta7": {
+        "MensajeAlerta": "Successfully created prospect"
+    },
+
     "Perfil de usuario": "User profile",
 
     "Mi perfil": "My profile",
