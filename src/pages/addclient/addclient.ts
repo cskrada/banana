@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController, LoadingController, AlertController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController, LoadingController, AlertController, ToastController} from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { constants } from './../../const/const';
 import { TranslateService } from '@ngx-translate/core';
+import { ClientsPage } from '../clients/clients';
 
 @IonicPage()
 @Component({
@@ -22,7 +23,8 @@ export class AddclientPage {
 	country_id: any = 0;
 	state_id: any = 0;
 	city_id: any = 0;
-	prospect: any [] = [];
+	// prospect: any [] = [];
+	prospect: any = 0;
   constructor(public navCtrl: NavController,
 			  public navParams: NavParams,
 			  public formBuilder:FormBuilder,
@@ -30,6 +32,7 @@ export class AddclientPage {
 			  public alertCtrl: AlertController,
 			  private viewCtrl: ViewController,
 			  public http: HttpClient,
+			  public toastCtrl: ToastController,
 			  public translateService: TranslateService) {
 	
 	this.myForm = this.formBuilder.group({
@@ -55,17 +58,45 @@ export class AddclientPage {
 	this.getcity(this.state_id);
   }
 	  
-  	postProspect(cif: string, business_name: string, trade_name: string, alias: string, address: string, postal_code: string, phone: string, email: string, site_web: any, country_id: any, state_id: any, city_id: any){
+  	postProspect(){
+		let body =  this.myForm.value;
+		console.log(this.myForm);
+
 		this.http.post(constants.apipostclient,
-			{ cif,business_name,trade_name,alias,address,postal_code,phone,email,site_web,country_id,state_id,city_id}, 
+			 body , 
 			{ headers: new HttpHeaders()
 			.set('authorization', 'http://localhost:4200')
 			.append('app', 'BananaApp')
+			.append('user', sessionStorage.getItem('user'))
+			.append('token', sessionStorage.getItem('token'))
 			.append('Access-Control-Allow-Origin', '*')
 	  }).subscribe(data => {
 		  	this.prospect= data['prospect'];
 			console.log(this.prospect);
+			if (this.prospect === 0){
+
+				this.translateService.get('Alerta6').subscribe(
+					value => {
+						let message = value['MensajeAlerta'];
+							const toast = this.toastCtrl.create({
+							message: message,
+							duration: 3000
+							});
+					toast.present();
+				});
+			} else if (this.prospect != 0){
+				this.translateService.get('Alerta7').subscribe(
+					value => {
+						let message = value['MensajeAlerta'];
+							const toast = this.toastCtrl.create({
+							message: message,
+							duration: 3000
+							});
+					toast.present();
+				});
+			}
 		}, error => {
+			console.log(error);
 	  });
 	}
   
@@ -130,6 +161,7 @@ export class AddclientPage {
 
 	close(){
 		this.viewCtrl.dismiss();
+		this.navCtrl.setRoot(ClientsPage);
 	}
 
 }
