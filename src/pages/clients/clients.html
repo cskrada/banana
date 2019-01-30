@@ -63,7 +63,7 @@
 				Cif: {{ c.cif }} <br>
 				{{ 'Dirección' | translate}}: {{ c.address }} <br>
 				<!-- {{ c.city }}, {{ c.state }} <br> -->
-				<span *ngIf=" c.phone != [''] && c.phone != null " >{{ 'Teléfono' | translate}}: {{ c.phone }}&nbsp;| </span>
+				<span *ngIf=" c.phone != [''] && c.phone != null " >{{ 'Teléfono' | translate}}: {{ c.phone }}&nbsp; </span>
 				<span *ngIf=" c.email != [''] && c.email != null "> {{ 'Correo' | translate}}: {{ c.email }}</span>
 			</span>
 		</button>
