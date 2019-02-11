@@ -11,6 +11,9 @@ import { constants } from './../../const/const';
 import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
 import { ResetpasswordPage } from '../resetpassword/resetpassword';
+import { SeeproductPage } from './../seeproduct/seeproduct';
+import { ProductsPage } from './../products/products';
+
 
 @IonicPage()
 @Component({
@@ -157,4 +160,11 @@ constructor(public navCtrl: NavController,
 		this.navCtrl.push(ResetpasswordPage);
 	}
 	
+	products(){
+		this.navCtrl.push(ProductsPage);
+	}
+	
+	products1(){
+		this.navCtrl.push(SeeproductPage);
+	}
 }
