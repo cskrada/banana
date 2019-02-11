@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
@@ -30,6 +31,8 @@ import { SettingsPage } from '../pages/settings/settings';
 import { ProfilePage } from '../pages/profile/profile';
 import { OrdersPage } from './../pages/orders/orders';
 import { ProductPage } from './../pages/product/product';
+import { ProductsPage } from './../pages/products/products';
+import { SeeproductPage } from './../pages/seeproduct/seeproduct';
 
 import { ChartsModule } from 'ng2-charts';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -65,11 +68,14 @@ export function setTranslateLoader( http: HttpClient) {
     ProfilePage,
     OrdersPage,
     ProductPage,
+    ProductsPage,
+    SeeproductPage,
     SearchPipe,
     SortPipe,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
@@ -101,7 +107,9 @@ export function setTranslateLoader( http: HttpClient) {
     SettingsPage,
     ProfilePage,
     OrdersPage,
-    ProductPage
+    ProductPage,
+    ProductsPage,
+    SeeproductPage
   ],
   providers: [
     InAppBrowser,
