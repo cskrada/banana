@@ -1,18 +1,70 @@
-<!--
-  Generated template for the SeeproductPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>seeproduct</ion-title>
-  </ion-navbar>
-
-</ion-header>
+    <ion-navbar color="bananap">
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-grid no-padding>
+        <ion-row no-padding>
+          <ion-col col-1 no-padding>
+            <table>
+              <tr>
+                <td>
+                  <ion-buttons start>
+                    <button ion-button icon-only>
+                      <ion-icon name="apps"></ion-icon>
+                    </button>
+                  </ion-buttons>
+                </td>
+                <td>
+                  <ion-title text-left>{{'Nombre de producto' | translate}}</ion-title>
+                </td>
+              </tr>
+            </table>
+          </ion-col>
+          <ion-col col-11 no-padding>
+            
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+    </ion-navbar>
+  </ion-header>
 
 
 <ion-content padding>
+    <ion-card>
 
+        <img src="assets/imgs/calabaza.jpg"/>
+    
+        <ion-card-content>
+          <ion-card-title>
+            Nombre de producto
+          </ion-card-title>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+        </ion-card-content>
+    
+        <ion-item>
+          <ion-icon name='cash' item-start style="color: #525252"></ion-icon>
+          Precio
+          <ion-badge item-end>9</ion-badge>
+        </ion-item>
+    
+        <ion-item>
+          <ion-icon name='clipboard' item-start style="color: #525252"></ion-icon>
+          Stock
+          <ion-badge item-end>2600</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Categoria</ion-label>
+          <ion-select [(ngModel)]="notifications" interface="action-sheet">
+            <ion-option value="enable">Limpieza</ion-option>
+            <ion-option value="mute">Oficina</ion-option>
+            <ion-option value="mute_week">Carros</ion-option>
+            <ion-option value="mute_year" (ionSelect)="notificationSelect($event)">Belleza</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-card>
+
+    
 </ion-content>

@@ -15,4 +15,8 @@ export class SeeproductPage {
     console.log('ionViewDidLoad SeeproductPage');
   }
 
+  notificationSelect() {
+    console.log('STP selected');
+  }
+
 }
