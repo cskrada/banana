@@ -3,4 +3,24 @@ page-products {
         border-radius: 50%;
         color: #525252; 
     }
+
+    .card{
+        height: 100%;
+    }
+
+    .imagen{
+        background: #cccccc;
+        display: block;
+        padding: 03px;
+        height: 100px;
+    }
+
+    .title{
+        font-size: 1.8;
+    }
+
+    .detail{
+        font-size: 1.4;
+        color: #525252;
+    }
 }

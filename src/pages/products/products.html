@@ -46,9 +46,26 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <!-- tomar en cuenta las tarjetas con imagenes y que tenga el mismo tamano cada una.
-      card-header
-     -->
-    </ion-row>
+			<ion-col col-4 *ngFor="let p of products">
+				<ion-card>
+					<div>
+						<img class="imagen" src="assets/imgs/{{p.img}}"/>
+					</div>
+					<ion-card-content>
+						<ion-card-title class="title">
+								{{p.title}}
+								</ion-card-title>
+							<p class="detail">
+								{{p.detail}}
+							</p>
+						</ion-card-content>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<hr>
+			</ion-col>
+		</ion-row>
   </ion-grid>
 </ion-content>
