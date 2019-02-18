@@ -47,24 +47,42 @@
         <ion-item>
           <ion-icon name='cash' item-start style="color: #525252"></ion-icon>
           Precio
-          <ion-badge item-end>9</ion-badge>
+          <ion-badge  color="light" item-end>9</ion-badge>
         </ion-item>
     
         <ion-item>
           <ion-icon name='clipboard' item-start style="color: #525252"></ion-icon>
           Stock
-          <ion-badge item-end>2600</ion-badge>
+          <ion-badge color="light" item-end>2600</ion-badge>
         </ion-item>
+      
         <ion-item>
-          <ion-label>Categoria</ion-label>
-          <ion-select [(ngModel)]="notifications" interface="action-sheet">
-            <ion-option value="enable">Limpieza</ion-option>
-            <ion-option value="mute">Oficina</ion-option>
-            <ion-option value="mute_week">Carros</ion-option>
-            <ion-option value="mute_year" (ionSelect)="notificationSelect($event)">Belleza</ion-option>
-          </ion-select>
+          <ion-icon name="leaf" item-start></ion-icon>
+            Categoria
+          <ion-note item-end class="note">Oficina</ion-note>
         </ion-item>
       </ion-card>
 
-    
+      <ion-card>
+        <ion-card-content>  
+          <ion-card-title>
+            Codigo
+          </ion-card-title>
+        </ion-card-content>
+        <ion-item>
+          Codigo SKU
+          <ion-badge color="light" item-end>118489</ion-badge>
+        </ion-item>
+
+        <ion-item>
+          Codigo de Barra
+          <ion-badge color="light" item-end></ion-badge>
+        </ion-item>
+        
+        <ion-item>
+          Codigo de EAN13
+          <ion-badge color="light" item-end>984489</ion-badge>
+        </ion-item>
+      </ion-card>
+      
 </ion-content>
