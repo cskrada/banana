@@ -80,6 +80,23 @@
 		</ion-row>
 		<ion-row>
 			<ion-col>
+				<hr>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngFor="let p of products">
+			<ion-col col-12>
+				<ion-list>
+					<ion-item>
+						<ion-thumbnail item-start>
+							<img src="assets/imgs/{{p.img}}">
+						</ion-thumbnail>
+						<h2>{{p.title}}</h2>
+						<p>{{p.detail}}</p>
+						<div class="list">
+						<ion-icon name="clipboard"></ion-icon>7885•
+						<ion-icon name="logo-usd"></ion-icon>152</div>
+					</ion-item>
+				</ion-list>
 			</ion-col>
 		</ion-row>
   </ion-grid>
