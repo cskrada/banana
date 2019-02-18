@@ -23,7 +23,7 @@ export class ProductsPage {
       {
         id : '2',
         img : 'icon.png',
-        title : 'Ccama',
+        title : 'Cama',
         detail : 'Lorem ipsum dolor sit amet consectetur'
       },
       {
@@ -35,7 +35,7 @@ export class ProductsPage {
       {
         id : '4',
         img : 'icon.png',
-        title : 'Cuchuillos de plastico',
+        title : 'Cuchillos de plastico',
         detail : 'Lorem ipsum dolor sit amet consectetur'
       },
       {
