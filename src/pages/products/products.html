@@ -21,13 +21,6 @@
 						</tr>
 					</table>
 				</ion-col>
-				<ion-col col-11 no-padding>
-					<ion-buttons end text-end>
-						<button ion-button icon-only>
-						<ion-icon name="add-circle"></ion-icon>
-					</button>
-					</ion-buttons>
-				</ion-col>
 			</ion-row>
 		</ion-grid> 
 	</ion-navbar>
@@ -36,68 +29,71 @@
 <ion-content no-padding>
   <ion-grid>
     <ion-row justify-content-center no-margin no-padding>
-      <ion-col col-12>
+      <ion-col col-11>
         <ion-searchbar no-padding placeholder="{{'Buscar'|translate}}"></ion-searchbar>
-      </ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col col-12 text-end align-self-end>
-        <button ion-button color="light">
-          <ion-icon name="list"></ion-icon>
-        </button>
-				<button ion-button color="light">
-					<ion-icon name="grid"></ion-icon>
-				</button>
-				<button ion-button color="light">
-					<ion-icon name="filing"></ion-icon>
-				</button>
 			</ion-col>
-		</ion-row>
-    <ion-row>
-			<ion-col col-xs-6 col-sm-4 col-md-3 col-lg-2 *ngFor="let p of products">
-				<ion-card>
-					<div>
-						<img class="imagen" src="assets/imgs/{{p.img}}"/>
-					</div>
-					<ion-card-content class="card">
-						<ion-card-title class="title">
-								{{p.title}}
-								</ion-card-title>
-							<p class="detail">
-								{{p.detail}}
-							</p>
-							<ion-row>
-								<ion-col col-6 text-start>
-									<ion-icon icon-start name="clipboard"> <div class="fuente"> 7885</div></ion-icon>
-								</ion-col>
-								<ion-col col-6 text-end>
-									<ion-icon icon-end name="logo-usd"> <div class="fuente">152</div> </ion-icon>
-								</ion-col>
-							</ion-row>
-						</ion-card-content>
-				</ion-card>
+			<ion-col col-1 text-center align-self-center>
+				<ion-icon name="pricetags"></ion-icon>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				<hr>
+				<div padding-top>
+					<ion-segment [(ngModel)]="view" color="bananaf">
+						<ion-segment-button value="list">
+							<ion-icon name="list"></ion-icon>
+						</ion-segment-button>
+						<ion-segment-button value="grid">
+							<ion-icon name="grid"></ion-icon>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+				<div [ngSwitch]="view">
+					<ion-row *ngSwitchCase="'grid'">
+						<ion-col col-xs-6 col-sm-4 col-md-3 col-lg-2 *ngFor="let p of products">
+							<ion-card>
+								<div>
+									<img class="imagen" src="assets/imgs/{{p.img}}"/>
+								</div>
+								<ion-card-content class="card">
+									<ion-card-title class="title">
+											{{p.title}}
+											</ion-card-title>
+										<p class="detail">
+											{{p.detail}}
+										</p>
+										<ion-row>
+											<ion-col col-6 text-start>
+												<ion-icon icon-start name="clipboard"> <div class="fuente"> 7885</div></ion-icon>
+											</ion-col>
+											<ion-col col-6 text-end>
+												<ion-icon icon-end name="logo-usd"> <div class="fuente">152</div> </ion-icon>
+											</ion-col>
+										</ion-row>
+									</ion-card-content>
+							</ion-card>
+						</ion-col>
+					</ion-row>
+					<ion-list *ngSwitchCase="'list'">
+						<ion-row *ngFor="let p of products">
+							<ion-col col-12>
+									<ion-list>
+										<ion-item>
+											<ion-thumbnail item-start>
+												<img src="assets/imgs/{{p.img}}">
+											</ion-thumbnail>
+											<h2>{{p.title}}</h2>
+											<p>{{p.detail}}</p>
+											<div class="list">
+											<ion-icon name="clipboard"></ion-icon>7885•
+											<ion-icon name="logo-usd"></ion-icon>152</div>
+										</ion-item>
+									</ion-list>
+							</ion-col>
+						</ion-row>
+					</ion-list>
+				</div>
 			</ion-col>
-		</ion-row>
-		<ion-row *ngFor="let p of products">
-			<ion-col col-12>
-				<ion-list>
-					<ion-item>
-						<ion-thumbnail item-start>
-							<img src="assets/imgs/{{p.img}}">
-						</ion-thumbnail>
-						<h2>{{p.title}}</h2>
-						<p>{{p.detail}}</p>
-						<div class="list">
-						<ion-icon name="clipboard"></ion-icon>7885•
-						<ion-icon name="logo-usd"></ion-icon>152</div>
-					</ion-item>
-				</ion-list>
-			</ion-col>
-		</ion-row>
+		</ion-row>	
   </ion-grid>
 </ion-content>

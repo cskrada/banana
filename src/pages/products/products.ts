@@ -7,6 +7,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'products.html',
 })
 export class ProductsPage {
+  view: string = "list";
+  isAndroid: boolean = false;
   public products : any[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
    this.items();
