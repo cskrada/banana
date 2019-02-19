@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, List} from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,6 +50,7 @@ import { SearchPipe } from '../pipes/search/search';
 import { SortPipe } from '../pipes/sort/sort';
 
 //Components
+// import { ComponentsModule } from './../components/components.module';
 import { ListComponent } from './../components/list/list';
 import { GridComponent } from './../components/grid/grid';
 
