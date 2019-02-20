@@ -10,6 +10,7 @@ export class ProductsPage {
   view: string = "list";
   isAndroid: boolean = false;
   public products : any[] = [];
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
    this.items();
 
