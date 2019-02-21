@@ -8,7 +8,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SeeproductPage {
 
+  product: any[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    
+    this.product = this.navParams.data;
+    console.log(this.product);
   }
 
   ionViewDidLoad() {
