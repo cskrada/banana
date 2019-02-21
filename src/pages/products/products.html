@@ -21,6 +21,13 @@
 						</tr>
 					</table>
 				</ion-col>
+				<ion-col col-11 no-padding>
+						<ion-buttons end text-end>
+							<button ion-button icon-only>
+								<ion-icon name="add-circle"></ion-icon>
+							</button>
+						</ion-buttons>
+					</ion-col>
 			</ion-row>
 		</ion-grid> 
 	</ion-navbar>
@@ -50,17 +57,17 @@
 				</div>
 				<div [ngSwitch]="view">
 					<ion-row *ngSwitchCase="'grid'">
-						<ion-col col-xs-6 col-sm-4 col-md-3 col-lg-2 *ngFor="let p of products">
-							<ion-card>
+						<ion-col col-xs-6 col-sm-4 col-md-3 col-lg-2 *ngFor="let p of productos">
+							<ion-card  (click)="seeProduct(p)">
 								<div>
-									<img class="imagen" src="assets/imgs/{{p.img}}"/>
+									<img class="imagen" src="assets/imgs/products.jpeg"/>
 								</div>
 								<ion-card-content class="card">
 									<ion-card-title class="title">
-											{{p.title}}
+											{{p.name}}
 											</ion-card-title>
 										<p class="detail">
-											{{p.detail}}
+											{{p.description}}
 										</p>
 										<ion-row>
 											<ion-col col-6 text-start>
@@ -75,15 +82,15 @@
 						</ion-col>
 					</ion-row>
 					<ion-list *ngSwitchCase="'list'">
-						<ion-row *ngFor="let p of products">
+						<ion-row *ngFor="let p of productos">
 							<ion-col col-12>
-									<ion-list>
+									<ion-list (click)="seeProduct(p)">
 										<ion-item>
 											<ion-thumbnail item-start>
-												<img src="assets/imgs/{{p.img}}">
+												<img src="assets/imgs/products.jpeg">
 											</ion-thumbnail>
-											<h2>{{p.title}}</h2>
-											<p>{{p.detail}}</p>
+											<h2>{{p.name}}</h2>
+											<p>{{p.description}}</p>
 											<div class="list">
 											<ion-icon name="clipboard"></ion-icon>7885•
 											<ion-icon name="logo-usd"></ion-icon>152</div>
