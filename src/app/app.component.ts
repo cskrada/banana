@@ -6,12 +6,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { constants } from './../const/const';
 
-
 import { HomePage } from '../pages/home/home';
 import { ClientsPage } from '../pages/clients/clients';
 import { LoginPage } from '../pages/login/login';
 import { OrdersPage } from './../pages/orders/orders';
 import { SettingsPage } from './../pages/settings/settings';
+import { ProductsPage } from './../pages/products/products';
+
 
 @Component({
   templateUrl: 'app.html',
@@ -55,6 +56,7 @@ export class MyApp {
       { title: 'Escritorio', component: HomePage, icon: "home"},
       { title: 'Clientes', component: ClientsPage, icon: "people"},
       { title: 'Pedidos', component: OrdersPage, icon: "cart"},
+      { title: 'Productos', component: ProductsPage, icon: "apps"},
       { title: 'Ajustes', component: SettingsPage, icon: "build"}
     ];
   }//------------------------------------fin de constructor-----------------------------------
