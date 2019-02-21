@@ -149,7 +149,6 @@ export class AddclientPage {
 				params: {state_id: id}
 			}).subscribe ( data=> {
 				this.cities= data['cities'];
-				// console.log('get cities ', this.cities[0].id);
 			}, error => {
 				console.log(error);
 		});
