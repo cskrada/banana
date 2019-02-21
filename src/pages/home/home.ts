@@ -6,6 +6,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { ClientsPage } from '../clients/clients';
 import { SettingsPage } from '../settings/settings';
 import { OrdersPage } from './../orders/orders';
+import { ProductsPage } from './../products/products';
+
 
 @Component({
   selector: 'page-home',
@@ -91,5 +93,9 @@ export class HomePage {
 
 	orders(){
 		this.navCtrl.setRoot(OrdersPage, {}, {animate: true, direction: 'forward'});
+	}
+
+	products(){
+		this.navCtrl.setRoot(ProductsPage, {}, {animate: true, direction: 'forward'});
 	}
 }
