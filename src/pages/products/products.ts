@@ -80,4 +80,8 @@ export class ProductsPage {
     this.navCtrl.push(SeeproductPage, p);
   }  
 
+  addProduct(){
+    
+  }
+
 }
