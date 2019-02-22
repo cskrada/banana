@@ -33,6 +33,8 @@ import { OrdersPage } from './../pages/orders/orders';
 import { ProductPage } from './../pages/product/product';
 import { ProductsPage } from './../pages/products/products';
 import { SeeproductPage } from './../pages/seeproduct/seeproduct';
+import { AddproductPage } from './../pages/addproduct/addproduct';
+
 
 import { ChartsModule } from 'ng2-charts';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -75,6 +77,7 @@ export function setTranslateLoader( http: HttpClient) {
     ProductPage,
     ProductsPage,
     SeeproductPage,
+    AddproductPage,
     SearchPipe,
     SortPipe,
     ListComponent,
@@ -116,7 +119,8 @@ export function setTranslateLoader( http: HttpClient) {
     OrdersPage,
     ProductPage,
     ProductsPage,
-    SeeproductPage
+    SeeproductPage,
+    AddproductPage
   ],
   providers: [
     InAppBrowser,
