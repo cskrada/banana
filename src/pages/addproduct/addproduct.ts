@@ -1,12 +1,8 @@
+import { ProductsPage } from './../products/products';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-/**
- * Generated class for the AddproductPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,12 +10,36 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'addproduct.html',
 })
 export class AddproductPage {
+  myForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams, 
+              public viewCtrl: ViewController, 
+              public formBuilder:FormBuilder) {
+
+
+  this.myForm = this.formBuilder.group({
+    name: ['', Validators.required],
+    description: ['', Validators.required],
+
+  })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddproductPage');
+  }
+
+  close(){
+		this.viewCtrl.dismiss();
+		this.navCtrl.setRoot(ProductsPage);
+  }
+  
+  postProduct(){
+    // let body =  this.myForm.value;
+    console.log(this.myForm);
+    
+
+
   }
 
 }
