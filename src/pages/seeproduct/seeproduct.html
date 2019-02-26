@@ -16,7 +16,7 @@
                   </ion-buttons>
                 </td>
                 <td>
-                  <ion-title text-left>{{'Nombre de producto' | translate}}</ion-title>
+                  <ion-title text-left>{{ product.name }}</ion-title>
                 </td>
               </tr>
             </table>
@@ -43,44 +43,6 @@
             {{ product.description }}
           </p>
         </ion-card-content>
-    
-        <ion-item>
-          <ion-icon name='cash' item-start style="color: #525252"></ion-icon>
-          Precio
-          <ion-badge  color="light" item-end>85</ion-badge>
-        </ion-item>
-        <ion-row>
-            <ion-col col-3 text-center align-items-center>
-              <ion-card color="bananas">
-                <ion-card-header>
-                  precio
-                </ion-card-header>
-                <ion-card-content>
-                  196$
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-            <ion-col col-3 text-center align-items-center>
-                <ion-card color="bananas">
-                  <ion-card-header>
-                    precio
-                  </ion-card-header>
-                  <ion-card-content>
-                    196$
-                  </ion-card-content>
-                </ion-card>
-              </ion-col>
-              <ion-col col-3 text-center align-items-center>
-                  <ion-card color="bananas">
-                    <ion-card-header>
-                      precio
-                    </ion-card-header>
-                    <ion-card-content>
-                      196$
-                    </ion-card-content>
-                  </ion-card>
-                </ion-col>
-          </ion-row>
           <ion-row>
             <ion-col>
               <hr>
@@ -93,33 +55,58 @@
           <ion-badge color="light" item-end>2600</ion-badge>
         </ion-item>
       
-        <ion-item>
-          <ion-icon name="leaf" item-start></ion-icon>
-            Categoria
-          <ion-note item-end class="note">Oficina</ion-note>
-        </ion-item>
+          <ion-item  *ngIf="this.id_cat != null">
+            <ion-icon name="medical" item-start></ion-icon>
+              Categoria
+            <ion-note item-end class="note">{{ this.category }}</ion-note>
+          </ion-item>
+      
+
       </ion-card>
 
-      <ion-card>
+      <ion-card *ngFor="let pd of productDetails">
         <ion-card-content>  
-          <ion-card-title>
-            Codigo
+          <ion-card-title no-padding>
+            {{pd.name}}
           </ion-card-title>
         </ion-card-content>
+
         <ion-item>
           Codigo SKU
-          <ion-badge color="light" item-end>118489</ion-badge>
+          <ion-badge color="light" item-end>{{ pd.id }}</ion-badge>
         </ion-item>
 
         <ion-item>
           Codigo UPC
-          <ion-badge color="light" item-end></ion-badge>
+          <ion-badge color="light" item-end>{{ pd.upc }}</ion-badge>
         </ion-item>
         
         <ion-item>
-          Codigo de EAN13
-          <ion-badge color="light" item-end>984489</ion-badge>
+          Codigo EAN13
+          <ion-badge color="light" item-end>{{ pd.ean13 }}</ion-badge>
         </ion-item>
-      </ion-card>
-      
+
+        <ion-row no-padding>
+          <ion-col col-6 text-center align-items-center>
+            <ion-card color="bananas">
+              <ion-card-header no-padding>
+                precio costo
+              </ion-card-header>
+              <ion-card-content>
+                {{ pd.cost }}$
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col col-6 text-center align-items-center>
+            <ion-card color="bananas">
+              <ion-card-header no-padding>
+                precio venta
+              </ion-card-header>
+              <ion-card-content>
+                {{ pd.sale_price }}$
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-card>      
 </ion-content>
