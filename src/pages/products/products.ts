@@ -4,6 +4,7 @@ import { constants } from './../../const/const';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { SeeproductPage } from './../seeproduct/seeproduct';
+import { AddproductPage } from './../addproduct/addproduct';
 
 @IonicPage()
 @Component({
@@ -81,7 +82,7 @@ export class ProductsPage {
   }  
 
   addProduct(){
-    
+    this.navCtrl.push(AddproductPage);
   }
 
 }
