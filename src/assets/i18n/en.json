@@ -124,5 +124,23 @@
 
     "Agregar pedido": "Add order",
 
-    "crear prospecto": "create prospect"
+    "crear prospecto": "create prospect",
+
+    "Stock": "Stock",
+
+    "Categoría": "Category",
+
+    "Código SKU": "Code SKU",
+
+    "Código UPC": "Code UPC",
+
+    "Código EAN13": "Code EAN13",
+
+    "precio costo": "price cost",
+
+    "precio venta": "sale price",
+
+    "Productos": "Products",
+
+    "Producto nuevo": "New product"
 }
