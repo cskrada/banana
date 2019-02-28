@@ -59,9 +59,9 @@
 					<ion-row *ngSwitchCase="'grid'">
 						<ion-col col-xs-6 col-sm-4 col-md-3 col-lg-2 *ngFor="let p of productos">
 							<ion-card  (click)="seeProduct(p)">
-								<div>
+								<!-- <div>
 									<img class="imagen" src="assets/imgs/products.jpeg"/>
-								</div>
+								</div> -->
 								<ion-card-content class="card">
 									<ion-card-title class="title">
 											{{p.name}}
@@ -86,9 +86,9 @@
 							<ion-col col-12>
 									<ion-list (click)="seeProduct(p)">
 										<ion-item>
-											<ion-thumbnail item-start>
+											<!-- <ion-thumbnail item-start>
 												<img src="assets/imgs/products.jpeg">
-											</ion-thumbnail>
+											</ion-thumbnail> -->
 											<h2>{{p.name}}</h2>
 											<p>{{p.description}}</p>
 											<div class="list">
