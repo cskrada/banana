@@ -55,9 +55,9 @@
 		<!-- 	<ion-avatar item-left>
 				<img src="{{c.flag}}">
 			</ion-avatar> -->
-			<span><b>{{ 'Razón Social' | translate}} : {{c.business_name}}</b> <br></span>
+			<span><b>{{ 'Razón Social' | translate}} : {{c.business_name}}</b></span>
 			
-			<!-- <span *ngIf="c.business_name != c.alias">({{ c.alias }})</span> -->
+			<span *ngIf="c.business_name != c.alias && c.alias != null"> ({{ c.alias }})</span><br>
 			<span>
 				<span  *ngIf="c.tradename != null && c.business_name != c.tradename">{{ 'Nombre Comercial' | translate}}: {{ c.tradename }}<br> </span>
 				Cif: {{ c.cif }} <br>
