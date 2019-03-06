@@ -16,7 +16,7 @@
                   </ion-buttons>
                 </td>
                 <td>
-                  <ion-title text-nowrap>{{ product.name }}</ion-title>
+                  <ion-title>{{ product.name }}</ion-title>
                 </td>
               </tr>
             </table>
@@ -49,18 +49,22 @@
             </ion-col>
           </ion-row>
 
-        <ion-item>
+        <!-- <ion-item>
           <ion-icon name='clipboard' item-start style="color: #525252"></ion-icon>
           {{'Stock' | translate}}
           <ion-badge color="light" item-end>2600</ion-badge>
-        </ion-item>
-      
+        </ion-item> -->
+          <ion-item  *ngIf="product.reference != null">
+            <ion-icon name="pricetag" item-start></ion-icon>
+              {{'Referencia' | translate}}
+            <ion-note item-end class="note">{{ product.reference }}</ion-note>
+          </ion-item>
+
           <ion-item  *ngIf="this.id_cat != null">
             <ion-icon name="medical" item-start></ion-icon>
-              {{'Categoria' | translate}}
+              {{'Categoría' | translate}}
             <ion-note item-end class="note">{{ this.category }}</ion-note>
           </ion-item>
-      
 
       </ion-card>
 
@@ -71,17 +75,17 @@
           </ion-card-title>
         </ion-card-content>
 
-        <ion-item>
+        <ion-item *ngIf="pd.sku != null">
           {{'Código SKU' | translate }}
-          <ion-badge color="light" item-end>{{ pd.id }}</ion-badge>
+          <ion-badge color="light" item-end>{{ pd.sku }}</ion-badge>
         </ion-item>
 
-        <ion-item>
+        <ion-item *ngIf="pd.upc != null">
           {{'Código UPC' | translate}}
           <ion-badge color="light" item-end>{{ pd.upc }}</ion-badge>
         </ion-item>
         
-        <ion-item>
+        <ion-item *ngIf="pd.ean13 != null">
           {{'Código EAN13' | translate}}
           <ion-badge color="light" item-end>{{ pd.ean13 }}</ion-badge>
         </ion-item>
