@@ -16,7 +16,7 @@ import { InputTextModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
 import { DialogModule } from 'primeng/primeng';
 
-import {Select2Component} from 'angular-select2-component';
+// import {Select2Component} from 'angular-select2-component';
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
@@ -83,8 +83,7 @@ export function setTranslateLoader( http: HttpClient) {
     SearchPipe,
     SortPipe,
     ListComponent,
-    GridComponent,
-    Select2Component
+    GridComponent
   ],
   imports: [
     BrowserModule,

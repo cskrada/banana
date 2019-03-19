@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+// import { Select2Component } from 'angular-select2-component';
+import { Component, NgModule } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController, LoadingController, AlertController, ToastController} from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -6,6 +7,11 @@ import { constants } from './../../const/const';
 import { TranslateService } from '@ngx-translate/core';
 import { ClientsPage } from '../clients/clients';
 
+@NgModule({
+	// ...
+	// declare components
+	// declarations: [Select2Component]
+  })
 @IonicPage()
 @Component({
   selector: 'page-addclient',

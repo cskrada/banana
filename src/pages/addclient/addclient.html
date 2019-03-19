@@ -97,11 +97,15 @@
 			</ion-row>
 			<ion-row>
 				<ion-col>
+					
 					<ion-item no-padding>
 						<ion-label>{{'País'|translate}}</ion-label>
 							<ion-select [(ngModel)]="country_id" (ionChange)="getstate(country_id)" interface="popover" formControlName="country_id">
 								<ion-option *ngFor="let country of countries" value="{{ country.id }}" [selected]="country == country.text" > {{ country.text }} </ion-option>
 							</ion-select>
+						<!-- <select2 [options]="countries" [(ngModel)]="country_id">
+								<ion-option *ngFor="let country of countries" value="{{ country.id }}" [selected]="country == country.text" > {{ country.text }} </ion-option>
+						</select2> -->
 					</ion-item>
 				</ion-col>
 			</ion-row>
