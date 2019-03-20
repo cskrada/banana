@@ -9,6 +9,7 @@ export const constants = {
 
     apiproducts: 'http://18.223.231.86/laravel-banana/public/api/products',
     apiseeproduct: 'http://18.223.231.86/laravel-banana/public/api/product/',
+    resources: 'http://18.223.231.86/laravel-banana/public/api/products/resources',
     // apipostproduct: 'http://18.223.231.86/laravel-banana/public/api/products/create'
 
     // apilogin: 'http://192.168.1.3:8000/api/login',

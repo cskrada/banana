@@ -157,8 +157,8 @@
         <ion-col>
           <ion-item>
             <ion-label>{{'Fabricante'| translate}}</ion-label>
-            <ion-select >
-              <ion-option value="nes">NES</ion-option>
+            <ion-select interface="popover">
+              <ion-option *ngFor="let m of manufacturers" value="{{ m.id }}" > {{ m.text }} </ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -167,8 +167,8 @@
         <ion-col>
           <ion-item>
             <ion-label>{{'Categoría'| translate}}</ion-label>
-            <ion-select >
-              <ion-option value="nes">NES</ion-option>
+            <ion-select interface="popover">
+              <ion-option *ngFor="let c of categories" value="{{ c.id }}" > {{ c.text }} </ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -177,8 +177,8 @@
         <ion-col>
           <ion-item>
             <ion-label>{{'Unidad'| translate}}</ion-label>
-            <ion-select >
-              <ion-option value="nes">NES</ion-option>
+            <ion-select interface="popover">
+              <ion-option *ngFor="let u of units" value="{{ u.id }}" > {{ u.text }} </ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -187,8 +187,8 @@
         <ion-col>
           <ion-item>
             <ion-label>{{'Impuesto'| translate}}</ion-label>
-            <ion-select >
-              <ion-option value="nes">NES</ion-option>
+            <ion-select interface="popover">
+              <ion-option *ngFor="let t of taxes" value="{{ t.id }}" > {{ t.text }} </ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
