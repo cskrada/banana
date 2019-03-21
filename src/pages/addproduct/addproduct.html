@@ -13,7 +13,7 @@
 								</ion-buttons>
 							</td>
 							<td>
-								<ion-title text-left>{{'Producto nuevo'| translate}}</ion-title>
+								<ion-title text-left>{{'Elige '| translate}}</ion-title>
 							</td>
 						</tr>
 					</table>
@@ -24,239 +24,28 @@
 			</ion-row>
 		</ion-grid>
 	</ion-navbar>
-	<ion-navbar class="sizenavbar">
-		<ion-grid no-padding>
-			<ion-row>
-				<ion-col col-6>
-				<ion-buttons start>
-						<button ion-button icon-only (click)="close()">
-							<ion-icon name="close" color="dark"></ion-icon>
-						</button>
-					</ion-buttons>
-				</ion-col>
-				<ion-col col-6>
-					<!-- <ion-buttons end>
-						<button ion-button icon-only >
-							<ion-icon name="ios-create" color="dark"></ion-icon>
-						</button>
-					</ion-buttons> -->
-				</ion-col>
-			</ion-row>
-		</ion-grid>
-	</ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  <!-- <form [formGroup]="myForm" (ngSubmit)="postProduct()"> 
-    <ion-grid no-padding>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-              
-            <ion-input formControlName="name" type="text" placeholder="{{'Nombre'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input formControlName="description" type="text" placeholder="{{'Descripción'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input formControlName="type" type="text" placeholder="{{'Nombre Comercial'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-              
-            <ion-input formControlName="dasdasdasdasdasd" type="text" placeholder="{{'Alias'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-              
-            <ion-input formControlName="address" type="text" placeholder="{{'Dirección'|translate}} 1"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input formControlName="postal_code" type="text" placeholder="{{'Código Postal'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      
-      <ion-row padding-top>
-        <ion-col col-12 text-center>
-          <button ion-button icon-left full color="bananap" type="submit" [disabled]="!myForm.valid">
-            <ion-icon name="briefcase"></ion-icon>
-            {{'crear prospecto'|translate}}
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form> -->
-
-          <button ion-button color="primary" (click)="simpleProduct()" >
-            {{ 'Producto simple' | translate }}
-          </button>
-  
-   
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col>
+        <button ion-button color="primary" (click)="simpleProduct()" >
+          {{ 'Producto simple' | translate }}
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-col>
         <button ion-button color="secondary" (click)="combinationProduct()">
           {{ 'Producto con combinaciones' | translate }}
         </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   
 
-
-
-  <form>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'Nombre'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'Referencia'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'Descripción'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'Tipo'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label>{{'Vendible'| translate}}</ion-label>
-            <ion-checkbox color="dark" checked="false"></ion-checkbox>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label>{{'Comprable'| translate}}</ion-label>
-            <ion-checkbox color="dark" checked="false"></ion-checkbox>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label>{{'Fabricante'| translate}}</ion-label>
-            <ion-select interface="popover">
-              <ion-option *ngFor="let m of manufacturers" value="{{ m.id }}" > {{ m.text }} </ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label>{{'Categoría'| translate}}</ion-label>
-            <ion-select interface="popover">
-              <ion-option *ngFor="let c of categories" value="{{ c.id }}" > {{ c.text }} </ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label>{{'Unidad'| translate}}</ion-label>
-            <ion-select interface="popover">
-              <ion-option *ngFor="let u of units" value="{{ u.id }}" > {{ u.text }} </ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label>{{'Impuesto'| translate}}</ion-label>
-            <ion-select interface="popover">
-              <ion-option *ngFor="let t of taxes" value="{{ t.id }}" > {{ t.text }} </ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col> <br> <br> <br>
-          <ion-item>
-            <ion-label>{{'Condición'| translate}}</ion-label>
-            <ion-select interface="popover">
-              <ion-option *ngFor="let c of conditions" value="{{ c.id }}" > {{ c.text }} </ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'Referencia del detalle'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'Precio'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'Costo'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'SKU'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'EAN13'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'UPC'|translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+   
 </ion-content>
