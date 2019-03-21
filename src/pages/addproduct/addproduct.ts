@@ -4,6 +4,8 @@ import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angula
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { constants } from './../../const/const';
+import { SimpleproductPage } from './../simpleproduct/simpleproduct';
+import { CombinationproductPage } from './../combinationproduct/combinationproduct';
 
 
 @IonicPage()
@@ -68,7 +70,7 @@ export class AddproductPage {
       this.taxes = data['taxes'];
       this.units = data['units'];
       this.conditions = data['conditions'];
-      console.log('condiciones', this.conditions);
+      // console.log('condiciones', this.conditions);
       // console.log('data resources: ', this.resources );
       // console.log('data manufacturers: ', this.manufacturers );
       // console.log('data categories: ', this.categories );
@@ -77,6 +79,14 @@ export class AddproductPage {
     }, error => {
       console.log(error);
   });
+  }
+
+  simpleProduct(){
+    this.navCtrl.push(SimpleproductPage);
+  }
+
+  combinationProduct(){
+    this.navCtrl.push(CombinationproductPage);
   }
 
 }
