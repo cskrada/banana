@@ -18,11 +18,12 @@ export class AddproductPage {
   public categories : any []=[];
   public taxes : any []=[];
   public units : any []=[];
+  public conditions : any []=[];
   public manufacture : any = 0;
   public category : any = 0;
   public unit : any = 0;
   public tax : any = 0;
-
+  public condition : any = 0;
   constructor(public navCtrl: NavController,
               public navParams: NavParams, 
               public viewCtrl: ViewController, 
@@ -66,6 +67,8 @@ export class AddproductPage {
       this.categories = data['categories'];
       this.taxes = data['taxes'];
       this.units = data['units'];
+      this.conditions = data['conditions'];
+      console.log('condiciones', this.conditions);
       // console.log('data resources: ', this.resources );
       // console.log('data manufacturers: ', this.manufacturers );
       // console.log('data categories: ', this.categories );

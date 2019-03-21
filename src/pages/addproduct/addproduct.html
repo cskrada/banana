@@ -193,6 +193,58 @@
           </ion-item>
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col> <br> <br> <br>
+          <ion-item>
+            <ion-label>{{'Condición'| translate}}</ion-label>
+            <ion-select interface="popover">
+              <ion-option *ngFor="let c of conditions" value="{{ c.id }}" > {{ c.text }} </ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-input type="text" placeholder="{{'Referencia del detalle'|translate}}"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-input type="text" placeholder="{{'Precio'|translate}}"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-input type="text" placeholder="{{'Costo'|translate}}"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-input type="text" placeholder="{{'SKU'|translate}}"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-input type="text" placeholder="{{'EAN13'|translate}}"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-input type="text" placeholder="{{'UPC'|translate}}"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
     </ion-grid>
   </form>
 </ion-content>
