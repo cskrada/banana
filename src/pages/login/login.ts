@@ -68,6 +68,7 @@ constructor(public navCtrl: NavController,
 					{ headers: new HttpHeaders()
 					.set('authorization', 'http://localhost:4200')
 					.append('app', 'BananaApp')
+					.append('organization', '1' )
 					.append('Access-Control-Allow-Origin', '*')
 	  		}).subscribe(data => {
 	  			this.menu.enable(true, 'authenticated');

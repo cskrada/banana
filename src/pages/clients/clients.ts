@@ -53,6 +53,7 @@ export class ClientsPage {
 				{ headers: new HttpHeaders()
 					.set('authorization', 'http://localhost:4200')
 					.append('app', 'BananaApp')
+					.append('organization', '1' )
 					.append('user', sessionStorage.getItem('user'))
 					.append('Access-Control-Allow-Origin', '*')
 					.append('token', sessionStorage.getItem('token'))

@@ -73,6 +73,7 @@ export class AddclientPage {
 			{ headers: new HttpHeaders()
 			.set('authorization', 'http://localhost:4200')
 			.append('app', 'BananaApp')
+			.append('organization', '1' )
 			.append('user', sessionStorage.getItem('user'))
 			.append('token', sessionStorage.getItem('token'))
 			.append('Access-Control-Allow-Origin', '*')
@@ -111,6 +112,7 @@ export class AddclientPage {
 			{ headers: new HttpHeaders()
 				.set('authorization', 'http://localhost:4200')
 				.append('app', 'BananaApp')
+				.append('organization', '1' )
 				.append('user', sessionStorage.getItem('user'))
 				.append('Access-Control-Allow-Origin', '*')
 				.append('token', sessionStorage.getItem('token'))
@@ -129,6 +131,7 @@ export class AddclientPage {
 			{ headers: new HttpHeaders()
 				.set('authorization', 'http://localhost:4200')
 				.append('app', 'BananaApp')
+				.append('organization', '1' )
 				.append('user', sessionStorage.getItem('user'))
 				.append('Access-Control-Allow-Origin', '*')
 				.append('token', sessionStorage.getItem('token')),
@@ -148,6 +151,7 @@ export class AddclientPage {
 			{ headers: new HttpHeaders()
 				.set('authorization', 'http://localhost:4200')
 				.append('app', 'BananaApp')
+				.append('organization', '1' )
 				.append('user', sessionStorage.getItem('user'))
 				.append('Access-Control-Allow-Origin', '*')
 				.append('token', sessionStorage.getItem('token')),
