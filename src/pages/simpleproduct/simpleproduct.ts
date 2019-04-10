@@ -11,36 +11,36 @@ import { constants } from './../../const/const';
 })
 export class SimpleproductPage {
   myForm: FormGroup;
+
   public resources : any []=[];
   public manufacturers : any []=[];
   public categories : any []=[];
   public taxes : any []=[];
   public units : any []=[];
   public conditions : any []=[];
-  public products : any []=[];
+  public product : any []=[];
   public manufacture : any = 0;
   public category : any = 0;
   public unit : any = 0;
   public tax : any = 0;
   public condition : any = 0;
-  is_salable : any = false;
-  is_purchasable : any = false;
-  manufacture_id: any = 0;
-  category_id: any = 0;
-  unit_id: any = 0;
-  tax_id: any = 0;
-  condition_id: any = 0;
-  // 
+  public is_salable : boolean=false;
+  public is_purchasable : boolean=false;
+  public manufacture_id: any = null;
+  public category_id: any = null;
+  public unit_id: any = null;
+  public tax_id: any = null;
+  public condition_id: any = null;
+  public price_list_id: any = null;
   public product_details : any []=[];
-  public sale_price : any = 0;
-  public cost : any = 0;
+
+
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public formBuilder: FormBuilder,
               public http: HttpClient) {
- 
- 
+
     this.myForm = this.formBuilder.group({
     name: ['', Validators.required],
     reference: ['', Validators.required],
@@ -52,9 +52,10 @@ export class SimpleproductPage {
     category_id: [''],
     unit_id: [''],
     tax_id: [''],
-    condition_id: [''],
-    reference_detail: [''],
-    product_details: {
+    is_combination: 0,
+    archived: 0,
+    organizations: [[1]], 
+    product_details: this.formBuilder.group({
       reference: [''],
       name: [''],
       sku: [''],
@@ -63,20 +64,16 @@ export class SimpleproductPage {
       cost: [''],
       sale_price: [''],
       image: [''],
-
-      
-
-
-
-    }
-
-  })
+      condition_id: [''],
+      price_list_id: [''],
+      attribute_details: this.formBuilder.array([])
+      })
+  });
+   this.getResource();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SimpleproductPage');
-    this.getResource();
-    // this.postProductDetail();
   }
 
   getResource(){
@@ -95,7 +92,7 @@ export class SimpleproductPage {
       this.taxes = data['taxes'];
       this.units = data['units'];
       this.conditions = data['conditions'];
-      // console.log('condiciones', this.conditions);
+      // console.log('manufacturreers', this.manufacturers);
     }, error => {
       console.log(error);
   });
@@ -103,7 +100,8 @@ export class SimpleproductPage {
 
   postProductDetail(){
     let body =  this.myForm.value;
-    console.log(this.myForm);
+    body.product_details = [body.product_details];
+    console.log(body);
 
     this.http.post(constants.apipostproduct,
       body,
@@ -115,37 +113,14 @@ export class SimpleproductPage {
         .append('Access-Control-Allow-Origin', '*')
         .append('token', sessionStorage.getItem('token'))
       }).subscribe ( data=> {
-        this.products = data['products'];
-        this.product_details = data['products'].products.products_details;
-        console.log(this.products);
+        this.product = data['product'];
+        this.product_details = data['product_details'];
+        console.log(this.product);
         console.log(this.product_details);
-        // this.product_details = data['products']
-        // console.log('productos', this.products);
       }, error => {
         console.log(error);
     });
   }
-// products
-  // "id": 1,
-  // "detail_id": 1,
-  // "reference": null,
-  // "name": null,
-  // "product_name": "",
-  // "description": "DVDR DL 8.5GB240MIN8X PACK 10",
-  // "sku": null,
-  // "ean13": "7896541231590",
-  // "upc": null,
-  // "cost": 689.07,
-  // "sale_price": 689.07,
-  // "condition_id": null,
-  // "image": null,
-  // "price_list_id": null,
-  // "archived": 0,
-  // "created_at": "0000-00-00 00:00:00",
-  // "updated_at": "0000-00-00 00:00:00",
-  // "attribute_details": []
-
-
       //   "id": 0,
   //   "reference": "PRUEBA",
   //   "name": "PRUEBA",

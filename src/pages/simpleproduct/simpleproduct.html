@@ -122,7 +122,7 @@
         <ion-col>
           <ion-item>
             <ion-label>{{'Vendible'| translate}}</ion-label>
-            <ion-checkbox formControlName="is_salable" color="dark"></ion-checkbox>
+            <ion-checkbox formControlName="is_salable" [(ngModel)]="is_salable" color="dark" checked="false"></ion-checkbox>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -130,7 +130,7 @@
         <ion-col>
           <ion-item>
             <ion-label>{{'Comprable'| translate}}</ion-label>
-            <ion-checkbox formControlName="is_purchasable" color="dark"></ion-checkbox>
+            <ion-checkbox formControlName="is_purchasable" [(ngModel)]="is_purchasable" color="dark" checked="false"></ion-checkbox>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -174,61 +174,72 @@
           </ion-item>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col> <br> <br> <br>
-          <ion-item>
-            <ion-label>{{'Condición'| translate}}</ion-label>
-            <ion-select [(ngModel)]="condition_id" formControlName="condition_id" interface="popover">
-              <ion-option *ngFor="let c of conditions" value="{{ c.id }}" > {{ c.text }} </ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'Referencia del detalle'| translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'Precio'| translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'Costo'| translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'SKU'| translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'EAN13'| translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="{{'UPC'| translate}}"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row padding-top>
-				<ion-col col-12 text-center>
-					<button ion-button icon-left full color="bananap" type="submit" [disabled]="!myForm.valid">
+      <br><br><br>  
+      <div formGroupName="product_details">
+        <ion-row>
+          <ion-col>
+            <ion-label>Detalle de producto</ion-label>
+            <ion-item>
+              <ion-label>{{'Condición'| translate}}</ion-label>
+              <ion-select [(ngModel)]="condition_id" formControlName="condition_id" interface="popover">
+                <ion-option *ngFor="let c of conditions" value="{{ c.id }}" > {{ c.text }} </ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding>
+              <ion-input formControlName="reference" type="text" placeholder="{{ 'Referencia de detalle'| translate}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding>
+              <ion-input formControlName="name" type="text" placeholder="{{'Nombre'| translate}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding>
+              <ion-input formControlName="sku" type="text" placeholder="{{'SKU'| translate}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding>
+              <ion-input formControlName="ean13" type="text" placeholder="{{'EAN13'| translate}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding>
+              <ion-input formControlName="upc" type="text" placeholder="{{'UPC'| translate}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding>
+              <ion-input formControlName="cost" type="text" placeholder="{{'Costo'| translate}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding>
+              <ion-input formControlName="sale_price" type="text" placeholder="{{'Precio venta'| translate}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </div>
+        <ion-row padding-top>
+          <ion-col col-12 text-center>
+            <button ion-button icon-left full color="bananap" type="submit" [disabled]="!myForm.valid">
 						<ion-icon name="briefcase"></ion-icon>
 						{{'crear producto'|translate}}
 					</button>
