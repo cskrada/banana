@@ -19,7 +19,7 @@ export class SearchproductPipe implements PipeTransform {
 
     terms = terms.toLowerCase();
     return items.filter( it => {
-      return it.name.toLowerCase().includes(terms); // only filter name
+      return it.description.toLowerCase().includes(terms); // only filter name
     });
   }
 }

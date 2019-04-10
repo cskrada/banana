@@ -57,7 +57,7 @@
 				</div>
 				<div [ngSwitch]="view">
 					<ion-row *ngSwitchCase="'grid'">
-						<ion-col col-xs-6 col-sm-4 col-md-3 col-lg-2 *ngFor="let p of productos | search : terms">
+						<ion-col col-xs-6 col-sm-4 col-md-3 col-lg-2 *ngFor="let p of productos | searchproduct : terms">
 							<ion-card  (click)="seeProduct(p)">
 								<div>
 									<img class="imagen" src="assets/imgs/products.jpeg"/>
@@ -82,7 +82,7 @@
 						</ion-col>
 					</ion-row>
 					<ion-list *ngSwitchCase="'list'">
-						<ion-row *ngFor="let p of productos | search : terms">
+						<ion-row *ngFor="let p of productos | searchproduct : terms">
 							<ion-col col-12>
 									<ion-list (click)="seeProduct(p)">
 										<ion-item>
