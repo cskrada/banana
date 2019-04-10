@@ -53,6 +53,7 @@ import { ClientsProvider } from '../providers/data/clients';
 // Pipes
 import { SearchPipe } from '../pipes/search/search';
 import { SortPipe } from '../pipes/sort/sort';
+import { SearchproductPipe } from './../pipes/searchproduct/searchproduct';
 
 //Components
 // import { ComponentsModule } from './../components/components.module';
@@ -85,6 +86,7 @@ export function setTranslateLoader( http: HttpClient) {
     CombinationproductPage,
     SearchPipe,
     SortPipe,
+    SearchproductPipe,
     ListComponent,
     GridComponent
   ],
