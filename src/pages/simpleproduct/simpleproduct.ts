@@ -113,8 +113,8 @@ export class SimpleproductPage {
         .append('Access-Control-Allow-Origin', '*')
         .append('token', sessionStorage.getItem('token'))
       }).subscribe ( data=> {
-        this.product = data['product'];
-        this.product_details = data['product_details'];
+        this.product = data['product_id'];
+        this.product_details = data['product_details_ids'];
         console.log(this.product);
         console.log(this.product_details);
       }, error => {
