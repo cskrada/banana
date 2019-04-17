@@ -102,6 +102,14 @@
         "MensajeAlerta": "Successfully created prospect"
     },
 
+    "Alerta8":{
+        "MensajeAlerta": "product created successfully"
+    },
+
+    "Alerta9":{
+        "MensajeAlerta": "Error in creating product, try again"
+    },
+
     "Perfil de usuario": "User profile",
 
     "Mi perfil": "My profile",
@@ -146,5 +154,50 @@
 
     "Producto nuevo": "New product",
 
-    "Referencia": "Reference"
+    "Referencia": "Reference",
+
+    "Organizaciones": "Organizations",
+
+    "Elige una opción" : "Choose an option",
+
+    "Producto simple": "Simple product",
+
+    "Producto con combinaciones": "Product with combinations",
+
+    "Nombre": "Name",
+
+    "Descripción": "Description",
+
+    "Tipo": "Type",
+
+    "Vendible": "Salable",
+
+    "Comprable": "Purchasable",
+
+    "Fabricante": "Manufacture",
+
+    "Unidad": "Unit",
+
+    "Impuesto": "Tax",
+
+    "Detalle de producto" : "Product detail",
+
+    "Condición": "Condition",
+
+    "Referencia de detalle": "Detail reference",
+    
+    "Nombre de detalle": "Detail name",
+
+    "SKU" : "SKU",
+
+    "EAN13" : "EAN13",
+
+    "UPC": "UPC",
+
+    "Costo": "Cost",
+
+    "Precio venta": "Price sale",
+
+    "crear producto": "create product"
+
 }

@@ -102,6 +102,14 @@
         "MensajeAlerta": "prospecto creado exitosamente"
     },
 
+    "Alerta8":{
+        "MensajeAlerta": "producto creado exitosamente"
+    },
+
+    "Alerta9":{
+        "MensajeAlerta": "Error en crear producto, intente de nuevo"
+    },
+
     "Perfil de usuario": "Perfil de usuario",
 
     "Mi perfil": "Mi perfil",
@@ -146,5 +154,49 @@
 
     "Producto nuevo": "Producto nuevo",
 
-    "Referencia": "Referencia"
+    "Referencia": "Referencia",
+
+    "Organizaciones": "Organizaciones",
+
+    "Elige una opción": "Elige una opción",
+
+    "Producto simple": "Producto simple",
+
+    "Producto con combinaciones": "Producto con combinaciones",
+
+    "Nombre": "Nombre",
+
+    "Descripción": "Descripción",
+
+    "Tipo": "Tipo",
+
+    "Vendible": "Vendible",
+
+    "Comprable": "Comprable",
+
+    "Fabricante": "Fabricante",
+
+    "Unidad": "Unidad",
+
+    "Impuesto": "Impuesto",
+
+    "Detalle de producto": "Detalle de producto",
+
+    "Condición": "Condición",
+
+    "Referencia de detalle": "Referencia de detalle",
+    
+    "Nombre de detalle": "Nombre de detalle",
+
+    "SKU" : "SKU",
+
+    "EAN13" : "EAN13",
+
+    "UPC": "UPC",
+
+    "Costo": "Costo",
+
+    "Precio venta": "Precio venta",
+
+    "crear producto": "crear producto"
 }
