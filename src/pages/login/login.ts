@@ -8,12 +8,12 @@ import { Md5 } from 'ts-md5/dist/md5';
 import { constants } from './../../const/const';
 
 //importacion de paginas
-import { HomePage } from '../home/home';
+// import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
 import { ResetpasswordPage } from '../resetpassword/resetpassword';
 import { SeeproductPage } from './../seeproduct/seeproduct';
 import { ProductsPage } from './../products/products';
-
+import { OrganizationsPage } from './../organizations/organizations';
 
 @IonicPage()
 @Component({
@@ -68,7 +68,6 @@ constructor(public navCtrl: NavController,
 					{ headers: new HttpHeaders()
 					.set('authorization', 'http://localhost:4200')
 					.append('app', 'BananaApp')
-					.append('organization', '1' )
 					.append('Access-Control-Allow-Origin', '*')
 	  		}).subscribe(data => {
 	  			this.menu.enable(true, 'authenticated');
@@ -81,7 +80,8 @@ constructor(public navCtrl: NavController,
 				sessionStorage.setItem('token', data['user'].user[0].remember_token);
 				sessionStorage.setItem('name', data['user'].user[0].contact.name);
 				sessionStorage.setItem('email', data['user'].user[0].email);
-				this.navCtrl.setRoot(HomePage, this.results);
+				// sessionStorage.setItem('organization_id', data['user'].settings.settings.organization_id)
+				this.navCtrl.setRoot(OrganizationsPage, this.results);
 				console.log(this.results);
 
 			}, error => {
