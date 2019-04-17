@@ -9,7 +9,7 @@
 							<td>
 								<ion-buttons start>
 									<button ion-button icon-only>
-										<ion-icon name="apps"></ion-icon>
+										<ion-icon name="clipboard"></ion-icon>
 									</button>
 								</ion-buttons>
 							</td>
@@ -21,6 +21,26 @@
 				</ion-col>
 				<ion-col col-11 no-padding>
 						
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+  </ion-navbar>
+  <ion-navbar class="sizenavbar">
+		<ion-grid no-padding>
+			<ion-row>
+				<ion-col col-6>
+				<ion-buttons start>
+						<button ion-button icon-only (click)="close()">
+							<ion-icon name="close" color="dark"></ion-icon>
+						</button>
+					</ion-buttons>
+				</ion-col>
+				<ion-col col-6>
+					<!-- <ion-buttons end>
+						<button ion-button icon-only >
+							<ion-icon name="ios-create" color="dark"></ion-icon>
+						</button>
+					</ion-buttons> -->
 				</ion-col>
 			</ion-row>
 		</ion-grid>
@@ -178,7 +198,7 @@
       <div formGroupName="product_details">
         <ion-row>
           <ion-col>
-            <ion-label>Detalle de producto</ion-label>
+            <ion-label>{{ 'Detalle de producto' |translate}}</ion-label>
             <ion-item>
               <ion-label>{{'Condición'| translate}}</ion-label>
               <ion-select [(ngModel)]="condition_id" formControlName="condition_id" interface="popover">
@@ -197,7 +217,7 @@
         <ion-row>
           <ion-col>
             <ion-item no-padding>
-              <ion-input formControlName="name" type="text" placeholder="{{'Nombre'| translate}}"></ion-input>
+              <ion-input formControlName="name" type="text" placeholder="{{'Nombre de detalle'| translate}}"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>

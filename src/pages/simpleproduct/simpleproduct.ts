@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, ViewController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { constants } from './../../const/const';
+import { TranslateService } from '@ngx-translate/core';
+import { ProductsPage } from './../products/products';
+
 
 @IonicPage()
 @Component({
@@ -33,14 +36,21 @@ export class SimpleproductPage {
   public condition_id: any = null;
   public price_list_id: any = null;
   public product_details : any []=[];
+  public session_org: any;
 
 
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public formBuilder: FormBuilder,
-              public http: HttpClient) {
+              public http: HttpClient,
+              public translateService: TranslateService,
+              public toastCtrl: ToastController,
+              public viewCtrl: ViewController) {
+    this.getResource();
 
+    this.session_org=sessionStorage.getItem('organization_id')
+    
     this.myForm = this.formBuilder.group({
     name: ['', Validators.required],
     reference: ['', Validators.required],
@@ -54,7 +64,7 @@ export class SimpleproductPage {
     tax_id: [''],
     is_combination: 0,
     archived: 0,
-    organizations: [[1]], 
+    organizations: [[this.session_org]], 
     product_details: this.formBuilder.group({
       reference: [''],
       name: [''],
@@ -69,7 +79,6 @@ export class SimpleproductPage {
       attribute_details: this.formBuilder.array([])
       })
   });
-   this.getResource();
   }
 
   ionViewDidLoad() {
@@ -81,7 +90,7 @@ export class SimpleproductPage {
       { headers: new HttpHeaders()
       .set('authorization', 'http://localhost:4200')
       .append('app', 'BananaApp')
-      .append('organization', '1' )
+      .append('organization', sessionStorage.getItem('organization_id') )
       .append('user', sessionStorage.getItem('user'))
       .append('Access-Control-Allow-Origin', '*')
       .append('token', sessionStorage.getItem('token'))
@@ -108,7 +117,7 @@ export class SimpleproductPage {
       { headers: new HttpHeaders()
         .set('authorization', 'http://localhost:4200')
         .append('app', 'BananaApp')
-        .append('organization', '1' )
+        .append('organization', sessionStorage.getItem('organization_id') )
         .append('user', sessionStorage.getItem('user'))
         .append('Access-Control-Allow-Origin', '*')
         .append('token', sessionStorage.getItem('token'))
@@ -117,10 +126,28 @@ export class SimpleproductPage {
         this.product_details = data['product_details_ids'];
         console.log(this.product);
         console.log(this.product_details);
+
+        if (this.product != [0]){
+          this.translateService.get('Alerta8').subscribe(
+            value => {
+              let message = value['MensajeAlerta'];
+                const toast = this.toastCtrl.create({
+                message: message,
+                duration: 3000
+                });
+            toast.present();
+          });
+        }
       }, error => {
         console.log(error);
+        
     });
   }
+
+  close(){
+		this.viewCtrl.dismiss();
+		this.navCtrl.setRoot(ProductsPage);
+	}
       //   "id": 0,
   //   "reference": "PRUEBA",
   //   "name": "PRUEBA",
