@@ -65,9 +65,11 @@ export class HomePage {
 			this.barChartData = clone;
 	}// fin de grafica lineal
 
+	public organization: any;
 // CONSTRUCTOR ----------------------------------------------------------------------------------------
 	constructor(public navCtrl: NavController, public menu: MenuController, public translateService: TranslateService, public navParams: NavParams) {
 		this.menu.enable(true);
+		this.organization = sessionStorage.getItem('organization_name');
 	}
 
 	ionViewCanEnter() {
