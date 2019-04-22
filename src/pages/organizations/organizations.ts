@@ -40,8 +40,9 @@ export class OrganizationsPage {
   });
   }
   home(org){
-     sessionStorage.setItem('organization_id', org.id)
-    // console.log('session',org.id);
+     sessionStorage.setItem('organization_id', org.id);
+     sessionStorage.setItem('organization_name', org.text);
+    // console.log('session',org);
     // console.log('session getItem organization_id',sessionStorage.getItem('organization_id'));
 		this.navCtrl.setRoot(HomePage, org);
 	}
