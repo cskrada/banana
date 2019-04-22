@@ -44,6 +44,7 @@ export class CombinationproductPage {
       { headers: new HttpHeaders()
       .set('authorization', 'http://localhost:4200')
       .append('app', 'BananaApp')
+      .append('organization', sessionStorage.getItem('organization_id') )
       .append('user', sessionStorage.getItem('user'))
       .append('Access-Control-Allow-Origin', '*')
       .append('token', sessionStorage.getItem('token'))
