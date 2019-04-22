@@ -16,10 +16,17 @@ export class SearchproductPipe implements PipeTransform {
     if(!items) return [];
     if(!terms) return items;
 
-
     terms = terms.toLowerCase();
     return items.filter( it => {
-      return it.description.toLowerCase().includes(terms); // only filter name
+      if(it.name != null){
+        return it.name.toLowerCase().includes(terms); // only filter name
+      }
+      if(it.description != null){
+        return it.description.toLowerCase().includes(terms); // only filter description
+      }
+      if(it.reference != null){
+        return it.reference.toLowerCase().includes(terms); // only filter reference
+      }
     });
   }
 }

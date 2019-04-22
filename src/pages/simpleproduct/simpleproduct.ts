@@ -140,7 +140,17 @@ export class SimpleproductPage {
         }
       }, error => {
         console.log(error);
-        
+        if (error.ok == false){
+          this.translateService.get('Alerta9').subscribe(
+            value => {
+              let message = value['MensajeAlerta'];
+                const toast = this.toastCtrl.create({
+                message: message,
+                duration: 3000
+                });
+            toast.present();
+          });
+        }
     });
   }
 
