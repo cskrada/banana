@@ -13,7 +13,9 @@ export const constants = {
     resources: 'http://18.223.231.86/laravel-banana/public/api/products/resources',
     apipostproduct: 'http://18.223.231.86/laravel-banana/public/api/products/create',
 
-    apiorganization: 'http://18.223.231.86/laravel-banana/public/api/organizations/byUser'
+    apiorganization: 'http://18.223.231.86/laravel-banana/public/api/organizations/byUser',
+
+    apiimage: 'http://18.223.231.86/laravel-banana/public/storage/img/'
 
     // apilogin: 'http://192.168.1.3:8000/api/login',
     // apiclient: 'http://192.168.1.3:8000/api/thirds/customers/'
