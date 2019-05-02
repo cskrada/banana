@@ -56,9 +56,9 @@ constructor(public navCtrl: NavController,
 
 	loginUser2(){
 		const md5 = new Md5();
-		console.log(this.myForm.value.email);
+		// console.log(this.myForm.value.email);
 		let e = md5.appendStr(this.myForm.value.password).end();
-		console.log(e);
+		// console.log(e);
 		this.postLogin(this.myForm.value.email,e);
 	}
 	
@@ -80,9 +80,8 @@ constructor(public navCtrl: NavController,
 				sessionStorage.setItem('token', data['user'].user[0].remember_token);
 				sessionStorage.setItem('name', data['user'].user[0].contact.name);
 				sessionStorage.setItem('email', data['user'].user[0].email);
-				// sessionStorage.setItem('organization_id', data['user'].settings.settings.organization_id)
 				this.navCtrl.setRoot(OrganizationsPage, this.results);
-				console.log(this.results);
+				// console.log(this.results);
 
 			}, error => {
 				if (error.status === 406) {
