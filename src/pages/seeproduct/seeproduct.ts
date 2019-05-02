@@ -18,6 +18,8 @@ export class SeeproductPage {
   producto: any[] = [];
   product: any[] = [];
   id: any;
+  image: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     
     this.product = this.navParams.data;
@@ -25,10 +27,11 @@ export class SeeproductPage {
     this.id = this.navParams.get('id');
     this.id_cat = this.navParams.get('category_id');
     console.log( 'id de categoria',this.id_cat);
+    this.getProduct();
   }
 
   ionViewDidLoad() {
-    this.getProduct();
+    // console.log('ionViewDidLoad seeproduct');
   }
 
   notificationSelect() {
@@ -48,12 +51,14 @@ export class SeeproductPage {
         this.producto = data['product'];
         this.productDetails = data['product_details'];
         this.categories = data['categories'];
+        this.image = constants.apiimage+data['product_details'][0].image;
+
         for (let cat of this.categories){
           if ( this.id_cat == cat.id){
             this.category = cat.text;
           }
         }
-        console.log(this.category);
+        console.log(this.image);
       }, error => {
         console.log(error);
     });
