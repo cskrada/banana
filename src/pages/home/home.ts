@@ -78,7 +78,7 @@ export class HomePage {
 		this.pieChartLabels.forEach(function(element, index) {
 			me.translateService.get(element).subscribe(
 				value => {
-				console.log(value);
+				// console.log(value);
 				me.pieChartLabels[index] = value;
 				});
 		  });
