@@ -18,11 +18,11 @@ export class OrganizationsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     this.user_id = sessionStorage.getItem('user');
+    this.getOrganizations();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OrganizationsPage');
-    this.getOrganizations();
+    // console.log('ionViewDidLoad OrganizationsPage');
   }
   getOrganizations(){
     return this.http.get(constants.apiorganization,
@@ -34,7 +34,7 @@ export class OrganizationsPage {
       .append('token', sessionStorage.getItem('token'))
     }).subscribe ( data=> {
       this.organizations = data['organizations'];
-      console.log('organizations', this.organizations);
+      // console.log('organizations', this.organizations);
     }, error => {
       console.log(error);
   });
