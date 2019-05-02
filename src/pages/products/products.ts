@@ -25,11 +25,11 @@ export class ProductsPage {
               public loadingCtrl: LoadingController,
               public translateService: TranslateService) {
 
+                this.getProducts();
   }
 
 
   ionViewDidLoad() {
-    this.getProducts();
   }
 
   getProducts(){
@@ -41,7 +41,7 @@ export class ProductsPage {
           });
         loading.present();
 
-      return this.http.get(constants.apiproducts,
+      return this.http.get(constants.apiproducts_details,
         { headers: new HttpHeaders()
           .set('authorization', 'http://localhost:4200')
           .append('app', 'BananaApp')
