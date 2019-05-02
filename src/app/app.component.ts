@@ -14,6 +14,7 @@ import { SettingsPage } from './../pages/settings/settings';
 import { ProductsPage } from './../pages/products/products';
 import { OrganizationsPage } from './../pages/organizations/organizations';
 
+import { CombinationproductPage } from './../pages/combinationproduct/combinationproduct';
 
 @Component({
   templateUrl: 'app.html',
@@ -59,7 +60,8 @@ export class MyApp {
       { title: 'Pedidos', component: OrdersPage, icon: "cart"},
       { title: 'Productos', component: ProductsPage, icon: "apps"},
       { title: 'Ajustes', component: SettingsPage, icon: "build"},
-      { title: 'Organización', component: OrganizationsPage, icon: "briefcase"}
+      { title: 'Organización', component: OrganizationsPage, icon: "briefcase"},
+      { title: 'COMBINACION', component: CombinationproductPage, icon: "briefcase"}
     ];
   }//------------------------------------fin de constructor-----------------------------------
   
