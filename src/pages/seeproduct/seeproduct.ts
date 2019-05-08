@@ -19,15 +19,19 @@ export class SeeproductPage {
   product: any[] = [];
   id: any;
   image: any;
+  attributes: any []= [];
+  resources: any []= [];
+  test:  any []= []; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     
     this.product = this.navParams.data;
-    console.log('navparams de producto',this.product);
+    // console.log('navparams de producto',this.product);
     this.id = this.navParams.get('id');
     this.id_cat = this.navParams.get('category_id');
-    console.log( 'id de categoria',this.id_cat);
+    // console.log( 'id de categoria',this.id_cat);
     this.getProduct();
+    this.getResource();
   }
 
   ionViewDidLoad() {
@@ -51,17 +55,45 @@ export class SeeproductPage {
         this.producto = data['product'];
         this.productDetails = data['product_details'];
         this.categories = data['categories'];
-        this.image = constants.apiimage+data['product_details'][0].image;
+        this.test = data['product_details'][0].image;
+        // console.log('tessssst see product', this.test);
+
+        if (this.test != null){
+          this.image = constants.apiimage+data['product_details'][0].image;
+        }else{
+          this.image = 'assets/imgs/products.jpeg';
+        }
 
         for (let cat of this.categories){
           if ( this.id_cat == cat.id){
             this.category = cat.text;
           }
         }
-        console.log(this.image);
+        // console.log('producto',this.producto);
+        // console.log('product',this.product);
+        // console.log('productoDetails',this.productDetails);
+        // console.log('image',this.image);
+        // console.log('teeeesst img',this.test);
       }, error => {
         console.log(error);
     });
   }
 
+  getResource(){
+    return this.http.get(constants.resources,
+      { headers: new HttpHeaders()
+      .set('authorization', 'http://localhost:4200')
+      .append('app', 'BananaApp')
+      .append('organization', sessionStorage.getItem('organization_id') )
+      .append('user', sessionStorage.getItem('user'))
+      .append('Access-Control-Allow-Origin', '*')
+      .append('token', sessionStorage.getItem('token'))
+    }).subscribe ( data=> {
+      this.resources = data['resources'];
+      this.attributes = data['attributes_d'];
+      // console.log(this.attributes);
+    }, error => {
+      console.log(error);
+    });
+  }
 }

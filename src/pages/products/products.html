@@ -59,12 +59,12 @@
 					<ion-row *ngSwitchCase="'grid'">
 						<ion-col col-xs-6 col-sm-4 col-md-3 col-lg-2 *ngFor="let p of productos | searchproduct : terms">
 							<ion-card  (click)="seeProduct(p)">
-								<!-- <div *ngIf="p.image != null">
-									<img class="imagen" src="{{p.image}}"/>
-								</div> -->
-								<div>
+								<ng-container *ngIf="p.image != null; else second">
+									<img class="imagen" src="{{this.constants+p.image}}"/>
+								</ng-container>
+								<ng-template #second>
 									<img class="imagen" src="assets/imgs/products.jpeg"/>
-								</div>
+								</ng-template>
 								<ion-card-content class="card">
 									<ion-card-title class="title">
 											{{p.name}}
@@ -90,18 +90,25 @@
 									<ion-list (click)="seeProduct(p)">
 										<ion-item>
 											<ion-thumbnail item-start>
-													<!-- <div *ngIf="p.image != null">
-														<img class="imagen" src="{{p.image}}"/>
-													</div> -->
-													<div>
-														<img class="imagen" src="assets/imgs/products.jpeg"/>
-													</div>
+												<ng-container *ngIf="p.image != null; else second">
+													<img class="imagen" src="{{this.constants+p.image}}"/>
+												</ng-container>
+												<ng-template #second>
+													<img class="imagen" src="assets/imgs/products.jpeg"/>
+												</ng-template>
 											</ion-thumbnail>
 											<h2>{{p.name}}</h2>
+											<div *ngFor="let a of p.attribute_details">
+												<div *ngFor="let b of attributes">
+													<p *ngIf=" a == b.id">
+														{{ b.text }}
+													</p>
+												</div>
+											</div>
 											<p>{{p.description}}</p>
 											<div class="list">
 											<ion-icon name="clipboard"></ion-icon>7885•
-											<ion-icon name="logo-usd"></ion-icon>152</div>
+											<ion-icon name="logo-usd"></ion-icon>{{p.sale_price}}</div>
 										</ion-item>
 									</ion-list>
 							</ion-col>

@@ -16,7 +16,7 @@
                   </ion-buttons>
                 </td>
                 <td>
-                  <ion-title>{{ product.name }}</ion-title>
+                  <ion-title>{{ producto.name }}</ion-title>
                 </td>
               </tr>
             </table>
@@ -33,14 +33,14 @@
 <ion-content padding>
     <ion-card>
       <div>
-        <img src="assets/imgs/products.jpeg"/>
+        <img src="{{ this.image }}"/>
       </div>
         <ion-card-content>
           <ion-card-title>
-            {{ product.name}}
+            {{ producto.name}}
           </ion-card-title>
           <p>
-            {{ product.description }}
+            {{ producto.description }}
           </p>
         </ion-card-content>
           <ion-row>
@@ -48,16 +48,15 @@
               <hr>
             </ion-col>
           </ion-row>
-
         <!-- <ion-item>
           <ion-icon name='clipboard' item-start style="color: #525252"></ion-icon>
           {{'Stock' | translate}}
           <ion-badge color="light" item-end>2600</ion-badge>
         </ion-item> -->
-          <ion-item  *ngIf="product.reference != null">
+          <ion-item  *ngIf="producto.reference != null">
             <ion-icon name="pricetag" item-start></ion-icon>
               {{'Referencia' | translate}}
-            <ion-note item-end class="note">{{ product.reference }}</ion-note>
+            <ion-note item-end class="note">{{ producto.reference }}</ion-note>
           </ion-item>
 
           <ion-item  *ngIf="this.id_cat != null">
@@ -68,26 +67,32 @@
 
       </ion-card>
 
-      <ion-card *ngFor="let pd of productDetails">
+      <ion-card >
         <ion-card-content>  
           <ion-card-title no-padding>
-            {{pd.name}}
+            <div *ngFor="let a of product.attribute_details">
+              <div *ngFor="let b of attributes">
+                <div *ngIf=" a == b.id">
+                  {{ b.text }}
+                </div>
+              </div>
+            </div>
           </ion-card-title>
         </ion-card-content>
 
-        <ion-item *ngIf="pd.sku != null">
+        <ion-item *ngIf="product.sku != null">
           {{'Código SKU' | translate }}
-          <ion-badge color="light" item-end>{{ pd.sku }}</ion-badge>
+          <ion-badge color="light" item-end>{{ product.sku }}</ion-badge>
         </ion-item>
 
-        <ion-item *ngIf="pd.upc != null">
+        <ion-item *ngIf="product.upc != null">
           {{'Código UPC' | translate}}
-          <ion-badge color="light" item-end>{{ pd.upc }}</ion-badge>
+          <ion-badge color="light" item-end>{{ product.upc }}</ion-badge>
         </ion-item>
         
-        <ion-item *ngIf="pd.ean13 != null">
+        <ion-item *ngIf="product.ean13 != null">
           {{'Código EAN13' | translate}}
-          <ion-badge color="light" item-end>{{ pd.ean13 }}</ion-badge>
+          <ion-badge color="light" item-end>{{ product.ean13 }}</ion-badge>
         </ion-item>
 
         <ion-row no-padding>
@@ -97,7 +102,7 @@
                 {{'precio costo' | translate}}
               </ion-card-header>
               <ion-card-content>
-                {{ pd.cost }}$
+                {{ product.cost }}$
               </ion-card-content>
             </ion-card>
           </ion-col>
@@ -107,7 +112,7 @@
                 {{'precio venta' | translate}}
               </ion-card-header>
               <ion-card-content>
-                {{ pd.sale_price }}$
+                {{ product.sale_price }}$
               </ion-card-content>
             </ion-card>
           </ion-col>

@@ -40,8 +40,12 @@ export class CombinationproductPage {
   public attribute_id: any = null;
   public product_details : any []=[];
   public attribute_details: any = null;
-  public product_d: any = null;
-  
+
+  public attributes_selected: any = null;
+  public array_details: Array<any>;
+  public attributes_o: any []=[];
+  public post_ded : Array<any> = [];
+
   public items: any;
   public session_org: any;
 
@@ -81,7 +85,7 @@ export class CombinationproductPage {
         image: [''],
         condition_id: [''],
         price_list_id: [''],
-        attribute_details:  ['']
+        attribute_details: this.formBuilder.array([])
         })
       });
 
@@ -93,7 +97,86 @@ export class CombinationproductPage {
   }
 
   generate(){
-    console.log('generatee',this.product_d);
+    // console.log('generate',this.attributes_selected);
+    let me = this;
+    let attributes_selected_group:any=[];
+    let name_group = '';
+    let index = -1;
+    let combinations = [];
+
+    function allPossibleCases(arr) {
+      if (arr.length == 1) {
+        return arr[0];
+      } else {
+        var result = [];
+        var allCasesOfRest = allPossibleCases(arr.slice(1));  // recur with the rest of array
+        for (var i = 0; i < allCasesOfRest.length; i++) {
+          for (var j = 0; j < arr[0].length; j++) {   
+            result.push(arr[0][j] + ',' + allCasesOfRest[i]);
+          }
+        }
+        for (var k = 0; k < result.length; ++k) {          
+          result[k] = result[k].split(',');
+        }
+        return result;
+      }
+    }
+
+    for (let i = 0; i < this.attributes_selected.length; i++) {
+      for (let j = 0; j < this.attributes_o.length; j++) {
+        for (let k = 0; k < this.attributes_o[j].children.length; k++) {
+          if ( this.attributes_o[j].children[k].id == this.attributes_selected[i] ) {            
+            if ( name_group != this.attributes_o[j].text ) {              
+              name_group = this.attributes_o[j].text;
+              index++;
+              attributes_selected_group[index] = [];
+              attributes_selected_group[index].push(String(this.attributes_o[j].children[k].id));
+            } else {
+              attributes_selected_group[index].push(String(this.attributes_o[j].children[k].id));
+            }
+          }
+        }
+      }
+    }
+
+    combinations = allPossibleCases(attributes_selected_group);
+
+    combinations.forEach( function (attributes) {
+        if (!Array.isArray(attributes))
+        me.newDetail([attributes]);
+        else
+        me.newDetail(attributes);
+    });
+
+    // console.log('detalles',this.post_ded);
+  }
+
+  newDetail (attributes: Array<any>) {
+    
+    function newElement(me) {
+      let detail: any = {};
+        detail.id  = 0;
+        detail.reference  = '';
+        detail.product_id  = 0;
+        detail.name  = '';
+        detail.sku  = '';
+        detail.ean13  = '';
+        detail.upc  = '';
+        detail.cost  = '';
+        detail.sale_price  = '';
+        detail.condition_id  = null;
+        detail.price_list_id  = null;
+        detail.archived  = 0;
+        detail.image  = null;
+        detail.attribute_details = [];
+        detail.edit  = false;
+        detail.more  = false;
+      
+      detail.attribute_details = attributes;
+      me.post_ded.unshift(detail);
+    }
+
+    newElement(this);
   }
 
   getResource(){
@@ -113,7 +196,8 @@ export class CombinationproductPage {
       this.units = data['units'];
       this.conditions = data['conditions'];
       this.attributes = data['attributes_d'];
-      console.log(this.attributes);
+      this.attributes_o = data['attributes'];
+      // console.log(this.attributes);
     }, error => {
       console.log(error);
     });
@@ -121,14 +205,12 @@ export class CombinationproductPage {
   
   close(){
     this.viewCtrl.dismiss();
-    this.navCtrl.setRoot(ProductsPage);
-    
+    this.navCtrl.setRoot(ProductsPage); 
   }
-
 
   postCombinationProduct(){
     let body = this.myForm.value;
-    body.product_details = [body.product_details];
+    body.product_details = this.post_ded;
     console.log(body);
     
     this.http.post(constants.apipostproduct,
@@ -142,10 +224,9 @@ export class CombinationproductPage {
         .append('token', sessionStorage.getItem('token'))
       }).subscribe ( data=> {
         this.product = data['product_id'];
-        this.product_details = data['product_details_ids'];
-        // this.attributes = data['attributes_d'];
-        console.log(this.product);
-        console.log(this.product_details);
+        this.product_details = data['product_details_ids'];     
+        // console.log(this.product);
+        // console.log(this.product_details);
 
         if (this.product != [0]){
           this.translateService.get('Alerta8').subscribe(
