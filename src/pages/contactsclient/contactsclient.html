@@ -1,0 +1,68 @@
+<ion-header>
+	<ion-navbar color="bananap">
+		<ion-grid no-padding>
+			<ion-row no-padding>
+				<ion-col col-1 no-padding>
+					<table>
+						<tr>
+							<td>
+								<ion-buttons start>
+									<button ion-button icon-only>
+										<ion-icon name="contacts"></ion-icon>
+									</button>
+								</ion-buttons>
+							</td>
+							<td>
+								<ion-title text-left>{{'Contactos' | translate}}</ion-title>
+							</td>
+						</tr>
+					</table>
+				</ion-col>
+				<ion-col col-11 no-padding>
+					<ion-buttons end text-end>
+						<button ion-button icon-only (click)="addContactClient(client)">
+						<ion-icon name="add"></ion-icon>
+					</button>
+					</ion-buttons>
+				</ion-col>
+			</ion-row>
+		</ion-grid> 
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<!-- <div *ngIf="this.contacts == [0]">
+		<ion-card>
+			<ion-card-header>
+				<ion-icon name="add"></ion-icon>
+			</ion-card-header>
+			<ion-card-content>
+				la conchadefafofjaishnn
+			</ion-card-content>
+		</ion-card>
+	</div> -->
+  <ion-list>
+		<button ion-item class="paddinglr fuente" *ngFor="let c of contacts" (click)="seeContactClient(c, client)">
+			<ion-row>
+				<ion-col>
+					<span><b>{{'Nombre'| translate}}: {{c.name}}</b></span>
+				</ion-col>
+			</ion-row>
+			<ion-row *ngIf="c.phone != null">
+				<ion-col>
+					<span>{{'Teléfono'| translate}}: {{c.phone}}</span>
+				</ion-col>
+			</ion-row>
+			<ion-row *ngIf="c.phone_2 != null">
+				<ion-col>
+					<span>{{'Teléfono 2'| translate}}: {{c.phone_2}}</span>
+				</ion-col>
+			</ion-row>
+			<ion-row *ngIf="c.email != null">
+				<ion-col>
+					<span>{{'Correo'| translate}}: {{c.email}}</span>
+				</ion-col>
+			</ion-row>
+		</button>
+	</ion-list>
+</ion-content>
