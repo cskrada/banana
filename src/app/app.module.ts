@@ -39,7 +39,15 @@ import { AddproductPage } from './../pages/addproduct/addproduct';
 import { CombinationproductPage } from './../pages/combinationproduct/combinationproduct';
 import { SimpleproductPage } from './../pages/simpleproduct/simpleproduct';
 import { OrganizationsPage } from './../pages/organizations/organizations';
-
+import { ModifyclientPage } from './../pages/modifyclient/modifyclient';
+import { BranchofficesclientsPage } from './../pages/branchofficesclients/branchofficesclients';
+import { ContactsclientPage } from './../pages/contactsclient/contactsclient';
+import { AddcontactclientPage } from './../pages/addcontactclient/addcontactclient';
+import { AddbranchofficePage } from './../pages/addbranchoffice/addbranchoffice';
+import { SeecontactclientPage } from './../pages/seecontactclient/seecontactclient';
+import { ModifycontactclientPage } from './../pages/modifycontactclient/modifycontactclient';
+import { SeebranchofficePage } from './../pages/seebranchoffice/seebranchoffice';
+import { ModifybranchofficePage } from './../pages/modifybranchoffice/modifybranchoffice';
 
 import { ChartsModule } from 'ng2-charts';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -87,6 +95,15 @@ export function setTranslateLoader( http: HttpClient) {
     SimpleproductPage,
     CombinationproductPage,
     OrganizationsPage,
+    ModifyclientPage,
+    ContactsclientPage,
+    BranchofficesclientsPage,
+    AddcontactclientPage,
+    AddbranchofficePage,
+    SeecontactclientPage,
+    ModifycontactclientPage,
+    SeebranchofficePage,
+    ModifybranchofficePage,
     SearchPipe,
     SortPipe,
     SearchproductPipe,
@@ -133,7 +150,16 @@ export function setTranslateLoader( http: HttpClient) {
     AddproductPage,
     SimpleproductPage,
     CombinationproductPage,
-    OrganizationsPage
+    OrganizationsPage,
+    ModifyclientPage,
+    ContactsclientPage,
+    BranchofficesclientsPage,
+    AddcontactclientPage,
+    AddbranchofficePage,
+    SeecontactclientPage,
+    ModifycontactclientPage,
+    SeebranchofficePage,
+    ModifybranchofficePage
   ],
   providers: [
     InAppBrowser,
