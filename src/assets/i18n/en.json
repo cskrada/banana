@@ -28,6 +28,7 @@
     "Nombre Comercial": "Tradename",
     "Dirección": "Address",
     "Teléfono": "Phone",
+    "Teléfono 2": "Phone 2",
     "Correo": "Email",
 
     "Alias": "Alias",
@@ -95,7 +96,7 @@
     },
 
     "Alerta6": {
-        "MensajeAlerta": "prospect already exists"
+        "MensajeAlerta": "Prospect already exists"
     },
 
     "Alerta7": {
@@ -103,11 +104,45 @@
     },
 
     "Alerta8":{
-        "MensajeAlerta": "product created successfully"
+        "MensajeAlerta": "Product created successfully"
     },
 
     "Alerta9":{
         "MensajeAlerta": "Error in creating product, try again"
+    },
+
+    "Alerta10":{
+        "MensajeAlerta": "Contact created successfully"
+    },
+    
+    "Alerta11":{
+        "MensajeAlerta": "Successfully modified contact"
+    },
+    
+    "Alerta12":{
+        "MensajeAlerta": "Branch successfully modified"
+    },
+
+    "Alerta13":{
+        "MensajeAlerta": "Branch successfully created"
+    },
+
+    "Alerta14":{
+        "MensajeAlerta": "Successfully modified customer"
+    },
+
+    "AlertaSeeContactClient":{
+        "TituloAlerta": "Modify contact",
+        "MensajeAlerta": "Are you sure you want to modify this contact?",
+        "BotonCancelar": "Cancel",
+        "BotonModificar": "Modify"
+    },
+
+    "AlertaSeeBranchOffice":{
+        "TituloAlerta": "Modify branch",
+        "MensajeAlerta": "Are you sure you want to modify this branch?",
+        "BotonCancelar": "Cancel",
+        "BotonModificar": "Modify"
     },
 
     "Perfil de usuario": "User profile",
@@ -202,6 +237,47 @@
 
     "crear producto": "create product",
 
-    "Producto combinado": "combined product" 
+    "Producto combinado": "combined product",
 
+    "Contacto Nuevo": "New contact",
+
+    "Título": "Title",
+
+    "Fax": "Fax",
+
+    "Comentarios": "Comments",
+
+    "Fecha de cumpleaños": "Birthday date",
+
+    "crear contacto": "create contact",
+
+    "Nueva sucursal": "New branch",
+
+    "Envío": "Is ship to",
+
+    "Facturar": "Is bill to",
+
+    "Pago": "Is pay from",
+
+    "Remitente": "Is remit to",
+
+    "Localización": "Location",
+
+    "Código postal": "Postal code",
+
+    "crear sucursal": "create branch",
+
+    "Modificando prospecto": "Modifying prospect",
+
+    "modificar prospecto": "modify prospect",
+
+    "Cargo": "Charge",
+
+    "Modificando contacto": "Modifying contact",
+
+    "modificar contacto": "modify contact",
+    
+    "Modificando sucursal": "Modifying branch",
+
+    "modificar sucursal": "modify branch"
 }

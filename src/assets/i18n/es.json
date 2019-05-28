@@ -28,6 +28,7 @@
     "Nombre Comercial": "Nombre Comercial",
     "Dirección": "Dirección",
     "Teléfono": "teléfono",
+    "Teléfono 2": "teléfono 2",
     "Correo": "Correo",
 
     "Alias": "Alias",
@@ -95,19 +96,53 @@
     },
 
     "Alerta6": {
-        "MensajeAlerta": "prospecto ya existe"
+        "MensajeAlerta": "Prospecto ya existe"
     },
 
     "Alerta7": {
-        "MensajeAlerta": "prospecto creado exitosamente"
+        "MensajeAlerta": "Prospecto creado exitosamente"
     },
 
     "Alerta8":{
-        "MensajeAlerta": "producto creado exitosamente"
+        "MensajeAlerta": "Producto creado exitosamente"
     },
 
     "Alerta9":{
         "MensajeAlerta": "Error en crear producto, intente de nuevo"
+    },
+
+    "Alerta10":{
+        "MensajeAlerta": "Contacto creado exitosamente"
+    },
+
+    "Alerta11":{
+        "MensajeAlerta": "Contacto modificado exitosamente"
+    },
+
+    "Alerta12":{
+        "MensajeAlerta": "Sucursal modificada exitosamente"
+    },
+
+    "Alerta13":{
+        "MensajeAlerta": "Sucursal creada exitosamente"
+    },
+
+    "Alerta14":{
+        "MensajeAlerta": "Cliente modificado exitosamente"
+    },
+
+    "AlertaSeeContactClient":{
+        "TituloAlerta": "Modificar contacto",
+        "MensajeAlerta": "¿Está seguro que desea modificar este contacto?",
+        "BotonCancelar": "Cancelar",
+        "BotonModificar": "Modificar"
+    },
+
+    "AlertaSeeBranchOffice":{
+        "TituloAlerta": "Modificar sucursal",
+        "MensajeAlerta": "¿Está seguro que desea modificar esta sucursal?",
+        "BotonCancelar": "Cancelar",
+        "BotonModificar": "Modificar"
     },
 
     "Perfil de usuario": "Perfil de usuario",
@@ -202,5 +237,47 @@
 
     "crear producto": "crear producto",
 
-    "Producto combinado": "Producto combinado"
+    "Producto combinado": "Producto combinado",
+
+    "Contacto Nuevo": "Contacto Nuevo",
+
+    "Título": "Título",
+
+    "Fax": "Fax",
+
+    "Comentarios": "Comentarios",
+
+    "Fecha de cumpleaños": "Fecha de cumpleaños",
+
+    "crear contacto": "crear contacto",
+
+    "Nueva sucursal": "Nueva sucursal",
+
+    "Envío": "Envío",
+
+    "Facturar": "Facturar",
+
+    "Pago": "Pago",
+
+    "Remitente": "Remitente",
+
+    "Localización": "Localización",
+
+    "Código postal": "Código postal",
+
+    "crear sucursal": "crear sucursal",
+
+    "Modificando prospecto": "Modificando prospecto",
+    
+    "modificar prospecto": "modificar prospecto",
+
+    "Cargo": "Cargo",
+
+    "Modificando contacto": "Modificando contacto",
+
+    "modificar contacto": "modificar contacto",
+
+    "Modificando sucursal": "Modificando sucursal",
+
+    "modificar sucursal": "modificar sucursal"
 }
