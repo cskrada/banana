@@ -28,12 +28,15 @@ export class ProductsPage {
               public loadingCtrl: LoadingController,
               public translateService: TranslateService) {
 
-                this.getProducts();
-                this.getResource();
   }
 
   ionViewDidLoad() {
   }
+
+  ionViewDidEnter(){
+		this.getProducts();
+    this.getResource();
+	}
 
   getProducts(){
     this.translateService.get('Por favor espere...').subscribe(
@@ -55,15 +58,6 @@ export class ProductsPage {
         }).subscribe ( data=> {
           loading.dismissAll();
           this.productos = data['products'];
-
-          // for (let i = 0; i < this.productos.length; i++) {            
-          //   this.test = data['products'][i].image;
-          //     if(this.test != null){
-          //       this.image= constants.apiimage+data['products'][i].image;
-          //     }else{
-          //       this.image = 'assets/imgs/products.jpeg';
-          //     }
-          // }
 
           this.constants= constants.apiimage;
 

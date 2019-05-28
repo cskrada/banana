@@ -34,9 +34,9 @@
 			<ion-row>
 				<ion-col col-6>
 					<ion-buttons start (click)="archived()">
-						<button ion-button icon-only >
+						<!-- <button ion-button icon-only >
 						<ion-icon name="ios-trash" color="dark"></ion-icon>
-						</button>
+						</button> -->
 					</ion-buttons>
 				</ion-col>
 				<ion-col col-6>
@@ -51,37 +51,133 @@
 	</ion-navbar>
 </ion-header>
 
-
 <ion-content padding class="fuente">
 	<ion-grid no-padding>
+					<!-- <ion-row>
+						<ion-col>
+						  <b>
+							Razon Social:
+						  </b>
+						</ion-col>
+						<ion-col>
+						  <span>
+							{{thirds.business_name}}
+						  </span>
+						</ion-col>
+					</ion-row>
+					<ion-row *ngIf="thirds.tradename != null">
+						<ion-col>
+						  <b>
+							Nombre comercial:
+						  </b>
+						</ion-col>
+						<ion-col>
+						  <span>
+							{{thirds.tradename}}
+						  </span>
+						</ion-col>
+					</ion-row>
+					<ion-row *ngIf="thirds.alias != null">
+						<ion-col>
+						  <b>
+							Alias: 
+						  </b>
+						</ion-col>
+						<ion-col>
+						  <span>
+							{{thirds.alias}}
+						  </span>
+						</ion-col>
+					</ion-row>
+					<ion-row *ngIf="thirds.cif != null">
+							<ion-col>
+								<b>
+									Rif:
+								</b>
+							</ion-col>
+							<ion-col>
+								<span>
+									{{thirds.cif}}
+								</span>
+							</ion-col>
+					</ion-row>
+					<ion-row *ngIf="thirds.address != null">
+							<ion-col>
+								<b>
+									Dirección:
+								</b>
+							</ion-col>
+							<ion-col>
+								<span>
+									{{thirds.address}}
+								</span>
+							</ion-col>
+					</ion-row>
+					<ion-row *ngIf="thirds.postal != null">
+						<ion-col>
+						  <b>
+							Código postal:
+						  </b>
+						</ion-col>
+						<ion-col>
+						  <span>
+							{{thirds.postal}}
+						  </span>
+						</ion-col>
+					</ion-row>
+					<ion-row *ngIf="thirds.city != null">
+							<ion-col>
+								<b>
+								Ciudad:
+								</b>
+							</ion-col>
+							<ion-col>
+							<span>
+								{{thirds.city}}
+							</span>
+							</ion-col>
+					</ion-row>  
+					<ion-row *ngIf="thirds.state != null">
+						<ion-col>
+						  <b>
+							Estado:
+						  </b>
+						</ion-col>
+						<ion-col>
+						  <span>
+							{{thirds.state}}
+						  </span>
+						</ion-col>
+					</ion-row> -->
+				  <!-- ----------------------------------------------------------------------------------------------- -->
 		<ion-row>
 			<ion-col col-12 text-left>
-				<h2>{{'Razón Social' | translate }}: {{ client.business_name }}</h2>
+				<h2>{{'Razón Social' | translate }}: {{ thirds.business_name }}</h2>
 			</ion-col>
 		</ion-row>
-		<ion-row>
+		<ion-row *ngIf="thirds.tradename != null">
 			<ion-col col-12 text-left>
-				<span *ngIf="client.tradename != null ">Nombre Comercial: {{ client.tradename }}</span>
+				<span>Nombre Comercial: {{ thirds.tradename }}</span>
 			</ion-col>
 		</ion-row>
-		<ion-row>
+		<ion-row *ngIf="thirds.alias != null">
 			<ion-col col-12 text-left>
-				<span>{{ 'Alias' | translate}}: {{ client.alias }}</span>
+				<span>{{ 'Alias' | translate}}: {{ thirds.alias }}</span>
 			</ion-col>
 		</ion-row>
-		<ion-row>
+		<ion-row *ngIf="thirds.cif != null">
 			<ion-col col-12 text-left>
-				<span>Rif: {{ client.cif }}</span>
+				<span>Rif: {{ thirds.cif }}</span>
 			</ion-col>
 		</ion-row>
-		<ion-row>
+		<ion-row *ngIf="thirds.address != null">
 			<ion-col col-12 text-left>
-				<span>{{'Dirección' | translate}}: {{ client.address }}</span>
+				<span>{{'Dirección' | translate}}: {{ thirds.address }}</span>
 			</ion-col>
 		</ion-row>
-		<ion-row>
+		<ion-row *ngIf="thirds.city != null">
 			<ion-col col-12 text-left>
-				<span>{{'Ciudad' | translate}}: {{ client.city }}, {{ client.state }}</span>
+				<span>{{'Ciudad' | translate}}: {{ thirds.city }}, {{ thirds.state }}</span>
 			</ion-col>
 		</ion-row>
 		<ion-row>
@@ -89,14 +185,14 @@
 				<span>{{' Venezuela' | translate}}</span>
 			</ion-col>
 		</ion-row>
-		<div *ngIf="client.phone != [''] && client.phone != null" >
+		<div *ngIf="thirds.phone != [''] && thirds.phone != null" >
 			<ion-row padding-top>
 				<ion-col col-1 text-center padding-vertical>
 					<ion-icon name="phone-portrait"></ion-icon>
 				</ion-col>
 				<ion-col col-11 text-left>
-					<button ion-button clear (click)="call()">
-						{{ this.phone }}
+					<button ion-button clear (click)="call(phone)">
+						{{ thirds.phone }}
 					</button>
 					<!-- <span class="links" ><u> {{ client.phone }} </u></span> -->
 					<!-- <span class="links" ><u>
@@ -105,23 +201,23 @@
 				</ion-col>
 			</ion-row>
 		</div>
-		<div *ngIf="client.email != [''] && client.email != null" >
+		<div *ngIf="thirds.email != [''] && thirds.email != null" >
 			<ion-row>
 				<ion-col col-1 text-center>
 					<ion-icon padding-vertical name="mail"></ion-icon>
 				</ion-col>
 				<ion-col col-11 text-left>
-					<a ion-button clear  (click)="openEmail(client)">{{ client.email }}</a>
+					<a ion-button clear  (click)="openEmail(thirds)">{{ thirds.email }}</a>
 				</ion-col>
 			</ion-row>
 		</div>
-		<div *ngIf="client.url != [''] && client.url != null">
+		<div *ngIf="thirds.url != [''] && thirds.url != null">
 			<ion-row>
 				<ion-col col-1 text-center>
 					<ion-icon name="link" padding-vertical></ion-icon>
 				</ion-col>
 				<ion-col col-11 text-left>
-						<a ion-button clear (click)="openUrl(client.url)">{{ client.url }}</a>
+						<a ion-button clear (click)="openUrl(thirds.url)">{{ thirds.url }}</a>
 				</ion-col>
 			</ion-row>
 		</div>
@@ -181,16 +277,16 @@
 		</ion-row>
 		<ion-row padding-top>
 			<ion-col col-12 text-center>
-				<button ion-button icon-left color="primary">
-					<ion-icon name="home"></ion-icon>
+				<button ion-button icon-left color="primary" (click)="contactsClient(client)">
+					<ion-icon name="contacts"></ion-icon>
 					{{ 'Contactos' | translate}}
 				</button>
 			</ion-col>
 		</ion-row>
 		<ion-row padding-top>
 			<ion-col col-12 text-center>
-				<button ion-button icon-left color="primary">
-					<ion-icon name="contacts"></ion-icon>
+				<button ion-button icon-left color="primary" (click)="branchOfficesClient(client)">
+					<ion-icon name="home"></ion-icon>
 					{{ 'Sucursales' | translate}}
 				</button>
 			</ion-col>

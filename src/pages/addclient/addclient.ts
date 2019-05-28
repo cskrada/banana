@@ -5,7 +5,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { constants } from './../../const/const';
 import { TranslateService } from '@ngx-translate/core';
-import { ClientsPage } from '../clients/clients';
 
 @NgModule({
 	// ...
@@ -26,9 +25,9 @@ export class AddclientPage {
 	country: any;
 	state: any;
 	city: any;
-	country_id: any = 0;
-	state_id: any = 0;
-	city_id: any = 0;
+	country_id: null;
+	state_id: null;
+	city_id: null;
 	// prospect: any [] = [];
 	prospect: any = 0;
   constructor(public navCtrl: NavController,
@@ -170,7 +169,6 @@ export class AddclientPage {
 
 	close(){
 		this.viewCtrl.dismiss();
-		this.navCtrl.setRoot(ClientsPage);
 	}
 
 }

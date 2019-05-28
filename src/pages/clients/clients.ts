@@ -36,7 +36,7 @@ export class ClientsPage {
 		this.navCtrl.push(AddclientPage);
 	}
 
-	ionViewDidLoad() {
+	ionViewDidEnter(){
 		this.getClients();
 	}
 
@@ -60,7 +60,6 @@ export class ClientsPage {
 				}).subscribe ( data=> {
 					loading.dismissAll();
 					this.clients = data['clients'];
-					console.log('get clients ', this.clients);
 				}, error => {
 					console.log(error);
 			});

@@ -16,13 +16,8 @@ export class AddproductPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddproductPage');
+    // console.log('ionViewDidLoad AddproductPage');
   }
-  
-  postProduct(){
-    // let body =  this.myForm.value;
-  }
-
 
   simpleProduct(){
     this.navCtrl.push(SimpleproductPage);
