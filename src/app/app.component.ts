@@ -29,7 +29,10 @@ export class MyApp {
   public session: boolean;
   public results : string[] = [];
   public icon : string;
-
+  checkbox: any;
+  organization: string;
+  name: any;
+  
 // --------------------------------------------------------------------------------------------
   constructor(public platform: Platform,
               public statusBar: StatusBar,
@@ -39,6 +42,9 @@ export class MyApp {
               public loadingCtrl: LoadingController,
               public translate: TranslateService){
 
+// this.name = sessionStorage.getItem('name');
+// this.organization = sessionStorage.getItem('organization_name');
+
     this.handleSplashScreen();
     this.platform.ready().then(() => {
       this.translate.setDefaultLang('es');
@@ -46,10 +52,9 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-
-    sessionStorage.removeItem('user');
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('name');
+    // sessionStorage.removeItem('user');
+    // sessionStorage.removeItem('token');
+    // sessionStorage.removeItem('name');
   
     this.postLogin(this.email, this.password);
 
@@ -61,6 +66,10 @@ export class MyApp {
       { title: 'Ajustes', component: SettingsPage, icon: "build"},
       { title: 'Organización', component: OrganizationsPage, icon: "briefcase"}
     ];
+
+    this.checkbox = false;
+    sessionStorage.setItem('checkbox', this.checkbox);
+    // console.log(sessionStorage.getItem('email'));
   }//------------------------------------fin de constructor-----------------------------------
   
   async handleSplashScreen(): Promise<void> {
@@ -108,8 +117,10 @@ export class MyApp {
     this.menu.enable(false); 
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('organization_id');
     sessionStorage.removeItem('name');
-    sessionStorage.removeItem('email');
+    sessionStorage.removeItem('organization_name');
+    // sessionStorage.removeItem('email');
     this.nav.setRoot(LoginPage);
   }
 

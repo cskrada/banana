@@ -2,7 +2,7 @@ import { constants } from './../../const/const';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 import { CallNumber } from '@ionic-native/call-number';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, NavParams, LoadingController } from 'ionic-angular';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -35,7 +35,8 @@ constructor(public navCtrl: NavController,
 	private callNumber: CallNumber,
 	private iab: InAppBrowser,
 	public translateService: TranslateService,
-	public http: HttpClient) {
+	public http: HttpClient,
+	public loadingCtrl: LoadingController) {
 		
 		this.client = this.navParams.data;
 		this.phone = this.navParams.get('phone');
@@ -67,52 +68,30 @@ constructor(public navCtrl: NavController,
 	}
 
 	seeClient(){
-		return this.http.get(constants.apiseeclient+this.id,
-			{ headers: new HttpHeaders()
-			  .set('authorization', 'http://localhost:4200')
-			  .append('app', 'BananaApp')
-			  .append('organization', sessionStorage.getItem('organization_id') )
-			  .append('user', sessionStorage.getItem('user'))
-			  .append('Access-Control-Allow-Origin', '*')
-			  .append('token', sessionStorage.getItem('token'))
-			}).subscribe ( data=> {
-			  this.thirds = data['client'];
-			}, error => {
-			  console.log(error);
-		  });
+		this.translateService.get('Por favor espere...').subscribe(
+			value => {
+				let content = value;
+				let loading = this.loadingCtrl.create({
+					content: content
+					});
+				loading.present();
+			return this.http.get(constants.apiseeclient+this.id,
+				{ headers: new HttpHeaders()
+				.set('authorization', 'http://localhost:4200')
+				.append('app', 'BananaApp')
+				.append('organization', sessionStorage.getItem('organization_id') )
+				.append('user', sessionStorage.getItem('user'))
+				.append('Access-Control-Allow-Origin', '*')
+				.append('token', sessionStorage.getItem('token'))
+				}).subscribe ( data=> {
+				loading.dismissAll();
+				this.thirds = data['client'];
+				}, error => {
+				console.log(error);
+			});
+		});
 	}
 
-	// archived(){
-		
-	// 	this.translateService.get('Alerta1').subscribe(
-	// 		value => {
-	// 			let title = value['TituloAlerta'];
-	// 			let message = value['MensajeAlerta'];
-	// 			let buttoncancel = value['BotonCancelar'];
-	// 			let buttonarchived = value['BotonArchivar'];
-			  
-	// 		 	 let alert = this.alerta.create({
-	// 			  title : title,
-	// 			  message : message,
-	// 			  buttons: [
-	// 				  {  
-	// 					  text: buttoncancel,
-	// 					  handler: data => {
-	// 						  console.log('Cancelado!');
-	// 						}
-	// 					},
-	// 					{
-	// 						text: buttonarchived,
-	// 						handler: data => {
-	// 							console.log('Archivado!');
-	// 						}
-	// 					}
-	// 				]
-	// 			});
-	// 			alert.present();
-	// 		});
-	// }
-			
 	modified(){
 		this.translateService.get('Alerta2').subscribe( 
 			value=>{
@@ -146,17 +125,17 @@ constructor(public navCtrl: NavController,
 
 	getContacts(){
 		return this.http.get(constants.apicontactsclient+this.id,
-		  { headers: new HttpHeaders()
+		{ headers: new HttpHeaders()
 			.set('authorization', 'http://localhost:4200')
 			.append('app', 'BananaApp')
 			.append('organization', sessionStorage.getItem('organization_id') )
 			.append('user', sessionStorage.getItem('user'))
 			.append('Access-Control-Allow-Origin', '*')
 			.append('token', sessionStorage.getItem('token'))
-		  }).subscribe ( data=> {
+		}).subscribe ( data=> {
 			this.contacts = data;
 			// console.log('get contacts', this.contacts);
-		  }, error => {
+		}, error => {
 			console.log(error);
 		});
 	  }

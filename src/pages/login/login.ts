@@ -23,12 +23,15 @@ templateUrl: 'login.html',
 export class LoginPage {
 
 	public id : string;
-	public tokencsk : string;
+	public token : string;
 	myForm: FormGroup;
 	public loading:Loading;
 	public results : string[] = [];
 	passwordType: string = 'password';
 	passwordIcon: string = 'eye-off';
+	email: any;
+	checkbox: any;
+	mail: any;
 
 constructor(public navCtrl: NavController,
 			public formBuilder:FormBuilder,
@@ -37,21 +40,59 @@ constructor(public navCtrl: NavController,
 			public menu: MenuController,
 			public http: HttpClient,
 			public translateService: TranslateService){
+	// this.checkbox=sessionStorage.getItem('checkbox');
+	this.email = sessionStorage.getItem('email');
 	
+	// console.log("dasdsadasd",this.checkbox);	
+	console.log("dasdsadasd",this.email);	
+	console.log(sessionStorage.getItem('name'));
+	console.log(sessionStorage.getItem('organization_name'));
+
 	this.myForm = this.formBuilder.group({
-		email: ['', Validators.required],
+		email: [this.email, Validators.required],
 		password: ['', Validators.required]
-	});
+	});	
 }
 
- hideShowPassword() {
-     this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
-     this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
- }
+	hideShowPassword() {
+		this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
+		this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
+	}
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad LoginPage');
 		this.menu.enable(false);
+		this.checkbox=sessionStorage.getItem('checkbox');
+		console.log('JIKIJII', this.checkbox);
+
+		if(this.checkbox == "true"){
+			console.log('YES FALSE');
+			this.email = sessionStorage.getItem('email');
+		}else {
+			console.log('NO TRUE');
+			this.email ='';
+		}
+		// this.mail = this.email;
+		// console.log(this.email,'adasdasdsdadasdasdasdasdasdadasdasdsdadasdasdasdasdasdadasdasdsdadasdasdasdasdasd',this.checkbox);
+	}
+
+	remember(){
+		
+		if(this.checkbox == true){
+			sessionStorage.removeItem('checkbox');
+			sessionStorage.setItem('checkbox', this.checkbox);
+			console.log('checkbox',this.checkbox);
+			this.email= sessionStorage.getItem('email');
+			console.log('emailllllllll true',this.email);
+		}
+		if(this.checkbox == false){
+			this.email= '';
+			sessionStorage.removeItem('checkbox');
+			sessionStorage.removeItem('email');
+			sessionStorage.setItem('checkbox', this.checkbox);
+			console.log('checkbox',this.checkbox);
+			console.log('emailllllllll false',this.email);
+		}
 	}
 
 	loginUser2(){
@@ -75,13 +116,13 @@ constructor(public navCtrl: NavController,
 				this.results.push(data['storage']);
 				this.results.push(data['storageName']);
 				this.id = data['user'].user[0].id;
-				this.tokencsk = data['user'].user[0].remember_token;
+				this.token = data['user'].user[0].remember_token;
 				sessionStorage.setItem('user', data['user'].user[0].id);
 				sessionStorage.setItem('token', data['user'].user[0].remember_token);
 				sessionStorage.setItem('name', data['user'].user[0].contact.name);
 				sessionStorage.setItem('email', data['user'].user[0].email);
 				this.navCtrl.setRoot(OrganizationsPage, this.results);
-				// console.log(this.results);
+				console.log(this.results);
 
 			}, error => {
 				if (error.status === 406) {

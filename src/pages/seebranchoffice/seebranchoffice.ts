@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController, LoadingController } from 'ionic-angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { constants } from './../../const/const';
 import { TranslateService } from '@ngx-translate/core';
@@ -21,7 +21,8 @@ export class SeebranchofficePage {
               public navParams: NavParams,
               public http: HttpClient,
               public translateService: TranslateService,
-              public alerta: AlertController) {
+							public alerta: AlertController,
+							public loadingCtrl: LoadingController) {
 		this.branch_office= this.navParams.data;
 		// this.localization = this.branch_office['localization'];
     this.id_branch = this.navParams.get('id');
@@ -36,20 +37,29 @@ export class SeebranchofficePage {
   }
 
   seeBranchOffice(){
-    return this.http.get(constants.apiseebranch+this.id_branch,
-      { headers: new HttpHeaders()
-        .set('authorization', 'http://localhost:4200')
-        .append('app', 'BananaApp')
-        .append('organization', sessionStorage.getItem('organization_id') )
-        .append('user', sessionStorage.getItem('user'))
-        .append('Access-Control-Allow-Origin', '*')
-        .append('token', sessionStorage.getItem('token'))
-      }).subscribe ( data=> {
-				this.branch = data['branch'];
+		this.translateService.get('Por favor espere...').subscribe(
+			value => {
+				let content = value;
+				let loading = this.loadingCtrl.create({
+					content: content
+				});
+			loading.present();
+			return this.http.get(constants.apiseebranch+this.id_branch,
+				{ headers: new HttpHeaders()
+					.set('authorization', 'http://localhost:4200')
+					.append('app', 'BananaApp')
+					.append('organization', sessionStorage.getItem('organization_id') )
+					.append('user', sessionStorage.getItem('user'))
+					.append('Access-Control-Allow-Origin', '*')
+					.append('token', sessionStorage.getItem('token'))
+				}).subscribe ( data=> {
+					loading.dismissAll();
+					this.branch = data['branch'];
 				this.localization = this.branch['localization'];
-      }, error => {
-        console.log(error);
-    });
+			}, error => {
+				console.log(error);
+			});
+		});
   }
 
   // archived(){

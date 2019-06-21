@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ModifycontactclientPage } from './../modifycontactclient/modifycontactclient';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -24,7 +24,8 @@ export class SeecontactclientPage {
               public navParams: NavParams,
               public translateService: TranslateService,
               public alerta: AlertController,
-              public http: HttpClient
+							public http: HttpClient,
+							public loadingCtrl: LoadingController
     ) {
     this.contact_1= this.navParams.data['c'];
     this.client= this.navParams.data['client'];
@@ -42,50 +43,29 @@ export class SeecontactclientPage {
   }
 
   seeContact(){
-    return this.http.get(constants.apiseecontact+this.id_contact,
-      { headers: new HttpHeaders()
-        .set('authorization', 'http://localhost:4200')
-        .append('app', 'BananaApp')
-        .append('organization', sessionStorage.getItem('organization_id') )
-        .append('user', sessionStorage.getItem('user'))
-        .append('Access-Control-Allow-Origin', '*')
-        .append('token', sessionStorage.getItem('token'))
-      }).subscribe ( data=> {
-        this.contact = data['contact'];
-      }, error => {
-        console.log(error);
-    });
+		this.translateService.get('Por favor espere...').subscribe(
+			value => {
+				let content = value;
+				let loading = this.loadingCtrl.create({
+					content: content
+					});
+				loading.present();
+			return this.http.get(constants.apiseecontact+this.id_contact,
+				{ headers: new HttpHeaders()
+					.set('authorization', 'http://localhost:4200')
+					.append('app', 'BananaApp')
+					.append('organization', sessionStorage.getItem('organization_id') )
+					.append('user', sessionStorage.getItem('user'))
+					.append('Access-Control-Allow-Origin', '*')
+					.append('token', sessionStorage.getItem('token'))
+				}).subscribe ( data=> {
+					loading.dismissAll();
+					this.contact = data['contact'];
+				}, error => {
+					console.log(error);
+			});
+		});
   }
-
-  // archived(){
-	// 	this.translateService.get('Alerta1').subscribe(
-	// 		value => {
-	// 			let title = value['TituloAlerta'];
-	// 			let message = value['MensajeAlerta'];
-	// 			let buttoncancel = value['BotonCancelar'];
-	// 			let buttonarchived = value['BotonArchivar'];
-			  
-	// 		 	 let alert = this.alerta.create({
-	// 			  title : title,
-	// 			  message : message,
-	// 			  buttons: [
-	// 				  {  
-	// 					  text: buttoncancel,
-	// 					  handler: data => {
-	// 						  console.log('Cancelado!');
-	// 						}
-	// 					},
-	// 					{
-	// 						text: buttonarchived,
-	// 						handler: data => {
-	// 							console.log('Archivado!');
-	// 						}
-	// 					}
-	// 				]
-	// 			});
-	// 			alert.present();
-	// 		});
-	// }
 
   modified(){
 		this.translateService.get('AlertaSeeContactClient').subscribe( 

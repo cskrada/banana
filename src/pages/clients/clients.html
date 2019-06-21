@@ -1,5 +1,5 @@
 <ion-header>
-	<ion-navbar color="bananap">
+	<!-- <ion-navbar color="bananap">
 			<button ion-button menuToggle>
 				<ion-icon name="menu"></ion-icon>
 			</button>
@@ -22,6 +22,32 @@
 					</table>
 				</ion-col>
 				<ion-col col-11 no-padding>
+					<ion-buttons end text-end>
+						<button ion-button icon-only (click)="settings()">
+							<ion-icon name="cog"></ion-icon>
+						</button>
+					</ion-buttons>
+				</ion-col>
+			</ion-row>
+		</ion-grid> 
+	</ion-navbar> -->
+	<ion-navbar color="bananap">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-grid no-padding>
+			<ion-row no-padding nowrap>
+				<ion-col col-xs>
+					<ion-buttons start>
+						<button ion-button icon-only>
+							<ion-icon name="contact"></ion-icon>
+						</button>
+					</ion-buttons>
+				</ion-col>
+				<ion-col col-xs align-self-center>
+					<ion-title text-nowrap>{{ 'Clientes' | translate}}</ion-title>
+				</ion-col>
+				<ion-col col-xs>
 					<ion-buttons end text-end>
 						<button ion-button icon-only (click)="settings()">
 							<ion-icon name="cog"></ion-icon>
@@ -61,7 +87,10 @@
 			<span>
 				<span  *ngIf="c.tradename != null && c.business_name != c.tradename">{{ 'Nombre Comercial' | translate}}: {{ c.tradename }}<br> </span>
 				Cif: {{ c.cif }} <br>
-				{{ 'Dirección' | translate}}: {{ c.address }} <br>
+				<span *ngIf=" c.address != [''] && c.address != null ">
+
+					{{ 'Dirección' | translate}}: {{ c.address }} <br>
+				</span>
 				<!-- {{ c.city }}, {{ c.state }} <br> -->
 				<span *ngIf=" c.phone != [''] && c.phone != null " >{{ 'Teléfono' | translate}}: {{ c.phone }}&nbsp; </span>
 				<span *ngIf=" c.email != [''] && c.email != null "> {{ 'Correo' | translate}}: {{ c.email }}</span>

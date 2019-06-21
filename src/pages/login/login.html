@@ -17,7 +17,7 @@
 							<ion-list>
 								<ion-item>
 									<ion-label floating>{{ 'Correo electrónico' | translate }}</ion-label>
-									<ion-input formControlName="email" type="email"></ion-input>
+									<ion-input [(ngModel)]="email" formControlName="email" type="email" ></ion-input>
 								</ion-item>
 								<ion-item>
 									<ion-label floating>{{ 'Contraseña' | translate}}</ion-label>
@@ -31,6 +31,10 @@
 								</button> 
 							</div>
 						</form>
+						
+							<ion-label>Recordarme</ion-label>
+							<ion-checkbox color="dark" [(ngModel)]="checkbox" (ionChange)="remember()"></ion-checkbox>
+						
 						<div class="olvideclave">
 							<span>
 								<u>
@@ -50,12 +54,12 @@
 					</ion-col>
 				</ion-row>
 				<ion-row>
-						<ion-col col-12 text-center>
-							<button ion-button color="bananap" >
-								{{ 'Empieza gratis' | translate }}
-							</button>
-						</ion-col>
-					</ion-row>
+					<ion-col col-12 text-center>
+						<button ion-button color="bananap" >
+							{{ 'Empieza gratis' | translate }}
+						</button>
+					</ion-col>
+				</ion-row>
 				<!-- <ion-row>
 					<ion-col col-12 text-center>
 						<button ion-button color="bananap"  (click)="products()">
