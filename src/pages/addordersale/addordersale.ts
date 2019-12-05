@@ -405,5 +405,9 @@ export class AddordersalePage {
       toast.present();
     }
   }
+
+  agregarFirma(){
+    
+  }
 }
       
