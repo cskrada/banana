@@ -68,7 +68,7 @@
       </ion-card>
 
       <ion-card >
-        <ion-card-content>  
+        <!-- <ion-card-content>  
           <ion-card-title no-padding>
             <div *ngFor="let a of product.attribute_details">
               <div *ngFor="let b of attributes">
@@ -78,7 +78,35 @@
               </div>
             </div>
           </ion-card-title>
+        </ion-card-content> -->
+        <ion-card-content>  
+          <ion-card-title no-padding>
+            <div *ngFor="let a of productDetails">
+              <div *ngIf="a.attribute_details != 0">
+                <div *ngIf="a.id == id_detail">
+                  <b>Nombre</b>
+                  <p>{{a.name}}</p>
+                  <b>Referencia</b>
+                  <p>{{a.reference}}</p>
+                  <b>Atributos detalles</b>
+                  <div *ngFor="let att of attributes">
+                    <div *ngFor="let id of a.attribute_details">
+                      <div *ngIf="att.id == id">
+                        <p>{{ att.text }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- <div *ngIf="a.attribute_details == " >
+
+                  </div> -->
+                  <!-- {{ a.attribute_details }} -->
+                </div>
+              </div>
+            </div>
+          </ion-card-title>
         </ion-card-content>
+
 
         <ion-item *ngIf="product.sku != null">
           {{'Código SKU' | translate }}

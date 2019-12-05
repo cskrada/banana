@@ -62,8 +62,8 @@ export class CombinationproductPage {
 
     this.myForm = this.formBuilder.group({
       name: ['', Validators.required],
-      reference: ['', Validators.required],
-      description: ['', Validators.required],
+      reference: [''],
+      description: [''],
       type: [''],
       is_salable: [''],
       is_purchasable: [''],
@@ -71,7 +71,7 @@ export class CombinationproductPage {
       category_id: [''],
       unit_id: [''],
       tax_id: [''],
-      is_combination: 0,
+      is_combination: 1,
       archived: 0,
       organizations: [[this.session_org]], 
       product_details: this.formBuilder.group({

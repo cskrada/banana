@@ -18,6 +18,8 @@ export class SeeproductPage {
   producto: any[] = [];
   product: any[] = [];
   id: any;
+  id_detail: any;
+  arr: any;
   image: any;
   attributes: any []= [];
   resources: any []= [];
@@ -26,10 +28,11 @@ export class SeeproductPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     
     this.product = this.navParams.data;
-    // console.log('navparams de producto',this.product);
+    console.log('product',this.product);
     this.id = this.navParams.get('id');
     this.id_cat = this.navParams.get('category_id');
-    // console.log( 'id de categoria',this.id_cat);
+    this.id_detail= this.navParams.get('product_detail_id');
+    console.log( 'id de detail',this.id_detail);
     this.getProduct();
     this.getResource();
   }
@@ -56,26 +59,36 @@ export class SeeproductPage {
         this.productDetails = data['product_details'];
         this.categories = data['categories'];
         this.test = data['product_details'][0].image;
-        // console.log('tessssst see product', this.test);
-
+        
         if (this.test != null){
           this.image = constants.apiimage+data['product_details'][0].image;
         }else{
           this.image = 'assets/imgs/products.jpeg';
         }
 
+        // for(let attri of this.attribute_details){
+        //   let b = attri.attribute_details;
+        //   this.arr = b;
+        //   console.log('b',this.arr);
+        //   // for(let id of b){
+        //   //   console.log('iddddd', id);
+        //   // }
+        // }
+        
         for (let cat of this.categories){
           if ( this.id_cat == cat.id){
             this.category = cat.text;
           }
         }
+        // console.log('tessssst see product', this.test);
         // console.log('producto',this.producto);
         // console.log('product',this.product);
-        // console.log('productoDetails',this.productDetails);
+        console.log('producto_Details',this.productDetails);
+        // console.log('producto_Details TEST',this.productDetails[0]);
         // console.log('image',this.image);
         // console.log('teeeesst img',this.test);
       }, error => {
-        console.log(error);
+        console.log(error);    
     });
   }
 
@@ -91,7 +104,7 @@ export class SeeproductPage {
     }).subscribe ( data=> {
       this.resources = data['resources'];
       this.attributes = data['attributes_d'];
-      // console.log(this.attributes);
+      console.log('attributes_d',this.attributes);
     }, error => {
       console.log(error);
     });

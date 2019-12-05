@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-navbar color="bananap">
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-grid no-padding>
+      <ion-row no-padding>
+        <ion-col col-1 no-padding>
+          <table>
+            <tr>
+              <td>
+                <ion-buttons start>
+                  <button ion-button icon-only>
+                    <ion-icon name="paper"></ion-icon>
+                  </button>
+                </ion-buttons>
+              </td>
+              <td>
+                <ion-title text-left>{{'Pedido' | translate}}</ion-title>
+              </td>
+            </tr>
+          </table>
+        </ion-col>
+        <ion-col col-11 no-padding>
+          <ion-buttons end text-end>
+            <button ion-button icon-only>
+            <ion-icon name="more"></ion-icon>
+          </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+  </ion-navbar>
+</ion-header>
+<ion-content no-padding>
+
+  <!-- address: "avenida VENEZUELA Distrito Capital Caracas"
+  cif: "J-403524467"
+  document_name: "PEDIDO DE VENTA"
+  id: 99
+  neto_total: "504.60000000"
+  reference: "00-99"
+  serie: "00"
+  status_name: "ANULADO"
+  third_id: 1130
+  third_name: "Zonatronic de Venezuela c.a."
+  third_reference: "12345"
+  valid_from: "2019-10-08"
+  valid_until: "2019-10-08" -->
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-badge item-end color="{{this.color}}">{{ ordersale.status_name }}</ion-badge>
+      </ion-col>
+      <ion-col text-right>
+          <b> {{'Nro. Doc.' | translate }}:</b> {{ ordersale.serie }}- {{ ordersale.reference }}
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-col col-6>
+        <b>{{'Serie' | translate }}: </b>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6> 
+        <b>{{'Referencia' | translate }}: </b>
+      </ion-col>
+    </ion-row> -->
+    <ion-row>
+      <ion-col class="p-col">
+        <b>{{'Tercero' | translate }}: </b>{{ ordersale.third_name }}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="p-col">
+        <b>{{'Rif' | translate }}: </b>{{ ordersale.cif }}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="p-col">
+        <b>{{'Fecha' | translate }}: </b>{{ ordersale.valid_from }}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="p-col">
+        <b>{{'Vence' | translate }}: </b>{{ ordersale.valid_until }}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="p-col">
+        <div *ngFor="let c of currencies"> 
+          <div *ngIf="c.id == document.currency_document">
+            <b>{{'Moneda' | translate }}: </b>{{ c.text }}<ion-icon name="logo-usd"></ion-icon>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- <ion-row>
+      <ion-col>
+        <b>{{'Neto total' | translate }}: </b>{{ ordersale.neto_total | number:'1.1-3'}}
+      </ion-col>
+    </ion-row> -->
+    <ion-row>
+      <ion-col no-padding>
+        <table style="width: 100%;">
+          <colgroup>
+            <col width="30%">
+            <col width="10%">
+            <col width="10%">
+          </colgroup>
+          <tr style="background: #f9d4a8;" >
+            <th text-left>Descripcion</th>
+            <th text-center>Desc.</th>
+            <th text-center>Total</th>
+          </tr>
+          <tr *ngFor="let b of body_documents" style="border-bottom: 1px solid #d4d4d4;" (click)="seeProduct(b)">
+            <td class="p-tb">{{ b.quantity | number:'1.0' }} x {{ b.price | number:'1.1-3'}} <br> {{ b.name | lowercase | slice:0:40}}</td>
+            <td text-center>{{ b.discount }}</td>
+            <td text-center>{{ b.net_price | number:'1.1-3' }}</td>
+          </tr>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar text-right style="min-height: 0px;">
+
+    <p class="margin-tb">
+      <b>{{'Base imponible' | translate }}: </b>{{ footer.gross_total | number:'1.1-3'}}
+    </p>
+    <p class="margin-tb">
+      <b>{{'Iva' | translate }}: </b>{{ footer.tax_total | number:'1.1-3'}}
+    </p>
+    <p class="margin-tb">
+      <b>{{'Dcto' | translate }}: </b>{{ footer.discount_total | number:'1.1-3'}}
+    </p>
+    <p class="margin-tb">
+      <b>{{'Total' | translate }}: </b>{{ footer.neto_total | number:'1.1-3'}}
+    </p>
+  </ion-toolbar>
+</ion-footer>

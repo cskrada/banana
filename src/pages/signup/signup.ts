@@ -37,16 +37,20 @@ constructor(public navCtrl: NavController) {
 	 
 }
 	ionViewDidLoad() {
-	}
+  }
+  
+  
 
 	add(){
 		this.items.push({
 		  title: 'item',
 		  state: 'in'
-		});
+    });
+    console.log(this.items);
 	  }
 	
 	  remove(){
-		this.items.splice(0,1);
+    this.items.splice(0,1);
+    console.log(this.items);
 	  }
 }

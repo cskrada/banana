@@ -22,12 +22,12 @@
 					</table>
 				</ion-col>
 				<ion-col col-11 no-padding>
-						<ion-buttons end text-end>
-							<button ion-button icon-only (click)="addProduct()">
-								<ion-icon name="add-circle"></ion-icon>
-							</button>
-						</ion-buttons>
-					</ion-col>
+					<ion-buttons end text-end>
+						<button ion-button icon-only (click)="addProduct()">
+							<ion-icon name="add-circle"></ion-icon>
+						</button>
+					</ion-buttons>
+				</ion-col>
 			</ion-row>
 		</ion-grid> 
 	</ion-navbar>
@@ -60,7 +60,8 @@
 						<ion-col col-xs-6 col-sm-4 col-md-3 col-lg-2 *ngFor="let p of productos | searchproduct : terms">
 							<ion-card  (click)="seeProduct(p)">
 								<ng-container *ngIf="p.image != null; else second">
-									<img class="imagen" src="{{this.constants+p.image}}"/>
+									<!-- src="{{this.constants+p.image}}" -->
+									<img class="imagen" src="assets/imgs/products.jpeg">
 								</ng-container>
 								<ng-template #second>
 									<img class="imagen" src="assets/imgs/products.jpeg"/>
@@ -91,7 +92,8 @@
 										<ion-item>
 											<ion-thumbnail item-start>
 												<ng-container *ngIf="p.image != null; else second">
-													<img class="imagen" src="{{this.constants+p.image}}"/>
+													<!-- {{this.constants+p.image}} -->
+													<img class="imagen" src="assets/imgs/products.jpeg"/>
 												</ng-container>
 												<ng-template #second>
 													<img class="imagen" src="assets/imgs/products.jpeg"/>

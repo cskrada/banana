@@ -60,9 +60,9 @@ export class ProductsPage {
           this.productos = data['products'];
 
           this.constants= constants.apiimage;
-
+          // console.log('productos', this.productos);
         }, error => {
-          console.log(error);
+          // console.log(error);
       });
     });
   }
@@ -79,7 +79,8 @@ export class ProductsPage {
     }).subscribe ( data=> {
       this.resources = data['resources'];
       this.attributes = data['attributes_d'];
-      // console.log(this.attributes);
+      // console.log('resources', this.resources);
+      // console.log('attributes',this.attributes);
     }, error => {
       console.log(error);
     });

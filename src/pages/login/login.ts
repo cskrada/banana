@@ -30,8 +30,10 @@ export class LoginPage {
 	passwordType: string = 'password';
 	passwordIcon: string = 'eye-off';
 	email: any;
-	checkbox: any;
 	mail: any;
+	checkbox: any;
+	dns : string = '';
+	dns_remember: any = '';
 
 constructor(public navCtrl: NavController,
 			public formBuilder:FormBuilder,
@@ -44,9 +46,9 @@ constructor(public navCtrl: NavController,
 	this.email = sessionStorage.getItem('email');
 	
 	// console.log("dasdsadasd",this.checkbox);	
-	console.log("dasdsadasd",this.email);	
-	console.log(sessionStorage.getItem('name'));
-	console.log(sessionStorage.getItem('organization_name'));
+	// console.log("dasdsadasd",this.email);	
+	// console.log(sessionStorage.getItem('name'));
+	// console.log(sessionStorage.getItem('organization_name'));
 
 	this.myForm = this.formBuilder.group({
 		email: [this.email, Validators.required],
@@ -60,35 +62,36 @@ constructor(public navCtrl: NavController,
 	}
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad LoginPage');
+		// console.log('ionViewDidLoad LoginPage');
 		this.menu.enable(false);
-		this.checkbox=sessionStorage.getItem('checkbox');
-		console.log('JIKIJII', this.checkbox);
+		this.checkbox = sessionStorage.getItem('checkbox');
+		// console.log('JIKIJII', this.checkbox);
 
 		if(this.checkbox == "true"){
-			console.log('YES FALSE');
 			this.email = sessionStorage.getItem('email');
 		}else {
-			console.log('NO TRUE');
 			this.email ='';
 		}
 		// this.mail = this.email;
-		// console.log(this.email,'adasdasdsdadasdasdasdasdasdadasdasdsdadasdasdasdasdasdadasdasdsdadasdasdasdasdasd',this.checkbox);
+		// console.log(this.email,'asd',this.checkbox);
 	}
 
 	remember(){
-		
 		if(this.checkbox == true){
 			sessionStorage.removeItem('checkbox');
 			sessionStorage.setItem('checkbox', this.checkbox);
 			console.log('checkbox',this.checkbox);
 			this.email= sessionStorage.getItem('email');
+			this.dns = sessionStorage.getItem('dnss');
 			console.log('emailllllllll true',this.email);
+			console.log('DNS true',this.dns);
 		}
 		if(this.checkbox == false){
 			this.email= '';
+			this.dns= '';
 			sessionStorage.removeItem('checkbox');
 			sessionStorage.removeItem('email');
+			sessionStorage.removeItem('dnss');
 			sessionStorage.setItem('checkbox', this.checkbox);
 			console.log('checkbox',this.checkbox);
 			console.log('emailllllllll false',this.email);
@@ -104,10 +107,13 @@ constructor(public navCtrl: NavController,
 	}
 	
 	postLogin(email: string, password: any){
+		this.dns_remember = this.dns;
+		this.dns_remember = sessionStorage.setItem('dnss', this.dns_remember);
+		const new_dns = constants.dns.replace('$$$__$$$', this.dns);
 	  	this.http.post(constants.apilogin,
 					{ email, password }, 
 					{ headers: new HttpHeaders()
-					.set('authorization', 'http://localhost:4200')
+					.set('authorization', new_dns)
 					.append('app', 'BananaApp')
 					.append('Access-Control-Allow-Origin', '*')
 	  		}).subscribe(data => {
@@ -121,6 +127,7 @@ constructor(public navCtrl: NavController,
 				sessionStorage.setItem('token', data['user'].user[0].remember_token);
 				sessionStorage.setItem('name', data['user'].user[0].contact.name);
 				sessionStorage.setItem('email', data['user'].user[0].email);
+				sessionStorage.setItem('dns', new_dns);
 				this.navCtrl.setRoot(OrganizationsPage, this.results);
 				console.log(this.results);
 

@@ -32,6 +32,7 @@ export class MyApp {
   checkbox: any;
   organization: string;
   name: any;
+  dns: string = '';
   
 // --------------------------------------------------------------------------------------------
   constructor(public platform: Platform,
@@ -61,7 +62,7 @@ export class MyApp {
     this.pages = [
       { title: 'Escritorio', component: HomePage, icon: "home"},
       { title: 'Clientes', component: ClientsPage, icon: "people"},
-      { title: 'Pedidos', component: OrdersPage, icon: "cart"},
+      { title: 'Pedidos', component: OrdersPage, icon: "list"},
       { title: 'Productos', component: ProductsPage, icon: "apps"},
       { title: 'Ajustes', component: SettingsPage, icon: "build"},
       { title: 'Organización', component: OrganizationsPage, icon: "briefcase"}
@@ -84,11 +85,13 @@ export class MyApp {
   }
 
   postLogin(email: string, password: string){
-      this.http.post(constants.apilogin,
-            { email, password }, 
-            { headers: new HttpHeaders()
-                .set('authorization', 'http://localhost:4200')
-                .set('app', 'BananaApp')
+    const new_dns = constants.dns.replace('$$$__$$$', this.dns);
+    this.http.post(constants.apilogin,
+        { email, password }, 
+        { headers: new HttpHeaders()
+        .set('authorization', new_dns)
+        .append('app', 'BananaApp')
+        .append('Access-Control-Allow-Origin', '*')
       }).subscribe(data => {
         this.menu.enable(true, 'authenticated');
         this.results.push(data['user']);

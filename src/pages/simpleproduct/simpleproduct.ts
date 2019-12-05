@@ -53,8 +53,8 @@ export class SimpleproductPage {
     
     this.myForm = this.formBuilder.group({
     name: ['', Validators.required],
-    reference: ['', Validators.required],
-    description: ['', Validators.required],
+    reference: [''],
+    description: [''],
     type: [''],
     is_salable: [''],
     is_purchasable: [''],

@@ -86,6 +86,8 @@ constructor(public navCtrl: NavController,
 				}).subscribe ( data=> {
 				loading.dismissAll();
 				this.thirds = data['client'];
+
+				console.log('terceeeeeroodfanfabfabf',this.thirds);
 				}, error => {
 				console.log(error);
 			});

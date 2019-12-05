@@ -11,7 +11,7 @@
 							<td>
 								<ion-buttons start>
 									<button ion-button icon-only>
-										<ion-icon name="cart"></ion-icon>
+										<ion-icon name="list"></ion-icon>
 									</button>
 								</ion-buttons>
 							</td>
@@ -22,18 +22,43 @@
 					</table>
 				</ion-col>
 				<ion-col col-11 no-padding>
-					<ion-buttons end text-end>
-						<button ion-button icon-only>
-						<ion-icon name="more"></ion-icon>
-					</button>
-					</ion-buttons>
-				</ion-col>
+          <ion-buttons end text-end>
+            <button ion-button icon-only (click)="addOrderSale()">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
 			</ion-row>
 		</ion-grid> 
 	</ion-navbar>
 </ion-header>
 <ion-content no-padding>
   <ion-grid>
+    <ion-row>
+      <ion-col>
+          <!--  -->
+        <ion-searchbar placeholder="{{'Buscar'|translate}}" (ionInput)="buscar($event)"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-list>
+      <button ion-item class="paddinglr" *ngFor="let o of ordersale" (click)="order(o)">
+        <h2>{{ o.reference }}</h2>
+        <p>{{ o.third_name }}</p>
+        <p>{{ o.valid_from }}</p>
+        <p><b> {{ o.neto_total | number:'1.1-3' }}</b></p>
+        <ion-badge *ngIf="'PENDIENTE POR ENVIAR' == o.status_name" item-end color="bananadan">{{ o.status_name }}</ion-badge>
+        <ion-badge *ngIf="'PENDIENTE POR VALIDAR' == o.status_name" item-end color="bananadan">{{ o.status_name }}</ion-badge>
+        <ion-badge *ngIf="'VALIDADO' == o.status_name" item-end color="bananaps">{{ o.status_name }}</ion-badge>
+        <ion-badge *ngIf="'ANULADO' == o.status_name" item-end color="bananadanger">{{ o.status_name }}</ion-badge>
+        <ion-badge *ngIf="'PROCESADO PARCIALMENTE' == o.status_name" item-end color="light">{{ o.status_name }}</ion-badge>
+        <ion-badge *ngIf="'PROCESADO' == o.status_name" item-end color="bananasecondary">{{ o.status_name }}</ion-badge>
+      </button>
+    </ion-list>
+  </ion-grid>
+
+  <!-- <ion-grid>
     <ion-row>
       <ion-col col-11>
         <ion-searchbar class="search" placeholder="{{'Buscar'|translate}}"></ion-searchbar>
@@ -92,5 +117,5 @@
           </ion-card>
         </ion-col>
       </ion-row>
-    </ion-grid>
+    </ion-grid> -->
 </ion-content>

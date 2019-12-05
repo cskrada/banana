@@ -64,11 +64,11 @@ export class HomePage {
 			clone[0].data = data;
 			this.barChartData = clone;
 	}// fin de grafica lineal
-
+	public organization: any;
 // CONSTRUCTOR ----------------------------------------------------------------------------------------
 	constructor(public navCtrl: NavController, public menu: MenuController, public translateService: TranslateService, public navParams: NavParams) {
 		this.menu.enable(true);
-		
+		this.organization= sessionStorage.getItem('organization_name');
 
 	}
 
@@ -78,7 +78,6 @@ export class HomePage {
 		this.pieChartLabels.forEach(function(element, index) {
 			me.translateService.get(element).subscribe(
 				value => {
-				// console.log(value);
 				me.pieChartLabels[index] = value;
 				});
 		  });

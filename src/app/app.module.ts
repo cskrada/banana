@@ -48,6 +48,8 @@ import { SeecontactclientPage } from './../pages/seecontactclient/seecontactclie
 import { ModifycontactclientPage } from './../pages/modifycontactclient/modifycontactclient';
 import { SeebranchofficePage } from './../pages/seebranchoffice/seebranchoffice';
 import { ModifybranchofficePage } from './../pages/modifybranchoffice/modifybranchoffice';
+import { SeesaleorderPage } from './../pages/seesaleorder/seesaleorder';
+import { AddordersalePage } from './../pages/addordersale/addordersale';
 
 import { ChartsModule } from 'ng2-charts';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -64,6 +66,8 @@ import { ClientsProvider } from '../providers/data/clients';
 import { SearchPipe } from '../pipes/search/search';
 import { SortPipe } from '../pipes/sort/sort';
 import { SearchproductPipe } from './../pipes/searchproduct/searchproduct';
+import { ProductsearchPipe } from './../pipes/productsearch/productsearch';
+
 
 //Components
 // import { ComponentsModule } from './../components/components.module';
@@ -104,8 +108,11 @@ export function setTranslateLoader( http: HttpClient) {
     ModifycontactclientPage,
     SeebranchofficePage,
     ModifybranchofficePage,
+    SeesaleorderPage,
+    AddordersalePage,
     SearchPipe,
     SortPipe,
+    ProductsearchPipe,
     SearchproductPipe,
     ListComponent,
     GridComponent
@@ -116,15 +123,16 @@ export function setTranslateLoader( http: HttpClient) {
     HttpClientModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-      TranslateModule.forRoot({
+    TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (setTranslateLoader),
         deps: [HttpClient]
-        }
-      }),
+      }
+    }),
     ChartsModule,
     InputTextModule,
+    
     ButtonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -159,7 +167,9 @@ export function setTranslateLoader( http: HttpClient) {
     SeecontactclientPage,
     ModifycontactclientPage,
     SeebranchofficePage,
-    ModifybranchofficePage
+    ModifybranchofficePage,
+    SeesaleorderPage,
+    AddordersalePage
   ],
   providers: [
     InAppBrowser,

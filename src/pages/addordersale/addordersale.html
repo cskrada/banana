@@ -1,0 +1,181 @@
+<ion-header>
+  <ion-navbar color="bananap">
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-grid no-padding>
+      <ion-row no-padding>
+        <ion-col col-1 no-padding>
+          <table>
+            <tr>
+              <td>
+                <ion-buttons start>
+                  <button ion-button icon-only>
+                    <ion-icon name="add-circle"></ion-icon>
+                  </button>
+                </ion-buttons>
+              </td>
+              <td>
+                <ion-title text-left>{{'Crear pedido' | translate}}</ion-title>
+              </td>
+            </tr>
+          </table>
+        </ion-col>
+        <ion-col col-11 no-padding>
+          <!-- <ion-buttons end text-end>
+            <button ion-button icon-only (click)="addOrderSale()">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
+          </ion-buttons> -->
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+
+    <ion-slides pager>
+      <ion-slide>
+        <ion-item>
+          <button ion-button block (click)="openModalThirds()" color="bananaps">Elegir Tercero</button>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{client.business_name}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{client.cif}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'Válido desde' | translate}}</ion-label>
+          <ion-datetime [(ngModel)]="valid_from" displayFormat="DD/MMM/YYYY"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'Válido hasta' | translate}}</ion-label>
+          <ion-datetime [(ngModel)]="valid_until" displayFormat="DD/MMM/YYYY"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'Almacén'| translate}}</ion-label>
+          <ion-select  [(ngModel)]="document.warehouse_id" interface="popover">
+            <ion-option *ngFor="let w of warehouses" value="{{ w.id }}" (ionSelect)="selectW(w)">{{w.text}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'Lista de precios'| translate}}</ion-label>
+          <ion-select [(ngModel)]="document.price_list_id" interface="popover">
+            <ion-option *ngFor="let l of price_lists" value="{{ l.id }}" (ionSelect)="selectL(l)">{{l.text}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>      
+          <ion-label>{{'Moneda'| translate}}</ion-label>
+          <ion-select [(ngModel)]="document.currency_document" interface="popover">
+            <ion-option *ngFor="let c of currencies" value="{{ c.id }}" (ionSelect)="selectC(c)">{{c.text}}</ion-option>
+          </ion-select>
+        </ion-item> 
+        <ion-item>
+          <ion-label>{{'Impuesto'| translate}}</ion-label>
+          <ion-select [(ngModel)]="document.rate"  interface="popover">
+            <ion-option *ngFor="let t of taxes" value="{{ t.id }}" (ionSelect)="selectT(t)">{{t.text}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-slide>
+      <!-- slide 2 -->
+      <ion-slide>
+        <ion-item>
+          <button ion-button block (click)="listProducts()" color="default">Añadir productos</button>
+        </ion-item> 
+        <ion-list>
+          <ion-list-header>
+          lista de productos
+          </ion-list-header>
+          <ion-item [@itemState]="p.state" *ngFor="let p of product">
+          {{ p.name }} <br>
+          Cantidad: {{ p.quantity }}
+          </ion-item>
+        </ion-list>
+      </ion-slide>
+      <!-- slide 3 -->
+      <ion-slide>
+        <ion-item>
+          <button ion-button block (click)="postBorrador()" >Guardar como borrador</button>
+        </ion-item>
+        <ion-item>
+          <button ion-button block (click)="postEnviar()" >Enviar</button>
+        </ion-item>
+      </ion-slide>
+    </ion-slides>
+  <!-- <ion-list>    
+    <ion-item>
+      <button ion-button block (click)="openModalThirds()" color="bananaps">Elegir Tercero</button>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{client.business_name}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{client.cif}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'Válido desde' | translate}}</ion-label>
+      <ion-datetime [(ngModel)]="valid_from" displayFormat="DD/MMM/YYYY"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'Válido hasta' | translate}}</ion-label>
+      <ion-datetime [(ngModel)]="valid_until" displayFormat="DD/MMM/YYYY"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'Almacén'| translate}}</ion-label>
+      <ion-select  [(ngModel)]="document.warehouse_id" interface="popover">
+        <ion-option *ngFor="let w of warehouses" value="{{ w.id }}" (ionSelect)="selectW(w)">{{w.text}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'Lista de precios'| translate}}</ion-label>
+      <ion-select [(ngModel)]="document.price_list_id" interface="popover">
+        <ion-option *ngFor="let l of price_lists" value="{{ l.id }}" (ionSelect)="selectL(l)">{{l.text}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>      
+      <ion-label>{{'Moneda'| translate}}</ion-label>
+      <ion-select [(ngModel)]="document.currency_document" interface="popover">
+        <ion-option *ngFor="let c of currencies" value="{{ c.id }}" (ionSelect)="selectC(c)">{{c.text}}</ion-option>
+      </ion-select>
+    </ion-item> 
+    <ion-item>
+      <ion-label>{{'Impuesto'| translate}}</ion-label>
+      <ion-select [(ngModel)]="document.rate"  interface="popover">
+        <ion-option *ngFor="let t of taxes" value="{{ t.id }}" (ionSelect)="selectT(t)">{{t.text}}</ion-option>
+      </ion-select>
+      </ion-item>
+    <ion-item>
+      <button ion-button block (click)="listProducts()" color="default">Lista de productos</button>
+    </ion-item> 
+    <ion-list>
+      <ion-list-header>
+      lista de productos
+      </ion-list-header>
+      <ion-item [@itemState]="p.state" *ngFor="let p of product">
+      {{ p.name }} <br>
+      Cantidad: {{ p.quantity }}
+      </ion-item>
+    </ion-list>
+    <ion-item>
+      <button ion-button block (click)="postOrder()" >crear pedido</button>
+    </ion-item>
+  </ion-list> -->
+</ion-content>
+<!-- <ion-footer>
+  <ion-toolbar text-right style="min-height: 0px;">
+    <ion-row class="row ng-tns-c0-0">
+      <ion-col col-6 text-left>
+        <p class="margin-tb">
+          <b>{{'Bruto total' | translate }}: </b>{{ footer_document.gross_total | number:'1.1-3'}}
+        </p>
+      </ion-col>
+      <ion-col col-6 text-right>
+        <p class="margin-tb">
+          <b>{{'Neto total' | translate }}: </b>{{ footer_document.neto_total | number:'1.1-3'}}
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer> -->

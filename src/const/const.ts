@@ -1,42 +1,60 @@
 export const constants = {
+    dns  : 'https://$$$__$$$.bananaproweb.com',
     // Login
-    apilogin : 'http://18.223.231.86/laravel-banana/public/api/login',
+    apilogin : 'https://server.bananaproweb.com/api/login',
 
     // Terceros
-    apiclients : 'http://18.223.231.86/laravel-banana/public/api/thirds/customers/',
-    apiseeclient : 'http://18.223.231.86/laravel-banana/public/api/thirds/customer/',
-    apipostclient: 'http://18.223.231.86/laravel-banana/public/api/thirds/prospect/create',
-    apiputclient: 'http://18.223.231.86/laravel-banana/public/api/thirds/prospect/update/',
+    apiclients : 'https://server.bananaproweb.com/api/thirds/customers/',
+    apiseeclient : 'https://server.bananaproweb.com/api/thirds/customer/',
+    apipostclient: 'https://server.bananaproweb.com/api/thirds/prospect/create',
+    apiputclient: 'https://server.bananaproweb.com/api/thirds/prospect/update/',
 
     // Terceros - contactos|sucursales
-    apicontactsclient: 'http://18.223.231.86/laravel-banana/public/api/thirds/contacts/',
-    apipostcontact: 'http://18.223.231.86/laravel-banana/public/api/thirds/contact/create',
-    apiseecontact: 'http://18.223.231.86/laravel-banana/public/api/contact/',
-    apiputcontact: 'http://18.223.231.86/laravel-banana/public/api/thirds/contact/update',
-    apibranchoffices: 'http://18.223.231.86/laravel-banana/public/api/thirds/branchs/',
-    apiseebranch: 'http://18.223.231.86/laravel-banana/public/api/branch/',
-    apipostbranch: 'http://18.223.231.86/laravel-banana/public/api/thirds/branch/create',
-    apiputbranch: 'http://18.223.231.86/laravel-banana/public/api/thirds/branch/update',
-    apicharges: 'http://18.223.231.86/laravel-banana/public/api/charges/list',
+    apicontactsclient: 'https://server.bananaproweb.com/api/thirds/contacts/',
+    apipostcontact: 'https://server.bananaproweb.com/api/thirds/contact/create',
+    apiseecontact: 'https://server.bananaproweb.com/api/contact/',
+    apiputcontact: 'https://server.bananaproweb.com/api/thirds/contact/update',
+    apibranchoffices: 'https://server.bananaproweb.com/api/thirds/branchs/',
+    apiseebranch: 'https://server.bananaproweb.com/api/branch/',
+    apipostbranch: 'https://server.bananaproweb.com/api/thirds/branch/create',
+    apiputbranch: 'https://server.bananaproweb.com/api/thirds/branch/update',
+    apicharges: 'https://server.bananaproweb.com/api/charges/list',
 
     // Regiones
-    apicountries : 'http://18.223.231.86/laravel-banana/public/api/location/countries',
-    apistates : 'http://18.223.231.86/laravel-banana/public/api/location/states',
-    apicities : 'http://18.223.231.86/laravel-banana/public/api/location/cities',
+    apicountries : 'https://server.bananaproweb.com/api/location/countries',
+    apistates : 'https://server.bananaproweb.com/api/location/states',
+    apicities : 'https://server.bananaproweb.com/api/location/cities',
 
     // Productos
-    apiproducts: 'http://18.223.231.86/laravel-banana/public/api/products',
-    apiseeproduct: 'http://18.223.231.86/laravel-banana/public/api/product/',
-    apiproducts_details: 'http://18.223.231.86/laravel-banana/public/api/products/details',
-    resources: 'http://18.223.231.86/laravel-banana/public/api/products/resources',
-    apipostproduct: 'http://18.223.231.86/laravel-banana/public/api/products/create',
+    apiproducts: 'https://server.bananaproweb.com/api/products',
+    apiseeproduct: 'https://server.bananaproweb.com/api/product/',
+    apiproducts_details: 'https://server.bananaproweb.com/api/products/details',
+    resources: 'https://server.bananaproweb.com/api/products/resources',
+    apipostproduct: 'https://server.bananaproweb.com/api/products/create',
 
     // Organizacion
-    apiorganization: 'http://18.223.231.86/laravel-banana/public/api/organizations/byUser',
+    apiorganization: 'https://server.bananaproweb.com/api/organizations/byUser',
 
     // Imagen
-    apiimage: 'http://18.223.231.86/laravel-banana/public/storage/img/'
+    apiimage: 'https://server.bananaproweb.com/storage/img/',
+    
+    //Pedido de Venta
+    apipostordersale: 'https://server.bananaproweb.com/api/documents/create',
+    apiordersale: 'https://server.bananaproweb.com/api/documents/sale-represent?type_document=2',
+    apitype_document: 'https://server.bananaproweb.com/api/documents/resources?type_document=2',
+    apidocument: 'https://server.bananaproweb.com/api/document/',
+    // apidetails: 'https://server.bananaproweb.com/api/products/details/filter?filter=&warehouse_id=1&price_list_id=66&tax_alternative=16',
+    // apipostorder: 'https://server.bananaproweb.com/api/products/details?type=&position=0&limit=100&warehouse_id=1',
+    apipostpricelist: 'https://server.bananaproweb.com/api/product/detail/price-list',
 
+    // Busqueda / Pedido de Venta
+    apisearchproducts: 'https://server.bananaproweb.com/api/products/details/filter',
+    // apisearchclient: 'https://server.bananaproweb.com/api/thirds/why-branch/search',
+    apisearchclient: 'https://server.bananaproweb.com/api/thirds/customers/',
+    apisearchorder: 'https://server.bananaproweb.com/api/documents/search'
+
+
+    
     // apilogin: 'http://192.168.1.3:8000/api/login',
     // apiclient: 'http://192.168.1.3:8000/api/thirds/customers/'
 }
