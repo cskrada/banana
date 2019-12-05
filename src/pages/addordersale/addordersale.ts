@@ -407,7 +407,8 @@ export class AddordersalePage {
   }
 
   agregarFirma(){
-    
+    const myModal = this.modalCtrl.create('ModalsignaturePage');
+    myModal.present();
   }
 }
       

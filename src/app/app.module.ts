@@ -68,6 +68,8 @@ import { SortPipe } from '../pipes/sort/sort';
 import { SearchproductPipe } from './../pipes/searchproduct/searchproduct';
 import { ProductsearchPipe } from './../pipes/productsearch/productsearch';
 
+// Signature-firma
+import { SignaturePadModule } from 'angular2-signaturepad';
 
 //Components
 // import { ComponentsModule } from './../components/components.module';
@@ -121,6 +123,7 @@ export function setTranslateLoader( http: HttpClient) {
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    SignaturePadModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
     TranslateModule.forRoot({
