@@ -117,34 +117,72 @@ export class ModalproductsPage {
   }
 
   cerrar(p){
-    let prompt = this.alertCtrl.create({
-      title: p.name,
-      message: p.reference,
-      inputs: [
-        {
-          name: 'quantity',
-          placeholder: 'cantidad',
-          type: 'number',
-          value: p.quantity
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Guardar',
-          handler: data => {
-            p.quantity = data.quantity;
-            console.log(p);
-          }
-        }
-      ]
-    });
-    prompt.present();
+
+		this.translateService.get('AlertaModalProducts').subscribe( 
+			value=>{
+				let input = value['InputPlaceholder'];
+				let buttonCancel = value['BotonCancelar'];
+				let buttonGuardar = value['BotonGuardar'];
+
+				let prompt = this.alertCtrl.create({
+          title: p.name,
+          message: p.reference,
+          inputs: [
+            {
+              name: 'quantity',
+              placeholder: input,
+              type: 'number',
+              value: p.quantity
+            },
+          ],
+          buttons: [
+            {
+              text: buttonCancel,
+              handler: data => {
+                console.log('Cancel clicked');
+              }
+            },
+            {
+              text: buttonGuardar,
+              handler: data => {
+                p.quantity = data.quantity;
+                console.log(p);
+              }
+            }
+          ]
+				});
+				prompt.present();
+			});
+
+
+    // let prompt = this.alertCtrl.create({
+    //   title: p.name,
+    //   message: p.reference,
+    //   inputs: [
+    //     {
+    //       name: 'quantity',
+    //       placeholder: 'cantidad',
+    //       type: 'number',
+    //       value: p.quantity
+    //     },
+    //   ],
+    //   buttons: [
+    //     {
+    //       text: 'Cancelar',
+    //       handler: data => {
+    //         console.log('Cancel clicked');
+    //       }
+    //     },
+    //     {
+    //       text: 'Guardar',
+    //       handler: data => {
+    //         p.quantity = data.quantity;
+    //         console.log(p);
+    //       }
+    //     }
+    //   ]
+    // });
+    // prompt.present();
    
   }
 

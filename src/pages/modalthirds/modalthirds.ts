@@ -1,3 +1,4 @@
+import { AddordersalePage } from './../addordersale/addordersale';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController,LoadingController, AlertController } from 'ionic-angular';
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
@@ -80,7 +81,7 @@ export class ModalthirdsPage {
         }).subscribe ( data=> {
           loading.dismissAll();
           this.clients = data['clients'];
-          // console.log(this.clients);
+          console.log('terceros',this.clients);
         }, error => {
           console.log(error);
       });
@@ -96,9 +97,15 @@ export class ModalthirdsPage {
     console.log(c);
   }
 
-  // cerrar(){
-  //   let d = null;
-  //   this.viewCtrl.dismiss(d);
-  //   console.log('cerro sin datos');
-  // }
+  cerrar(){
+
+    this.navCtrl.push(AddordersalePage);
+    
+    // let client;
+    // client.business_name='';
+    // client.cif='';
+    // client.id='';
+    // this.viewCtrl.dismiss(client);
+    // console.log('modalthirds', client);
+  }
 }
