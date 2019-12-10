@@ -145,6 +145,33 @@
         "BotonModificar": "Modify"
     },
 
+    "AlertaModalProducts":{
+        "InputPlaceholder": "Quantity",
+        "BotonCancelar": "Cancel",
+        "BotonGuardar": "Save"
+    },
+
+    "AlertaAddOrderSale":{
+        "MensajeToast": "You must fill in all fields before issuing the order"
+    },
+
+    "AlertaAddOrderSaleP":{
+        "MensajeToast": "Select price list, tax and warehouse"
+    },
+
+    "AlertaSeeSaleOrder": {
+        "MensajeAlerta": "Reference",
+        "botonMensaje": "ok"
+    },
+
+    "AlertaAddOrderSale2":{
+        "MensajeAlerta": "Reference",
+        "botonMensaje": "Ok",
+        "Input": "Quantity",
+        "BotonCancelar": "Cancel",
+        "BotonGuardar": "Save"
+    },
+
     "Perfil de usuario": "User profile",
 
     "Mi perfil": "My profile",
@@ -279,5 +306,78 @@
     
     "Modificando sucursal": "Modifying branch",
 
-    "modificar sucursal": "modify branch"
+    "modificar sucursal": "modify branch",
+    
+    "Elegir tercero": "Choose Third",
+
+    "Tercero": "Third",
+
+    "Cif": "Cif",
+
+    "Válido desde": "Valid from",
+
+    "Válido hasta": "Valid until",
+
+    "Almacén": "Warehouse",
+
+    "Lista de precios": "Price list",
+
+    "Moneda": "Currency",
+
+    "Añadir productos": "Add products",
+
+    "lista de productos": "list of products",
+
+    "Cantidad": "Quantity",
+
+    "Agregar Firma": "Add Signature",
+
+    "Guardar como borrador": "Save as draft",
+
+    "Elegir Producto": "Choose product",
+    
+    "Cerrar": "Close",
+
+    "Stock disponible": "Available stock",
+
+    "Cancelar": "Cancel",
+
+    "Limpiar": "Clean",
+
+    "Guardar": "Save",
+
+    "Pedido" : "Order",
+
+    "Nro. Doc.": "Nr. Doc.",
+
+    "Fecha": "Date",
+
+    "Vence" : "Expires",
+
+    "Desc." : "discount",
+
+    "Total": "Total",
+
+    "Base imponible": "Taxable base",
+
+    "Iva": "Iva",
+
+    "Dcto": "discount",
+
+    "Equipo de trabajo": "Work team",
+
+    "Elegir Tercero": "Choose Third",
+
+    "ANULADO": "CANCELED",
+
+    "PENDIENTE POR ENVIAR": "PENDING TO SEND",
+
+    "PENDIENTE POR VALIDAR": "PENDING TO VALIDATE",
+
+    "PROCESADO": "PROCESSED",
+
+    "PROCESADO PARCIALMENTE": "PARTIALLY PROCESSED",
+
+    "VALIDADO": "VALIDATED"
+
 }

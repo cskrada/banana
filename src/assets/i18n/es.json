@@ -145,6 +145,33 @@
         "BotonModificar": "Modificar"
     },
 
+    "AlertaModalProducts":{
+        "InputPlaceholder": "Cantidad",
+        "BotonCancelar": "Cancelar",
+        "BotonGuardar": "Guardar"
+    },
+
+    "AlertaAddOrderSale":{
+        "MensajeToast": "Debe rellenar todos los campos antes de emitir el pedido"
+    },
+
+    "AlertaAddOrderSaleP":{
+        "MensajeToast": "Seleccionar lista de precio, el impuesto y el almacen"
+    },
+
+    "AlertaSeeSaleOrder": {
+        "MensajeAlerta": "Referencia",
+        "botonMensaje": "ok"
+    },
+
+    "AlertaAddOrderSale2":{
+        "MensajeAlerta": "Referencia",
+        "botonMensaje": "Ok",
+        "Input": "Cantidad",
+        "BotonCancelar": "Cancelar",
+        "BotonGuardar": "Guardar"
+    },
+
     "Perfil de usuario": "Perfil de usuario",
 
     "Mi perfil": "Mi perfil",
@@ -279,5 +306,78 @@
 
     "Modificando sucursal": "Modificando sucursal",
 
-    "modificar sucursal": "modificar sucursal"
+    "modificar sucursal": "modificar sucursal", 
+
+    "Elegir tercero": "Elegir Tercero",
+
+    "Tercero": "Tercero",
+
+    "Cif": "Cif",
+
+    "Válido desde": "Válido desde",
+
+    "Válido hasta": "Válido hasta",
+
+    "Almacén": "Almacén",
+
+    "Lista de precios": "Lista de precios",
+
+    "Moneda": "Moneda",
+
+    "Añadir productos": "Añadir productos",
+
+    "lista de productos": "lista de productos",
+
+    "Cantidad": "Cantidad",
+
+    "Agregar Firma": "Agregar Firma",
+
+    "Guardar como borrador": "Guardar como borrador",
+
+    "Elegir Producto": "Elegir Producto",
+
+    "Cerrar": "Cerrar",
+
+    "Stock disponible": "Stock disponible",
+
+    "Cancelar": "Cancelar",
+
+    "Limpiar": "Limpiar",
+
+    "Guardar": "Guardar",
+
+    "Pedido" : "Pedido",
+
+    "Nro. Doc.": "Nro. Doc.",
+
+    "Fecha": "Fecha",
+
+    "Vence" : "Vence",
+
+    "Desc." : "Desc.",
+
+    "Total": "Total",
+
+    "Base imponible": "Base imponible",
+
+    "Iva": "Iva",
+
+    "Dcto": "Dcto",
+
+    "Equipo de trabajo": "Equipo de trabajo",
+
+    "Elegir Tercero": "Elegir Tercero",
+
+    "ANULADO": "ANULADO",
+
+    "PENDIENTE POR ENVIAR": "PENDIENTE POR ENVIAR",
+
+    "PENDIENTE POR VALIDAR": "PENDIENTE POR VALIDAR",
+
+    "PROCESADO": "PROCESADO",
+
+    "PROCESADO PARCIALMENTE": "PROCESADO PARCIALMENTE",
+
+    "VALIDADO": "VALIDADO"
+
 }

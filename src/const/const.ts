@@ -51,7 +51,8 @@ export const constants = {
     apisearchproducts: 'https://server.bananaproweb.com/api/products/details/filter',
     // apisearchclient: 'https://server.bananaproweb.com/api/thirds/why-branch/search',
     apisearchclient: 'https://server.bananaproweb.com/api/thirds/customers/',
-    apisearchorder: 'https://server.bananaproweb.com/api/documents/search'
+    // apisearchorder: 'https://server.bananaproweb.com/api/documents/search'
+    apisearchorder: 'https://server.bananaproweb.com/api/documents/sale-represent/search'
 
 
     
