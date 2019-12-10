@@ -115,8 +115,8 @@ export class OrdersPage {
           .append('Access-Control-Allow-Origin', '*')
           .append('token', sessionStorage.getItem('token')),
           params: new HttpParams()
-            .set('search', search)
             .set('type_document', '2')
+            .set('search', search)
         }).subscribe ( data=> {
           loading.dismissAll();
           this.ordersale = data;

@@ -92,12 +92,19 @@ export class SeesaleorderPage {
             }
           }
 
-          // console.log('status', this.status);
-          console.log('documentTODO', this.document_resource);
-          console.log('body documents', this.body_documents);
-          console.log('currencies', this.currencies);
-          console.log('document', this.document);
-          console.log('footer document', this.footer);
+// 0: {id: 3, text: "ANULADO", next_status_id: null, next_status_name: null}
+// 1: {id: 0, text: "PENDIENTE POR ENVIAR", next_status_id: 1, next_status_name: "PENDIENTE POR VALIDAR"}
+// 2: {id: 1, text: "PENDIENTE POR VALIDAR", next_status_id: 2, next_status_name: "VALIDADO"}
+// 3: {id: 5, text: "PROCESADO", next_status_id: null, next_status_name: null}
+// 4: {id: 4, text: "PROCESADO PARCIALMENTE", next_status_id: 5, next_status_name: "PROCESADO"}
+// 5: {id: 2, text: "VALIDADO", next_status_id: 3, next_status_name: "ANULADO"}
+
+          console.log('status', this.status);
+          // console.log('documentTODO', this.document_resource);
+          // console.log('body documents', this.body_documents);
+          // console.log('currencies', this.currencies);
+          // console.log('document', this.document);
+          // console.log('footer document', this.footer);
         }, error => {
           console.log(error);
         });
@@ -105,14 +112,27 @@ export class SeesaleorderPage {
   }
 
   seeProduct(b){
+    this.translateService.get('AlertaSeeSaleOrder').subscribe( 
+			value=>{
+				let ref = value['MensajeAlerta'];
+				let message = value['botonMensaje'];
 
-    const alert = this.alertCtrl.create({
-      title: b.name,
-      subTitle: b.description_product,
-      message: 'Referencia: '+ b.reference,
-      buttons: ['OK']
-    });
-    alert.present();
+				const alert = this.alertCtrl.create({
+					title: b.name,
+          subTitle: b.description_product,
+          message: ref+ b.reference,
+          buttons: [message]
+				});
+				alert.present();
+			});
+
+    // const alert = this.alertCtrl.create({
+    //   title: b.name,
+    //   subTitle: b.description_product,
+    //   message: 'Referencia: '+ b.reference,
+    //   buttons: ['OK']
+    // });
+    // alert.present();
 
   }
 
