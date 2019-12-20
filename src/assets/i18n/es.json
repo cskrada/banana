@@ -86,7 +86,7 @@
     },
 
     "Alerta4": {
-        "MensajeAlerta": "El email que introdujo no es correcto, por favor ingrese de nuevo sus datos.",
+        "MensajeAlerta": "El email o el grupo de trabajo que introdujo no es correcta, por favor ingrese de nuevo sus datos.",
         "TextAlerta": "Ok"
     },
 
@@ -378,6 +378,12 @@
 
     "PROCESADO PARCIALMENTE": "PROCESADO PARCIALMENTE",
 
-    "VALIDADO": "VALIDADO"
+    "VALIDADO": "VALIDADO",
+
+    "Representante de venta": "Representante de venta",
+
+    "versión": "versión",
+
+    "Recordarme": "Recordarme"
 
 }

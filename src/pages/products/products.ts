@@ -49,7 +49,7 @@ export class ProductsPage {
 
       return this.http.get(constants.apiproducts_details,
         { headers: new HttpHeaders()
-          .set('authorization', 'http://localhost:4200')
+          .set('authorization', sessionStorage.getItem('dns'))
           .append('app', 'BananaApp')
           .append('organization', sessionStorage.getItem('organization_id') )
           .append('user', sessionStorage.getItem('user'))
@@ -70,7 +70,7 @@ export class ProductsPage {
   getResource(){
     return this.http.get(constants.resources,
       { headers: new HttpHeaders()
-      .set('authorization', 'http://localhost:4200')
+      .set('authorization', sessionStorage.getItem('dns'))
       .append('app', 'BananaApp')
       .append('organization', sessionStorage.getItem('organization_id') )
       .append('user', sessionStorage.getItem('user'))

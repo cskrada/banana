@@ -26,7 +26,7 @@ export class Document {
   price_list_id: number = null;
   currency_client: number = null;
   currency_document: number = null;
-  rate: any = '1';
+  rate: any = '';
   // Cuando se crea un documento se establece que tiene el estado 1 "Pendiente"
   status_id: number = 1;
   based: boolean = false;
@@ -124,6 +124,8 @@ export class AddordersalePage {
 
   post_order: any;
 
+  signatureImage: string;
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public modalCtrl: ModalController,
@@ -185,6 +187,7 @@ export class AddordersalePage {
   selectT(t){
     this.tax = t;
     console.log ('taxe:',this.tax['rate']);
+    console.log ('taxe:',this.tax);
   }
 
   selectL(l){
@@ -196,11 +199,11 @@ export class AddordersalePage {
   }
     
   openModalProducts(){
-    const myModalP = this.modalCtrl.create('ModalproductsPage', {lis: this.lis, tax: this.tax, war: this.war });
+    const myModalP = this.modalCtrl.create('ModalproductsPage', {lis: this.lis, tax: this.tax, war: this.war, product: this.product});
     myModalP.present();
 
     myModalP.onDidDismiss((data)=>{
-      console.log(data);      
+      // console.log(data);    //productos seleccionados desde el modal  
       if (data != null) {
         let clone: Array<any> = [];
         let gross_total: number = 0;
@@ -220,11 +223,20 @@ export class AddordersalePage {
     if( this.lis != undefined && this.war != undefined && this.tax != undefined ){
         this.openModalProducts();
     }else if( this.lis == undefined || this.war == undefined || this.tax == undefined ){
-      const toast = this.toastCtrl.create({
-        message: 'Seleccionar lista de precio, el impuesto y el almacen',
-        duration: 3000
-      });
-      toast.present();
+      this.translateService.get('AlertaAddOrderSaleP').subscribe( 
+        value=>{
+          let message = value['MensajeToast'];
+          let toast = this.toastCtrl.create({
+            message : message,
+            duration: 3000
+          });
+          toast.present();
+        });
+      // const toast = this.toastCtrl.create({
+      //   message: 'Seleccionar lista de precio, el impuesto y el almacen',
+      //   duration: 3000
+      // });
+      // toast.present();
     }
   }
 
@@ -255,6 +267,11 @@ export class AddordersalePage {
     let tax_total: any = 0;
     let gross: any = 0;
     this.product.forEach(function (element){
+
+      // cambio 
+      element.net_price = element.price * element.quantity;
+      // cambio 
+
       gross += element.net_price;
       if (element.tax_id != null) {
         let property_name = me.getElementOfList(me.taxes, element.tax_id).rate;
@@ -342,14 +359,29 @@ export class AddordersalePage {
           });
           toast.present();
         }, error => {
+          this.translateService.get('AlertaAddOrderSale').subscribe( 
+            value=>{
+              let message = value['MensajeToast'];
+      
+              const toast = this.toastCtrl.create({
+                message : message,
+                duration: 3000
+              });
+            toast.present();
+          });
         console.log(error);
       });
     }else if( this.lis == undefined || this.war == undefined || this.tax == undefined ){
-      const toast = this.toastCtrl.create({
-        message: 'Debe rellenar todos los campos antes de emitir el pedido',
-        duration: 3000
-    });
-    toast.present();
+      this.translateService.get('AlertaAddOrderSale').subscribe( 
+        value=>{
+          let message = value['MensajeToast'];
+  
+          const toast = this.toastCtrl.create({
+            message : message,
+            duration: 3000
+          });
+        toast.present();
+      });
     }
 
   }
@@ -395,20 +427,101 @@ export class AddordersalePage {
           });
           toast.present();
         }, error => {
+          this.translateService.get('AlertaAddOrderSale').subscribe( 
+            value=>{
+              let message = value['MensajeToast'];
+      
+              const toast = this.toastCtrl.create({
+                message : message,
+                duration: 3000
+              });
+            toast.present();
+          });
         console.log(error);
       });
     }else if( this.lis == undefined || this.war == undefined || this.tax == undefined ){
-      const toast = this.toastCtrl.create({
-        message: 'Debe rellenar todos los campos antes de emitir el pedido',
-        duration: 3000
-      });
-      toast.present();
+      this.translateService.get('AlertaAddOrderSale').subscribe( 
+        value=>{
+          let message = value['MensajeToast'];
+  
+          const toast = this.toastCtrl.create({
+            message : message,
+            duration: 3000
+          });
+          toast.present();
+        });
+
+      // const toast = this.toastCtrl.create({
+      //   message: 'Debe rellenar todos los campos antes de emitir el pedido',
+      //   duration: 3000
+      // });
+      // toast.present();
     }
   }
 
   agregarFirma(){
     const myModal = this.modalCtrl.create('ModalsignaturePage');
     myModal.present();
+
+    myModal.onDidDismiss((data)=>{
+      this.signatureImage= data['signatureImage'];
+      console.log('signature ADDORDERSAKE',this.signatureImage);
+    })
+  }
+
+  seeProduct(p,i){
+    console.log('productoaddordersale',p);
+    console.log('indice arreglo', i);
+    this.translateService.get('AlertaAddOrderSale2').subscribe( 
+			value=>{
+				let ref = value['MensajeAlerta'];
+				// let message = value['botonMensaje'];
+        let input = value['Input'];
+        let buttonCancel = value['BotonCancelar'];
+        let buttonGuardar = value['BotonGuardar'];
+        
+      const alert4 = this.alertCtrl.create({
+        title: p.name,
+        subTitle: p.description_product,
+        message: ref+''+ p.reference,
+        inputs: [
+          {
+            name: 'quantity',
+            placeholder: input,
+            type: 'number',
+            value: p.quantity
+          },
+        ],
+        buttons: [
+          {
+            text: buttonCancel,
+            handler: data => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: buttonGuardar,
+            handler: data => {
+              p.quantity = data.quantity;
+              console.log(p);
+              this.product;
+              console.log('product', this.product);
+              this.calculateGrossTaxes();
+              // console.log(this.product);
+            }
+          }
+        ]
+      });
+      alert4.present();
+		});
+  }
+
+  eliminarProduct(p,i){
+    let removed;
+    removed = this.product.splice(i, 1);
+    console.log("arreglo removido", this.product);
+    this.calculateGrossTaxes();
+      
   }
 }
       

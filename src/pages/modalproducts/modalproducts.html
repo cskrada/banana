@@ -2,7 +2,7 @@
   <ion-navbar color="bananap">
     <ion-title>{{'Elegir Producto' | translate}}</ion-title>
     <ion-buttons end>
-      <button ion-button (click)="close(w)" color="primary">{{'Cerrar'| translate}}</button>
+      <button ion-button (click)="close()" color="primary">{{'Cerrar'| translate}}</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -23,7 +23,8 @@
       <h6>{{ p.name }}</h6>
       <p no-margin *ngIf=" p.reference != [''] && p.reference != null ">{{'Referencia' | translate}}: {{ p.reference }}</p>
       <p no-margin>{{'Stock disponible' | translate}}: {{ p.stock | number:'1.1-3' }}</p> 
-      <p no-margin> <b> {{'Cantidad' | translate}}: </b> {{p.quantity}}</p> 
+      <p no-margin><b>{{'Cantidad' | translate}}:</b> {{p.quantity}}</p> 
+
     </ion-item>
   </ion-list>
 

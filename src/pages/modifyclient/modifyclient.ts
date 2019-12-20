@@ -75,7 +75,7 @@ export class ModifyclientPage {
 		this.http.put(constants.apiputclient+this.id,
 			 body , 
 			{ headers: new HttpHeaders()
-			.set('authorization', 'http://localhost:4200')
+			.set('authorization', sessionStorage.getItem('dns'))
 			.append('app', 'BananaApp')
 			.append('organization', sessionStorage.getItem('organization_id') )
 			.append('user', sessionStorage.getItem('user'))

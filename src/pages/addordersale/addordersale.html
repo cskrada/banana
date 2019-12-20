@@ -38,13 +38,13 @@
     <ion-slides pager>
       <ion-slide>
         <ion-item>
-          <button ion-button block (click)="openModalThirds()" color="bananaps">Elegir Tercero</button>
+          <button ion-button block (click)="openModalThirds()" color="bananaps">{{'Elegir Tercero' | translate}}</button>
         </ion-item>
         <ion-item>
-          <ion-label>{{client.business_name}}</ion-label>
+          <ion-label>{{ 'Tercero' | translate}}:{{client.business_name}}</ion-label>
         </ion-item>
         <ion-item>
-          <ion-label>{{client.cif}}</ion-label>
+          <ion-label>{{ 'Cif' | translate}}:{{client.cif}}</ion-label>
         </ion-item>
         <ion-item>
           <ion-label>{{'Válido desde' | translate}}</ion-label>
@@ -61,52 +61,114 @@
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label>{{'Lista de precios'| translate}}</ion-label>
+          <ion-label>{{'Lista de precios' | translate}}</ion-label>
           <ion-select [(ngModel)]="document.price_list_id" interface="popover">
             <ion-option *ngFor="let l of price_lists" value="{{ l.id }}" (ionSelect)="selectL(l)">{{l.text}}</ion-option>
           </ion-select>
         </ion-item>
         <ion-item>      
-          <ion-label>{{'Moneda'| translate}}</ion-label>
+          <ion-label>{{'Moneda' | translate}}</ion-label>
           <ion-select [(ngModel)]="document.currency_document" interface="popover">
             <ion-option *ngFor="let c of currencies" value="{{ c.id }}" (ionSelect)="selectC(c)">{{c.text}}</ion-option>
           </ion-select>
         </ion-item> 
         <ion-item>
-          <ion-label>{{'Impuesto'| translate}}</ion-label>
+          <ion-label>{{'Impuesto' | translate}}</ion-label>
           <ion-select [(ngModel)]="document.rate"  interface="popover">
             <ion-option *ngFor="let t of taxes" value="{{ t.id }}" (ionSelect)="selectT(t)">{{t.text}}</ion-option>
           </ion-select>
         </ion-item>
       </ion-slide>
       <!-- slide 2 -->
-      <ion-slide>
+      <ion-slide class="swiper-slide">
         <ion-item>
-          <button ion-button block (click)="listProducts()" color="default">Añadir productos</button>
-        </ion-item> 
+          <button ion-button block (click)="listProducts()" color="default">{{'Añadir productos' | translate}}</button>
+        </ion-item>
+        <ion-toolbar text-right style="min-height: 0px;">
+          <ion-row class="row ng-tns-c0-0">
+            <ion-col col-6 text-left>
+              <p class="margin-tb">
+                <b>{{'Bruto total' | translate }}: </b>{{ footer_document.gross_total | number:'1.1-3'}} 
+              </p>
+            </ion-col>
+            <ion-col col-6 text-right>
+              <p class="margin-tb">
+                <b>{{ 'Impuesto' | translate}}:</b> {{ this.footer_document.tax_total }}
+              </p>
+              <p class="margin-tb">
+                <b>{{'Neto total' | translate }}: </b>{{ footer_document.neto_total | number:'1.1-3'}}
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-toolbar>
         <ion-list>
           <ion-list-header>
-          lista de productos
+          {{'lista de productos' | translate}}
           </ion-list-header>
-          <ion-item [@itemState]="p.state" *ngFor="let p of product">
-          {{ p.name }} <br>
-          Cantidad: {{ p.quantity }}
+          <ion-item [@itemState]="p.state" *ngFor="let p of product; let i = index" [attr.data-index]="i">
+            {{ p.name }} <br>
+            {{'Cantidad' | translate}}: {{ p.quantity }} * {{ p.price }}
+            <b>{{ 'Total' | translate}}:</b> {{ p.net_price}} <br>
+            <div *ngFor="let item of taxes">
+              <div *ngIf="p.tax_id == item.id">
+                  {{ 'Impuesto' | translate}}: {{ item.text }}
+              </div>
+            </div>
+            <button ion-button icon-only (click)="seeProduct(p,i)" color="light" item-end class="boton-w">
+              <ion-icon name="create"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="eliminarProduct(p,i)" color="bananadanger" item-end class="boton-w">
+              <ion-icon name="close"></ion-icon>
+            </button>
           </ion-item>
         </ion-list>
+        <!-- <ion-footer> 
+           <ion-toolbar text-right style="min-height: 0px;">
+            <ion-row class="row ng-tns-c0-0">
+              <ion-col col-6 text-left>
+                <p class="margin-tb">
+                  <b>{{'Bruto total' | translate }}: </b>{{ footer_document.gross_total | number:'1.1-3'}}
+                </p>
+              </ion-col>
+              <ion-col col-6 text-right>
+                <p class="margin-tb">
+                  <b>{{'Neto total' | translate }}: </b>{{ footer_document.neto_total | number:'1.1-3'}}
+                </p>
+              </ion-col>
+            </ion-row>
+          </ion-toolbar>
+      </ion-footer> -->
       </ion-slide>
       <!-- slide 3 -->
       <ion-slide>
+        <ion-toolbar text-right style="min-height: 0px;">
+          <ion-row class="row ng-tns-c0-0">
+            <ion-col col-6 text-left>
+              <p class="margin-tb">
+                <b>{{'Bruto total' | translate }}: </b>{{ footer_document.gross_total | number:'1.1-3'}} 
+              </p>
+            </ion-col>
+            <ion-col col-6 text-right>
+              <p class="margin-tb">
+                <b>{{ 'Impuesto' | translate}}:</b> {{ this.footer_document.tax_total }}
+              </p>
+              <p class="margin-tb">
+                <b>{{'Neto total' | translate }}: </b>{{ footer_document.neto_total | number:'1.1-3'}}
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-toolbar>
         <ion-item>
-          <button ion-button block (click)="agregarFirma()" >Agregar Firma</button>
+          <button ion-button block (click)="agregarFirma()" >{{'Agregar Firma' | translate}}</button>
         </ion-item>
-      </ion-slide>
-      <!-- slide 4 -->
-      <ion-slide>
+        <div>
+          <img [src]='signatureImage' *ngIf="signatureImage">
+        </div>
         <ion-item>
-          <button ion-button block (click)="postBorrador()" >Guardar como borrador</button>
+          <button ion-button block (click)="postBorrador()" >{{'Guardar como borrador' | translate}}</button>
         </ion-item>
         <ion-item>
-          <button ion-button block (click)="postEnviar()" >Enviar</button>
+          <button ion-button block (click)="postEnviar()" >{{'Enviar' | translate}}</button>
         </ion-item>
       </ion-slide>
     </ion-slides>

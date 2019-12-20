@@ -95,17 +95,14 @@ export class ModalthirdsPage {
   close(c){
     this.viewCtrl.dismiss(c);
     console.log(c);
+    this.cerrar(c);
   }
 
-  cerrar(){
+  cerrar(c){
 
-    this.navCtrl.push(AddordersalePage);
-    
-    // let client;
-    // client.business_name='';
-    // client.cif='';
-    // client.id='';
-    // this.viewCtrl.dismiss(client);
-    // console.log('modalthirds', client);
+    if(c == undefined){
+      c = '';
+      this.viewCtrl.dismiss(c);
+    }
   }
 }

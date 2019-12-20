@@ -4,6 +4,7 @@
 				<ion-row>
 					<ion-col col-12 text-center>
 						<h1 class="titulo">BananaApp</h1>
+						
 					</ion-col>
 				</ion-row>
 				<ion-row padding-bottom>
@@ -37,7 +38,7 @@
 							</div>
 						</form>
 						
-							<ion-label>Recordarme</ion-label>
+							<ion-label>{{'Recordarme' | translate}}</ion-label>
 							<ion-checkbox color="dark" [(ngModel)]="checkbox" (ionChange)="remember()"></ion-checkbox>
 						
 						<div class="olvideclave">
@@ -63,6 +64,12 @@
 						<button ion-button color="bananap" >
 							{{ 'Empieza gratis' | translate }}
 						</button>
+					</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col text-center>
+						<span class="letra">{{ 'versión' | translate }} 1.7.1</span>
 					</ion-col>
 				</ion-row>
 				<!-- <ion-row>

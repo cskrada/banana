@@ -86,7 +86,7 @@
     },
 
     "Alerta4": {
-        "MensajeAlerta": "The email you entered is not correct, please enter your data again.",
+        "MensajeAlerta": "The email or work group you entered is incorrect, please enter your information again.",
         "TextAlerta": "Ok"
     },
 
@@ -378,6 +378,12 @@
 
     "PROCESADO PARCIALMENTE": "PARTIALLY PROCESSED",
 
-    "VALIDADO": "VALIDATED"
+    "VALIDADO": "VALIDATED",
+
+    "Representante de venta": "Sales representative",
+
+    "versión": "version",
+
+    "Recordarme": "Remember me"
 
 }

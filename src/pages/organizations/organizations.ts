@@ -27,7 +27,7 @@ export class OrganizationsPage {
   getOrganizations(){
     return this.http.get(constants.apiorganization,
       { headers: new HttpHeaders()
-      .set('authorization', 'http://localhost:4200')
+      .set('authorization', sessionStorage.getItem('dns'))
       .append('app', 'BananaApp')
       .append('user', sessionStorage.getItem('user'))
       .append('Access-Control-Allow-Origin', '*')

@@ -52,7 +52,7 @@ export class SeecontactclientPage {
 				loading.present();
 			return this.http.get(constants.apiseecontact+this.id_contact,
 				{ headers: new HttpHeaders()
-					.set('authorization', 'http://localhost:4200')
+					.set('authorization', sessionStorage.getItem('dns'))
 					.append('app', 'BananaApp')
 					.append('organization', sessionStorage.getItem('organization_id') )
 					.append('user', sessionStorage.getItem('user'))

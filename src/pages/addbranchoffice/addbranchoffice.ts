@@ -77,7 +77,7 @@ ionViewDidLoad() {
     this.http.post(constants.apipostbranch,
         body , 
       { headers: new HttpHeaders()
-      .set('authorization', 'http://localhost:4200')
+      .set('authorization', sessionStorage.getItem('dns'))
       .append('app', 'BananaApp')
       .append('organization', sessionStorage.getItem('organization_id') )
       .append('user', sessionStorage.getItem('user'))
@@ -107,7 +107,7 @@ ionViewDidLoad() {
   getcountry(){
 		return this.http.get(constants.apicountries,
 			{ headers: new HttpHeaders()
-				.set('authorization', 'http://localhost:4200')
+				.set('authorization', sessionStorage.getItem('dns'))
 				.append('app', 'BananaApp')
 				.append('organization', sessionStorage.getItem('organization_id') )
 				.append('user', sessionStorage.getItem('user'))
@@ -126,7 +126,7 @@ ionViewDidLoad() {
 		this.cities = [];
 		return this.http.get(constants.apistates,
 			{ headers: new HttpHeaders()
-				.set('authorization', 'http://localhost:4200')
+				.set('authorization', sessionStorage.getItem('dns'))
 				.append('app', 'BananaApp')
 				.append('organization', sessionStorage.getItem('organization_id') )
 				.append('user', sessionStorage.getItem('user'))
@@ -144,7 +144,7 @@ ionViewDidLoad() {
 		this.cities = [];
 		return this.http.get(constants.apicities,
 			{ headers: new HttpHeaders()
-				.set('authorization', 'http://localhost:4200')
+				.set('authorization', sessionStorage.getItem('dns'))
 				.append('app', 'BananaApp')
 				.append('organization', sessionStorage.getItem('organization_id') )
 				.append('user', sessionStorage.getItem('user'))

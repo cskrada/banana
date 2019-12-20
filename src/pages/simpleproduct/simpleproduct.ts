@@ -88,7 +88,7 @@ export class SimpleproductPage {
   getResource(){
     return this.http.get(constants.resources,
       { headers: new HttpHeaders()
-      .set('authorization', 'http://localhost:4200')
+      .set('authorization', sessionStorage.getItem('dns'))
       .append('app', 'BananaApp')
       .append('organization', sessionStorage.getItem('organization_id') )
       .append('user', sessionStorage.getItem('user'))
@@ -115,7 +115,7 @@ export class SimpleproductPage {
     this.http.post(constants.apipostproduct,
       body,
       { headers: new HttpHeaders()
-        .set('authorization', 'http://localhost:4200')
+        .set('authorization', sessionStorage.getItem('dns'))
         .append('app', 'BananaApp')
         .append('organization', sessionStorage.getItem('organization_id') )
         .append('user', sessionStorage.getItem('user'))
@@ -158,37 +158,5 @@ export class SimpleproductPage {
 		this.viewCtrl.dismiss();
 		this.navCtrl.setRoot(ProductsPage);
 	}
-      //   "id": 0,
-  //   "reference": "PRUEBA",
-  //   "name": "PRUEBA",
-  //   "description": "",
-  //   "type": "P",
-  //   "is_salable": 1,
-  //   "is_purchasable": 1,
-  //   "unit_id": null,
-  //   "category_id": null,
-  //   "manufacture_id": null,
-  //   "tax_id": null,
-  //   "archived": 0,
-  //   "is_combination": 1,
-  //   "product_details": [
-  //     {
-  //       "id": 1056,
-  //       "reference": "PRUEBA-44",
-  //       "product_id": 0,
-  //       "name": "",
-  //       "sku": "",
-  //       "ean13": "",
-  //       "upc": "",
-  //       "cost": 0,
-  //       "sale_price": 0,
-  //       "condition_id": null,
-  //       "price_list_id": null,
-  //       "archived": 0,
-  //       "image": "4YXKi5Ifet3TijUUTSoZzXaWw4NFtJJInkPZGsGK.jpeg",
-  //       "attribute_details": [],
-  //       "edit": true,
-  //       "more": false
-  //     }
   
 }

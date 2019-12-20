@@ -7,4 +7,17 @@ page-addordersale {
         margin-top: 3px;
         margin-bottom: 3px;
     }
+
+    .swiper-slide{
+        overflow-y: scroll;
+        display: block;
+    }
+
+    .boton-w{
+        width: 12%;
+    }
+
+    .toast-container{
+        background-color: yellow;
+    }
 }
