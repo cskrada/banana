@@ -33,6 +33,11 @@
 <ion-content padding>
 	<ion-list>
 		<button ion-item class="paddinglr fuente" *ngFor="let c of branchOffice" (click)="seeBranchOffice(c)">
+			<ion-row *ngIf="c.principal == 1">
+				<ion-col>
+					<ion-icon name="home"></ion-icon>
+				</ion-col>
+			</ion-row>
 			<ion-row>
 				<ion-col>
 					<span><b>{{'Nombre'| translate}}: {{c.name}}</b></span>

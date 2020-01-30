@@ -31,16 +31,13 @@
 </ion-header>
 
 <ion-content padding>
-	<!-- <div *ngIf="this.contacts == [0]">
+	<div *ngIf=" this.on == 0">
 		<ion-card>
-			<ion-card-header>
-				<ion-icon name="add"></ion-icon>
-			</ion-card-header>
 			<ion-card-content>
-				la conchadefafofjaishnn
+				Lista de contacto vacía
 			</ion-card-content>
 		</ion-card>
-	</div> -->
+	</div>
   <ion-list>
 		<button ion-item class="paddinglr fuente" *ngFor="let c of contacts" (click)="seeContactClient(c, client)">
 			<ion-row>

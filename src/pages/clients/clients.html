@@ -74,6 +74,13 @@
 			</ion-col>
 		</ion-row>
 	</ion-grid>
+	<div *ngIf=" this.on == 1">
+		<ion-card>
+			<ion-card-content>
+				No tiene acceso comuniquese con el Director
+			</ion-card-content>
+		</ion-card>
+	</div>
 
 	<ion-list>
 
@@ -92,8 +99,8 @@
 					{{ 'Dirección' | translate}}: {{ c.address }} <br>
 				</span>
 				<!-- {{ c.city }}, {{ c.state }} <br> -->
-				<span *ngIf=" c.phone != [''] && c.phone != null " >{{ 'Teléfono' | translate}}: {{ c.phone }}&nbsp; </span>
-				<span *ngIf=" c.email != [''] && c.email != null "> {{ 'Correo' | translate}}: {{ c.email }}</span> <br>
+				<span *ngIf=" c.phone != [''] && c.phone != null " >{{ 'Teléfono' | translate}}: {{ c.phone }}&nbsp; <br></span>
+				<span *ngIf=" c.email != [''] && c.email != null "> {{ 'Correo' | translate}}: {{ c.email }}<br></span>
 				<span *ngIf=" c.name_sale_represent != [''] && c.name_sale_represent != null "> <b> {{ 'Representante de venta' | translate}}:</b> {{ c.name_sale_represent }}</span>
 			</span>
 		</button>

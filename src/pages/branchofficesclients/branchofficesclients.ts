@@ -24,7 +24,7 @@ export class BranchofficesclientsPage {
               public loadingCtrl: LoadingController) {
     this.client = this.navParams.data;
     this.id = this.navParams.get('id');
-
+console.log(this.id);
     
   }
 
@@ -55,6 +55,7 @@ export class BranchofficesclientsPage {
           }).subscribe ( data=> {
             loading.dismissAll();
             this.branchOffice = data;
+            console.log(this.branchOffice);
             if (this.branchOffice.length === 0){
               this.message= 'No se encuentra ninguna sucursal asociado a este prospecto';
             }

@@ -56,6 +56,5 @@ export const constants = {
 
 
     
-    // apilogin: 'http://192.168.1.3:8000/api/login',
-    // apiclient: 'http://192.168.1.3:8000/api/thirds/customers/'
+ 
 }

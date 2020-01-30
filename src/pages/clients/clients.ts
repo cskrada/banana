@@ -19,6 +19,8 @@ export class ClientsPage {
 
 	public id : any ;
 	clients: any[] = [];
+	director: any = {};
+	on: any;
 
 	constructor(public navCtrl: NavController,
 				public http: HttpClient,
@@ -59,7 +61,18 @@ export class ClientsPage {
 					.append('token', sessionStorage.getItem('token'))
 				}).subscribe ( data=> {
 					loading.dismissAll();
-					this.clients = data['clients'];
+					// this.clients = data['clients'];
+					console.log(this.clients);
+					this.director = data['clients'];
+					console.log(this.director);
+
+					if( this.director == -1 ){
+						console.log('ay ay ayd adsad');
+						this.on = 1;
+					}else{
+						this.on = 0;
+						this.clients = data['clients'];
+					}
 				}, error => {
 					console.log(error);
 			});

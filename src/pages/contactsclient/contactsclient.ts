@@ -17,6 +17,7 @@ export class ContactsclientPage {
   public contacts: any;
   public id : string;
   public message: string;
+  public on: any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -59,6 +60,13 @@ export class ContactsclientPage {
           loading.dismissAll();
           this.contacts = data;
           console.log('get contacts DATA', this.contacts);
+
+          if( this.contacts.length == 0){
+            this.on = 0;
+            console.log('no tiene contactos');
+          }else{
+            this.on = 1;
+          }
           
 
         }, error => {

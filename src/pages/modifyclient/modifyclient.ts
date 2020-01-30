@@ -41,7 +41,7 @@ export class ModifyclientPage {
     this.id = this.navParams.get('id');
     this.cif = this.navParams.get('cif');
     this.business_name = this.navParams.get('business_name');
-    this.trade_name = this.navParams.get('trade_name');
+    this.trade_name = this.navParams.get('tradename');
     this.alias = this.navParams.get('alias');
 	this.url = this.navParams.get('url');
 	this.email = this.navParams.get('email');
