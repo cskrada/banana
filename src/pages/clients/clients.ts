@@ -75,6 +75,9 @@ export class ClientsPage {
 					}
 				}, error => {
 					console.log(error);
+					if(error.error == 'Usted. Se ha Logeado desde otro dispositivo esta sesion fue cerrada'){
+						console.log('la sesion ha sido cerrada');
+					}
 			});
 		});
 	}
