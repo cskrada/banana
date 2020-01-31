@@ -131,6 +131,11 @@
         "MensajeAlerta": "Cliente modificado exitosamente"
     },
 
+    "Alerta15":{
+        "MensajeAlerta": "Usted se ha logueado desde otro dispositivo, esta sesión fue cerrada",
+        "TextAlerta": "Ok"
+    },
+
     "AlertaSeeContactClient":{
         "TituloAlerta": "Modificar contacto",
         "MensajeAlerta": "¿Está seguro que desea modificar este contacto?",

@@ -131,6 +131,11 @@
         "MensajeAlerta": "Successfully modified customer"
     },
 
+    "Alerta15":{
+        "MensajeAlerta": "You have logged in from another device, this session was closed",
+        "TextAlerta": "Ok"
+    },
+
     "AlertaSeeContactClient":{
         "TituloAlerta": "Modify contact",
         "MensajeAlerta": "Are you sure you want to modify this contact?",
