@@ -14,11 +14,12 @@
 				</ion-row>
 				<ion-row>
 					<ion-col col-12 text-center>
-
-						<ion-item>	
-							<ion-label floating>{{ 'Equipo de trabajo' | translate }}</ion-label>
-							<ion-input [(ngModel)]="dns" type="text" ></ion-input>
-						</ion-item>
+						<ion-list>
+							<ion-item>	
+								<ion-label floating>{{ 'Equipo de trabajo' | translate }}</ion-label>
+								<ion-input [(ngModel)]="dns" type="text" ></ion-input>
+							</ion-item>
+						</ion-list>
 						<form [formGroup]="myForm" (ngSubmit)="loginUser2()">
 							<ion-list>
 								<ion-item>
