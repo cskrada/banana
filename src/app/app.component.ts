@@ -43,9 +43,6 @@ export class MyApp {
               public loadingCtrl: LoadingController,
               public translate: TranslateService){
 
-// this.name = sessionStorage.getItem('name');
-// this.organization = sessionStorage.getItem('organization_name');
-
     this.handleSplashScreen();
     this.platform.ready().then(() => {
       this.translate.setDefaultLang('es');
@@ -53,9 +50,6 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-    // sessionStorage.removeItem('user');
-    // sessionStorage.removeItem('token');
-    // sessionStorage.removeItem('name');
   
     this.postLogin(this.email, this.password);
 
@@ -68,9 +62,6 @@ export class MyApp {
       { title: 'Organización', component: OrganizationsPage, icon: "briefcase"}
     ];
 
-    this.checkbox = false;
-    sessionStorage.setItem('checkbox', this.checkbox);
-    // console.log(sessionStorage.getItem('email'));
   }//------------------------------------fin de constructor-----------------------------------
   
   async handleSplashScreen(): Promise<void> {
@@ -123,7 +114,6 @@ export class MyApp {
     sessionStorage.removeItem('organization_id');
     sessionStorage.removeItem('name');
     sessionStorage.removeItem('organization_name');
-    // sessionStorage.removeItem('email');
     this.nav.setRoot(LoginPage);
   }
 

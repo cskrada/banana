@@ -29,11 +29,13 @@ export class LoginPage {
 	public results : string[] = [];
 	passwordType: string = 'password';
 	passwordIcon: string = 'eye-off';
-	email: any;
+	email: string;
 	mail: any;
 	checkbox: any;
 	dns : string = '';
 	dns_remember: any = '';
+	check : any;
+	password: string;
 
 constructor(public navCtrl: NavController,
 			public formBuilder:FormBuilder,
@@ -42,17 +44,10 @@ constructor(public navCtrl: NavController,
 			public menu: MenuController,
 			public http: HttpClient,
 			public translateService: TranslateService){
-	// this.checkbox=sessionStorage.getItem('checkbox');
-	this.email = sessionStorage.getItem('email');
-	
-	// console.log("dasdsadasd",this.checkbox);	
-	// console.log("dasdsadasd",this.email);	
-	// console.log(sessionStorage.getItem('name'));
-	// console.log(sessionStorage.getItem('organization_name'));
 
 	this.myForm = this.formBuilder.group({
 		email: [this.email, Validators.required],
-		password: ['', Validators.required]
+		password: [this.password, Validators.required]
 	});	
 }
 
@@ -62,54 +57,57 @@ constructor(public navCtrl: NavController,
 	}
 
 	ionViewDidLoad() {
-		// console.log('ionViewDidLoad LoginPage');
 		this.menu.enable(false);
-		this.checkbox = sessionStorage.getItem('checkbox');
-		// console.log('JIKIJII', this.checkbox);
+		this.checkbox = localStorage.check;
+		this.check = localStorage.check;
 
-		if(this.checkbox == "true"){
-			this.email = sessionStorage.getItem('email');
-		}else {
-			this.email ='';
+
+		if( this.check == 'true' ){
+			this.email = localStorage.email;
+			this.password = localStorage.password;
+			this.dns = localStorage.dns;
 		}
-		// this.mail = this.email;
-		// console.log(this.email,'asd',this.checkbox);
+		if( this.check == 'false' ){
+			this.email = '';
+			this.password = '';
+			this.dns = '';
+			localStorage.removeItem('email');
+			localStorage.removeItem('password');
+			localStorage.removeItem('dns');
+		}
 	}
 
 	remember(){
-		if(this.checkbox == true){
-			sessionStorage.removeItem('checkbox');
-			sessionStorage.setItem('checkbox', this.checkbox);
-			console.log('checkbox',this.checkbox);
-			this.email= sessionStorage.getItem('email');
-			this.dns = sessionStorage.getItem('dnss');
-			console.log('emailllllllll true',this.email);
-			console.log('DNS true',this.dns);
+		if (this.checkbox == true){
+			this.check = true;
+			localStorage.check = this.check;
+			this.email = localStorage.email;
+			this.password = localStorage.password;
+			this.dns = localStorage.dns;
 		}
-		if(this.checkbox == false){
-			this.email= '';
-			this.dns= '';
-			sessionStorage.removeItem('checkbox');
-			sessionStorage.removeItem('email');
-			sessionStorage.removeItem('dnss');
-			sessionStorage.setItem('checkbox', this.checkbox);
-			console.log('checkbox',this.checkbox);
-			console.log('emailllllllll false',this.email);
+		if (this.checkbox == false){
+			this.check = false;
+			localStorage.check = this.check;
+			this.email = '';
+			this.password = '';
+			this.dns = '';
+			localStorage.removeItem('email');
+			localStorage.removeItem('password');
+			localStorage.removeItem('dns');
 		}
 	}
 
 	loginUser2(){
 		const md5 = new Md5();
-		// console.log(this.myForm.value.email);
+		this.password = this.myForm.value.password;
 		let e = md5.appendStr(this.myForm.value.password).end();
-		// console.log(e);
 		this.postLogin(this.myForm.value.email,e);
 	}
 	
 	postLogin(email: string, password: any){
 		this.dns_remember = this.dns;
-		this.dns_remember = sessionStorage.setItem('dnss', this.dns_remember);
-		const new_dns = constants.dns.replace('$$$__$$$', this.dns);
+
+		const new_dns = constants.dns.replace('$$$__$$$', this.dns_remember);
 	  	this.http.post(constants.apilogin,
 					{ email, password }, 
 					{ headers: new HttpHeaders()
@@ -128,6 +126,10 @@ constructor(public navCtrl: NavController,
 				sessionStorage.setItem('name', data['user'].user[0].contact.name);
 				sessionStorage.setItem('email', data['user'].user[0].email);
 				sessionStorage.setItem('dns', new_dns);
+
+				localStorage.email = email;
+				localStorage.password = this.password;
+				localStorage.dns = this.dns;
 				this.navCtrl.setRoot(OrganizationsPage, this.results);
 				console.log(this.results);
 

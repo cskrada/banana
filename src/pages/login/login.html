@@ -28,7 +28,7 @@
 								</ion-item>
 								<ion-item>
 									<ion-label floating>{{ 'Contraseña' | translate}}</ion-label>
-									<ion-input formControlName="password" [type]="passwordType" clearOnEdit="false"></ion-input>
+									<ion-input [(ngModel)]="password" formControlName="password" [type]="passwordType" clearOnEdit="false"></ion-input>
 									<ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
 								</ion-item>
 							</ion-list>
@@ -70,7 +70,7 @@
 
 				<ion-row>
 					<ion-col text-center>
-						<span class="letra">{{ 'versión' | translate }} 1.7.1</span>
+						<span class="letra">{{ 'versión' | translate }} 1.7.2</span>
 					</ion-col>
 				</ion-row>
 				<!-- <ion-row>

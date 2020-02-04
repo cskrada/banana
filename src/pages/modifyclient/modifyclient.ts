@@ -25,7 +25,6 @@ export class ModifyclientPage {
   business_name: string;
   trade_name: string;
   alias: string;
-
   email: string;
   url: string;
 
