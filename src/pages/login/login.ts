@@ -60,12 +60,17 @@ constructor(public navCtrl: NavController,
 		this.menu.enable(false);
 		this.checkbox = localStorage.check;
 		this.check = localStorage.check;
-
+		console.log(this.email,this.password,this.dns);
+		console.log(localStorage.email, localStorage.passrowd, localStorage.dns);
+		console.log(this.check);
 
 		if( this.check == 'true' ){
 			this.email = localStorage.email;
 			this.password = localStorage.password;
 			this.dns = localStorage.dns;
+			console.log(this.email,this.password,this.dns);
+		console.log(localStorage.email, localStorage.passrowd, localStorage.dns);
+			console.log('TRUE');
 		}
 		if( this.check == 'false' ){
 			this.email = '';
@@ -74,6 +79,9 @@ constructor(public navCtrl: NavController,
 			localStorage.removeItem('email');
 			localStorage.removeItem('password');
 			localStorage.removeItem('dns');
+			console.log(this.email,this.password,this.dns);
+			console.log(localStorage.email, localStorage.passrowd, localStorage.dns);
+			console.log('FALSE');
 		}
 	}
 
