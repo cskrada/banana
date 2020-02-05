@@ -67,9 +67,12 @@ export class ClientsPage {
 					console.log(this.director);
 
 					if( this.director == -1 ){
-						console.log('ay ay ayd adsad');
+						console.log('this.director -1', this.director);
 						this.on = 1;
-					}else{
+					}else if( this.director == -2){
+						this.on = 2;
+						console.log('this.director -2', this.director)
+					}else if( this.director != -1 && this.director != -2){
 						this.on = 0;
 						this.clients = data['clients'];
 					}
