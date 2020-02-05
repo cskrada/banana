@@ -44,7 +44,6 @@ constructor(public navCtrl: NavController,
 			public menu: MenuController,
 			public http: HttpClient,
 			public translateService: TranslateService){
-
 	this.myForm = this.formBuilder.group({
 		email: [this.email, Validators.required],
 		password: [this.password, Validators.required]
@@ -60,17 +59,17 @@ constructor(public navCtrl: NavController,
 		this.menu.enable(false);
 		this.checkbox = localStorage.check;
 		this.check = localStorage.check;
-		console.log(this.email,this.password,this.dns);
-		console.log(localStorage.email, localStorage.passrowd, localStorage.dns);
-		console.log(this.check);
+		console.log('ionViewDidLoad',this.email,this.password,this.dns);
+		console.log('ionViewDidLoad',localStorage.email, localStorage.passrowd, localStorage.dns);
+		console.log('ionViewDidLoad',this.check);
 
 		if( this.check == 'true' ){
 			this.email = localStorage.email;
 			this.password = localStorage.password;
 			this.dns = localStorage.dns;
 			console.log(this.email,this.password,this.dns);
-		console.log(localStorage.email, localStorage.passrowd, localStorage.dns);
-			console.log('TRUE');
+			console.log(localStorage.email, localStorage.passrowd, localStorage.dns);
+			console.log('this.check == TRUE');
 		}
 		if( this.check == 'false' ){
 			this.email = '';
@@ -81,7 +80,7 @@ constructor(public navCtrl: NavController,
 			localStorage.removeItem('dns');
 			console.log(this.email,this.password,this.dns);
 			console.log(localStorage.email, localStorage.passrowd, localStorage.dns);
-			console.log('FALSE');
+			console.log('this.check == FALSE');
 		}
 	}
 
@@ -89,9 +88,11 @@ constructor(public navCtrl: NavController,
 		if (this.checkbox == true){
 			this.check = true;
 			localStorage.check = this.check;
-			this.email = localStorage.email;
-			this.password = localStorage.password;
-			this.dns = localStorage.dns;
+			// this.email = localStorage.email;
+			// this.password = localStorage.password;
+			// this.dns = localStorage.dns;
+			console.log('REMEMBER == TRUE');
+			console.log(this.myForm.valid);
 		}
 		if (this.checkbox == false){
 			this.check = false;
@@ -99,9 +100,11 @@ constructor(public navCtrl: NavController,
 			this.email = '';
 			this.password = '';
 			this.dns = '';
-			localStorage.removeItem('email');
-			localStorage.removeItem('password');
-			localStorage.removeItem('dns');
+			// localStorage.removeItem('email');
+			// localStorage.removeItem('password');
+			// localStorage.removeItem('dns');
+			console.log('REMEMBER == FALSE');
+			console.log(this.myForm.valid);
 		}
 	}
 
