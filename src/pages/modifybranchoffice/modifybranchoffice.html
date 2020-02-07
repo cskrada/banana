@@ -65,28 +65,32 @@
         <ion-row>
           <ion-col>
             <ion-item no-padding>
-              <ion-input formControlName="is_ship_to" type="text" placeholder="{{'Envío'|translate}}"></ion-input>
+              <ion-label>{{'Envío'|translate}}</ion-label>
+              <ion-toggle [(ngModel)]="is_ship_to" formControlName="is_ship_to"></ion-toggle>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-item no-padding>
-              <ion-input formControlName="is_bill_to" type="text" placeholder="{{'Facturar'|translate}} 1"></ion-input>
+              <ion-label>{{'Facturar'|translate}}</ion-label>
+              <ion-toggle [(ngModel)]="is_bill_to" formControlName="is_bill_to"></ion-toggle>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-item no-padding>
-              <ion-input formControlName="is_pay_from" type="email" placeholder="{{'Pago'|translate}}"></ion-input>
+              <ion-label>{{'Pago'|translate}}</ion-label>
+              <ion-toggle [(ngModel)]="is_pay_from" formControlName="is_pay_from"></ion-toggle>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-item no-padding>
-              <ion-input formControlName="is_remit_to" type="text" placeholder="{{'Remitente'|translate}}"></ion-input>
+              <ion-label>{{'Remitente'|translate}}</ion-label>
+              <ion-toggle [(ngModel)]="is_remit_to" formControlName="is_remit_to"></ion-toggle>
             </ion-item>
           </ion-col>
         </ion-row>

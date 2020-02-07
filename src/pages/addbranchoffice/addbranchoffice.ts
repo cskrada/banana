@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { constants } from './../../const/const';
 import { TranslateService } from '@ngx-translate/core';
+import { Binary } from '@angular/compiler';
 
 @IonicPage()
 @Component({
@@ -25,6 +26,10 @@ export class AddbranchofficePage {
   id_third: any;
   localization: any[] = [];
   branch: any;
+  is_ship_to: any = false ;
+  is_bill_to: any = false ;
+  is_pay_from: any = false ;
+  is_remit_to: any = false ;
   
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -33,13 +38,10 @@ export class AddbranchofficePage {
               public translateService: TranslateService,
               public toastCtrl: ToastController) {
   
-    this.client = this.navParams.data;
-    this.id_third = this.navParams.get('id');
-    console.log( 'clienteeeee add branch office', this.client);
-    console.log( 'clienteeeee add branch office ID', this.id_third);
+    this.id_third = this.navParams.data;
+    console.log( 'clienteeeee add branch office', this.id_third);
 
     this.myForm = this.formBuilder.group({
-      // ibpartner_id: [this.client['id']],
       name: ['', Validators.required],
       phone: [''],
       phone_2: [''],
@@ -72,6 +74,10 @@ ionViewDidLoad() {
       body = this.myForm.value;
       body.localization = body.localization;
       body.bpartner_id = this.id_third;
+      body.is_ship_to = this.is_ship_to;
+      body.is_bill_to = this.is_bill_to;
+      body.is_pay_from = this.is_pay_from;
+      body.is_remit_to = this.is_remit_to;
       console.log(body);
       
     this.http.post(constants.apipostbranch,
@@ -158,9 +164,5 @@ ionViewDidLoad() {
 				console.log(error);
 		});
   }
-
-  
-  
-
 
 }

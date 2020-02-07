@@ -22,14 +22,13 @@ export class BranchofficesclientsPage {
               public http: HttpClient,
               public translateService: TranslateService,
               public loadingCtrl: LoadingController) {
-    this.client = this.navParams.data;
-    this.id = this.navParams.get('id');
-console.log(this.id);
+    this.id = this.navParams.data;
+    console.log(this.id);
     
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad BranchofficesclientsPage');
+    console.log('ionViewDidLoad BranchofficesclientsPage');
   }
 
   ionViewDidEnter(){
@@ -65,8 +64,8 @@ console.log(this.id);
       });
   }
 
-  addBranchOffice(client){
-    this.navCtrl.push(AddbranchofficePage, client);
+  addBranchOffice(){
+    this.navCtrl.push(AddbranchofficePage, this.id);
   }
 
   seeBranchOffice(c){

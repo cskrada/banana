@@ -42,7 +42,7 @@
 <ion-content padding>
     <ion-grid>
         <ion-row *ngIf="branch.name != null">
-          <ion-item>
+          <ion-item no-padding>
             <ion-col>
               <b>
                 {{'Nombre' | translate}}:
@@ -56,7 +56,7 @@
           </ion-item>
         </ion-row>
         <ion-row *ngIf="branch.phone != null">
-          <ion-item>
+          <ion-item no-padding>
             <ion-col>
               <b>
                 {{'Teléfono' | translate}}:
@@ -70,7 +70,7 @@
           </ion-item>
         </ion-row>
         <ion-row *ngIf="branch.phone_2 != null">
-          <ion-item>
+          <ion-item no-padding>
             <ion-col>
               <b>
                 {{'Teléfono 2' | translate}}:
@@ -83,8 +83,65 @@
             </ion-col>
           </ion-item>
         </ion-row>
+        <!--  -->
+        <ion-row *ngIf="branch.is_ship_to != null">
+          <ion-item no-padding>
+            <ion-col>
+              <b>
+                {{'Envío' | translate}}:
+              </b>
+            </ion-col>
+            <ion-col>
+              <span>
+                {{branch.is_ship_to}}
+              </span>
+            </ion-col>
+          </ion-item>
+        </ion-row>
+        <ion-row *ngIf="branch.is_bill_to != null">
+          <ion-item no-padding>
+            <ion-col>
+              <b>
+                {{'Facturar' | translate}}:
+              </b>
+            </ion-col>
+            <ion-col>
+              <span>
+                {{branch.is_bill_to}}
+              </span>
+            </ion-col>
+          </ion-item>
+        </ion-row><ion-row *ngIf="branch.is_pay_from != null">
+          <ion-item no-padding>
+            <ion-col>
+              <b>
+                {{'Pago' | translate}}:
+              </b>
+            </ion-col>
+            <ion-col>
+              <span>
+                {{branch.is_pay_from}}
+              </span>
+            </ion-col>
+          </ion-item>
+        </ion-row>
+        <ion-row *ngIf="branch.is_remit_to != null">
+          <ion-item no-padding>
+            <ion-col>
+              <b>
+                {{'Remitente' | translate}}:
+              </b>
+            </ion-col>
+            <ion-col>
+              <span>
+                {{branch.is_remit_to}}
+              </span>
+            </ion-col>
+          </ion-item>
+        </ion-row>
+        <!--  -->
         <ion-row *ngIf="localization.postal != null">
-          <ion-item>
+          <ion-item no-padding>
             <ion-col>
               <b>
                 {{'Código postal' | translate}}:
@@ -98,7 +155,7 @@
           </ion-item>
         </ion-row>
         <ion-row *ngIf="localization.address_1 != null">
-          <ion-item>
+          <ion-item no-padding>
             <ion-col>
               <b>
                 {{'Dirección' | translate}}:
@@ -112,7 +169,7 @@
           </ion-item>
         </ion-row>
         <ion-row *ngIf="branch.city != null">
-          <ion-item>
+          <ion-item no-padding>
             <ion-col>
               <b>
                 {{'Ciudad' | translate}}:
@@ -126,7 +183,7 @@
           </ion-item>
         </ion-row>  
         <ion-row *ngIf="branch.state != null">
-          <ion-item>
+          <ion-item no-padding>
             <ion-col>
               <b>
                 {{'Estado' | translate}}:
@@ -140,7 +197,7 @@
           </ion-item>
         </ion-row>
         <ion-row *ngIf="branch.country != null">
-          <ion-item>
+          <ion-item no-padding>
             <ion-col>
               <b>
                 {{'País' | translate}}:

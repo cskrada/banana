@@ -53,7 +53,6 @@
 			<ion-row>
 				<ion-col>
 					<ion-item no-padding>
-							
 						<ion-input formControlName="cif" type="text" placeholder="{{'Cif'|translate}}"></ion-input>
 					</ion-item>
 				</ion-col>
@@ -75,7 +74,6 @@
 			<ion-row>
 				<ion-col>
 					<ion-item no-padding>
-							
 						<ion-input formControlName="alias" type="text" placeholder="{{'Alias'|translate}}"></ion-input>
 					</ion-item>
 				</ion-col>
@@ -83,7 +81,6 @@
 			<ion-row>
 				<ion-col>
 					<ion-item no-padding>
-							
 						<ion-input formControlName="address" type="text" placeholder="{{'Dirección'|translate}} 1"></ion-input>
 					</ion-item>
 				</ion-col>
@@ -97,7 +94,6 @@
 			</ion-row>
 			<ion-row>
 				<ion-col>
-					
 					<ion-item no-padding>
 						<ion-label>{{'País'|translate}}</ion-label>
 							<ion-select [(ngModel)]="country_id" (ionChange)="getstate(country_id)" interface="popover" formControlName="country_id">
@@ -157,6 +153,14 @@
 					</ion-item>
 				</ion-col>
 			</ion-row>
+			<!-- <ion-row>
+				<ion-col col-12 text-center>
+					<button ion-button icon-left small color="light" >
+						<ion-icon name="briefcase"></ion-icon>
+						{{'crear contacto'|translate}}
+					</button>
+				</ion-col>
+			</ion-row> -->
 			<ion-row padding-top>
 				<ion-col col-12 text-center>
 					<button ion-button icon-left full color="bananap" type="submit" [disabled]="!myForm.valid">

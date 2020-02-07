@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { constants } from './../../const/const';
 import { TranslateService } from '@ngx-translate/core';
+import { SeeclientPage } from './../seeclient/seeclient';
 
 @NgModule({
 	// ...
@@ -80,7 +81,6 @@ export class AddclientPage {
 		  	this.prospect= data['prospect'];
 			console.log(this.prospect);
 			if (this.prospect === 0){
-
 				this.translateService.get('Alerta6').subscribe(
 					value => {
 						let message = value['MensajeAlerta'];
@@ -91,15 +91,16 @@ export class AddclientPage {
 					toast.present();
 				});
 			} else if (this.prospect != 0){
-				this.translateService.get('Alerta7').subscribe(
-					value => {
-						let message = value['MensajeAlerta'];
-							const toast = this.toastCtrl.create({
-							message: message,
-							duration: 3000
-							});
-					toast.present();
-				});
+				this.navCtrl.push(SeeclientPage, this.prospect);
+				// this.translateService.get('Alerta7').subscribe(
+				// 	value => {
+				// 		let message = value['MensajeAlerta'];
+				// 			const toast = this.toastCtrl.create({
+				// 			message: message,
+				// 			duration: 3000
+				// 			});
+				// 	toast.present();
+				// });
 			}
 		}, error => {
 			console.log(error);

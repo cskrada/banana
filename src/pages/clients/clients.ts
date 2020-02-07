@@ -31,7 +31,7 @@ export class ClientsPage {
 		// console.log("ID de usuario", this.id);
 	}
 	openPage(c) {
-		this.navCtrl.push(SeeclientPage, c);
+		this.navCtrl.push(SeeclientPage, c.id);
 	}
 
 	addClient(){

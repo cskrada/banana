@@ -24,11 +24,8 @@ export class ContactsclientPage {
               public http: HttpClient,
               public loadingCtrl: LoadingController,
               public translateService: TranslateService) {
-    this.client= this.navParams.data;
-    this.id = this.navParams.get('id');
-
-    // console.log('contacts client',this.client);
-    // console.log('contacts ID client',this.id);
+    this.id= this.navParams.data; //ID
+    console.log('contact clients ID',this.id)
   }
 
   ionViewDidLoad() {
@@ -75,8 +72,8 @@ export class ContactsclientPage {
     });
   }
 
-  addContactClient(client){
-    this.navCtrl.push(AddcontactclientPage, client);
+  addContactClient(){
+    this.navCtrl.push(AddcontactclientPage, this.id);
   }
 
   seeContactClient(c,client){

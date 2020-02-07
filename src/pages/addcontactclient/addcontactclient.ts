@@ -30,6 +30,7 @@ export class AddcontactclientPage {
     this.client= this.navParams.data;
     this.id= this.navParams.get('id');
     console.log('ID de CLiente',this.id);
+    console.log('CLiente',this.client);
 
     this.myForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -74,7 +75,7 @@ export class AddcontactclientPage {
   addContact(){
     let body: any = {};
     body.contact = this.myForm.value;
-    body.id = this.id;
+    body.id = this.client;
 		console.log(body);
 
 		this.http.post(constants.apipostcontact,

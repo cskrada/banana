@@ -20,7 +20,7 @@
 				</ion-col>
 				<ion-col col-11 no-padding>
 					<ion-buttons end text-end>
-						<button ion-button icon-only (click)="addContactClient(client)">
+						<button ion-button icon-only (click)="addContactClient()">
 						<ion-icon name="add"></ion-icon>
 					</button>
 					</ion-buttons>
@@ -39,7 +39,7 @@
 		</ion-card>
 	</div>
   <ion-list>
-		<button ion-item class="paddinglr fuente" *ngFor="let c of contacts" (click)="seeContactClient(c, client)">
+		<button no-padding ion-item class="paddinglr fuente" *ngFor="let c of contacts" (click)="seeContactClient(c, client)">
 			<ion-row>
 				<ion-col>
 					<span><b>{{'Nombre'| translate}}: {{c.name}}</b></span>

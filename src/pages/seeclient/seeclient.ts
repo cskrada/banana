@@ -38,15 +38,18 @@ constructor(public navCtrl: NavController,
 	public http: HttpClient,
 	public loadingCtrl: LoadingController) {
 		
-		this.client = this.navParams.data;
-		this.phone = this.navParams.get('phone');
-		this.id = this.navParams.get('id');
+		this.id = this.navParams.data;
+		// this.phone = this.navParams.get('phone');
+		// this.id = this.navParams.get('id');
+		// console.log('phone', this.id);
+		// console.log('phone', this.phone);
+		console.log('seeclient ID',this.id);
 		
 		this.getContacts();
 	}
 	
 	ionViewDidEnter(){
-		this.client = this.navParams.data;
+		// this.client = this.navParams.data;
 		this.seeClient();
 	}
 
@@ -136,7 +139,7 @@ constructor(public navCtrl: NavController,
 			.append('token', sessionStorage.getItem('token'))
 		}).subscribe ( data=> {
 			this.contacts = data;
-			// console.log('get contacts', this.contacts);
+			console.log('get contacts', this.contacts);
 		}, error => {
 			console.log(error);
 		});
@@ -153,6 +156,7 @@ constructor(public navCtrl: NavController,
 			.append('token', sessionStorage.getItem('token'))
 			}).subscribe ( data=> {
 			this.branchOffice = data['branchOffice'];
+			console.log('get branchoffice', this.branchOffice);
 			}, error => {
 			console.log(error);
 		});
@@ -163,12 +167,14 @@ constructor(public navCtrl: NavController,
 		this.navCtrl.push(ModifyclientPage, client);
 	}
 
-	contactsClient(client){
-		this.navCtrl.push(ContactsclientPage, client);
+	contactsClient(){
+		console.log('seeclient CONTACTS',this.id);
+		this.navCtrl.push(ContactsclientPage, this.id);
 	}
 
-	branchOfficesClient(client){
-		this.navCtrl.push(BranchofficesclientsPage, client);
+	branchOfficesClient(){
+		console.log('seeclient BRANCH',this.id);
+		this.navCtrl.push(BranchofficesclientsPage, this.id);
 	}
 
 	openEmail(client) {

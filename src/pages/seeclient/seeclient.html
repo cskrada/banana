@@ -128,7 +128,7 @@
 			<ion-col><b>{{'Ciudad' | translate}}: </b>{{ thirds.city }}</ion-col>
 		</ion-row>
 		<ion-row padding-top *ngIf="thirds.name_sale_represent != null">
-			<ion-col><b>{{'Representante de venta' | translate}}: </b>{{ thirds.name_sale_represent }}</ion-col>
+			<ion-col><b>{{'Representante de venta' | translate}}: </b>{{ thirds.name_sale_represent}}</ion-col>
 		</ion-row>
 
 		<div *ngIf="thirds.phone != [''] && thirds.phone != null" >
@@ -153,7 +153,7 @@
 					<ion-icon padding-vertical name="mail"></ion-icon>
 				</ion-col>
 				<ion-col col-11 text-left>
-					<a ion-button clear  (click)="openEmail(thirds)">{{ thirds.email }}</a>
+					<a ion-button clear  (click)="openEmail(thirds)" text-lowercase >{{ thirds.email | lowercase }}</a>
 				</ion-col>
 			</ion-row>
 		</div>
@@ -223,7 +223,7 @@
 		</ion-row> -->
 		<ion-row padding-top>
 			<ion-col col-12 text-center>
-				<button ion-button icon-left color="primary" (click)="contactsClient(client)">
+				<button ion-button icon-left color="primary" (click)="contactsClient()">
 					<ion-icon name="contacts"></ion-icon>
 					{{ 'Contactos' | translate}}
 				</button>
@@ -231,7 +231,7 @@
 		</ion-row>
 		<ion-row padding-top>
 			<ion-col col-12 text-center>
-				<button ion-button icon-left color="primary" (click)="branchOfficesClient(client)">
+				<button ion-button icon-left color="primary" (click)="branchOfficesClient()">
 					<ion-icon name="home"></ion-icon>
 					{{ 'Sucursales' | translate}}
 				</button>

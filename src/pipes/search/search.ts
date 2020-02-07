@@ -20,8 +20,8 @@ export class SearchPipe implements PipeTransform {
     terms = terms.toLowerCase();
     return items.filter( it => {
 
-      return it.business_name.toLowerCase().includes(terms)|| 
-      it.cif.toLowerCase().includes(terms);
+      return it.business_name.toLowerCase().includes(terms);
+      // it.cif.toLowerCase().includes(terms);
 
     });
   }
