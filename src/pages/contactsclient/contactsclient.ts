@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CallNumber } from '@ionic-native/call-number';
 import { IonicPage, NavController, NavParams, LoadingController} from 'ionic-angular';
 import { constants } from './../../const/const';
 import { TranslateService } from '@ngx-translate/core';
@@ -18,14 +19,16 @@ export class ContactsclientPage {
   public id : string;
   public message: string;
   public on: any;
+  phone: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: HttpClient,
               public loadingCtrl: LoadingController,
-              public translateService: TranslateService) {
-    this.id= this.navParams.data; //ID
-    console.log('contact clients ID',this.id)
+              public translateService: TranslateService,
+              private callNumber: CallNumber) {
+    this.id= this.navParams.data; //ID de tercero
+    console.log('ID DE TERCEROS',this.id)
   }
 
   ionViewDidLoad() {
@@ -72,12 +75,18 @@ export class ContactsclientPage {
     });
   }
 
+  call(phone){
+    this.callNumber.callNumber(phone, true)
+		.then(res => console.log('Launched dialer!', res))
+		.catch(err => console.log('Error launching dialer', err));
+  }
+
   addContactClient(){
     this.navCtrl.push(AddcontactclientPage, this.id);
   }
 
-  seeContactClient(c,client){
-    this.navCtrl.push(SeecontactclientPage, {c,client});
+  seeContactClient(c){
+    this.navCtrl.push(SeecontactclientPage, {c,id:this.id});
   }
 
 }

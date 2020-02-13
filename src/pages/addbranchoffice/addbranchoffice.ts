@@ -1,3 +1,4 @@
+import { BranchofficesclientsPage } from './../branchofficesclients/branchofficesclients';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -54,9 +55,9 @@ export class AddbranchofficePage {
       localization: this.formBuilder.group({
         address_1: ['',Validators.required],
         postal: [''],
-        country_id: [''],
-        state_id: [''],
-        city_id: [''],
+        country_id: ['',Validators.required],
+        state_id: ['',Validators.required],
+        city_id: ['',Validators.required],
         })
     });
 
@@ -94,17 +95,18 @@ ionViewDidLoad() {
       console.log('data de addBRANCH',this.branch);
       // {branch_id: 1782, location_id: 1831}
       
-      if (this.branch['branch_id'] != 0){
-        this.translateService.get('Alerta13').subscribe(
-          value => {
-            let message = value['MensajeAlerta'];
-              const toast = this.toastCtrl.create({
-              message: message,
-              duration: 3000
-              });
-          toast.present();
-        });
-      }
+      // if (this.branch['branch_id'] != 0){
+      //   this.translateService.get('Alerta13').subscribe(
+      //     value => {
+      //       let message = value['MensajeAlerta'];
+      //         const toast = this.toastCtrl.create({
+      //         message: message,
+      //         duration: 3000
+      //         });
+      //     toast.present();
+      //   });
+      // }
+      this.navCtrl.push(BranchofficesclientsPage, this.id_third );
     }, error => {
       console.log(error);
     });

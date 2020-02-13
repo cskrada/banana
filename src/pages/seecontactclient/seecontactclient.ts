@@ -27,11 +27,13 @@ export class SeecontactclientPage {
 							public http: HttpClient,
 							public loadingCtrl: LoadingController
     ) {
-    this.contact_1= this.navParams.data['c'];
-    this.client= this.navParams.data['client'];
-    this.id_thirds = this.client['id'];
-    this.id_contact = this.contact_1['id'];
-
+    this.contact_1= this.navParams.data['c']; //datos de contacto
+    this.id_thirds= this.navParams.data['id']; //ID de tercero
+    this.id_contact = this.contact_1['id']; //id de contacto
+	console.log('this.contact_1', this.contact_1);
+	console.log('this.client', this.client);
+	console.log('this.id_contact', this.id_contact);
+	
   }
   
   ionViewDidLoad() {
@@ -89,7 +91,7 @@ export class SeecontactclientPage {
 							text: buttonmodify,
 							handler: data => {
 								console.log('Modificado!');
-								this.modify(this.contact, this.client);
+								this.modify(this.contact);
 							}
 						}
 					]
@@ -98,8 +100,8 @@ export class SeecontactclientPage {
 			});
   }
   
-  modify(contact, client){
-    this.navCtrl.push(ModifycontactclientPage, {contact,client});
+  modify(contact){
+    this.navCtrl.push(ModifycontactclientPage, {contact,id:this.id_thirds});
   }
 
 

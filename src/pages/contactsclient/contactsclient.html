@@ -50,6 +50,13 @@
 					<span>{{'Teléfono'| translate}}: {{c.phone}}</span>
 				</ion-col>
 			</ion-row>
+			<!-- <ion-row *ngIf="c.phone != [''] && c.phone != null" >
+				<ion-col col-11 text-left>
+					<button ion-button clear (click)="call(phone)">
+						{{ c.phone }}
+					</button>
+				</ion-col>
+			</ion-row> -->
 			<ion-row *ngIf="c.phone_2 != null">
 				<ion-col>
 					<span>{{'Teléfono 2'| translate}}: {{c.phone_2}}</span>

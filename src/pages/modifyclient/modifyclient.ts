@@ -1,3 +1,4 @@
+import { SeeclientPage } from './../seeclient/seeclient';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -56,17 +57,13 @@ export class ModifyclientPage {
 		url: [this.url],
 		email: [this.email]
     });
-
     console.log('datos del formulario',this.myForm.value);
-
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModifyclientPage');
   }
 
-	
-  
   putProspect(){
     let body =  this.myForm.value;
 		console.log(this.myForm);
@@ -84,17 +81,18 @@ export class ModifyclientPage {
 		this.prospect= data['prospect'];
 		console.log(this.prospect);
 		
-			if (this.prospect != 0){
-				this.translateService.get('Alerta14').subscribe(
-					value => {
-					let message = value['MensajeAlerta'];
-						const toast = this.toastCtrl.create({
-						message: message,
-						duration: 3000
-						});
-					toast.present();
-				});
-			}
+			// if (this.prospect != 0){
+			// 	this.translateService.get('Alerta14').subscribe(
+			// 		value => {
+			// 		let message = value['MensajeAlerta'];
+			// 			const toast = this.toastCtrl.create({
+			// 			message: message,
+			// 			duration: 3000
+			// 			});
+			// 		toast.present();
+			// 	});
+			// }
+			this.navCtrl.push(SeeclientPage, this.id);
   		}, error => {
 			console.log(error);
 		});

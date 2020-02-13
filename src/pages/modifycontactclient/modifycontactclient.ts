@@ -28,9 +28,8 @@ export class ModifycontactclientPage {
               public toastCtrl: ToastController) {
     
     this.contact = this.navParams.data['contact'];
-    this.client = this.navParams.data['client'];
+    this.id_thirds = this.navParams.data['id'];
     this.id_contact = this.contact['id'];
-    this.id_thirds = this.client['id'];
 
     console.log('modifycontactclient ID tercero', this.id_contact);
     console.log('modifycontactclient ID tercero', this.id_thirds);

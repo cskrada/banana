@@ -1,9 +1,11 @@
+import { ContactsclientPage } from './../contactsclient/contactsclient';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ToastController, ViewController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { constants } from './../../const/const';
 import { TranslateService } from '@ngx-translate/core';
+
 
 
 @IonicPage()
@@ -14,7 +16,6 @@ import { TranslateService } from '@ngx-translate/core';
 export class AddcontactclientPage {
   myForm: FormGroup;
   prospect: any = 0;
-  client: any;
   id: any;
   contact: any;
   charges: any []=[];
@@ -25,12 +26,11 @@ export class AddcontactclientPage {
               public http: HttpClient,
               public formBuilder:FormBuilder,
               public translateService: TranslateService,
-              public toastCtrl: ToastController) {
+              public toastCtrl: ToastController, 
+              public viewCtrl: ViewController) {
     
-    this.client= this.navParams.data;
-    this.id= this.navParams.get('id');
+    this.id= this.navParams.data;
     console.log('ID de CLiente',this.id);
-    console.log('CLiente',this.client);
 
     this.myForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -75,7 +75,7 @@ export class AddcontactclientPage {
   addContact(){
     let body: any = {};
     body.contact = this.myForm.value;
-    body.id = this.client;
+    body.id = this.id;
 		console.log(body);
 
 		this.http.post(constants.apipostcontact,
@@ -92,19 +92,25 @@ export class AddcontactclientPage {
       console.log('data de addcontactclient',this.contact);
       
       if (this.contact['contact_id'] != 0){
-        this.translateService.get('Alerta10').subscribe(
-          value => {
-            let message = value['MensajeAlerta'];
-              const toast = this.toastCtrl.create({
-              message: message,
-              duration: 3000
-              });
-          toast.present();
-        });
+        // this.translateService.get('Alerta10').subscribe(
+        //   value => {
+        //     let message = value['MensajeAlerta'];
+        //       const toast = this.toastCtrl.create({
+        //       message: message,
+        //       duration: 3000
+        //       });
+        //   toast.present();
+        // });
+        this.navCtrl.push(ContactsclientPage, this.id);
       }
 		}, error => {
 			console.log(error);
 	  });
   }
+
+  // close(){
+  //   this.viewCtrl.dismiss();
+  //   this.navCtrl.setRoot(ContactsclientPage, this.id);
+  // }
 
 }

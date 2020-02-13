@@ -119,7 +119,7 @@ constructor(public navCtrl: NavController,
 							text: buttonmodify,
 							handler: data => {
 								console.log('Modificado!');
-								this.modify(this.client);
+								this.modify();
 							}
 						}
 					]
@@ -163,8 +163,8 @@ constructor(public navCtrl: NavController,
 	}
 
 
-	modify(client){
-		this.navCtrl.push(ModifyclientPage, client);
+	modify(){
+		this.navCtrl.push(ModifyclientPage, this.thirds);
 	}
 
 	contactsClient(){
