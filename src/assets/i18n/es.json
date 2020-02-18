@@ -136,6 +136,12 @@
         "TextAlerta": "Ok"
     },
 
+    "TipoProducto":{
+        "Stock": "producto_stock",
+        "Servicio": "producto_servicio",
+        "Consumible": "producto_consumible"
+    },
+
     "AlertaSeeContactClient":{
         "TituloAlerta": "Modificar contacto",
         "MensajeAlerta": "¿Está seguro que desea modificar este contacto?",

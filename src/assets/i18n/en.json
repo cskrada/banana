@@ -136,6 +136,12 @@
         "TextAlerta": "Ok"
     },
 
+    "TipoProducto":{
+        "Stock": "product with inventory",
+        "Servicio": "service",
+        "Consumible": "consumable"
+    },
+
     "AlertaSeeContactClient":{
         "TituloAlerta": "Modify contact",
         "MensajeAlerta": "Are you sure you want to modify this contact?",
