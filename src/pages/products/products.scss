@@ -1,5 +1,4 @@
 page-products {
-    
     .boton{
         border-radius: 50%;
         color: #525252; 
@@ -8,8 +7,9 @@ page-products {
     .fuente{
         font-family: roboto;
         color: #525252;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
+
     .card{
         height: 100%;
     }
@@ -38,6 +38,10 @@ page-products {
     }
 
     .list{
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+    }
+
+    .icono{
+        font-size: 1.1rem;
     }
 }

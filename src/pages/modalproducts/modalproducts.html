@@ -22,7 +22,7 @@
       </ion-thumbnail>
       <h6>{{ p.name }}</h6>
       <p no-margin *ngIf=" p.reference != [''] && p.reference != null ">{{'Referencia' | translate}}: {{ p.reference }}</p>
-      <p no-margin>{{'Stock disponible' | translate}}: {{ p.stock | number:'1.1-3' }}</p> 
+      <p no-margin>{{'Stock' | translate}}: {{ p.stock | number:'1.1-3' }}</p> 
       <p no-margin><b>{{'Cantidad' | translate}}:</b> {{p.quantity}}</p> 
 
     </ion-item>

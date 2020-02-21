@@ -19,10 +19,10 @@ export class Document {
   reference: string = '';
   header_project_id: number = null;
   address: string = '';
-  valid_from: string = '';
-  valid_until: string = '';
+  valid_from: String = new Date().toISOString();
+  valid_until: String = new Date().toISOString();
   warehouse_id: number = null;
-  sale_represent_id: number = null;
+  sale_represent_id: string = null;
   price_list_id: number = null;
   currency_client: number = null;
   currency_document: number = null;
@@ -107,13 +107,13 @@ export class AddordersalePage {
   warehouses: any;
   products: any;
 
-  valid_from: string = '';
-  valid_until: string = '';
+  valid_from: String = new Date().toISOString();
+  valid_until: String = new Date().toISOString();
 
   cur: any;
   tax: any;
   lis: any;
-  war: any;
+  war: any = 1;
 
   c: any;
 
@@ -125,6 +125,15 @@ export class AddordersalePage {
   post_order: any;
 
   signatureImage: string;
+
+  settings_sale: any;
+  settings_configuration: any;
+  obj_sale: any[];
+  obj_conf: any[];
+  price_list_id : any;
+  warehouse_id: any = 1;
+  tax_id: any;
+  rate: any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -138,12 +147,30 @@ export class AddordersalePage {
 
   this.session_org=sessionStorage.getItem('organization_id');
   this.id_user = sessionStorage.getItem('user');
+  this.settings_sale = localStorage.getItem('settings_sale');
+  this.settings_configuration = localStorage.getItem('settings_configuration');
+  this.obj_sale = JSON.parse(this.settings_sale);
+  this.obj_conf = JSON.parse(this.settings_configuration);
+
+  console.log(this.obj_conf);
+  console.log(this.obj_sale);
   }
 
   ionViewDidLoad() {
     this.getResource();
-    // console.log(this.myForm.value);
-    console.log('console',this.client);
+
+    if( this.obj_sale['price_list_id'] != null ){
+      this.price_list_id = this.obj_sale['price_list_id'];
+      this.lis = this.price_list_id;
+      console.log(this.lis);
+    }
+
+    if( this.obj_conf['tax_id'] != null ){
+      this.tax_id = this.obj_conf['tax_id'];
+      this.tax = this.tax_id;
+      console.log(this.tax);
+    } 
+
   }
 
   getResource(){
@@ -161,7 +188,16 @@ export class AddordersalePage {
         this.taxes = data['taxes'];
         this.warehouses = data['warehouses'];
         this.price_lists = data['price_lists'];
-        // console.log('documents',this.documents);
+
+        for (let tax of this.taxes){
+          if(this.tax_id == tax.id){
+            this.rate = tax.rate;
+            console.log('tax', tax, 'rate', this.rate);  
+          }
+        }
+        // console.log('documents',this.taxes);
+        // console.log('documents',this.warehouses);
+        // console.log('documents',this.price_lists);
       }, error => {
         console.log(error);
       });
@@ -180,22 +216,23 @@ export class AddordersalePage {
   } 
 
   selectC(c){
-    this.cur = c;
-    console.log (this.cur);
+    this.cur = c.id; // moneda
+    console.log ('moneda', this.cur);
   }
   
-  selectT(t){
-    this.tax = t;
-    console.log ('taxe:',this.tax['rate']);
-    console.log ('taxe:',this.tax);
-  }
-
   selectL(l){
-    this.lis = l;
+    this.lis = l.id; //lista de precios
+    console.log ('lista de precios', this.lis);
   }
   
   selectW(w){
-    this.war = w;
+    this.war = w.id; //almacen
+    console.log ('almacen', this.war);
+  }
+  
+  selectT(t){
+    this.tax = t.rate; // impuesto
+    console.log ('taxe:',this.tax);
   }
     
   openModalProducts(){
@@ -232,11 +269,6 @@ export class AddordersalePage {
           });
           toast.present();
         });
-      // const toast = this.toastCtrl.create({
-      //   message: 'Seleccionar lista de precio, el impuesto y el almacen',
-      //   duration: 3000
-      // });
-      // toast.present();
     }
   }
 
@@ -317,22 +349,21 @@ export class AddordersalePage {
   }
     
   postBorrador(){
-
+    console.log( this.lis, this.war, this.tax);
     if( this.lis != undefined && this.war != undefined && this.tax != undefined ){
       let body: any = {};
       this.header_project.organization_id = this.session_org;
       this.header_project.bpartner_id = this.c;
       body.header_project = this.header_project;
-  
-      this.document.sale_represent_id = 1535;
+      this.document.sale_represent_id = sessionStorage.getItem('sale_represent_id');
       this.document.bpartner_id = this.client['id'];
       this.document.address = this.client['address'];
-      this.document.warehouse_id = this.war['id'];
-      this.document.price_list_id = this.lis['id'];
-      this.document.currency_document = this.cur['id'];
-      this.document.valid_from = this.valid_from;
-      this.document.valid_until = this.valid_until;
-      this.document.rate = this.tax['rate'];
+      this.document.warehouse_id = this.war;
+      this.document.price_list_id = this.lis;
+      this.document.currency_document = this.cur;
+      this.document.rate = this.tax;
+      this.document.valid_from = this.valid_from.substr(0,10);
+      this.document.valid_until = this.valid_until.substr(0,10);
       this.document.status_id = 0;
       body.document = this.document;
       body.body_documents = this.product;
@@ -359,48 +390,48 @@ export class AddordersalePage {
           });
           toast.present();
         }, error => {
-          this.translateService.get('AlertaAddOrderSale').subscribe( 
+          this.translateService.get('AlertaAddOrderSale').subscribe(
             value=>{
               let message = value['MensajeToast'];
-      
+              const toast = this.toastCtrl.create({
+              message : message,
+              duration: 3000
+            });
+              toast.present();
+            });
+            console.log(error);
+            });
+          }else if( this.lis == undefined || this.war == undefined || this.tax == undefined ){
+              this.translateService.get('AlertaAddOrderSale').subscribe(
+              value=>{
+              let message = value['MensajeToast'];
               const toast = this.toastCtrl.create({
                 message : message,
                 duration: 3000
               });
-            toast.present();
-          });
-        console.log(error);
-      });
-    }else if( this.lis == undefined || this.war == undefined || this.tax == undefined ){
-      this.translateService.get('AlertaAddOrderSale').subscribe( 
-        value=>{
-          let message = value['MensajeToast'];
-  
-          const toast = this.toastCtrl.create({
-            message : message,
-            duration: 3000
-          });
-        toast.present();
-      });
-    }
-
+              toast.present();
+            });
+        }
   }
 
   postEnviar(){
+    console.log( this.lis, this.war, this.tax);
+       
+    console.log();
     if( this.lis != undefined && this.war != undefined && this.tax != undefined ){
       let body: any = {};
       this.header_project.organization_id = this.session_org;
       this.header_project.bpartner_id = this.c;
       body.header_project = this.header_project;
-      this.document.sale_represent_id = 1535;
+      this.document.sale_represent_id = sessionStorage.getItem('sale_represent_id');
       this.document.bpartner_id = this.client['id'];
       this.document.address = this.client['address'];
-      this.document.warehouse_id = this.war['id'];
-      this.document.price_list_id = this.lis['id'];
-      this.document.currency_document = this.cur['id'];
-      this.document.valid_from = this.valid_from;
-      this.document.valid_until = this.valid_until;
-      this.document.rate = this.tax['rate'];
+      this.document.warehouse_id = this.war;
+      this.document.price_list_id = this.lis;
+      this.document.currency_document = this.cur;
+      this.document.rate = this.tax;
+      this.document.valid_from = this.valid_from.substr(0,10);
+      this.document.valid_until = this.valid_until.substr(0,10);
       this.document.status_id = 1;
       body.document = this.document;
       body.body_documents = this.product;
@@ -427,36 +458,28 @@ export class AddordersalePage {
           });
           toast.present();
         }, error => {
-          this.translateService.get('AlertaAddOrderSale').subscribe( 
+          this.translateService.get('AlertaAddOrderSale').subscribe(
             value=>{
-              let message = value['MensajeToast'];
-      
-              const toast = this.toastCtrl.create({
-                message : message,
-                duration: 3000
-              });
-            toast.present();
+            let message = value['MensajeToast'];
+            const toast = this.toastCtrl.create({
+              message : message,
+              duration: 3000
+            });
+              toast.present();
           });
-        console.log(error);
-      });
-    }else if( this.lis == undefined || this.war == undefined || this.tax == undefined ){
-      this.translateService.get('AlertaAddOrderSale').subscribe( 
-        value=>{
-          let message = value['MensajeToast'];
-  
-          const toast = this.toastCtrl.create({
-            message : message,
-            duration: 3000
-          });
-          toast.present();
+            console.log(error);
         });
-
-      // const toast = this.toastCtrl.create({
-      //   message: 'Debe rellenar todos los campos antes de emitir el pedido',
-      //   duration: 3000
-      // });
-      // toast.present();
-    }
+      }else if( this.lis == undefined || this.war == undefined || this.tax == undefined ){
+        this.translateService.get('AlertaAddOrderSale').subscribe(
+          value=>{
+            let message = value['MensajeToast'];
+            const toast = this.toastCtrl.create({
+              message : message,
+              duration: 3000
+            });
+              toast.present();
+          });
+      }
   }
 
   agregarFirma(){

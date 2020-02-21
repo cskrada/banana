@@ -59,17 +59,11 @@ constructor(public navCtrl: NavController,
 		this.menu.enable(false);
 		this.checkbox = localStorage.check;
 		this.check = localStorage.check;
-		console.log('ionViewDidLoad',this.email,this.password,this.dns);
-		console.log('ionViewDidLoad',localStorage.email, localStorage.passrowd, localStorage.dns);
-		console.log('ionViewDidLoad',this.check);
 
 		if( this.check == 'true' ){
 			this.email = localStorage.email;
 			this.password = localStorage.password;
 			this.dns = localStorage.dns;
-			console.log(this.email,this.password,this.dns);
-			console.log(localStorage.email, localStorage.passrowd, localStorage.dns);
-			console.log('this.check == TRUE');
 		}
 		if( this.check == 'false' ){
 			this.email = '';
@@ -78,9 +72,6 @@ constructor(public navCtrl: NavController,
 			localStorage.removeItem('email');
 			localStorage.removeItem('password');
 			localStorage.removeItem('dns');
-			console.log(this.email,this.password,this.dns);
-			console.log(localStorage.email, localStorage.passrowd, localStorage.dns);
-			console.log('this.check == FALSE');
 		}
 	}
 
@@ -88,11 +79,6 @@ constructor(public navCtrl: NavController,
 		if (this.checkbox == true){
 			this.check = true;
 			localStorage.check = this.check;
-			// this.email = localStorage.email;
-			// this.password = localStorage.password;
-			// this.dns = localStorage.dns;
-			console.log('REMEMBER == TRUE');
-			console.log(this.myForm.valid);
 		}
 		if (this.checkbox == false){
 			this.check = false;
@@ -100,11 +86,6 @@ constructor(public navCtrl: NavController,
 			this.email = '';
 			this.password = '';
 			this.dns = '';
-			// localStorage.removeItem('email');
-			// localStorage.removeItem('password');
-			// localStorage.removeItem('dns');
-			console.log('REMEMBER == FALSE');
-			console.log(this.myForm.valid);
 		}
 	}
 
@@ -118,6 +99,14 @@ constructor(public navCtrl: NavController,
 	postLogin(email: string, password: any){
 		this.dns_remember = this.dns;
 
+		function saveSettingsInLocal (settings: any) {
+			Object.keys(settings).forEach(function (key) {
+			  if ( settings[key] != null && settings[key] !== undefined )
+			  localStorage.setItem('settings_'+key, JSON.stringify(settings[key]));
+			//   console.log('FUNCION',localStorage.getItem('settings_'+key));
+			});
+		}		
+
 		const new_dns = constants.dns.replace('$$$__$$$', this.dns_remember);
 	  	this.http.post(constants.apilogin,
 					{ email, password }, 
@@ -126,6 +115,8 @@ constructor(public navCtrl: NavController,
 					.append('app', 'BananaApp')
 					.append('Access-Control-Allow-Origin', '*')
 	  		}).subscribe(data => {
+				const settings: any = data['user'].settings;
+				
 	  			this.menu.enable(true, 'authenticated');
 				this.results.push(data['user']);
 				this.results.push(data['storage']);
@@ -137,12 +128,20 @@ constructor(public navCtrl: NavController,
 				sessionStorage.setItem('name', data['user'].user[0].contact.name);
 				sessionStorage.setItem('email', data['user'].user[0].email);
 				sessionStorage.setItem('dns', new_dns);
+				sessionStorage.setItem('sale_represent_id', data['user'].sale_represent_id);
 
 				localStorage.email = email;
 				localStorage.password = this.password;
 				localStorage.dns = this.dns;
 				this.navCtrl.setRoot(OrganizationsPage, this.results);
 				console.log(this.results);
+
+				// console.log(settings);
+
+				saveSettingsInLocal(settings);
+
+				// console.log(localStorage.getItem('settings_sale'));
+				// console.log(localStorage.getItem('settings_configuration'));
 
 			}, error => {
 				if (error.status === 406) {
@@ -164,7 +163,6 @@ constructor(public navCtrl: NavController,
 							alert.present();
 							});
 						});
-
                 } else if (error.status === 500 ){
 					console.log("email incorrecto");
 					this.translateService.get('Alerta4').subscribe(

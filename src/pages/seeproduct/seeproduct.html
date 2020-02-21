@@ -1,44 +1,59 @@
 <ion-header>
-    <ion-navbar color="bananap">
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-grid no-padding>
-        <ion-row no-padding>
-          <ion-col col-1 no-padding>
-            <table>
-              <tr>
-                <td>
-                  <ion-buttons start>
-                    <button ion-button icon-only>
-                      <ion-icon name="apps"></ion-icon>
-                    </button>
-                  </ion-buttons>
-                </td>
-                <td>
-                  <ion-title>{{ producto.name }}</ion-title>
-                </td>
-              </tr>
-            </table>
-          </ion-col>
-          <ion-col col-11 no-padding>
-            
-          </ion-col>
-        </ion-row>
-      </ion-grid> 
-    </ion-navbar>
-  </ion-header>
+  <!-- <ion-navbar color="bananap">
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-grid no-padding>
+      <ion-row no-padding>
+        <ion-col col-1 no-padding>
+          <table>
+            <tr>
+              <td>
+                <ion-buttons start>
+                  <button ion-button icon-only>
+                    <ion-icon name=""></ion-icon>
+                  </button>
+                </ion-buttons>
+              </td>
+              <td>
+                <ion-title text-nowrap>{{ producto.name }}</ion-title>
+              </td>
+            </tr>
+          </table>
+        </ion-col>
+        <ion-col col-11 no-padding>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+  </ion-navbar> -->
+  <ion-navbar color="bananap">
+    <ion-grid no-padding>
+      <ion-row no-padding nowrap>
+        <ion-col col-1 no-padding>
+          <ion-buttons start>
+            <button ion-button icon-only>
+              <ion-icon name="apps"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col col-xs no-padding align-self-center>
+          <ion-title text-nowrap>
+              {{ producto.name }}
+          </ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+  </ion-navbar>
+</ion-header>
 
-
-<ion-content padding>
+<ion-content no-padding>
     <ion-card>
       <div>
         <img src="{{ this.image }}"/>
       </div>
         <ion-card-content>
-          <ion-card-title>
-            {{ producto.name}}
-          </ion-card-title>
+          <span><b>{{ producto.name}}</b></span>
           <p>
             {{ producto.description }}
           </p>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, LoadingController, NavParams } from 'ionic-angular';
 import { constants } from './../../const/const';
 import { TranslateService } from '@ngx-translate/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { SeeproductPage } from './../seeproduct/seeproduct';
 import { AddproductPage } from './../addproduct/addproduct';
@@ -60,11 +60,43 @@ export class ProductsPage {
           this.productos = data['products'];
 
           this.constants= constants.apiimage;
-          // console.log('productos', this.productos);
+          console.log(this.constants);
+          console.log('productos', this.productos);
         }, error => {
           // console.log(error);
       });
     });
+  }
+
+  searchProduct(event){
+    let search;
+    search = event.target.value;
+    console.log(search);
+
+    this.translateService.get('Por favor espere...').subscribe(
+      value => {
+        let content = value;
+        let loading = this.loadingCtrl.create({
+          content: content
+          });
+        loading.present();
+        return this.http.get(constants.apisearchproducts,
+          { headers: new HttpHeaders()
+            .set('authorization', sessionStorage.getItem('dns'))
+            .append('app', 'BananaApp')
+            .append('organization', sessionStorage.getItem('organization_id') )
+            .append('user', sessionStorage.getItem('user'))
+            .append('Access-Control-Allow-Origin', '*')
+            .append('token', sessionStorage.getItem('token')),
+            params: new HttpParams()
+                .set('filter', search)
+          }).subscribe ( data=> {
+            loading.dismissAll();
+            this.productos = data['products'];
+          }, error => {
+            console.log(error);
+        });
+      });
   }
 
   getResource(){

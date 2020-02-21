@@ -48,6 +48,8 @@ export class CombinationproductPage {
 
   public items: any;
   public session_org: any;
+  public type_products: any[];
+  public type: any = null;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -56,6 +58,26 @@ export class CombinationproductPage {
               public viewCtrl: ViewController,
               public toastCtrl: ToastController,
               public translateService: TranslateService,) {
+    this.translateService.get('TipoProducto').subscribe(
+      value => {
+        let stock = value['Stock'];
+        let servicio = value['Servicio'];
+        let consumible = value['Consumible'];
+        this.type_products = [
+          {
+            id : 'P',
+            text : stock
+          },
+          {
+            id : 'S',
+            text : servicio
+          },
+          {
+            id : 'C',
+            text : consumible
+          }
+        ];
+    });
     this.getResource();
 
     this.session_org=sessionStorage.getItem('organization_id');

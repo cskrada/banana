@@ -62,6 +62,7 @@ export class SeeproductPage {
         
         if (this.test != null){
           this.image = constants.apiimage+data['product_details'][0].image;
+          console.log('IMAGE',this.image);
         }else{
           this.image = 'assets/imgs/products.jpeg';
         }
@@ -84,6 +85,7 @@ export class SeeproductPage {
         // console.log('producto',this.producto);
         // console.log('product',this.product);
         console.log('producto_Details',this.productDetails);
+        console.log('PRODUCTO', this.producto);    
         // console.log('producto_Details TEST',this.productDetails[0]);
         // console.log('image',this.image);
         // console.log('teeeesst img',this.test);

@@ -56,13 +56,13 @@
         </ion-item>
         <ion-item>
           <ion-label>{{'Almacén'| translate}}</ion-label>
-          <ion-select  [(ngModel)]="document.warehouse_id" interface="popover">
+          <ion-select  [(ngModel)]="warehouse_id" interface="popover">
             <ion-option *ngFor="let w of warehouses" value="{{ w.id }}" (ionSelect)="selectW(w)">{{w.text}}</ion-option>
           </ion-select>
         </ion-item>
         <ion-item>
           <ion-label>{{'Lista de precios' | translate}}</ion-label>
-          <ion-select [(ngModel)]="document.price_list_id" interface="popover">
+          <ion-select [(ngModel)]="price_list_id" interface="popover">
             <ion-option *ngFor="let l of price_lists" value="{{ l.id }}" (ionSelect)="selectL(l)">{{l.text}}</ion-option>
           </ion-select>
         </ion-item>
@@ -74,7 +74,7 @@
         </ion-item> 
         <ion-item>
           <ion-label>{{'Impuesto' | translate}}</ion-label>
-          <ion-select [(ngModel)]="document.rate"  interface="popover">
+          <ion-select [(ngModel)]="tax_id"  interface="popover">
             <ion-option *ngFor="let t of taxes" value="{{ t.id }}" (ionSelect)="selectT(t)">{{t.text}}</ion-option>
           </ion-select>
         </ion-item>
@@ -88,15 +88,15 @@
           <ion-row class="row ng-tns-c0-0">
             <ion-col col-6 text-left>
               <p class="margin-tb">
-                <b>{{'Bruto total' | translate }}: </b>{{ footer_document.gross_total | number:'1.1-3'}} 
+                <b>{{'Bruto total' | translate }}: </b>{{ footer_document.gross_total | number:'1.1-2'}} 
               </p>
             </ion-col>
             <ion-col col-6 text-right>
               <p class="margin-tb">
-                <b>{{ 'Impuesto' | translate}}:</b> {{ this.footer_document.tax_total }}
+                <b>{{ 'Impuesto' | translate}}:</b> {{ this.footer_document.tax_total | number:'1.1-2'}}
               </p>
               <p class="margin-tb">
-                <b>{{'Neto total' | translate }}: </b>{{ footer_document.neto_total | number:'1.1-3'}}
+                <b>{{'Neto total' | translate }}: </b>{{ footer_document.neto_total | number:'1.1-2'}}
               </p>
             </ion-col>
           </ion-row>
@@ -107,8 +107,8 @@
           </ion-list-header>
           <ion-item [@itemState]="p.state" *ngFor="let p of product; let i = index" [attr.data-index]="i">
             {{ p.name }} <br>
-            {{'Cantidad' | translate}}: {{ p.quantity }} * {{ p.price }}
-            <b>{{ 'Total' | translate}}:</b> {{ p.net_price}} <br>
+            {{'Cantidad' | translate}}: {{ p.quantity }} * {{ p.price | number:'1.1-2'}}
+            <b>{{ 'Total' | translate}}:</b> {{ p.net_price | number:'1.1-2'}} <br>
             <div *ngFor="let item of taxes">
               <div *ngIf="p.tax_id == item.id">
                   {{ 'Impuesto' | translate}}: {{ item.text }}
@@ -127,12 +127,12 @@
             <ion-row class="row ng-tns-c0-0">
               <ion-col col-6 text-left>
                 <p class="margin-tb">
-                  <b>{{'Bruto total' | translate }}: </b>{{ footer_document.gross_total | number:'1.1-3'}}
+                  <b>{{'Bruto total' | translate }}: </b>{{ footer_document.gross_total | number:'1.1-2'}}
                 </p>
               </ion-col>
               <ion-col col-6 text-right>
                 <p class="margin-tb">
-                  <b>{{'Neto total' | translate }}: </b>{{ footer_document.neto_total | number:'1.1-3'}}
+                  <b>{{'Neto total' | translate }}: </b>{{ footer_document.neto_total | number:'1.1-2'}}
                 </p>
               </ion-col>
             </ion-row>
@@ -145,15 +145,15 @@
           <ion-row class="row ng-tns-c0-0">
             <ion-col col-6 text-left>
               <p class="margin-tb">
-                <b>{{'Bruto total' | translate }}: </b>{{ footer_document.gross_total | number:'1.1-3'}} 
+                <b>{{'Bruto total' | translate }}: </b>{{ footer_document.gross_total | number:'1.1-2'}} 
               </p>
             </ion-col>
             <ion-col col-6 text-right>
               <p class="margin-tb">
-                <b>{{ 'Impuesto' | translate}}:</b> {{ this.footer_document.tax_total }}
+                <b>{{ 'Impuesto' | translate}}:</b> {{ this.footer_document.tax_total | number:'1.1-2'}}
               </p>
               <p class="margin-tb">
-                <b>{{'Neto total' | translate }}: </b>{{ footer_document.neto_total | number:'1.1-3'}}
+                <b>{{'Neto total' | translate }}: </b>{{ footer_document.neto_total | number:'1.1-2'}}
               </p>
             </ion-col>
           </ion-row>

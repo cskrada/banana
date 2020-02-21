@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { CallNumber } from '@ionic-native/call-number';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ModifycontactclientPage } from './../modifycontactclient/modifycontactclient';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { constants } from './../../const/const';
+import { EmailPage } from './../email/email';
 
 @IonicPage()
 @Component({
@@ -19,13 +21,15 @@ export class SeecontactclientPage {
   contact_id: any;
   contact_new: any;
   contact: any[]=[];
+  phone: string;
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public translateService: TranslateService,
-              public alerta: AlertController,
-							public http: HttpClient,
-							public loadingCtrl: LoadingController
+  constructor(	public navCtrl: NavController,
+              	public navParams: NavParams,
+              	public translateService: TranslateService,
+				public alerta: AlertController,
+				public http: HttpClient,
+				public loadingCtrl: LoadingController,
+				public callNumber: CallNumber
     ) {
     this.contact_1= this.navParams.data['c']; //datos de contacto
     this.id_thirds= this.navParams.data['id']; //ID de tercero
@@ -44,7 +48,17 @@ export class SeecontactclientPage {
     this.seeContact();
   }
 
-  seeContact(){
+	call(phone){
+		this.callNumber.callNumber(phone, true)
+		.then(res => console.log('Launched dialer!', res))
+		.catch(err => console.log('Error launching dialer', err));
+	}
+
+	openEmail(contact) {
+		this.navCtrl.push(EmailPage, contact);
+	}
+
+  	seeContact(){
 		this.translateService.get('Por favor espere...').subscribe(
 			value => {
 				let content = value;

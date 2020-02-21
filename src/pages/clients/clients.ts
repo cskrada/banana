@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/debounceTime';
 import { constants } from './../../const/const';
 
@@ -21,6 +21,7 @@ export class ClientsPage {
 	clients: any[] = [];
 	director: any = {};
 	on: any;
+	busca: any;
 
 	constructor(public navCtrl: NavController,
 				public http: HttpClient,
@@ -84,6 +85,41 @@ export class ClientsPage {
 			});
 		});
 	}
+
+	buscar(event){
+		let search = event.target.value;
+		console.log(event);
+		this.translateService.get('Por favor espere...').subscribe(
+		  value => {
+			let content = value;
+			let loading = this.loadingCtrl.create({
+			  content: content
+			  });
+			loading.present();
+	
+		  return this.http.get(constants.apisearchclient+this.id,
+			{ headers: new HttpHeaders()
+			  .set('authorization', sessionStorage.getItem('dns'))
+			  .append('app', 'BananaApp')
+			  .append('organization', sessionStorage.getItem('organization_id') )
+			  .append('user', sessionStorage.getItem('user'))
+			  .append('Access-Control-Allow-Origin', '*')
+			  .append('token', sessionStorage.getItem('token')),
+			  params: new HttpParams()
+				.set('search', search)
+			}).subscribe ( data=> {
+			  loading.dismissAll();
+			  this.clients = data['clients'];
+			  console.log('terceros',this.clients);
+			}, error => {
+			  console.log(error);
+		  });
+		});
+	}
+
+	// onCancel(){
+	// 	console.log('IONCANCEL');
+	// }
 
 	settings(){
 		this.navCtrl.push(SettingsPage);

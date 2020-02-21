@@ -70,7 +70,8 @@
 				</ion-buttons>	
 			</ion-col>
 			<ion-col col-10>
-				<ion-searchbar [(ngModel)]="terms" placeholder="{{'Buscar'|translate}}"></ion-searchbar>
+				<!-- (ionCancel)="onCancel()" [showCancelButton]="true" -->
+				<ion-searchbar placeholder="{{'Buscar'|translate}}" (ionInput)="buscar($event)" ></ion-searchbar>
 			</ion-col>
 		</ion-row>
 	</ion-grid>

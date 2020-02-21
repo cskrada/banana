@@ -43,9 +43,7 @@
 </ion-header>
 
 
-<ion-content padding>
-    
-  
+<ion-content no-padding>
   <form [formGroup]="myForm" (ngSubmit)="postProductDetail()">
     <ion-grid>
       <ion-row>
@@ -58,7 +56,7 @@
       <ion-row>
         <ion-col>
           <ion-item no-padding>
-            <ion-input formControlName="reference" type="text" placeholder="{{'Referencia'|translate}}"></ion-input>
+            <ion-input [(ngModel)]="reference" formControlName="reference" type="text" placeholder="{{'Referencia'|translate}}"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -71,8 +69,11 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-item no-padding>
-            <ion-input formControlName="type" type="text" placeholder="{{'Tipo'|translate}}"></ion-input>
+          <ion-item>
+            <ion-label>{{'Tipo'| translate}}</ion-label>
+            <ion-select [(ngModel)]="type" formControlName="type" interface="popover">
+              <ion-option *ngFor="let t of type_products" value="{{ t.id }}" > {{ t.text }} </ion-option>
+            </ion-select>
           </ion-item>
         </ion-col>
       </ion-row>

@@ -37,8 +37,9 @@ export class SimpleproductPage {
   public price_list_id: any = null;
   public product_details : any []=[];
   public session_org: any;
-
-
+  public type_products: any[];
+  public type: any = null;
+  public reference: any = null;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -47,13 +48,36 @@ export class SimpleproductPage {
               public translateService: TranslateService,
               public toastCtrl: ToastController,
               public viewCtrl: ViewController) {
+
+    this.translateService.get('TipoProducto').subscribe(
+      value => {
+        let stock = value['Stock'];
+        let servicio = value['Servicio'];
+        let consumible = value['Consumible'];
+
+        this.type_products = [
+          {
+            id : 'P',
+            text : stock
+          },
+          {
+            id : 'S',
+            text : servicio
+          },
+          {
+            id : 'C',
+            text : consumible
+          }
+        ];
+    });
+    console.log('this.type_products', this.type_products);
     this.getResource();
 
     this.session_org=sessionStorage.getItem('organization_id')
     
     this.myForm = this.formBuilder.group({
     name: ['', Validators.required],
-    reference: [''],
+    reference: ['', Validators.required],
     description: [''],
     type: [''],
     is_salable: [''],
@@ -110,7 +134,11 @@ export class SimpleproductPage {
   postProductDetail(){
     let body =  this.myForm.value;
     body.product_details = [body.product_details];
+
+    // body.reference = [body.body.product_details.reference];
     console.log(body);
+    console.log(body.reference);
+    console.log(body.product_details[0].reference);
 
     this.http.post(constants.apipostproduct,
       body,

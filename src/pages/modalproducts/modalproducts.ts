@@ -37,11 +37,8 @@ export class ModalproductsPage {
       
       this.data = this.navParams.data;
       this.list = this.navParams.get('lis');
-      this.list = this.list['id'];
-      this.rate = this.navParams.get('tax');
-      this.rate = this.rate['rate'];
       this.ware = this.navParams.get('war');
-      this.ware = this.ware['id'];
+      this.rate = this.navParams.get('tax');
       this.arr_product = this.navParams.get('product');
 
       
@@ -81,6 +78,7 @@ export class ModalproductsPage {
           }).subscribe ( data=> {
             loading.dismissAll();
             this.products = data['products'];
+            console.log(this.products);
             if(this.arr_product.length == 0){
               for (let index = 0; index < this.products.length; index++) {
                 this.products[index].quantity = 0; 

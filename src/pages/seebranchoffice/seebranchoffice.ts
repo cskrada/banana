@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { constants } from './../../const/const';
 import { TranslateService } from '@ngx-translate/core';
 import { ModifybranchofficePage } from './../modifybranchoffice/modifybranchoffice';
+import { CallNumber } from '@ionic-native/call-number';
 
 @IonicPage()
 @Component({
@@ -18,25 +19,32 @@ export class SeebranchofficePage {
 	localization: any []= [];
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public http: HttpClient,
-              public translateService: TranslateService,
-							public alerta: AlertController,
-							public loadingCtrl: LoadingController) {
-		this.branch_office= this.navParams.data;
-		// this.localization = this.branch_office['localization'];
+				public navParams: NavParams,
+				public http: HttpClient,
+				public translateService: TranslateService,
+				public alerta: AlertController,
+				public loadingCtrl: LoadingController,
+				public callNumber: CallNumber) {
+	
+	this.branch_office= this.navParams.data;
     this.id_branch = this.navParams.get('id');
-  }
+  	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SeebranchofficePage');
-  }
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad SeebranchofficePage');
+	}
 
-  ionViewDidEnter(){
-    this.seeBranchOffice();
-  }
+	ionViewDidEnter(){
+		this.seeBranchOffice();
+	}
 
-  seeBranchOffice(){
+	call(phone){
+		this.callNumber.callNumber(phone, true)
+		.then(res => console.log('Launched dialer!', res))
+		.catch(err => console.log('Error launching dialer', err));
+	}
+
+  	seeBranchOffice(){
 		this.translateService.get('Por favor espere...').subscribe(
 			value => {
 				let content = value;
